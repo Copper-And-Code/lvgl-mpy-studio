@@ -1,0 +1,41 @@
+{
+  "generatedDate": "2023-11-14T22:13:38.000Z",
+  "project": {
+    "projectName": "One image",
+    "pages": [
+      {
+        "id": "p1",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "w18",
+            "type": "image",
+            "name": "Image_w18",
+            "parentId": null,
+            "props": {
+              "x": 74,
+              "y": 66,
+              "width": 100,
+              "height": 100,
+              "src": "",
+              "fit": "contain",
+              "bgColor": "#F0F0F0",
+              "rotation": 0,
+              "zoom": 256,
+              "antialias": true,
+              "pivotX": 0,
+              "pivotY": 0
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

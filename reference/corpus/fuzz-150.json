@@ -1,0 +1,89 @@
+{
+  "generatedDate": "2023-11-14T22:16:22.000Z",
+  "project": {
+    "projectName": "Random 150",
+    "pages": [
+      {
+        "id": "p150",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-150-0",
+            "type": "checkbox",
+            "name": "checkbox_150_0",
+            "parentId": null,
+            "props": {
+              "x": 594,
+              "y": 350,
+              "width": 204,
+              "height": 50,
+              "text": "Testo 150:0 \" \\ Città",
+              "checked": false,
+              "textColor": "#000000",
+              "fontSize": 14,
+              "checkedColor": "#2196F3",
+              "disabled": false
+            },
+            "events": [
+              {
+                "id": "e0",
+                "type": "LV_EVENT_VALUE_CHANGED",
+                "callback": "checkbox_150_0_changed",
+                "code": ""
+              }
+            ],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-150-1",
+            "type": "dropdown",
+            "name": "dropdown_150_1",
+            "parentId": null,
+            "props": {
+              "x": 653,
+              "y": 104,
+              "width": 257,
+              "height": 139,
+              "options": "Option 1\nOption 2\nOption 3",
+              "selected": 0,
+              "bgColor": "#FFFFFF",
+              "textColor": "#000000",
+              "fontSize": 14,
+              "dir": "LV_DIR_BOTTOM",
+              "symbol": "LV_SYMBOL_DOWN",
+              "highlightSelected": true,
+              "text": "Testo 150:1 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-150-2",
+            "type": "tileview",
+            "name": "tileview_150_2",
+            "parentId": null,
+            "props": {
+              "x": 175,
+              "y": 297,
+              "width": 117,
+              "height": 76,
+              "rows": 2,
+              "cols": 2,
+              "bgColor": "#FFFFFF",
+              "text": "Testo 150:2 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

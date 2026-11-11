@@ -1,0 +1,61 @@
+{
+  "generatedDate": "2023-11-14T22:16:02.000Z",
+  "project": {
+    "projectName": "Random 130",
+    "pages": [
+      {
+        "id": "p130",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-130-0",
+            "type": "msgbox",
+            "name": "msgbox_130_0",
+            "parentId": null,
+            "props": {
+              "x": 200,
+              "y": 16,
+              "width": 138,
+              "height": 62,
+              "title": "Notice",
+              "text": "Testo 130:0 \" \\ Città",
+              "buttons": "OK\nCancel",
+              "closeButton": true,
+              "bgColor": "#FFFFFF",
+              "textColor": "#000000",
+              "titleColor": "#333333",
+              "fontSize": 14
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-130-1",
+            "type": "spinner",
+            "name": "spinner_130_1",
+            "parentId": null,
+            "props": {
+              "x": 51,
+              "y": 58,
+              "width": 213,
+              "height": 47,
+              "speed": 1000,
+              "arcLength": 60,
+              "color": "#2196F3",
+              "lineWidth": 8,
+              "text": "Testo 130:1 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

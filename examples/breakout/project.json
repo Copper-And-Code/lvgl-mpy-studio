@@ -1,0 +1,228 @@
+{
+  "schemaVersion": 2,
+  "projectName": "Breakout",
+  "display": {
+    "width": 1024,
+    "height": 600,
+    "colorFormat": "RGB565"
+  },
+  "pages": [
+    {
+      "id": "49f58351ce5e481bbbb0fc1a9863ac90",
+      "name": "main",
+      "canvasSize": [
+        1024,
+        600
+      ],
+      "widgets": [
+        {
+          "id": "623c04712a2c4ff5a6d91b555f545f20",
+          "name": "buzzer1",
+          "type": "buzzer",
+          "props": {},
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "1a91c4277cc0400e835fa79276087422",
+          "name": "timer1",
+          "type": "timer",
+          "props": {
+            "period": 20,
+            "enabled": true
+          },
+          "events": {
+            "TICK": "timer1_tick"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "0af0dbca422b484ebec3f74ae3827d74",
+          "name": "background",
+          "type": "panel",
+          "props": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 600,
+            "bgColor": "#000010",
+            "borderColor": "#BDBDBD",
+            "borderWidth": 0,
+            "radius": 0,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_OFF"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "7966c20b7fab4f1a801789e2a2089721",
+          "name": "score_label",
+          "type": "label",
+          "props": {
+            "x": 15,
+            "y": 3,
+            "width": 800,
+            "height": 40,
+            "text": "Score 0   Lives 3   Level 1",
+            "textColor": "#FFFFFF",
+            "fontSize": 32,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_LEFT",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "9fb53fd24ce64134b8f29354057ef281",
+          "name": "paddle",
+          "type": "panel",
+          "props": {
+            "x": 410,
+            "y": 560,
+            "width": 204,
+            "height": 15,
+            "bgColor": "#E0E0E0",
+            "borderColor": "#BDBDBD",
+            "borderWidth": 0,
+            "radius": 8,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_OFF"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "4618b34fc0e3465b92831de6d4ab0e16",
+          "name": "ball",
+          "type": "panel",
+          "props": {
+            "x": 505,
+            "y": 544,
+            "width": 15,
+            "height": 15,
+            "bgColor": "#FFFFFF",
+            "borderColor": "#BDBDBD",
+            "borderWidth": 0,
+            "radius": 8,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_OFF"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "722c56d1ab09414a84fa4b575a4b909a",
+          "name": "message",
+          "type": "label",
+          "props": {
+            "x": 212,
+            "y": 330,
+            "width": 600,
+            "height": 130,
+            "text": "Drag to move\nlift to launch",
+            "textColor": "#FFFF60",
+            "fontSize": 32,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "module": "# Breakout: break all the bricks with the ball, without letting it fall.\n#\n# Drag a finger anywhere on the screen to move the paddle; lift it to launch\n# the ball. Where the ball hits the paddle decides the angle: the edges send\n# it sideways. 3 lives; each cleared wall comes back faster. Bricks are\n# created in code, with one shared style per row.\nimport math\n\nTICK = 20                      # ms, period of the game timer\nROWS = 5\nROW_COLORS = (0xF44336, 0xFF9800, 0xFFEB3B, 0x4CAF50, 0x2196F3)\nROW_NOTES = (880, 784, 659, 587, 523)\nW = H = TOP = COLS = MARGIN = GAP = BW = BH = BX0 = BY0 = PW = PH = PY = BALL = 0\nSPEED0 = 0.0                   # pixels per tick at level 1\nUNIT = 1                       # 1/240 of the short side: everything scales with the screen\n\n\ndef px_(n):\n    return int(n * UNIT + 0.5)\n\n\nbricks = []                    # bricks[row][column]\nalive = []\nstate = \"serve\"                # \"serve\" (ball on the paddle), \"play\", \"over\"\npx = 0.0                       # left edge of the paddle\nbx = by = 0.0                  # top left corner of the ball\nvx = vy = 0.0\nspeed = 0.0\nlevel = 1\nscore = 0\nlives = 3\nleft = 0                       # bricks still standing\nover_wait = 0                  # ms before a touch restarts after the game over\npoint = None\n\n\ndef layout():\n    global W, H, UNIT, TOP, COLS, MARGIN, GAP, BW, BH, BX0, BY0, PW, PH, PY, BALL, SPEED0, alive, px\n    display = lv.display_get_default()\n    W, H = display.get_horizontal_resolution(), display.get_vertical_resolution()\n    UNIT = min(W, H) / 240\n    TOP = px_(18)              # score bar\n    COLS = max(8, int(8 * W / H + 0.5))\n    MARGIN, GAP = px_(4), px_(2)\n    BW = (W - 2 * MARGIN - (COLS - 1) * GAP) // COLS\n    BH = px_(10)\n    BX0 = (W - (COLS * BW + (COLS - 1) * GAP)) // 2\n    BY0 = TOP + px_(14)\n    PW, PH = W // 5, px_(6)    # paddle\n    PY = H - px_(16)\n    BALL = px_(6)\n    SPEED0 = 2.6 * UNIT\n    alive = [[True] * COLS for _ in range(ROWS)]\n    px = (W - PW) / 2\n    ui.background.set_size(W, H)\n    ui.score_label.set_pos(px_(6), px_(1))\n    ui.score_label.set_size(W - px_(12), TOP - px_(1))\n    ui.paddle.set_size(PW, PH)\n    ui.ball.set_size(BALL, BALL)\n    ui.message.set_pos(px_(6), H // 2)\n    ui.message.set_size(W - px_(12), px_(70))\n    if W < 400:\n        ui.score_label.set_style_text_font(lv.font_montserrat_14, lv.PART.MAIN)\n        ui.message.set_style_text_font(lv.font_montserrat_16, lv.PART.MAIN)\n\n\ndef show_score():\n    ui.score_label.set_text(\"Score %d   Lives %d   Level %d\" % (score, lives, level))\n\n\ndef show_msg(text):\n    if text:\n        ui.message.set_text(text)\n        ui.message.remove_flag(lv.obj.FLAG.HIDDEN)\n    else:\n        ui.message.add_flag(lv.obj.FLAG.HIDDEN)\n\n\ndef draw():\n    ui.paddle.set_pos(int(px), PY)\n    ui.ball.set_pos(int(bx), int(by))\n\n\ndef reset_wall():\n    global left\n    for r in range(ROWS):\n        for c in range(COLS):\n            alive[r][c] = True\n            bricks[r][c].remove_flag(lv.obj.FLAG.HIDDEN)\n    left = ROWS * COLS\n\n\ndef serve():\n    global state, bx, by\n    state = \"serve\"\n    bx = px + (PW - BALL) / 2\n    by = PY - BALL - 1\n    draw()\n\n\ndef new_game():\n    global score, lives, level, speed\n    score, lives, level, speed = 0, 3, 1, SPEED0\n    reset_wall()\n    show_score()\n    show_msg(\"Drag to move\\nlift to launch\")\n    serve()\n\n\ndef launch():\n    global state, vx, vy\n    state = \"play\"\n    angle = math.radians(60)   # 30 degrees from vertical, to the right\n    vx, vy = speed * math.cos(angle), -speed * math.sin(angle)\n    show_msg(\"\")\n\n\ndef brick_at(x, y):\n    # (row, column) of the standing brick that contains the point, or None\n    c = int((x - BX0) // (BW + GAP))\n    r = int((y - BY0) // (BH + GAP))\n    if 0 <= r < ROWS and 0 <= c < COLS and alive[r][c]:\n        if x - BX0 - c * (BW + GAP) < BW and y - BY0 - r * (BH + GAP) < BH:\n            return r, c\n    return None\n\n\ndef on_tick():\n    global bx, by, vx, vy, state, score, lives, level, speed, left, over_wait\n    over_wait = max(0, over_wait - TICK)\n    if state != \"play\":\n        return\n    nx, ny = bx + vx, by + vy\n    # walls\n    if nx < 0:\n        nx, vx = -nx, -vx\n        ui.buzzer1.beep(220, 20)\n    elif nx > W - BALL:\n        nx, vx = 2 * (W - BALL) - nx, -vx\n        ui.buzzer1.beep(220, 20)\n    if ny < TOP:\n        ny, vy = 2 * TOP - ny, -vy\n        ui.buzzer1.beep(220, 20)\n    # paddle: only when the ball is going down and crosses its top edge\n    if vy > 0 and by + BALL <= PY <= ny + BALL and px - BALL < nx < px + PW:\n        hit = ((nx + BALL / 2) - (px + PW / 2)) / (PW / 2)  # -1 .. 1\n        hit = max(-1.0, min(1.0, hit))\n        angle = math.radians(90 - 60 * hit)                 # 30..150 degrees\n        vx, vy = speed * math.cos(angle), -speed * math.sin(angle)\n        ny = PY - BALL\n        ui.buzzer1.beep(440, 30)\n    # bricks: test the centre of the ball, bounce off the side it came from\n    hit = brick_at(nx + BALL / 2, ny + BALL / 2)\n    if hit:\n        r, c = hit\n        alive[r][c] = False\n        bricks[r][c].add_flag(lv.obj.FLAG.HIDDEN)\n        left -= 1\n        score += (ROWS - r) * level\n        left_x = BX0 + c * (BW + GAP)\n        if left_x <= bx + BALL / 2 <= left_x + BW:\n            vy = -vy           # came from above or below\n        else:\n            vx = -vx           # came from the side\n        nx, ny = bx, by\n        ui.buzzer1.beep(ROW_NOTES[r], 40)\n        show_score()\n        if left == 0:          # wall cleared: next level, faster\n            level += 1\n            speed = SPEED0 * (1 + 0.15 * (level - 1))\n            reset_wall()\n            show_score()\n            show_msg(\"Level %d\" % level)\n            serve()\n            return\n    bx, by = nx, ny\n    # ball lost\n    if by > H:\n        lives -= 1\n        show_score()\n        ui.buzzer1.beep(110, 300)\n        if lives == 0:\n            state, over_wait = \"over\", 1000\n            show_msg(\"Game over\\nScore %d\\nTap to play\" % score)\n            return\n        serve()\n        return\n    draw()\n\n\ndef on_touch(e):\n    global px\n    code = e.get_code()\n    if state == \"over\":\n        if code == lv.EVENT.RELEASED and over_wait == 0:\n            new_game()\n        return\n    indev = lv.indev_active()\n    if indev is None:\n        return\n    if code == lv.EVENT.RELEASED:\n        if state == \"serve\":\n            launch()\n        return\n    indev.get_point(point)\n    px = max(0, min(W - PW, point.x - PW // 2))\n    if state == \"serve\":\n        serve()\n    else:\n        ui.paddle.set_pos(int(px), PY)\n\n\ndef breakout_init():\n    global point\n    layout()\n    bricks.clear()             # live editing recreates the page: the old objects no longer exist\n    scr = lv.screen_active()\n    scr.remove_flag(lv.obj.FLAG.SCROLLABLE)\n    point = lv.point_t()\n    styles = []\n    for color in ROW_COLORS:\n        style = lv.style_t()\n        style.init()\n        style.set_bg_color(lv.color_hex(color))\n        style.set_bg_opa(lv.OPA.COVER)\n        style.set_radius(px_(2))\n        styles.append(style)\n    for r in range(ROWS):\n        row = []\n        for c in range(COLS):\n            brick = lv.obj(scr)\n            brick.remove_style_all()\n            brick.add_style(styles[r], lv.PART.MAIN)\n            brick.set_size(BW, BH)\n            brick.set_pos(BX0 + c * (BW + GAP), BY0 + r * (BH + GAP))\n            brick.remove_flag(lv.obj.FLAG.CLICKABLE)\n            row.append(brick)\n        bricks.append(row)\n    ui.background.remove_flag(lv.obj.FLAG.CLICKABLE)\n    ui.background.remove_flag(lv.obj.FLAG.SCROLLABLE)\n    ui.paddle.remove_flag(lv.obj.FLAG.CLICKABLE)\n    ui.ball.remove_flag(lv.obj.FLAG.CLICKABLE)\n    ui.ball.move_foreground()\n    ui.message.move_foreground()\n    scr.add_event_cb(on_touch, lv.EVENT.PRESSED, None)\n    scr.add_event_cb(on_touch, lv.EVENT.PRESSING, None)\n    scr.add_event_cb(on_touch, lv.EVENT.RELEASED, None)\n    new_game()\n",
+    "handlers": {
+      "main_screen_loaded": {
+        "widget": "main",
+        "event": "SCREEN_LOADED",
+        "body": "breakout_init()\n"
+      },
+      "timer1_tick": {
+        "widget": "timer1",
+        "event": "TICK",
+        "body": "on_tick()\n"
+      }
+    }
+  },
+  "currentPageId": "49f58351ce5e481bbbb0fc1a9863ac90",
+  "assets": {},
+  "variables": [],
+  "projectId": "7df3f7bdb8a9468280b95c43eccd66a0",
+  "board": {
+    "schemaVersion": 1,
+    "id": "stm32h7_core_v1_3_1024x600",
+    "revision": 3,
+    "name": "STM32H7_CORE V1.3 (1024×600)",
+    "adapter": "stm32h7_uart",
+    "firmware": {
+      "microPython": "1.29",
+      "lvgl": "9.5",
+      "modules": [
+        "lvgl",
+        "display_driver",
+        "gt911",
+        "st_ltdc"
+      ]
+    },
+    "physicalWidth": 1024,
+    "physicalHeight": 600,
+    "logicalWidth": 1024,
+    "logicalHeight": 600,
+    "scale": 1,
+    "colorFormat": "RGB565",
+    "fonts": [
+      14,
+      16,
+      24,
+      32,
+      40
+    ],
+    "orientations": [
+      0
+    ],
+    "config": {
+      "driver": "display_driver",
+      "touch": "gt911",
+      "buffers": "driver",
+      "eventLoop": "driver",
+      "appRoot": "/flash/lms_apps",
+      "mainPath": "/flash/main.py"
+    }
+  }
+}

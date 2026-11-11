@@ -1,0 +1,84 @@
+{
+  "generatedDate": "2023-11-14T22:16:40.000Z",
+  "project": {
+    "projectName": "Random 168",
+    "pages": [
+      {
+        "id": "p168",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-168-0",
+            "type": "led",
+            "name": "led_168_0",
+            "parentId": null,
+            "props": {
+              "x": 139,
+              "y": 201,
+              "width": 244,
+              "height": 110,
+              "color": "#FF0000",
+              "brightness": 255,
+              "text": "Testo 168:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-168-1",
+            "type": "label",
+            "name": "label_168_1",
+            "parentId": null,
+            "props": {
+              "x": 235,
+              "y": 108,
+              "width": 228,
+              "height": 154,
+              "text": "Testo 168:1 \" \\ Città",
+              "textColor": "#000000",
+              "fontSize": 14,
+              "longMode": "LV_LABEL_LONG_MODE_WRAP",
+              "textAlign": "LV_TEXT_ALIGN_CENTER",
+              "recolor": false
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-168-2",
+            "type": "arc",
+            "name": "arc_168_2",
+            "parentId": null,
+            "props": {
+              "x": 113,
+              "y": 12,
+              "width": 144,
+              "height": 34,
+              "min": 0,
+              "max": 100,
+              "value": 50,
+              "bgColor": "#E0E0E0",
+              "indicatorColor": "#FF9800",
+              "startAngle": 135,
+              "endAngle": 45,
+              "rotation": 0,
+              "mode": "LV_ARC_MODE_NORMAL",
+              "knobColor": "#FF9800",
+              "lineWidth": 10,
+              "text": "Testo 168:2 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

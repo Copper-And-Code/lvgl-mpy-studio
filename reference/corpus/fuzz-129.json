@@ -1,0 +1,134 @@
+{
+  "generatedDate": "2023-11-14T22:16:01.000Z",
+  "project": {
+    "projectName": "Random 129",
+    "pages": [
+      {
+        "id": "p129",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-129-0",
+            "type": "arc",
+            "name": "arc_129_0",
+            "parentId": null,
+            "props": {
+              "x": 93,
+              "y": 255,
+              "width": 96,
+              "height": 151,
+              "min": 0,
+              "max": 100,
+              "value": 50,
+              "bgColor": "#E0E0E0",
+              "indicatorColor": "#FF9800",
+              "startAngle": 135,
+              "endAngle": 45,
+              "rotation": 0,
+              "mode": "LV_ARC_MODE_NORMAL",
+              "knobColor": "#FF9800",
+              "lineWidth": 10,
+              "text": "Testo 129:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-129-1",
+            "type": "switch",
+            "name": "switch_129_1",
+            "parentId": null,
+            "props": {
+              "x": 481,
+              "y": 312,
+              "width": 231,
+              "height": 75,
+              "checked": false,
+              "onColor": "#4CAF50",
+              "offColor": "#BDBDBD",
+              "knobColor": "#FFFFFF",
+              "disabled": false,
+              "text": "Testo 129:1 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-129-2",
+            "type": "switch",
+            "name": "switch_129_2",
+            "parentId": null,
+            "props": {
+              "x": 166,
+              "y": 103,
+              "width": 136,
+              "height": 102,
+              "checked": false,
+              "onColor": "#4CAF50",
+              "offColor": "#BDBDBD",
+              "knobColor": "#FFFFFF",
+              "disabled": false,
+              "text": "Testo 129:2 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-129-3",
+            "type": "spinbox",
+            "name": "spinbox_129_3",
+            "parentId": null,
+            "props": {
+              "x": 308,
+              "y": 294,
+              "width": 261,
+              "height": 134,
+              "min": 0,
+              "max": 999,
+              "value": 0,
+              "digitCount": 4,
+              "separatorPos": 0,
+              "step": 1,
+              "rollover": false,
+              "bgColor": "#FFFFFF",
+              "textColor": "#000000",
+              "fontSize": 16,
+              "text": "Testo 129:3 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-129-4",
+            "type": "label",
+            "name": "label_129_4",
+            "parentId": null,
+            "props": {
+              "x": 86,
+              "y": 49,
+              "width": 35,
+              "height": 123,
+              "text": "Testo 129:4 \" \\ Città",
+              "textColor": "#000000",
+              "fontSize": 14,
+              "longMode": "LV_LABEL_LONG_MODE_WRAP",
+              "textAlign": "LV_TEXT_ALIGN_CENTER",
+              "recolor": false
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

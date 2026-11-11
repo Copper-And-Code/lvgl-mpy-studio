@@ -1,0 +1,101 @@
+{
+  "generatedDate": "2023-11-14T22:15:44.000Z",
+  "project": {
+    "projectName": "Random 112",
+    "pages": [
+      {
+        "id": "p112",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-112-0",
+            "type": "arc",
+            "name": "arc_112_0",
+            "parentId": null,
+            "props": {
+              "x": 595,
+              "y": 158,
+              "width": 35,
+              "height": 148,
+              "min": 0,
+              "max": 100,
+              "value": 50,
+              "bgColor": "#E0E0E0",
+              "indicatorColor": "#FF9800",
+              "startAngle": 135,
+              "endAngle": 45,
+              "rotation": 0,
+              "mode": "LV_ARC_MODE_NORMAL",
+              "knobColor": "#FF9800",
+              "lineWidth": 10,
+              "text": "Testo 112:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-112-1",
+            "type": "dropdown",
+            "name": "dropdown_112_1",
+            "parentId": null,
+            "props": {
+              "x": 113,
+              "y": 144,
+              "width": 152,
+              "height": 27,
+              "options": "Option 1\nOption 2\nOption 3",
+              "selected": 0,
+              "bgColor": "#FFFFFF",
+              "textColor": "#000000",
+              "fontSize": 14,
+              "dir": "LV_DIR_BOTTOM",
+              "symbol": "LV_SYMBOL_DOWN",
+              "highlightSelected": true,
+              "text": "Testo 112:1 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-112-2",
+            "type": "slider",
+            "name": "slider_112_2",
+            "parentId": null,
+            "props": {
+              "x": 573,
+              "y": 375,
+              "width": 161,
+              "height": 74,
+              "min": 0,
+              "max": 100,
+              "value": 50,
+              "bgColor": "#E0E0E0",
+              "indicatorColor": "#2196F3",
+              "knobColor": "#1976D2",
+              "mode": "normal",
+              "isRange": false,
+              "leftValue": 0,
+              "text": "Testo 112:2 \" \\ Città"
+            },
+            "events": [
+              {
+                "id": "e2",
+                "type": "LV_EVENT_VALUE_CHANGED",
+                "callback": "slider_112_2_changed",
+                "code": ""
+              }
+            ],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

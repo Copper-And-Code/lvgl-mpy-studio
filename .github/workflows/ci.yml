@@ -1,0 +1,137 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+env:
+  PYTHONUTF8: "1"
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: sudo apt-get update && sudo apt-get install -y build-essential pkg-config libffi-dev libsdl2-dev libegl1 libgl1 libxkbcommon-x11-0 xvfb
+      - run: python -m pip install -e '.[dev,packaging]'
+      - run: ./runtime/build.sh
+      - run: QT_QPA_PLATFORM=offscreen pytest -q --maxfail=1
+      - run: PYTHON=python ./packaging/build.sh
+      - name: Smoke test GUI del pacchetto
+        run: |
+          set +e
+          QT_QPA_PLATFORM=offscreen timeout 5 dist/LVGL_MPY_STUDIO-x86_64.AppImage --appimage-extract-and-run
+          code=$?
+          set -e
+          test "$code" -eq 124
+      - uses: actions/upload-artifact@v4
+        with:
+          name: LVGL_MPY_STUDIO-x86_64
+          path: dist/LVGL_MPY_STUDIO-x86_64.AppImage
+  core-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: python -m pip install --no-deps -e .
+      - run: python -m pip install pytest hypothesis
+      - run: python -m pytest -q tests/test_portability.py tests/test_protocol.py tests/test_model.py tests/test_generation.py tests/test_fuzz_generation.py tests/test_escaping.py tests/test_port_golden.py
+  build-windows-runtime:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get update && sudo apt-get install -y build-essential pkg-config libffi-dev gcc-mingw-w64-x86-64
+      - run: ./runtime/build_windows.sh
+      - run: ./native/lvsim/tests/run.sh
+      - run: mkdir -p dist/win64-ci && cp runtime/out-win64/lvsim-runtime.exe runtime/out-win64/lvsim-standalone.exe runtime/out-win64/mpy-cross.exe runtime/out-win64/SDL2.dll runtime/out-win64/liblvgl.a dist/win64-ci/ && cp -a runtime/out-win64/SDL2 dist/win64-ci/
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lvsim-runtime-win64
+          path: dist/win64-ci/
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lvgl-c-source
+          path: |
+            .reference/lvgl-bindings/lv_conf.h
+            .reference/lvgl-bindings/lvgl/
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lvsim-net-test-win64
+          path: cache/lvsim-net-tests/net-test.exe
+  test-windows-runtime:
+    needs: build-windows-runtime
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - uses: actions/download-artifact@v4
+        with:
+          name: lvsim-runtime-win64
+          path: runtime/out-win64
+      - uses: actions/download-artifact@v4
+        with:
+          name: lvgl-c-source
+          path: .reference/lvgl-bindings
+      - uses: actions/download-artifact@v4
+        with:
+          name: lvsim-net-test-win64
+          path: cache/lvsim-net-tests
+      - uses: msys2/setup-msys2@v2
+        with:
+          mingw64: true
+          install: mingw-w64-x86_64-toolchain
+      - run: python -m pip install --no-deps -e .
+      - run: python -m pip install pytest
+      - run: python -m pytest -q tests/test_windows_runtime.py tests/test_windows_release.py tests/test_windows_c.py tests/test_windows_packaging.py -k "headless_runtime or protocol or windows"
+      - run: .\cache\lvsim-net-tests\net-test.exe
+  test-windows-ide:
+    needs: build-windows-runtime
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - uses: actions/download-artifact@v4
+        with:
+          name: lvsim-runtime-win64
+          path: runtime/out-win64
+      - run: python -m pip install -e '.[dev]'
+      - run: $env:QT_QPA_PLATFORM = "offscreen"; python -m pytest -q tests/test_sim_panel.py tests/test_main_window.py tests/test_document.py tests/test_code_editor.py tests/test_properties.py tests/test_designer.py tests/test_board_support.py tests/test_device_gui.py
+  package-windows:
+    needs: [test-windows-runtime, test-windows-ide]
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - uses: actions/download-artifact@v4
+        with:
+          name: lvsim-runtime-win64
+          path: runtime/out-win64
+      - uses: actions/download-artifact@v4
+        with:
+          name: lvgl-c-source
+          path: .reference/lvgl-bindings
+      - run: python -m pip install -e '.[packaging]'
+      - run: powershell -ExecutionPolicy Bypass -File packaging/build_windows.ps1
+      - run: |
+          $process = Start-Process -FilePath ".\dist\LVGL_MPY_STUDIO\LVGL_MPY_STUDIO.exe" -ArgumentList "--version" -Wait -PassThru
+          if ($process.ExitCode -ne 0) { throw "Smoke test del pacchetto fallito: $($process.ExitCode)" }
+      - uses: actions/upload-artifact@v4
+        with:
+          name: LVGL_MPY_STUDIO-win64
+          path: |
+            dist/LVGL_MPY_STUDIO-*-win64.zip
+            dist/LVGL_MPY_STUDIO-*-Setup-win64.exe

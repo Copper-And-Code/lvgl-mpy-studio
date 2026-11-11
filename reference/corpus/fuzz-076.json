@@ -1,0 +1,81 @@
+{
+  "generatedDate": "2023-11-14T22:15:08.000Z",
+  "project": {
+    "projectName": "Random 76",
+    "pages": [
+      {
+        "id": "p76",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-76-0",
+            "type": "tileview",
+            "name": "tileview_76_0",
+            "parentId": null,
+            "props": {
+              "x": 658,
+              "y": 159,
+              "width": 57,
+              "height": 31,
+              "rows": 2,
+              "cols": 2,
+              "bgColor": "#FFFFFF",
+              "text": "Testo 76:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-76-1",
+            "type": "win",
+            "name": "win_76_1",
+            "parentId": null,
+            "props": {
+              "x": 484,
+              "y": 329,
+              "width": 258,
+              "height": 124,
+              "headerHeight": 40,
+              "title": "Window Title",
+              "bgColor": "#FFFFFF",
+              "headerBgColor": "#2196F3",
+              "titleColor": "#FFFFFF",
+              "text": "Testo 76:1 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-76-2",
+            "type": "calendar",
+            "name": "calendar_76_2",
+            "parentId": null,
+            "props": {
+              "x": 473,
+              "y": 13,
+              "width": 158,
+              "height": 21,
+              "year": 2026,
+              "month": 10,
+              "day": 28,
+              "showHeader": true,
+              "bgColor": "#FFFFFF",
+              "todayColor": "#2196F3",
+              "selectedColor": "#1976D2",
+              "text": "Testo 76:2 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "generatedDate": "2023-11-14T22:16:13.000Z",
+  "project": {
+    "projectName": "Random 141",
+    "pages": [
+      {
+        "id": "p141",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-141-0",
+            "type": "list",
+            "name": "list_141_0",
+            "parentId": null,
+            "props": {
+              "x": 435,
+              "y": 254,
+              "width": 58,
+              "height": 45,
+              "items": "Item 1\nItem 2\nItem 3\nItem 4\nItem 5",
+              "bgColor": "#FFFFFF",
+              "textColor": "#000000",
+              "selectedColor": "#E3F2FD",
+              "fontSize": 14,
+              "text": "Testo 141:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

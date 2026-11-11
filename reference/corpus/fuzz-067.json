@@ -1,0 +1,146 @@
+{
+  "generatedDate": "2023-11-14T22:14:59.000Z",
+  "project": {
+    "projectName": "Random 67",
+    "pages": [
+      {
+        "id": "p67",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-67-0",
+            "type": "win",
+            "name": "win_67_0",
+            "parentId": null,
+            "props": {
+              "x": 285,
+              "y": 202,
+              "width": 41,
+              "height": 34,
+              "headerHeight": 40,
+              "title": "Window Title",
+              "bgColor": "#FFFFFF",
+              "headerBgColor": "#2196F3",
+              "titleColor": "#FFFFFF",
+              "text": "Testo 67:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-67-1",
+            "type": "led",
+            "name": "led_67_1",
+            "parentId": null,
+            "props": {
+              "x": 220,
+              "y": 160,
+              "width": 222,
+              "height": 74,
+              "color": "#FF0000",
+              "brightness": 255,
+              "text": "Testo 67:1 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-67-2",
+            "type": "scale",
+            "name": "scale_67_2",
+            "parentId": null,
+            "props": {
+              "x": 694,
+              "y": 397,
+              "width": 183,
+              "height": 33,
+              "min": 0,
+              "max": 100,
+              "majorTickEvery": 10,
+              "majorTickLength": 15,
+              "minorTickCount": 4,
+              "minorTickLength": 8,
+              "labelShow": true,
+              "lineColor": "#000000",
+              "textColor": "#000000",
+              "mode": "horizontal",
+              "text": "Testo 67:2 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-67-3",
+            "type": "buttonmatrix",
+            "name": "buttonmatrix_67_3",
+            "parentId": null,
+            "props": {
+              "x": 353,
+              "y": 134,
+              "width": 114,
+              "height": 146,
+              "map": "1,2,3\n4,5,6\n7,8,9\n*,0,#",
+              "bgColor": "#FFFFFF",
+              "btnColor": "#E0E0E0",
+              "textColor": "#000000",
+              "fontSize": 14,
+              "oneCheck": false,
+              "text": "Testo 67:3 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-67-4",
+            "type": "tileview",
+            "name": "tileview_67_4",
+            "parentId": null,
+            "props": {
+              "x": 331,
+              "y": 390,
+              "width": 240,
+              "height": 111,
+              "rows": 2,
+              "cols": 2,
+              "bgColor": "#FFFFFF",
+              "text": "Testo 67:4 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-67-5",
+            "type": "buttonmatrix",
+            "name": "buttonmatrix_67_5",
+            "parentId": null,
+            "props": {
+              "x": 298,
+              "y": 109,
+              "width": 60,
+              "height": 140,
+              "map": "1,2,3\n4,5,6\n7,8,9\n*,0,#",
+              "bgColor": "#FFFFFF",
+              "btnColor": "#E0E0E0",
+              "textColor": "#000000",
+              "fontSize": 14,
+              "oneCheck": false,
+              "text": "Testo 67:5 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

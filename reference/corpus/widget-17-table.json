@@ -1,0 +1,43 @@
+{
+  "generatedDate": "2023-11-14T22:13:36.000Z",
+  "project": {
+    "projectName": "One table",
+    "pages": [
+      {
+        "id": "p1",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "w16",
+            "type": "table",
+            "name": "Table_w16",
+            "parentId": null,
+            "props": {
+              "x": 68,
+              "y": 62,
+              "width": 300,
+              "height": 200,
+              "rows": 4,
+              "cols": 3,
+              "colWidths": "100,100,100",
+              "headerRow": "Col 1,Col 2,Col 3",
+              "cellData": "A1,B1,C1\nA2,B2,C2\nA3,B3,C3",
+              "bgColor": "#FFFFFF",
+              "textColor": "#000000",
+              "borderColor": "#E0E0E0",
+              "headerBgColor": "#F5F5F5",
+              "fontSize": 14
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

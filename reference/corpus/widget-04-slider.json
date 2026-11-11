@@ -1,0 +1,42 @@
+{
+  "generatedDate": "2023-11-14T22:13:23.000Z",
+  "project": {
+    "projectName": "One slider",
+    "pages": [
+      {
+        "id": "p1",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "w3",
+            "type": "slider",
+            "name": "Slider_w3",
+            "parentId": null,
+            "props": {
+              "x": 29,
+              "y": 36,
+              "width": 200,
+              "height": 20,
+              "min": 0,
+              "max": 100,
+              "value": 50,
+              "bgColor": "#E0E0E0",
+              "indicatorColor": "#2196F3",
+              "knobColor": "#1976D2",
+              "mode": "normal",
+              "isRange": false,
+              "leftValue": 0
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

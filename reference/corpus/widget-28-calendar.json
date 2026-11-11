@@ -1,0 +1,40 @@
+{
+  "generatedDate": "2023-11-14T22:13:47.000Z",
+  "project": {
+    "projectName": "One calendar",
+    "pages": [
+      {
+        "id": "p1",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "w27",
+            "type": "calendar",
+            "name": "Calendar_w27",
+            "parentId": null,
+            "props": {
+              "x": 101,
+              "y": 84,
+              "width": 230,
+              "height": 230,
+              "year": 2026,
+              "month": 10,
+              "day": 28,
+              "showHeader": true,
+              "bgColor": "#FFFFFF",
+              "todayColor": "#2196F3",
+              "selectedColor": "#1976D2"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

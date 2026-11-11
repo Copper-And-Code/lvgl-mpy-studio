@@ -1,0 +1,44 @@
+{
+  "generatedDate": "2023-11-14T22:15:30.000Z",
+  "project": {
+    "projectName": "Random 98",
+    "pages": [
+      {
+        "id": "p98",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-98-0",
+            "type": "spinbox",
+            "name": "spinbox_98_0",
+            "parentId": null,
+            "props": {
+              "x": 404,
+              "y": 329,
+              "width": 21,
+              "height": 140,
+              "min": 0,
+              "max": 999,
+              "value": 0,
+              "digitCount": 4,
+              "separatorPos": 0,
+              "step": 1,
+              "rollover": false,
+              "bgColor": "#FFFFFF",
+              "textColor": "#000000",
+              "fontSize": 16,
+              "text": "Testo 98:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

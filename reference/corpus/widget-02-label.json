@@ -1,0 +1,39 @@
+{
+  "generatedDate": "2023-11-14T22:13:21.000Z",
+  "project": {
+    "projectName": "One label",
+    "pages": [
+      {
+        "id": "p1",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "w1",
+            "type": "label",
+            "name": "Label_w1",
+            "parentId": null,
+            "props": {
+              "x": 23,
+              "y": 32,
+              "width": 120,
+              "height": 30,
+              "text": "Label Text",
+              "textColor": "#000000",
+              "fontSize": 14,
+              "longMode": "LV_LABEL_LONG_MODE_WRAP",
+              "textAlign": "LV_TEXT_ALIGN_CENTER",
+              "recolor": false
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

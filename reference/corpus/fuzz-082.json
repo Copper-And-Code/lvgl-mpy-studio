@@ -1,0 +1,159 @@
+{
+  "generatedDate": "2023-11-14T22:15:14.000Z",
+  "project": {
+    "projectName": "Random 82",
+    "pages": [
+      {
+        "id": "p82",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-82-0",
+            "type": "line",
+            "name": "line_82_0",
+            "parentId": null,
+            "props": {
+              "x": 181,
+              "y": 252,
+              "width": 186,
+              "height": 142,
+              "points": "0,0 200,0",
+              "lineColor": "#000000",
+              "lineWidth": 2,
+              "rounded": false,
+              "text": "Testo 82:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-82-1",
+            "type": "line",
+            "name": "line_82_1",
+            "parentId": null,
+            "props": {
+              "x": 138,
+              "y": 128,
+              "width": 58,
+              "height": 39,
+              "points": "0,0 200,0",
+              "lineColor": "#000000",
+              "lineWidth": 2,
+              "rounded": false,
+              "text": "Testo 82:1 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-82-2",
+            "type": "buttonmatrix",
+            "name": "buttonmatrix_82_2",
+            "parentId": null,
+            "props": {
+              "x": 345,
+              "y": 281,
+              "width": 118,
+              "height": 63,
+              "map": "1,2,3\n4,5,6\n7,8,9\n*,0,#",
+              "bgColor": "#FFFFFF",
+              "btnColor": "#E0E0E0",
+              "textColor": "#000000",
+              "fontSize": 14,
+              "oneCheck": false,
+              "text": "Testo 82:2 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-82-3",
+            "type": "panel",
+            "name": "panel_82_3",
+            "parentId": null,
+            "props": {
+              "x": 311,
+              "y": 168,
+              "width": 105,
+              "height": 86,
+              "bgColor": "#F5F5F5",
+              "borderColor": "#BDBDBD",
+              "borderWidth": 2,
+              "radius": 5,
+              "flexFlow": "none",
+              "flexMainPlace": "none",
+              "flexCrossPlace": "none",
+              "padTop": 0,
+              "padBottom": 0,
+              "padLeft": 0,
+              "padRight": 0,
+              "padRow": 0,
+              "padColumn": 0,
+              "scrollbarMode": "LV_SCROLLBAR_MODE_AUTO",
+              "text": "Testo 82:3 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-82-4",
+            "type": "label",
+            "name": "label_82_4",
+            "parentId": null,
+            "props": {
+              "x": 699,
+              "y": 268,
+              "width": 129,
+              "height": 110,
+              "text": "Testo 82:4 \" \\ Città",
+              "textColor": "#000000",
+              "fontSize": 14,
+              "longMode": "LV_LABEL_LONG_MODE_WRAP",
+              "textAlign": "LV_TEXT_ALIGN_CENTER",
+              "recolor": false
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-82-5",
+            "type": "checkbox",
+            "name": "checkbox_82_5",
+            "parentId": null,
+            "props": {
+              "x": 587,
+              "y": 357,
+              "width": 171,
+              "height": 123,
+              "text": "Testo 82:5 \" \\ Città",
+              "checked": false,
+              "textColor": "#000000",
+              "fontSize": 14,
+              "checkedColor": "#2196F3",
+              "disabled": false
+            },
+            "events": [
+              {
+                "id": "e5",
+                "type": "LV_EVENT_VALUE_CHANGED",
+                "callback": "checkbox_82_5_changed",
+                "code": ""
+              }
+            ],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

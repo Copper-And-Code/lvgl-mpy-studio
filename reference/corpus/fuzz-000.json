@@ -1,0 +1,87 @@
+{
+  "generatedDate": "2023-11-14T22:13:52.000Z",
+  "project": {
+    "projectName": "Random 0",
+    "pages": [
+      {
+        "id": "p0",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-0-0",
+            "type": "dropdown",
+            "name": "dropdown_0_0",
+            "parentId": null,
+            "props": {
+              "x": 193,
+              "y": 168,
+              "width": 152,
+              "height": 13,
+              "options": "Option 1\nOption 2\nOption 3",
+              "selected": 0,
+              "bgColor": "#FFFFFF",
+              "textColor": "#000000",
+              "fontSize": 14,
+              "dir": "LV_DIR_BOTTOM",
+              "symbol": "LV_SYMBOL_DOWN",
+              "highlightSelected": true,
+              "text": "Testo 0:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-0-1",
+            "type": "spinbox",
+            "name": "spinbox_0_1",
+            "parentId": null,
+            "props": {
+              "x": 689,
+              "y": 72,
+              "width": 126,
+              "height": 13,
+              "min": 0,
+              "max": 999,
+              "value": 0,
+              "digitCount": 4,
+              "separatorPos": 0,
+              "step": 1,
+              "rollover": false,
+              "bgColor": "#FFFFFF",
+              "textColor": "#000000",
+              "fontSize": 16,
+              "text": "Testo 0:1 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-0-2",
+            "type": "keyboard",
+            "name": "keyboard_0_2",
+            "parentId": null,
+            "props": {
+              "x": 660,
+              "y": 291,
+              "width": 199,
+              "height": 55,
+              "mode": "text_lower",
+              "textarea": "",
+              "popover": true,
+              "text": "Testo 0:2 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "generatedDate": "2023-11-14T22:14:07.000Z",
+  "project": {
+    "projectName": "Random 15",
+    "pages": [
+      {
+        "id": "p15",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-15-0",
+            "type": "keyboard",
+            "name": "keyboard_15_0",
+            "parentId": null,
+            "props": {
+              "x": 318,
+              "y": 366,
+              "width": 241,
+              "height": 125,
+              "mode": "text_lower",
+              "textarea": "",
+              "popover": true,
+              "text": "Testo 15:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-15-1",
+            "type": "list",
+            "name": "list_15_1",
+            "parentId": null,
+            "props": {
+              "x": 576,
+              "y": 382,
+              "width": 237,
+              "height": 87,
+              "items": "Item 1\nItem 2\nItem 3\nItem 4\nItem 5",
+              "bgColor": "#FFFFFF",
+              "textColor": "#000000",
+              "selectedColor": "#E3F2FD",
+              "fontSize": 14,
+              "text": "Testo 15:1 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-15-2",
+            "type": "msgbox",
+            "name": "msgbox_15_2",
+            "parentId": null,
+            "props": {
+              "x": 71,
+              "y": 338,
+              "width": 244,
+              "height": 99,
+              "title": "Notice",
+              "text": "Testo 15:2 \" \\ Città",
+              "buttons": "OK\nCancel",
+              "closeButton": true,
+              "bgColor": "#FFFFFF",
+              "textColor": "#000000",
+              "titleColor": "#333333",
+              "fontSize": 14
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

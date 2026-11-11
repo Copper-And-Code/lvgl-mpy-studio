@@ -1,0 +1,107 @@
+{
+  "generatedDate": "2023-11-14T22:14:41.000Z",
+  "project": {
+    "projectName": "Random 49",
+    "pages": [
+      {
+        "id": "p49",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-49-0",
+            "type": "label",
+            "name": "label_49_0",
+            "parentId": null,
+            "props": {
+              "x": 45,
+              "y": 235,
+              "width": 218,
+              "height": 70,
+              "text": "Testo 49:0 \" \\ Città",
+              "textColor": "#000000",
+              "fontSize": 14,
+              "longMode": "LV_LABEL_LONG_MODE_WRAP",
+              "textAlign": "LV_TEXT_ALIGN_CENTER",
+              "recolor": false
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-49-1",
+            "type": "list",
+            "name": "list_49_1",
+            "parentId": null,
+            "props": {
+              "x": 70,
+              "y": 200,
+              "width": 151,
+              "height": 67,
+              "items": "Item 1\nItem 2\nItem 3\nItem 4\nItem 5",
+              "bgColor": "#FFFFFF",
+              "textColor": "#000000",
+              "selectedColor": "#E3F2FD",
+              "fontSize": 14,
+              "text": "Testo 49:1 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-49-2",
+            "type": "tabview",
+            "name": "tabview_49_2",
+            "parentId": null,
+            "props": {
+              "x": 353,
+              "y": 86,
+              "width": 204,
+              "height": 74,
+              "tabPosition": "top",
+              "tabBarSize": 40,
+              "tabs": "Tab 1\nTab 2\nTab 3",
+              "activeTab": 0,
+              "bgColor": "#FFFFFF",
+              "tabBgColor": "#F5F5F5",
+              "tabActiveColor": "#2196F3",
+              "textColor": "#000000",
+              "text": "Testo 49:2 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-49-3",
+            "type": "calendar",
+            "name": "calendar_49_3",
+            "parentId": null,
+            "props": {
+              "x": 451,
+              "y": 36,
+              "width": 163,
+              "height": 54,
+              "year": 2026,
+              "month": 10,
+              "day": 28,
+              "showHeader": true,
+              "bgColor": "#FFFFFF",
+              "todayColor": "#2196F3",
+              "selectedColor": "#1976D2",
+              "text": "Testo 49:3 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

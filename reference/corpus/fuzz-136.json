@@ -1,0 +1,38 @@
+{
+  "generatedDate": "2023-11-14T22:16:08.000Z",
+  "project": {
+    "projectName": "Random 136",
+    "pages": [
+      {
+        "id": "p136",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-136-0",
+            "type": "spinner",
+            "name": "spinner_136_0",
+            "parentId": null,
+            "props": {
+              "x": 305,
+              "y": 194,
+              "width": 124,
+              "height": 102,
+              "speed": 1000,
+              "arcLength": 60,
+              "color": "#2196F3",
+              "lineWidth": 8,
+              "text": "Testo 136:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

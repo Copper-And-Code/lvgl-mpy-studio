@@ -1,0 +1,89 @@
+{
+  "generatedDate": "2023-11-14T22:16:32.000Z",
+  "project": {
+    "projectName": "Random 160",
+    "pages": [
+      {
+        "id": "p160",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-160-0",
+            "type": "scale",
+            "name": "scale_160_0",
+            "parentId": null,
+            "props": {
+              "x": 295,
+              "y": 147,
+              "width": 118,
+              "height": 52,
+              "min": 0,
+              "max": 100,
+              "majorTickEvery": 10,
+              "majorTickLength": 15,
+              "minorTickCount": 4,
+              "minorTickLength": 8,
+              "labelShow": true,
+              "lineColor": "#000000",
+              "textColor": "#000000",
+              "mode": "horizontal",
+              "text": "Testo 160:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-160-1",
+            "type": "tileview",
+            "name": "tileview_160_1",
+            "parentId": null,
+            "props": {
+              "x": 55,
+              "y": 202,
+              "width": 215,
+              "height": 113,
+              "rows": 2,
+              "cols": 2,
+              "bgColor": "#FFFFFF",
+              "text": "Testo 160:1 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-160-2",
+            "type": "spinbox",
+            "name": "spinbox_160_2",
+            "parentId": null,
+            "props": {
+              "x": 562,
+              "y": 181,
+              "width": 169,
+              "height": 74,
+              "min": 0,
+              "max": 999,
+              "value": 0,
+              "digitCount": 4,
+              "separatorPos": 0,
+              "step": 1,
+              "rollover": false,
+              "bgColor": "#FFFFFF",
+              "textColor": "#000000",
+              "fontSize": 16,
+              "text": "Testo 160:2 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

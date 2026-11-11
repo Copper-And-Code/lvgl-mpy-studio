@@ -1,0 +1,38 @@
+{
+  "generatedDate": "2023-11-14T22:14:14.000Z",
+  "project": {
+    "projectName": "Random 22",
+    "pages": [
+      {
+        "id": "p22",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-22-0",
+            "type": "line",
+            "name": "line_22_0",
+            "parentId": null,
+            "props": {
+              "x": 294,
+              "y": 203,
+              "width": 117,
+              "height": 35,
+              "points": "0,0 200,0",
+              "lineColor": "#000000",
+              "lineWidth": 2,
+              "rounded": false,
+              "text": "Testo 22:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

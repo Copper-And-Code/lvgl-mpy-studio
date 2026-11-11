@@ -1,0 +1,60 @@
+{
+  "generatedDate": "2023-11-14T22:15:00.000Z",
+  "project": {
+    "projectName": "Random 68",
+    "pages": [
+      {
+        "id": "p68",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-68-0",
+            "type": "imagebutton",
+            "name": "imagebutton_68_0",
+            "parentId": null,
+            "props": {
+              "x": 283,
+              "y": 345,
+              "width": 72,
+              "height": 134,
+              "src": "",
+              "text": "Testo 68:0 \" \\ Città",
+              "bgColor": "#2196F3",
+              "textColor": "#FFFFFF",
+              "fontSize": 14,
+              "radius": 5
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-68-1",
+            "type": "win",
+            "name": "win_68_1",
+            "parentId": null,
+            "props": {
+              "x": 677,
+              "y": 60,
+              "width": 119,
+              "height": 111,
+              "headerHeight": 40,
+              "title": "Window Title",
+              "bgColor": "#FFFFFF",
+              "headerBgColor": "#2196F3",
+              "titleColor": "#FFFFFF",
+              "text": "Testo 68:1 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "generatedDate": "2023-11-14T22:14:22.000Z",
+  "project": {
+    "projectName": "Random 30",
+    "pages": [
+      {
+        "id": "p30",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-30-0",
+            "type": "imagebutton",
+            "name": "imagebutton_30_0",
+            "parentId": null,
+            "props": {
+              "x": 343,
+              "y": 312,
+              "width": 260,
+              "height": 95,
+              "src": "",
+              "text": "Testo 30:0 \" \\ Città",
+              "bgColor": "#2196F3",
+              "textColor": "#FFFFFF",
+              "fontSize": 14,
+              "radius": 5
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-30-1",
+            "type": "imagebutton",
+            "name": "imagebutton_30_1",
+            "parentId": null,
+            "props": {
+              "x": 125,
+              "y": 312,
+              "width": 20,
+              "height": 147,
+              "src": "",
+              "text": "Testo 30:1 \" \\ Città",
+              "bgColor": "#2196F3",
+              "textColor": "#FFFFFF",
+              "fontSize": 14,
+              "radius": 5
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-30-2",
+            "type": "spinner",
+            "name": "spinner_30_2",
+            "parentId": null,
+            "props": {
+              "x": 588,
+              "y": 4,
+              "width": 205,
+              "height": 92,
+              "speed": 1000,
+              "arcLength": 60,
+              "color": "#2196F3",
+              "lineWidth": 8,
+              "text": "Testo 30:2 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

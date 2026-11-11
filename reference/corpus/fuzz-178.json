@@ -1,0 +1,83 @@
+{
+  "generatedDate": "2023-11-14T22:16:50.000Z",
+  "project": {
+    "projectName": "Random 178",
+    "pages": [
+      {
+        "id": "p178",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-178-0",
+            "type": "led",
+            "name": "led_178_0",
+            "parentId": null,
+            "props": {
+              "x": 523,
+              "y": 307,
+              "width": 232,
+              "height": 37,
+              "color": "#FF0000",
+              "brightness": 255,
+              "text": "Testo 178:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-178-1",
+            "type": "line",
+            "name": "line_178_1",
+            "parentId": null,
+            "props": {
+              "x": 101,
+              "y": 192,
+              "width": 57,
+              "height": 135,
+              "points": "0,0 200,0",
+              "lineColor": "#000000",
+              "lineWidth": 2,
+              "rounded": false,
+              "text": "Testo 178:1 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-178-2",
+            "type": "arc",
+            "name": "arc_178_2",
+            "parentId": null,
+            "props": {
+              "x": 496,
+              "y": 292,
+              "width": 84,
+              "height": 106,
+              "min": 0,
+              "max": 100,
+              "value": 50,
+              "bgColor": "#E0E0E0",
+              "indicatorColor": "#FF9800",
+              "startAngle": 135,
+              "endAngle": 45,
+              "rotation": 0,
+              "mode": "LV_ARC_MODE_NORMAL",
+              "knobColor": "#FF9800",
+              "lineWidth": 10,
+              "text": "Testo 178:2 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

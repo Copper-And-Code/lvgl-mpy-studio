@@ -1,0 +1,36 @@
+{
+  "generatedDate": "2023-11-14T22:13:41.000Z",
+  "project": {
+    "projectName": "One tileview",
+    "pages": [
+      {
+        "id": "p1",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "w21",
+            "type": "tileview",
+            "name": "Tile View_w21",
+            "parentId": null,
+            "props": {
+              "x": 83,
+              "y": 72,
+              "width": 300,
+              "height": 250,
+              "rows": 2,
+              "cols": 2,
+              "bgColor": "#FFFFFF"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

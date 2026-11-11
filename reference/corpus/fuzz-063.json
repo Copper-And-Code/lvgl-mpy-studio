@@ -1,0 +1,163 @@
+{
+  "generatedDate": "2023-11-14T22:14:55.000Z",
+  "project": {
+    "projectName": "Random 63",
+    "pages": [
+      {
+        "id": "p63",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-63-0",
+            "type": "tabview",
+            "name": "tabview_63_0",
+            "parentId": null,
+            "props": {
+              "x": 462,
+              "y": 133,
+              "width": 102,
+              "height": 25,
+              "tabPosition": "top",
+              "tabBarSize": 40,
+              "tabs": "Tab 1\nTab 2\nTab 3",
+              "activeTab": 0,
+              "bgColor": "#FFFFFF",
+              "tabBgColor": "#F5F5F5",
+              "tabActiveColor": "#2196F3",
+              "textColor": "#000000",
+              "text": "Testo 63:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-63-1",
+            "type": "msgbox",
+            "name": "msgbox_63_1",
+            "parentId": null,
+            "props": {
+              "x": 514,
+              "y": 263,
+              "width": 152,
+              "height": 31,
+              "title": "Notice",
+              "text": "Testo 63:1 \" \\ Città",
+              "buttons": "OK\nCancel",
+              "closeButton": true,
+              "bgColor": "#FFFFFF",
+              "textColor": "#000000",
+              "titleColor": "#333333",
+              "fontSize": 14
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-63-2",
+            "type": "tabview",
+            "name": "tabview_63_2",
+            "parentId": null,
+            "props": {
+              "x": 696,
+              "y": 34,
+              "width": 71,
+              "height": 35,
+              "tabPosition": "top",
+              "tabBarSize": 40,
+              "tabs": "Tab 1\nTab 2\nTab 3",
+              "activeTab": 0,
+              "bgColor": "#FFFFFF",
+              "tabBgColor": "#F5F5F5",
+              "tabActiveColor": "#2196F3",
+              "textColor": "#000000",
+              "text": "Testo 63:2 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-63-3",
+            "type": "scale",
+            "name": "scale_63_3",
+            "parentId": null,
+            "props": {
+              "x": 271,
+              "y": 272,
+              "width": 186,
+              "height": 12,
+              "min": 0,
+              "max": 100,
+              "majorTickEvery": 10,
+              "majorTickLength": 15,
+              "minorTickCount": 4,
+              "minorTickLength": 8,
+              "labelShow": true,
+              "lineColor": "#000000",
+              "textColor": "#000000",
+              "mode": "horizontal",
+              "text": "Testo 63:3 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-63-4",
+            "type": "image",
+            "name": "image_63_4",
+            "parentId": null,
+            "props": {
+              "x": 575,
+              "y": 161,
+              "width": 164,
+              "height": 143,
+              "src": "",
+              "fit": "contain",
+              "bgColor": "#F0F0F0",
+              "rotation": 0,
+              "zoom": 256,
+              "antialias": true,
+              "pivotX": 0,
+              "pivotY": 0,
+              "text": "Testo 63:4 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-63-5",
+            "type": "textarea",
+            "name": "textarea_63_5",
+            "parentId": null,
+            "props": {
+              "x": 518,
+              "y": 354,
+              "width": 148,
+              "height": 24,
+              "text": "Testo 63:5 \" \\ Città",
+              "placeholder": "Type here",
+              "bgColor": "#FFFFFF",
+              "textColor": "#000000",
+              "fontSize": 14,
+              "oneLine": false,
+              "password": false,
+              "maxLength": 0,
+              "acceptedChars": ""
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

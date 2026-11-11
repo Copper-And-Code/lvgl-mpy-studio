@@ -1,0 +1,49 @@
+{
+  "generatedDate": "2023-11-14T22:16:39.000Z",
+  "project": {
+    "projectName": "Random 167",
+    "pages": [
+      {
+        "id": "p167",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-167-0",
+            "type": "textarea",
+            "name": "textarea_167_0",
+            "parentId": null,
+            "props": {
+              "x": 361,
+              "y": 85,
+              "width": 154,
+              "height": 154,
+              "text": "Testo 167:0 \" \\ Città",
+              "placeholder": "Type here",
+              "bgColor": "#FFFFFF",
+              "textColor": "#000000",
+              "fontSize": 14,
+              "oneLine": false,
+              "password": false,
+              "maxLength": 0,
+              "acceptedChars": ""
+            },
+            "events": [
+              {
+                "id": "e0",
+                "type": "LV_EVENT_VALUE_CHANGED",
+                "callback": "textarea_167_0_changed",
+                "code": "// handled by app"
+              }
+            ],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

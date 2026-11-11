@@ -1,0 +1,39 @@
+{
+  "generatedDate": "2023-11-14T22:13:25.000Z",
+  "project": {
+    "projectName": "One checkbox",
+    "pages": [
+      {
+        "id": "p1",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "w5",
+            "type": "checkbox",
+            "name": "Checkbox_w5",
+            "parentId": null,
+            "props": {
+              "x": 35,
+              "y": 40,
+              "width": 150,
+              "height": 30,
+              "text": "Checkbox",
+              "checked": false,
+              "textColor": "#000000",
+              "fontSize": 14,
+              "checkedColor": "#2196F3",
+              "disabled": false
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

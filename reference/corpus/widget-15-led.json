@@ -1,0 +1,35 @@
+{
+  "generatedDate": "2023-11-14T22:13:34.000Z",
+  "project": {
+    "projectName": "One led",
+    "pages": [
+      {
+        "id": "p1",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "w14",
+            "type": "led",
+            "name": "LED_w14",
+            "parentId": null,
+            "props": {
+              "x": 62,
+              "y": 58,
+              "width": 30,
+              "height": 30,
+              "color": "#FF0000",
+              "brightness": 255
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

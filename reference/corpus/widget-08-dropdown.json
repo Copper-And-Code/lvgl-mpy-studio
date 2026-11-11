@@ -1,0 +1,41 @@
+{
+  "generatedDate": "2023-11-14T22:13:27.000Z",
+  "project": {
+    "projectName": "One dropdown",
+    "pages": [
+      {
+        "id": "p1",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "w7",
+            "type": "dropdown",
+            "name": "Dropdown_w7",
+            "parentId": null,
+            "props": {
+              "x": 41,
+              "y": 44,
+              "width": 150,
+              "height": 40,
+              "options": "Option 1\nOption 2\nOption 3",
+              "selected": 0,
+              "bgColor": "#FFFFFF",
+              "textColor": "#000000",
+              "fontSize": 14,
+              "dir": "LV_DIR_BOTTOM",
+              "symbol": "LV_SYMBOL_DOWN",
+              "highlightSelected": true
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

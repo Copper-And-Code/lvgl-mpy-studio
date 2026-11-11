@@ -1,0 +1,46 @@
+{
+  "generatedDate": "2023-11-14T22:13:35.000Z",
+  "project": {
+    "projectName": "One chart",
+    "pages": [
+      {
+        "id": "p1",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "w15",
+            "type": "chart",
+            "name": "Chart_w15",
+            "parentId": null,
+            "props": {
+              "x": 65,
+              "y": 60,
+              "width": 250,
+              "height": 150,
+              "chartType": "line",
+              "data": "10,20,30,25,40,35,50",
+              "data2": "",
+              "bgColor": "#FFFFFF",
+              "lineColor": "#2196F3",
+              "lineColor2": "#FF5722",
+              "pointCount": 10,
+              "showPoints": true,
+              "rangeYMin": 0,
+              "rangeYMax": 100,
+              "divLineCount": 3,
+              "divLineCountSec": 5,
+              "updateMode": "shift"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

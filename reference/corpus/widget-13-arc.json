@@ -1,0 +1,44 @@
+{
+  "generatedDate": "2023-11-14T22:13:32.000Z",
+  "project": {
+    "projectName": "One arc",
+    "pages": [
+      {
+        "id": "p1",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "w12",
+            "type": "arc",
+            "name": "Arc_w12",
+            "parentId": null,
+            "props": {
+              "x": 56,
+              "y": 54,
+              "width": 100,
+              "height": 100,
+              "min": 0,
+              "max": 100,
+              "value": 50,
+              "bgColor": "#E0E0E0",
+              "indicatorColor": "#FF9800",
+              "startAngle": 135,
+              "endAngle": 45,
+              "rotation": 0,
+              "mode": "LV_ARC_MODE_NORMAL",
+              "knobColor": "#FF9800",
+              "lineWidth": 10
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

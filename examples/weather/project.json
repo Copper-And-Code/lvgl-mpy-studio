@@ -1,0 +1,746 @@
+{
+  "schemaVersion": 3,
+  "projectName": "Weather",
+  "display": {
+    "width": 480,
+    "height": 480,
+    "colorFormat": "RGB565"
+  },
+  "pages": [
+    {
+      "id": "5649aec7db5041db8bc81b3cc7d1cd14",
+      "name": "main",
+      "canvasSize": [
+        480,
+        480
+      ],
+      "widgets": [
+        {
+          "id": "f4e8a8aff49c41afba967d3c7e548a43",
+          "name": "background",
+          "type": "panel",
+          "props": {
+            "x": 0,
+            "y": 0,
+            "width": 480,
+            "height": 480,
+            "bgColor": "#0F1722",
+            "borderColor": "#BDBDBD",
+            "borderWidth": 0,
+            "radius": 0,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_AUTO"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "c09f77e165854b1ab4e304d0790b16e2",
+          "name": "city",
+          "type": "label",
+          "props": {
+            "x": 20,
+            "y": 20,
+            "width": 300,
+            "height": 30,
+            "text": "Catania",
+            "textColor": "#FFFFFF",
+            "fontSize": 24,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "f4f0398609524feb9cea59c34da2d27a",
+          "name": "settings_button",
+          "type": "button",
+          "props": {
+            "x": 360,
+            "y": 16,
+            "width": 104,
+            "height": 40,
+            "text": "Settings",
+            "bgColor": "#2196F3",
+            "textColor": "#FFFFFF",
+            "fontSize": 14,
+            "radius": 5
+          },
+          "events": {
+            "CLICKED": "settings_button_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "6fe2ffd3ee24459f8313c5c910ac5105",
+          "name": "temperature",
+          "type": "label",
+          "props": {
+            "x": 20,
+            "y": 90,
+            "width": 440,
+            "height": 60,
+            "text": "-- °C",
+            "textColor": "#FFD166",
+            "fontSize": 24,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "f12a94c99b0b405aa1868a5a673c4d38",
+          "name": "condition",
+          "type": "label",
+          "props": {
+            "x": 20,
+            "y": 170,
+            "width": 440,
+            "height": 30,
+            "text": "-",
+            "textColor": "#9FB3C8",
+            "fontSize": 16,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "cd3c33d3ba784ad881c50cd30a05289d",
+          "name": "updated",
+          "type": "label",
+          "props": {
+            "x": 20,
+            "y": 250,
+            "width": 440,
+            "height": 24,
+            "text": "5-day forecast",
+            "textColor": "#9FB3C8",
+            "fontSize": 14,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "76e884992ad44234b1dcf80bd577e031",
+          "name": "day0",
+          "type": "panel",
+          "props": {
+            "x": 12,
+            "y": 300,
+            "width": 88,
+            "height": 96,
+            "bgColor": "#1E2A3A",
+            "borderColor": "#BDBDBD",
+            "borderWidth": 0,
+            "radius": 10,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_AUTO"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "56b144981e07486194bf43df4d1f29ff",
+          "name": "day0_name",
+          "type": "label",
+          "props": {
+            "x": 0,
+            "y": 8,
+            "width": 88,
+            "height": 20,
+            "text": "Mon",
+            "textColor": "#9FB3C8",
+            "fontSize": 14,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "parentId": "76e884992ad44234b1dcf80bd577e031",
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "4f5b406b23094e3186ba9d29a6c5136c",
+          "name": "day0_temp",
+          "type": "label",
+          "props": {
+            "x": 0,
+            "y": 40,
+            "width": 88,
+            "height": 28,
+            "text": "--",
+            "textColor": "#FFFFFF",
+            "fontSize": 24,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "parentId": "76e884992ad44234b1dcf80bd577e031",
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "5edb765480c9434f8f6016df2c91b222",
+          "name": "day1",
+          "type": "panel",
+          "props": {
+            "x": 104,
+            "y": 300,
+            "width": 88,
+            "height": 96,
+            "bgColor": "#1E2A3A",
+            "borderColor": "#BDBDBD",
+            "borderWidth": 0,
+            "radius": 10,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_AUTO"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "ace150ec227b4fe8be4ea673541ce492",
+          "name": "day1_name",
+          "type": "label",
+          "props": {
+            "x": 0,
+            "y": 8,
+            "width": 88,
+            "height": 20,
+            "text": "Mon",
+            "textColor": "#9FB3C8",
+            "fontSize": 14,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "parentId": "5edb765480c9434f8f6016df2c91b222",
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "925f5cce7a6940c2a1f6c2e51974ad7a",
+          "name": "day1_temp",
+          "type": "label",
+          "props": {
+            "x": 0,
+            "y": 40,
+            "width": 88,
+            "height": 28,
+            "text": "--",
+            "textColor": "#FFFFFF",
+            "fontSize": 24,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "parentId": "5edb765480c9434f8f6016df2c91b222",
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "c4d0d69419c64dc9b7726225520ed4ac",
+          "name": "day2",
+          "type": "panel",
+          "props": {
+            "x": 196,
+            "y": 300,
+            "width": 88,
+            "height": 96,
+            "bgColor": "#1E2A3A",
+            "borderColor": "#BDBDBD",
+            "borderWidth": 0,
+            "radius": 10,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_AUTO"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "b38f58d40acc4f4aa949308a311e6a61",
+          "name": "day2_name",
+          "type": "label",
+          "props": {
+            "x": 0,
+            "y": 8,
+            "width": 88,
+            "height": 20,
+            "text": "Mon",
+            "textColor": "#9FB3C8",
+            "fontSize": 14,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "parentId": "c4d0d69419c64dc9b7726225520ed4ac",
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "3f0083899a4b45baba4752cddb0cf5a3",
+          "name": "day2_temp",
+          "type": "label",
+          "props": {
+            "x": 0,
+            "y": 40,
+            "width": 88,
+            "height": 28,
+            "text": "--",
+            "textColor": "#FFFFFF",
+            "fontSize": 24,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "parentId": "c4d0d69419c64dc9b7726225520ed4ac",
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "49e4d9226c674080a1a9eead7e9fc5c1",
+          "name": "day3",
+          "type": "panel",
+          "props": {
+            "x": 288,
+            "y": 300,
+            "width": 88,
+            "height": 96,
+            "bgColor": "#1E2A3A",
+            "borderColor": "#BDBDBD",
+            "borderWidth": 0,
+            "radius": 10,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_AUTO"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "5f82fca6002f4300a296ec7584d98b0d",
+          "name": "day3_name",
+          "type": "label",
+          "props": {
+            "x": 0,
+            "y": 8,
+            "width": 88,
+            "height": 20,
+            "text": "Mon",
+            "textColor": "#9FB3C8",
+            "fontSize": 14,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "parentId": "49e4d9226c674080a1a9eead7e9fc5c1",
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "c2c285b7cfb0444cba87e4cde5547963",
+          "name": "day3_temp",
+          "type": "label",
+          "props": {
+            "x": 0,
+            "y": 40,
+            "width": 88,
+            "height": 28,
+            "text": "--",
+            "textColor": "#FFFFFF",
+            "fontSize": 24,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "parentId": "49e4d9226c674080a1a9eead7e9fc5c1",
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "3641a9a337a9413691fe8128cc8456ce",
+          "name": "day4",
+          "type": "panel",
+          "props": {
+            "x": 380,
+            "y": 300,
+            "width": 88,
+            "height": 96,
+            "bgColor": "#1E2A3A",
+            "borderColor": "#BDBDBD",
+            "borderWidth": 0,
+            "radius": 10,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_AUTO"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "28592ef02f7a4f6b8cb554f6a346e308",
+          "name": "day4_name",
+          "type": "label",
+          "props": {
+            "x": 0,
+            "y": 8,
+            "width": 88,
+            "height": 20,
+            "text": "Mon",
+            "textColor": "#9FB3C8",
+            "fontSize": 14,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "parentId": "3641a9a337a9413691fe8128cc8456ce",
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "f7d96f169fc144d48a9a2099dfafb9e4",
+          "name": "day4_temp",
+          "type": "label",
+          "props": {
+            "x": 0,
+            "y": 40,
+            "width": 88,
+            "height": 28,
+            "text": "--",
+            "textColor": "#FFFFFF",
+            "fontSize": 24,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "parentId": "3641a9a337a9413691fe8128cc8456ce",
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "1ffedbbcb77445f7960d2f16e49e081a",
+          "name": "refresh",
+          "type": "button",
+          "props": {
+            "x": 140,
+            "y": 416,
+            "width": 200,
+            "height": 48,
+            "text": "Next city",
+            "bgColor": "#2196F3",
+            "textColor": "#FFFFFF",
+            "fontSize": 16,
+            "radius": 5
+          },
+          "events": {
+            "CLICKED": "refresh_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "fe2540f8da324ec0bdc7f3945a2e5ab1",
+          "name": "clock",
+          "type": "timer",
+          "props": {
+            "period": 1000,
+            "enabled": true
+          },
+          "events": {
+            "TICK": "clock_tick"
+          },
+          "customStyles": {},
+          "animations": []
+        }
+      ]
+    },
+    {
+      "id": "1e8f6035fc4c413ebabe9d7964736585",
+      "name": "settings",
+      "canvasSize": [
+        480,
+        480
+      ],
+      "widgets": [
+        {
+          "id": "948184f02fd449a6b0d1f82c9dacae96",
+          "name": "settings_background",
+          "type": "panel",
+          "props": {
+            "x": 0,
+            "y": 0,
+            "width": 480,
+            "height": 480,
+            "bgColor": "#0F1722",
+            "borderColor": "#BDBDBD",
+            "borderWidth": 0,
+            "radius": 0,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_AUTO"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "4622d2c9f9134ad281ebf7c61aa34f1c",
+          "name": "settings_title",
+          "type": "label",
+          "props": {
+            "x": 20,
+            "y": 20,
+            "width": 300,
+            "height": 30,
+            "text": "Settings",
+            "textColor": "#FFFFFF",
+            "fontSize": 24,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "02dc93aa4f55491e92f2a1b5ac2f8771",
+          "name": "units_label",
+          "type": "label",
+          "props": {
+            "x": 20,
+            "y": 120,
+            "width": 300,
+            "height": 30,
+            "text": "Fahrenheit",
+            "textColor": "#FFFFFF",
+            "fontSize": 16,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "4931c7f5ca694f368cac4319bf0a8a4e",
+          "name": "units",
+          "type": "switch",
+          "props": {
+            "x": 380,
+            "y": 114,
+            "width": 70,
+            "height": 36,
+            "checked": false,
+            "onColor": "#4CAF50",
+            "offColor": "#BDBDBD",
+            "knobColor": "#FFFFFF",
+            "disabled": false
+          },
+          "events": {
+            "VALUE_CHANGED": "units_value_changed"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "51fd94d08e214db59efaffecbaa96db9",
+          "name": "back",
+          "type": "button",
+          "props": {
+            "x": 140,
+            "y": 416,
+            "width": 200,
+            "height": 48,
+            "text": "Back",
+            "bgColor": "#2196F3",
+            "textColor": "#FFFFFF",
+            "fontSize": 16,
+            "radius": 5
+          },
+          "events": {
+            "CLICKED": "back_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "module": "import forecast\n\ncity_index = 0\nfahrenheit = False\nseconds = 0\n\n\ndef refresh():\n    city = forecast.CITIES[city_index]\n    condition, temps = forecast.fetch(city)\n    ui.city.set_text(city)\n    ui.temperature.set_text(forecast.show(temps[0], fahrenheit))\n    ui.condition.set_text(condition)\n    names = (ui.day0_name, ui.day1_name, ui.day2_name, ui.day3_name, ui.day4_name)\n    values = (ui.day0_temp, ui.day1_temp, ui.day2_temp, ui.day3_temp, ui.day4_temp)\n    for index in range(5):\n        names[index].set_text(forecast.DAYS[index])\n        values[index].set_text(forecast.show(temps[index], fahrenheit))\n",
+    "handlers": {
+      "main_screen_loaded": {
+        "widget": "main",
+        "event": "SCREEN_LOADED",
+        "body": "refresh()"
+      },
+      "refresh_clicked": {
+        "widget": "refresh",
+        "event": "CLICKED",
+        "body": "global city_index\ncity_index = (city_index + 1) % len(forecast.CITIES)\nrefresh()"
+      },
+      "clock_tick": {
+        "widget": "clock",
+        "event": "TICK",
+        "body": "global seconds\nseconds += 1\nui.updated.set_text('5-day forecast - updated %d s ago' % seconds)"
+      },
+      "settings_button_clicked": {
+        "widget": "settings_button",
+        "event": "CLICKED",
+        "body": "ui.load_page(ui.PAGE_SETTINGS)"
+      },
+      "back_clicked": {
+        "widget": "back",
+        "event": "CLICKED",
+        "body": "ui.load_page(ui.PAGE_MAIN)"
+      },
+      "units_value_changed": {
+        "widget": "units",
+        "event": "VALUE_CHANGED",
+        "body": "global fahrenheit\nfahrenheit = ui.units.has_state(lv.STATE.CHECKED)\nrefresh()"
+      }
+    }
+  },
+  "currentPageId": "5649aec7db5041db8bc81b3cc7d1cd14",
+  "assets": {},
+  "variables": [],
+  "projectId": "39537252a3f742e1bbf6ab241cfe486b",
+  "board": {
+    "schemaVersion": 1,
+    "id": "esp32_4848s040_480",
+    "revision": 3,
+    "name": "ESP32-4848S040 (480×480)",
+    "adapter": "esp32_4848s040",
+    "firmware": {
+      "microPython": "1.29",
+      "lvgl": "9.5",
+      "modules": [
+        "lvgl",
+        "display_driver",
+        "gt911"
+      ]
+    },
+    "fonts": [
+      14,
+      16,
+      24,
+      32,
+      40
+    ],
+    "physicalWidth": 480,
+    "physicalHeight": 480,
+    "logicalWidth": 480,
+    "logicalHeight": 480,
+    "scale": 1,
+    "colorFormat": "RGB565",
+    "orientations": [
+      0
+    ],
+    "config": {
+      "driver": "display_driver",
+      "touch": "gt911",
+      "buffers": "driver",
+      "eventLoop": "driver"
+    },
+    "buzzer": {
+      "audio": true
+    }
+  },
+  "runTarget": {
+    "kind": "board",
+    "language": "micropython"
+  },
+  "modules": [
+    {
+      "id": "16961e21ed154c1abc217ebfdccd96ea",
+      "name": "forecast",
+      "source": "\"\"\"Forecast data. On a board with Wi-Fi, fetch() is the place to call a weather service.\"\"\"\n\nCITIES = (\"Catania\", \"Milan\", \"London\")\nDAYS = (\"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\", \"Sat\", \"Sun\")\n_DATA = {\n    \"Catania\": (\"Sunny\", (24, 25, 23, 22, 24)),\n    \"Milan\": (\"Cloudy\", (12, 11, 9, 13, 14)),\n    \"London\": (\"Rain\", (8, 7, 9, 6, 8)),\n}\n\n\ndef fetch(city):\n    \"\"\"Return (condition, temperatures in Celsius for five days).\"\"\"\n    return _DATA[city]\n\n\ndef show(celsius, fahrenheit):\n    if fahrenheit:\n        return \"%d F\" % (celsius * 9 // 5 + 32)\n    return \"%d C\" % celsius\n"
+    }
+  ]
+}

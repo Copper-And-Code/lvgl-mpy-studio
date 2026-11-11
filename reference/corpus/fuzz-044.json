@@ -1,0 +1,163 @@
+{
+  "generatedDate": "2023-11-14T22:14:36.000Z",
+  "project": {
+    "projectName": "Random 44",
+    "pages": [
+      {
+        "id": "p44",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-44-0",
+            "type": "span",
+            "name": "span_44_0",
+            "parentId": null,
+            "props": {
+              "x": 690,
+              "y": 269,
+              "width": 254,
+              "height": 144,
+              "spans": "Normal text|14|#000000\nBold text|16|#FF0000\nSmall text|12|#666666",
+              "bgColor": "#FFFFFF",
+              "mode": "wrap",
+              "text": "Testo 44:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-44-1",
+            "type": "list",
+            "name": "list_44_1",
+            "parentId": null,
+            "props": {
+              "x": 560,
+              "y": 367,
+              "width": 130,
+              "height": 67,
+              "items": "Item 1\nItem 2\nItem 3\nItem 4\nItem 5",
+              "bgColor": "#FFFFFF",
+              "textColor": "#000000",
+              "selectedColor": "#E3F2FD",
+              "fontSize": 14,
+              "text": "Testo 44:1 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-44-2",
+            "type": "label",
+            "name": "label_44_2",
+            "parentId": null,
+            "props": {
+              "x": 619,
+              "y": 24,
+              "width": 58,
+              "height": 97,
+              "text": "Testo 44:2 \" \\ Città",
+              "textColor": "#000000",
+              "fontSize": 14,
+              "longMode": "LV_LABEL_LONG_MODE_WRAP",
+              "textAlign": "LV_TEXT_ALIGN_CENTER",
+              "recolor": false
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-44-3",
+            "type": "chart",
+            "name": "chart_44_3",
+            "parentId": null,
+            "props": {
+              "x": 340,
+              "y": 82,
+              "width": 177,
+              "height": 62,
+              "chartType": "line",
+              "data": "10,20,30,25,40,35,50",
+              "data2": "",
+              "bgColor": "#FFFFFF",
+              "lineColor": "#2196F3",
+              "lineColor2": "#FF5722",
+              "pointCount": 10,
+              "showPoints": true,
+              "rangeYMin": 0,
+              "rangeYMax": 100,
+              "divLineCount": 3,
+              "divLineCountSec": 5,
+              "updateMode": "shift",
+              "text": "Testo 44:3 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-44-4",
+            "type": "msgbox",
+            "name": "msgbox_44_4",
+            "parentId": null,
+            "props": {
+              "x": 323,
+              "y": 187,
+              "width": 183,
+              "height": 80,
+              "title": "Notice",
+              "text": "Testo 44:4 \" \\ Città",
+              "buttons": "OK\nCancel",
+              "closeButton": true,
+              "bgColor": "#FFFFFF",
+              "textColor": "#000000",
+              "titleColor": "#333333",
+              "fontSize": 14
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-44-5",
+            "type": "slider",
+            "name": "slider_44_5",
+            "parentId": null,
+            "props": {
+              "x": 104,
+              "y": 56,
+              "width": 140,
+              "height": 73,
+              "min": 0,
+              "max": 100,
+              "value": 50,
+              "bgColor": "#E0E0E0",
+              "indicatorColor": "#2196F3",
+              "knobColor": "#1976D2",
+              "mode": "normal",
+              "isRange": false,
+              "leftValue": 0,
+              "text": "Testo 44:5 \" \\ Città"
+            },
+            "events": [
+              {
+                "id": "e5",
+                "type": "LV_EVENT_VALUE_CHANGED",
+                "callback": "slider_44_5_changed",
+                "code": ""
+              }
+            ],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

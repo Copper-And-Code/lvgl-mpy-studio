@@ -1,0 +1,38 @@
+{
+  "generatedDate": "2023-11-14T22:15:52.000Z",
+  "project": {
+    "projectName": "Random 120",
+    "pages": [
+      {
+        "id": "p120",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-120-0",
+            "type": "line",
+            "name": "line_120_0",
+            "parentId": null,
+            "props": {
+              "x": 581,
+              "y": 26,
+              "width": 81,
+              "height": 109,
+              "points": "0,0 200,0",
+              "lineColor": "#000000",
+              "lineWidth": 2,
+              "rounded": false,
+              "text": "Testo 120:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

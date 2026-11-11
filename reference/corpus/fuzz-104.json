@@ -1,0 +1,157 @@
+{
+  "generatedDate": "2023-11-14T22:15:36.000Z",
+  "project": {
+    "projectName": "Random 104",
+    "pages": [
+      {
+        "id": "p104",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-104-0",
+            "type": "switch",
+            "name": "switch_104_0",
+            "parentId": null,
+            "props": {
+              "x": 678,
+              "y": 15,
+              "width": 104,
+              "height": 136,
+              "checked": false,
+              "onColor": "#4CAF50",
+              "offColor": "#BDBDBD",
+              "knobColor": "#FFFFFF",
+              "disabled": false,
+              "text": "Testo 104:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-104-1",
+            "type": "panel",
+            "name": "panel_104_1",
+            "parentId": null,
+            "props": {
+              "x": 625,
+              "y": 339,
+              "width": 206,
+              "height": 145,
+              "bgColor": "#F5F5F5",
+              "borderColor": "#BDBDBD",
+              "borderWidth": 2,
+              "radius": 5,
+              "flexFlow": "none",
+              "flexMainPlace": "none",
+              "flexCrossPlace": "none",
+              "padTop": 0,
+              "padBottom": 0,
+              "padLeft": 0,
+              "padRight": 0,
+              "padRow": 0,
+              "padColumn": 0,
+              "scrollbarMode": "LV_SCROLLBAR_MODE_AUTO",
+              "text": "Testo 104:1 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-104-2",
+            "type": "tileview",
+            "name": "tileview_104_2",
+            "parentId": null,
+            "props": {
+              "x": 490,
+              "y": 102,
+              "width": 26,
+              "height": 25,
+              "rows": 2,
+              "cols": 2,
+              "bgColor": "#FFFFFF",
+              "text": "Testo 104:2 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-104-3",
+            "type": "chart",
+            "name": "chart_104_3",
+            "parentId": null,
+            "props": {
+              "x": 90,
+              "y": 2,
+              "width": 109,
+              "height": 20,
+              "chartType": "line",
+              "data": "10,20,30,25,40,35,50",
+              "data2": "",
+              "bgColor": "#FFFFFF",
+              "lineColor": "#2196F3",
+              "lineColor2": "#FF5722",
+              "pointCount": 10,
+              "showPoints": true,
+              "rangeYMin": 0,
+              "rangeYMax": 100,
+              "divLineCount": 3,
+              "divLineCountSec": 5,
+              "updateMode": "shift",
+              "text": "Testo 104:3 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-104-4",
+            "type": "led",
+            "name": "led_104_4",
+            "parentId": null,
+            "props": {
+              "x": 435,
+              "y": 16,
+              "width": 214,
+              "height": 64,
+              "color": "#FF0000",
+              "brightness": 255,
+              "text": "Testo 104:4 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-104-5",
+            "type": "menu",
+            "name": "menu_104_5",
+            "parentId": null,
+            "props": {
+              "x": 596,
+              "y": 13,
+              "width": 112,
+              "height": 76,
+              "bgColor": "#FFFFFF",
+              "sidebarWidth": 80,
+              "headerTitle": "Menu",
+              "items": "Item 1\nItem 2\nItem 3\nItem 4",
+              "textColor": "#000000",
+              "selectedColor": "#2196F3",
+              "text": "Testo 104:5 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "generatedDate": "2023-11-14T22:13:43.000Z",
+  "project": {
+    "projectName": "One win",
+    "pages": [
+      {
+        "id": "p1",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "w23",
+            "type": "win",
+            "name": "Window_w23",
+            "parentId": null,
+            "props": {
+              "x": 89,
+              "y": 76,
+              "width": 300,
+              "height": 250,
+              "headerHeight": 40,
+              "title": "Window Title",
+              "bgColor": "#FFFFFF",
+              "headerBgColor": "#2196F3",
+              "titleColor": "#FFFFFF"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

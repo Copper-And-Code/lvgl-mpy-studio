@@ -1,0 +1,227 @@
+{
+  "schemaVersion": 2,
+  "projectName": "Demo_LVGL",
+  "display": {
+    "width": 240,
+    "height": 240,
+    "colorFormat": "RGB565"
+  },
+  "pages": [
+    {
+      "id": "ce1b3990ae00406f8bb694a25fda6a93",
+      "name": "main",
+      "canvasSize": [
+        240,
+        240
+      ],
+      "widgets": [
+        {
+          "id": "fe8513bb6ba7491a86a0d2ccf3d31862",
+          "name": "titleLabel",
+          "type": "label",
+          "props": {
+            "x": 15,
+            "y": 18,
+            "width": 180,
+            "height": 25,
+            "text": "LVGL 9.5 — interactive demo",
+            "textColor": "#000000",
+            "fontSize": 14,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false,
+            "font": "montserrat_24"
+          },
+          "events": {
+            "CLICKED": "titleLabel_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "8ab76beb3b0043c2b44b54ce8adce5de",
+          "name": "statusLabel",
+          "type": "label",
+          "props": {
+            "x": 15,
+            "y": 52,
+            "width": 180,
+            "height": 22,
+            "text": "Press the button: counter = 0",
+            "textColor": "#000000",
+            "fontSize": 14,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "a2765b6544954e86af21982ea9ebcc28",
+          "name": "counterButton",
+          "type": "button",
+          "props": {
+            "x": 15,
+            "y": 88,
+            "width": 54,
+            "height": 28,
+            "text": "Press me",
+            "bgColor": "#2196F3",
+            "textColor": "#FFFFFF",
+            "fontSize": 14,
+            "radius": 2
+          },
+          "events": {
+            "CLICKED": "counterButton_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "951729c3116d4cc5bfd0c934a55e7054",
+          "name": "volumeSlider",
+          "type": "slider",
+          "props": {
+            "x": 15,
+            "y": 138,
+            "width": 105,
+            "height": 10,
+            "min": 0,
+            "max": 100,
+            "value": 35,
+            "bgColor": "#E0E0E0",
+            "indicatorColor": "#2196F3",
+            "knobColor": "#1976D2",
+            "mode": "normal",
+            "isRange": false,
+            "leftValue": 0
+          },
+          "events": {
+            "CLICKED": "volumeSlider_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "5d0c05756d7b4030b73aeab7a5c31350",
+          "name": "powerSwitch",
+          "type": "switch",
+          "props": {
+            "x": 135,
+            "y": 132,
+            "width": 24,
+            "height": 20,
+            "checked": true,
+            "onColor": "#4CAF50",
+            "offColor": "#BDBDBD",
+            "knobColor": "#FFFFFF",
+            "disabled": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "cecde40d10804265b29bf40d4da2bfcf",
+          "name": "progressBar",
+          "type": "bar",
+          "props": {
+            "x": 15,
+            "y": 175,
+            "width": 150,
+            "height": 12,
+            "min": 0,
+            "max": 100,
+            "value": 65,
+            "bgColor": "#E0E0E0",
+            "indicatorColor": "#4CAF50",
+            "mode": "LV_BAR_MODE_NORMAL",
+            "animated": true,
+            "startValue": 0
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "55cb9720e57a4095bf6834cb0176350b",
+          "name": "optionCheck",
+          "type": "checkbox",
+          "props": {
+            "x": 15,
+            "y": 205,
+            "width": 150,
+            "height": 20,
+            "text": "Option on",
+            "checked": true,
+            "textColor": "#000000",
+            "fontSize": 14,
+            "checkedColor": "#2196F3",
+            "disabled": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "module": "counter = 0\n",
+    "handlers": {
+      "counterButton_clicked": {
+        "widget": "counterButton",
+        "event": "CLICKED",
+        "body": "global counter\ncounter += 1\nui.statusLabel.set_text(\"Pressed! counter = \" + str(counter))\nprint(\"CLICK\", counter)"
+      },
+      "titleLabel_clicked": {
+        "widget": "titleLabel",
+        "event": "CLICKED",
+        "body": ""
+      },
+      "volumeSlider_clicked": {
+        "widget": "volumeSlider",
+        "event": "CLICKED",
+        "body": ""
+      }
+    }
+  },
+  "currentPageId": "ce1b3990ae00406f8bb694a25fda6a93",
+  "assets": {},
+  "variables": [],
+  "projectId": "901751f963bd4135b5331f8b782858e2",
+  "board": {
+    "adapter": "waveshare_rgbpanel",
+    "colorFormat": "RGB565",
+    "config": {
+      "buffers": "driver",
+      "driver": "display_driver",
+      "eventLoop": "driver",
+      "touch": "gt911"
+    },
+    "firmware": {
+      "lvgl": "9.5",
+      "microPython": "1.29",
+      "modules": [
+        "lvgl",
+        "display_driver",
+        "rgbpanel",
+        "gt911"
+      ]
+    },
+    "id": "waveshare_rp2350_touch_lcd_4_240",
+    "logicalHeight": 240,
+    "logicalWidth": 240,
+    "name": "Waveshare RP2350-Touch-LCD-4 (240×240)",
+    "orientations": [
+      0
+    ],
+    "physicalHeight": 480,
+    "physicalWidth": 480,
+    "revision": 1,
+    "scale": 2,
+    "schemaVersion": 1
+  }
+}

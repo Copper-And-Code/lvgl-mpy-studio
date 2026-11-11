@@ -1,0 +1,64 @@
+{
+  "generatedDate": "2023-11-14T22:15:02.000Z",
+  "project": {
+    "projectName": "Random 70",
+    "pages": [
+      {
+        "id": "p70",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-70-0",
+            "type": "line",
+            "name": "line_70_0",
+            "parentId": null,
+            "props": {
+              "x": 462,
+              "y": 306,
+              "width": 152,
+              "height": 84,
+              "points": "0,0 200,0",
+              "lineColor": "#000000",
+              "lineWidth": 2,
+              "rounded": false,
+              "text": "Testo 70:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-70-1",
+            "type": "scale",
+            "name": "scale_70_1",
+            "parentId": null,
+            "props": {
+              "x": 455,
+              "y": 131,
+              "width": 175,
+              "height": 143,
+              "min": 0,
+              "max": 100,
+              "majorTickEvery": 10,
+              "majorTickLength": 15,
+              "minorTickCount": 4,
+              "minorTickLength": 8,
+              "labelShow": true,
+              "lineColor": "#000000",
+              "textColor": "#000000",
+              "mode": "horizontal",
+              "text": "Testo 70:1 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

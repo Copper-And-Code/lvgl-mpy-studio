@@ -1,0 +1,149 @@
+{
+  "generatedDate": "2023-11-14T22:15:43.000Z",
+  "project": {
+    "projectName": "Random 111",
+    "pages": [
+      {
+        "id": "p111",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-111-0",
+            "type": "menu",
+            "name": "menu_111_0",
+            "parentId": null,
+            "props": {
+              "x": 135,
+              "y": 391,
+              "width": 140,
+              "height": 99,
+              "bgColor": "#FFFFFF",
+              "sidebarWidth": 80,
+              "headerTitle": "Menu",
+              "items": "Item 1\nItem 2\nItem 3\nItem 4",
+              "textColor": "#000000",
+              "selectedColor": "#2196F3",
+              "text": "Testo 111:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-111-1",
+            "type": "line",
+            "name": "line_111_1",
+            "parentId": null,
+            "props": {
+              "x": 478,
+              "y": 221,
+              "width": 120,
+              "height": 98,
+              "points": "0,0 200,0",
+              "lineColor": "#000000",
+              "lineWidth": 2,
+              "rounded": false,
+              "text": "Testo 111:1 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-111-2",
+            "type": "imagebutton",
+            "name": "imagebutton_111_2",
+            "parentId": null,
+            "props": {
+              "x": 312,
+              "y": 67,
+              "width": 266,
+              "height": 127,
+              "src": "",
+              "text": "Testo 111:2 \" \\ Città",
+              "bgColor": "#2196F3",
+              "textColor": "#FFFFFF",
+              "fontSize": 14,
+              "radius": 5
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-111-3",
+            "type": "dropdown",
+            "name": "dropdown_111_3",
+            "parentId": null,
+            "props": {
+              "x": 466,
+              "y": 167,
+              "width": 211,
+              "height": 37,
+              "options": "Option 1\nOption 2\nOption 3",
+              "selected": 0,
+              "bgColor": "#FFFFFF",
+              "textColor": "#000000",
+              "fontSize": 14,
+              "dir": "LV_DIR_BOTTOM",
+              "symbol": "LV_SYMBOL_DOWN",
+              "highlightSelected": true,
+              "text": "Testo 111:3 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-111-4",
+            "type": "spinner",
+            "name": "spinner_111_4",
+            "parentId": null,
+            "props": {
+              "x": 679,
+              "y": 396,
+              "width": 46,
+              "height": 75,
+              "speed": 1000,
+              "arcLength": 60,
+              "color": "#2196F3",
+              "lineWidth": 8,
+              "text": "Testo 111:4 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-111-5",
+            "type": "bar",
+            "name": "bar_111_5",
+            "parentId": null,
+            "props": {
+              "x": 267,
+              "y": 50,
+              "width": 133,
+              "height": 33,
+              "min": 0,
+              "max": 100,
+              "value": 50,
+              "bgColor": "#E0E0E0",
+              "indicatorColor": "#4CAF50",
+              "mode": "LV_BAR_MODE_NORMAL",
+              "animated": true,
+              "startValue": 0,
+              "text": "Testo 111:5 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

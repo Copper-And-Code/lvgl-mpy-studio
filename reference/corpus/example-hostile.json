@@ -1,0 +1,546 @@
+{
+  "generatedDate": "2023-11-14T22:13:51.000Z",
+  "project": {
+    "projectName": "1 My \"Project\" */",
+    "pages": [
+      {
+        "id": "p1",
+        "name": "Main",
+        "canvasSize": {
+          "width": 480,
+          "height": 320
+        },
+        "widgets": [
+          {
+            "id": "grandchild",
+            "type": "label",
+            "name": "Grand child",
+            "parentId": "child",
+            "props": {
+              "x": 50,
+              "y": 50,
+              "width": 120,
+              "height": 30,
+              "text": "Quote \" backslash \\ newline\nend */ \"\"\" ??= tab\t",
+              "textColor": "#000000",
+              "fontSize": 14,
+              "longMode": "LV_LABEL_LONG_MODE_WRAP",
+              "textAlign": "LV_TEXT_ALIGN_CENTER",
+              "recolor": false
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "child",
+            "type": "panel",
+            "name": "Child panel",
+            "parentId": "root",
+            "props": {
+              "x": 50,
+              "y": 50,
+              "width": 200,
+              "height": 150,
+              "bgColor": "#F5F5F5",
+              "borderColor": "#BDBDBD",
+              "borderWidth": 2,
+              "radius": 5,
+              "flexFlow": "none",
+              "flexMainPlace": "none",
+              "flexCrossPlace": "none",
+              "padTop": 0,
+              "padBottom": 0,
+              "padLeft": 0,
+              "padRight": 0,
+              "padRow": 0,
+              "padColumn": 0,
+              "scrollbarMode": "LV_SCROLLBAR_MODE_AUTO"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "root",
+            "type": "panel",
+            "name": "Root panel",
+            "parentId": null,
+            "props": {
+              "x": 50,
+              "y": 50,
+              "width": 200,
+              "height": 150,
+              "bgColor": "#F5F5F5",
+              "borderColor": "#BDBDBD",
+              "borderWidth": 2,
+              "radius": 5,
+              "flexFlow": "none",
+              "flexMainPlace": "none",
+              "flexCrossPlace": "none",
+              "padTop": 0,
+              "padBottom": 0,
+              "padLeft": 0,
+              "padRight": 0,
+              "padRow": 0,
+              "padColumn": 0,
+              "scrollbarMode": "LV_SCROLLBAR_MODE_AUTO"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "cycle_a",
+            "type": "panel",
+            "name": "cycle a",
+            "parentId": "cycle_b",
+            "props": {
+              "x": 50,
+              "y": 50,
+              "width": 200,
+              "height": 150,
+              "bgColor": "#F5F5F5",
+              "borderColor": "#BDBDBD",
+              "borderWidth": 2,
+              "radius": 5,
+              "flexFlow": "none",
+              "flexMainPlace": "none",
+              "flexCrossPlace": "none",
+              "padTop": 0,
+              "padBottom": 0,
+              "padLeft": 0,
+              "padRight": 0,
+              "padRow": 0,
+              "padColumn": 0,
+              "scrollbarMode": "LV_SCROLLBAR_MODE_AUTO"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "cycle_b",
+            "type": "panel",
+            "name": "cycle b",
+            "parentId": "cycle_a",
+            "props": {
+              "x": 50,
+              "y": 50,
+              "width": 200,
+              "height": 150,
+              "bgColor": "#F5F5F5",
+              "borderColor": "#BDBDBD",
+              "borderWidth": 2,
+              "radius": 5,
+              "flexFlow": "none",
+              "flexMainPlace": "none",
+              "flexCrossPlace": "none",
+              "padTop": 0,
+              "padBottom": 0,
+              "padLeft": 0,
+              "padRight": 0,
+              "padRow": 0,
+              "padColumn": 0,
+              "scrollbarMode": "LV_SCROLLBAR_MODE_AUTO"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "orphan",
+            "type": "label",
+            "name": "orphan",
+            "parentId": "does-not-exist",
+            "props": {
+              "x": 50,
+              "y": 50,
+              "width": 120,
+              "height": 30,
+              "text": "Label Text",
+              "textColor": "#000000",
+              "fontSize": 14,
+              "longMode": "LV_LABEL_LONG_MODE_WRAP",
+              "textAlign": "LV_TEXT_ALIGN_CENTER",
+              "recolor": false
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "b1",
+            "type": "button",
+            "name": "Button 1",
+            "parentId": null,
+            "props": {
+              "x": 50,
+              "y": 50,
+              "width": 100,
+              "height": 40,
+              "text": "Quote \" backslash \\ newline\nend */ \"\"\" ??= tab\t",
+              "bgColor": "#2196F3",
+              "textColor": "#FFFFFF",
+              "fontSize": 14,
+              "radius": 5
+            },
+            "events": [
+              {
+                "id": "h1",
+                "type": "LV_EVENT_CLICKED",
+                "callback": "print",
+                "code": "// handled by the application"
+              }
+            ],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "b2",
+            "type": "button",
+            "name": "button_1",
+            "parentId": null,
+            "props": {
+              "x": 50,
+              "y": 50,
+              "width": 100,
+              "height": 40,
+              "text": "Button",
+              "bgColor": "#2196F3",
+              "textColor": "#FFFFFF",
+              "fontSize": 14,
+              "radius": 5
+            },
+            "events": [
+              {
+                "id": "h2",
+                "type": "LV_EVENT_CLICKED",
+                "callback": "print",
+                "code": "// other code"
+              },
+              {
+                "id": "h3",
+                "type": "LV_EVENT_BOGUS",
+                "callback": "bogus",
+                "code": "evil();"
+              }
+            ],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "b3",
+            "type": "button",
+            "name": "Button 1",
+            "parentId": null,
+            "props": {
+              "x": 50,
+              "y": 50,
+              "width": 100,
+              "height": 40,
+              "text": "Button",
+              "bgColor": "#2196F3",
+              "textColor": "#FFFFFF",
+              "fontSize": 14,
+              "radius": 5
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "n1",
+            "type": "label",
+            "name": "1st label",
+            "parentId": null,
+            "props": {
+              "x": 50,
+              "y": 50,
+              "width": 120,
+              "height": 30,
+              "text": "Label Text",
+              "textColor": "#000000",
+              "fontSize": 14,
+              "longMode": "LV_LABEL_LONG_MODE_WRAP",
+              "textAlign": "LV_TEXT_ALIGN_CENTER",
+              "recolor": false
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "n2",
+            "type": "label",
+            "name": "lambda",
+            "parentId": null,
+            "props": {
+              "x": 50,
+              "y": 50,
+              "width": 120,
+              "height": 30,
+              "text": "Label Text",
+              "textColor": "#000000",
+              "fontSize": 14,
+              "longMode": "LV_LABEL_LONG_MODE_WRAP",
+              "textAlign": "LV_TEXT_ALIGN_CENTER",
+              "recolor": false
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "n3",
+            "type": "label",
+            "name": "lv_obj_create",
+            "parentId": null,
+            "props": {
+              "x": 50,
+              "y": 50,
+              "width": 120,
+              "height": 30,
+              "text": "Label Text",
+              "textColor": "#000000",
+              "fontSize": 14,
+              "longMode": "LV_LABEL_LONG_MODE_WRAP",
+              "textAlign": "LV_TEXT_ALIGN_CENTER",
+              "recolor": false
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "n4",
+            "type": "label",
+            "name": "print",
+            "parentId": null,
+            "props": {
+              "x": 50,
+              "y": 50,
+              "width": 120,
+              "height": 30,
+              "text": "Label Text",
+              "textColor": "#000000",
+              "fontSize": 14,
+              "longMode": "LV_LABEL_LONG_MODE_WRAP",
+              "textAlign": "LV_TEXT_ALIGN_CENTER",
+              "recolor": false
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "n5",
+            "type": "label",
+            "name": "***",
+            "parentId": null,
+            "props": {
+              "x": 50,
+              "y": 50,
+              "width": 120,
+              "height": 30,
+              "text": "Label Text",
+              "textColor": "#000000",
+              "fontSize": 14,
+              "longMode": "LV_LABEL_LONG_MODE_WRAP",
+              "textAlign": "LV_TEXT_ALIGN_CENTER",
+              "recolor": false
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "n6",
+            "type": "label",
+            "name": "Città",
+            "parentId": null,
+            "props": {
+              "x": 50,
+              "y": 50,
+              "width": 120,
+              "height": 30,
+              "text": "Label Text",
+              "textColor": "#000000",
+              "fontSize": 14,
+              "longMode": "LV_LABEL_LONG_MODE_WRAP",
+              "textAlign": "LV_TEXT_ALIGN_CENTER",
+              "recolor": false
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "s1",
+            "type": "slider",
+            "name": "bad slider",
+            "parentId": null,
+            "props": {
+              "x": 50,
+              "y": 50,
+              "width": 200,
+              "height": 20,
+              "min": "0; evil()",
+              "max": "abc",
+              "value": null,
+              "bgColor": "red); evil(",
+              "indicatorColor": "#2196F3",
+              "knobColor": "#1976D2",
+              "mode": "normal",
+              "isRange": false,
+              "leftValue": 0
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "d1",
+            "type": "dropdown",
+            "name": "options",
+            "parentId": null,
+            "props": {
+              "x": 50,
+              "y": 50,
+              "width": 150,
+              "height": 40,
+              "options": "One\n\"Two\"\nThree\\",
+              "selected": 0,
+              "bgColor": "#FFFFFF",
+              "textColor": "#000000",
+              "fontSize": 14,
+              "dir": "LV_DIR_BOTTOM",
+              "symbol": "LV_SYMBOL_DOWN",
+              "highlightSelected": true
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "t1",
+            "type": "table",
+            "name": "table",
+            "parentId": null,
+            "props": {
+              "x": 50,
+              "y": 50,
+              "width": 300,
+              "height": 200,
+              "rows": 4,
+              "cols": 3,
+              "colWidths": "100,100,100",
+              "headerRow": "A,\"B\",C",
+              "cellData": "1,2,3\n4,5,6",
+              "bgColor": "#FFFFFF",
+              "textColor": "#000000",
+              "borderColor": "#E0E0E0",
+              "headerBgColor": "#F5F5F5",
+              "fontSize": 14
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "bm",
+            "type": "buttonmatrix",
+            "name": "matrix",
+            "parentId": null,
+            "props": {
+              "x": 50,
+              "y": 50,
+              "width": 250,
+              "height": 120,
+              "map": "a,\"b\"\nc,\\",
+              "bgColor": "#FFFFFF",
+              "btnColor": "#E0E0E0",
+              "textColor": "#000000",
+              "fontSize": 14,
+              "oneCheck": false
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "ch",
+            "type": "chart",
+            "name": "chart",
+            "parentId": null,
+            "props": {
+              "x": 50,
+              "y": 50,
+              "width": 250,
+              "height": 150,
+              "chartType": "line",
+              "data": "1, x, 3,, 4",
+              "data2": "",
+              "bgColor": "#FFFFFF",
+              "lineColor": "#2196F3",
+              "lineColor2": "#FF5722",
+              "pointCount": 10,
+              "showPoints": true,
+              "rangeYMin": 0,
+              "rangeYMax": 100,
+              "divLineCount": 3,
+              "divLineCountSec": 5,
+              "updateMode": "shift"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "sc",
+            "type": "scale",
+            "name": "scale",
+            "parentId": null,
+            "props": {
+              "x": 50,
+              "y": 50,
+              "width": 200,
+              "height": 60,
+              "min": 10,
+              "max": 10,
+              "majorTickEvery": 0,
+              "majorTickLength": 15,
+              "minorTickCount": 4,
+              "minorTickLength": 8,
+              "labelShow": true,
+              "lineColor": "#000000",
+              "textColor": "#000000",
+              "mode": "horizontal"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      },
+      {
+        "id": "p2",
+        "name": "Main",
+        "canvasSize": {
+          "width": 480,
+          "height": 320
+        },
+        "widgets": []
+      },
+      {
+        "id": "p3",
+        "name": "init",
+        "canvasSize": {
+          "width": 480,
+          "height": 320
+        },
+        "widgets": []
+      }
+    ]
+  }
+}

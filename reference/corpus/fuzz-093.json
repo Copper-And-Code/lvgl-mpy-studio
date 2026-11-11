@@ -1,0 +1,90 @@
+{
+  "generatedDate": "2023-11-14T22:15:25.000Z",
+  "project": {
+    "projectName": "Random 93",
+    "pages": [
+      {
+        "id": "p93",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-93-0",
+            "type": "dropdown",
+            "name": "dropdown_93_0",
+            "parentId": null,
+            "props": {
+              "x": 554,
+              "y": 162,
+              "width": 69,
+              "height": 48,
+              "options": "Option 1\nOption 2\nOption 3",
+              "selected": 0,
+              "bgColor": "#FFFFFF",
+              "textColor": "#000000",
+              "fontSize": 14,
+              "dir": "LV_DIR_BOTTOM",
+              "symbol": "LV_SYMBOL_DOWN",
+              "highlightSelected": true,
+              "text": "Testo 93:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-93-1",
+            "type": "bar",
+            "name": "bar_93_1",
+            "parentId": null,
+            "props": {
+              "x": 427,
+              "y": 203,
+              "width": 253,
+              "height": 66,
+              "min": 0,
+              "max": 100,
+              "value": 50,
+              "bgColor": "#E0E0E0",
+              "indicatorColor": "#4CAF50",
+              "mode": "LV_BAR_MODE_NORMAL",
+              "animated": true,
+              "startValue": 0,
+              "text": "Testo 93:1 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-93-2",
+            "type": "roller",
+            "name": "roller_93_2",
+            "parentId": null,
+            "props": {
+              "x": 13,
+              "y": 84,
+              "width": 24,
+              "height": 67,
+              "options": "Option 1\nOption 2\nOption 3\nOption 4\nOption 5",
+              "selected": 0,
+              "visibleRows": 3,
+              "bgColor": "#F5F5F5",
+              "selectedColor": "#2196F3",
+              "textColor": "#000000",
+              "fontSize": 16,
+              "infinite": false,
+              "text": "Testo 93:2 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

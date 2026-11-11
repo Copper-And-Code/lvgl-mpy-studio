@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lvgl-mpy-studio"
+dynamic = ["version"]
+description = "Visual IDE for LVGL 9.5 on MicroPython, with C export"
+license = "GPL-3.0-or-later AND MIT"
+license-files = ["LICENSE", "LICENSE-MIT.txt", "LICENSING.md", "native/lvsim/LICENSE"]
+authors = [{name = "Nunzio Raciti"}]
+requires-python = ">=3.11"
+dependencies = ["PySide6==6.12.0", "mpremote==1.29.0", "pyserial==3.5", "qtawesome==1.4.2"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10", "pytest-qt>=4.4,<5", "hypothesis>=6,<7", "ruff>=0.17,<1"]
+packaging = ["pyinstaller==6.22.3"]
+
+[project.scripts]
+lvgl-mpy-studio = "lvgl_mpy_studio.cli:main"
+lvgl-ide = "lvgl_mpy_studio.cli:main"  # the name of the command up to 0.4
+
+[tool.setuptools.dynamic]
+version = {attr = "lvgl_mpy_studio.__version__"}
+
+[tool.setuptools.packages.find]
+include = ["lvgl_mpy_studio*"]
+
+[tool.setuptools.package-data]
+"lvgl_mpy_studio.gen" = ["widgets.json", "completion.json"]
+"lvgl_mpy_studio.gen.output" = ["LICENSE", "licenses/*.txt"]
+"lvgl_mpy_studio" = ["translations/*.json", "boards/*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.ruff]
+line-length = 320
+# reference/ is the frozen corpus of the legacy generator; runtime/ holds MicroPython sources.
+extend-exclude = ["reference", "runtime", "cache", "build", "dist", "examples"]
+
+[tool.ruff.lint]
+# Only real mistakes: undefined names, unused imports, syntax errors. The code is not reformatted.
+select = ["F", "E9"]

@@ -1,0 +1,39 @@
+{
+  "generatedDate": "2023-11-14T22:14:52.000Z",
+  "project": {
+    "projectName": "Random 60",
+    "pages": [
+      {
+        "id": "p60",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-60-0",
+            "type": "imagebutton",
+            "name": "imagebutton_60_0",
+            "parentId": null,
+            "props": {
+              "x": 679,
+              "y": 124,
+              "width": 84,
+              "height": 118,
+              "src": "",
+              "text": "Testo 60:0 \" \\ Città",
+              "bgColor": "#2196F3",
+              "textColor": "#FFFFFF",
+              "fontSize": 14,
+              "radius": 5
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

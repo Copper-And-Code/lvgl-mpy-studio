@@ -1,0 +1,152 @@
+{
+  "generatedDate": "2023-11-14T22:16:57.000Z",
+  "project": {
+    "projectName": "Random 185",
+    "pages": [
+      {
+        "id": "p185",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-185-0",
+            "type": "span",
+            "name": "span_185_0",
+            "parentId": null,
+            "props": {
+              "x": 428,
+              "y": 242,
+              "width": 195,
+              "height": 155,
+              "spans": "Normal text|14|#000000\nBold text|16|#FF0000\nSmall text|12|#666666",
+              "bgColor": "#FFFFFF",
+              "mode": "wrap",
+              "text": "Testo 185:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-185-1",
+            "type": "buttonmatrix",
+            "name": "buttonmatrix_185_1",
+            "parentId": null,
+            "props": {
+              "x": 668,
+              "y": 360,
+              "width": 73,
+              "height": 54,
+              "map": "1,2,3\n4,5,6\n7,8,9\n*,0,#",
+              "bgColor": "#FFFFFF",
+              "btnColor": "#E0E0E0",
+              "textColor": "#000000",
+              "fontSize": 14,
+              "oneCheck": false,
+              "text": "Testo 185:1 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-185-2",
+            "type": "button",
+            "name": "button_185_2",
+            "parentId": null,
+            "props": {
+              "x": 304,
+              "y": 358,
+              "width": 61,
+              "height": 32,
+              "text": "Testo 185:2 \" \\ Città",
+              "bgColor": "#2196F3",
+              "textColor": "#FFFFFF",
+              "fontSize": 14,
+              "radius": 5
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-185-3",
+            "type": "msgbox",
+            "name": "msgbox_185_3",
+            "parentId": null,
+            "props": {
+              "x": 526,
+              "y": 22,
+              "width": 192,
+              "height": 63,
+              "title": "Notice",
+              "text": "Testo 185:3 \" \\ Città",
+              "buttons": "OK\nCancel",
+              "closeButton": true,
+              "bgColor": "#FFFFFF",
+              "textColor": "#000000",
+              "titleColor": "#333333",
+              "fontSize": 14
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-185-4",
+            "type": "calendar",
+            "name": "calendar_185_4",
+            "parentId": null,
+            "props": {
+              "x": 479,
+              "y": 37,
+              "width": 174,
+              "height": 103,
+              "year": 2026,
+              "month": 10,
+              "day": 28,
+              "showHeader": true,
+              "bgColor": "#FFFFFF",
+              "todayColor": "#2196F3",
+              "selectedColor": "#1976D2",
+              "text": "Testo 185:4 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-185-5",
+            "type": "button",
+            "name": "button_185_5",
+            "parentId": null,
+            "props": {
+              "x": 63,
+              "y": 333,
+              "width": 229,
+              "height": 157,
+              "text": "Testo 185:5 \" \\ Città",
+              "bgColor": "#2196F3",
+              "textColor": "#FFFFFF",
+              "fontSize": 14,
+              "radius": 5
+            },
+            "events": [
+              {
+                "id": "e5",
+                "type": "LV_EVENT_CLICKED",
+                "callback": "button_185_5_changed",
+                "code": ""
+              }
+            ],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

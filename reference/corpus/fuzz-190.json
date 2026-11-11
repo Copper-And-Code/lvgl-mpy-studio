@@ -1,0 +1,62 @@
+{
+  "generatedDate": "2023-11-14T22:17:02.000Z",
+  "project": {
+    "projectName": "Random 190",
+    "pages": [
+      {
+        "id": "p190",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-190-0",
+            "type": "textarea",
+            "name": "textarea_190_0",
+            "parentId": null,
+            "props": {
+              "x": 500,
+              "y": 244,
+              "width": 48,
+              "height": 15,
+              "text": "Testo 190:0 \" \\ Città",
+              "placeholder": "Type here",
+              "bgColor": "#FFFFFF",
+              "textColor": "#000000",
+              "fontSize": 14,
+              "oneLine": false,
+              "password": false,
+              "maxLength": 0,
+              "acceptedChars": ""
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-190-1",
+            "type": "line",
+            "name": "line_190_1",
+            "parentId": null,
+            "props": {
+              "x": 346,
+              "y": 340,
+              "width": 82,
+              "height": 154,
+              "points": "0,0 200,0",
+              "lineColor": "#000000",
+              "lineWidth": 2,
+              "rounded": false,
+              "text": "Testo 190:1 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

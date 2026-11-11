@@ -1,0 +1,41 @@
+{
+  "generatedDate": "2023-11-14T22:13:40.000Z",
+  "project": {
+    "projectName": "One tabview",
+    "pages": [
+      {
+        "id": "p1",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "w20",
+            "type": "tabview",
+            "name": "Tab View_w20",
+            "parentId": null,
+            "props": {
+              "x": 80,
+              "y": 70,
+              "width": 300,
+              "height": 250,
+              "tabPosition": "top",
+              "tabBarSize": 40,
+              "tabs": "Tab 1\nTab 2\nTab 3",
+              "activeTab": 0,
+              "bgColor": "#FFFFFF",
+              "tabBgColor": "#F5F5F5",
+              "tabActiveColor": "#2196F3",
+              "textColor": "#000000"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

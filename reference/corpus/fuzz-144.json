@@ -1,0 +1,68 @@
+{
+  "generatedDate": "2023-11-14T22:16:16.000Z",
+  "project": {
+    "projectName": "Random 144",
+    "pages": [
+      {
+        "id": "p144",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-144-0",
+            "type": "table",
+            "name": "table_144_0",
+            "parentId": null,
+            "props": {
+              "x": 310,
+              "y": 183,
+              "width": 87,
+              "height": 75,
+              "rows": 4,
+              "cols": 3,
+              "colWidths": "100,100,100",
+              "headerRow": "Col 1,Col 2,Col 3",
+              "cellData": "A1,B1,C1\nA2,B2,C2\nA3,B3,C3",
+              "bgColor": "#FFFFFF",
+              "textColor": "#000000",
+              "borderColor": "#E0E0E0",
+              "headerBgColor": "#F5F5F5",
+              "fontSize": 14,
+              "text": "Testo 144:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-144-1",
+            "type": "roller",
+            "name": "roller_144_1",
+            "parentId": null,
+            "props": {
+              "x": 56,
+              "y": 377,
+              "width": 244,
+              "height": 135,
+              "options": "Option 1\nOption 2\nOption 3\nOption 4\nOption 5",
+              "selected": 0,
+              "visibleRows": 3,
+              "bgColor": "#F5F5F5",
+              "selectedColor": "#2196F3",
+              "textColor": "#000000",
+              "fontSize": 16,
+              "infinite": false,
+              "text": "Testo 144:1 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

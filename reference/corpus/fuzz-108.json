@@ -1,0 +1,70 @@
+{
+  "generatedDate": "2023-11-14T22:15:40.000Z",
+  "project": {
+    "projectName": "Random 108",
+    "pages": [
+      {
+        "id": "p108",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-108-0",
+            "type": "calendar",
+            "name": "calendar_108_0",
+            "parentId": null,
+            "props": {
+              "x": 494,
+              "y": 244,
+              "width": 41,
+              "height": 104,
+              "year": 2026,
+              "month": 10,
+              "day": 28,
+              "showHeader": true,
+              "bgColor": "#FFFFFF",
+              "todayColor": "#2196F3",
+              "selectedColor": "#1976D2",
+              "text": "Testo 108:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-108-1",
+            "type": "chart",
+            "name": "chart_108_1",
+            "parentId": null,
+            "props": {
+              "x": 664,
+              "y": 312,
+              "width": 233,
+              "height": 40,
+              "chartType": "line",
+              "data": "10,20,30,25,40,35,50",
+              "data2": "",
+              "bgColor": "#FFFFFF",
+              "lineColor": "#2196F3",
+              "lineColor2": "#FF5722",
+              "pointCount": 10,
+              "showPoints": true,
+              "rangeYMin": 0,
+              "rangeYMax": 100,
+              "divLineCount": 3,
+              "divLineCountSec": 5,
+              "updateMode": "shift",
+              "text": "Testo 108:1 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "generatedDate": "2023-11-14T22:16:45.000Z",
+  "project": {
+    "projectName": "Random 173",
+    "pages": [
+      {
+        "id": "p173",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-173-0",
+            "type": "scale",
+            "name": "scale_173_0",
+            "parentId": null,
+            "props": {
+              "x": 693,
+              "y": 183,
+              "width": 72,
+              "height": 48,
+              "min": 0,
+              "max": 100,
+              "majorTickEvery": 10,
+              "majorTickLength": 15,
+              "minorTickCount": 4,
+              "minorTickLength": 8,
+              "labelShow": true,
+              "lineColor": "#000000",
+              "textColor": "#000000",
+              "mode": "horizontal",
+              "text": "Testo 173:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-173-1",
+            "type": "arc",
+            "name": "arc_173_1",
+            "parentId": null,
+            "props": {
+              "x": 379,
+              "y": 327,
+              "width": 262,
+              "height": 17,
+              "min": 0,
+              "max": 100,
+              "value": 50,
+              "bgColor": "#E0E0E0",
+              "indicatorColor": "#FF9800",
+              "startAngle": 135,
+              "endAngle": 45,
+              "rotation": 0,
+              "mode": "LV_ARC_MODE_NORMAL",
+              "knobColor": "#FF9800",
+              "lineWidth": 10,
+              "text": "Testo 173:1 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

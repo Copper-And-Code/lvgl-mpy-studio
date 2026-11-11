@@ -1,0 +1,162 @@
+{
+  "generatedDate": "2023-11-14T22:14:21.000Z",
+  "project": {
+    "projectName": "Random 29",
+    "pages": [
+      {
+        "id": "p29",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-29-0",
+            "type": "tabview",
+            "name": "tabview_29_0",
+            "parentId": null,
+            "props": {
+              "x": 217,
+              "y": 345,
+              "width": 33,
+              "height": 158,
+              "tabPosition": "top",
+              "tabBarSize": 40,
+              "tabs": "Tab 1\nTab 2\nTab 3",
+              "activeTab": 0,
+              "bgColor": "#FFFFFF",
+              "tabBgColor": "#F5F5F5",
+              "tabActiveColor": "#2196F3",
+              "textColor": "#000000",
+              "text": "Testo 29:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-29-1",
+            "type": "tabview",
+            "name": "tabview_29_1",
+            "parentId": null,
+            "props": {
+              "x": 620,
+              "y": 336,
+              "width": 142,
+              "height": 14,
+              "tabPosition": "top",
+              "tabBarSize": 40,
+              "tabs": "Tab 1\nTab 2\nTab 3",
+              "activeTab": 0,
+              "bgColor": "#FFFFFF",
+              "tabBgColor": "#F5F5F5",
+              "tabActiveColor": "#2196F3",
+              "textColor": "#000000",
+              "text": "Testo 29:1 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-29-2",
+            "type": "chart",
+            "name": "chart_29_2",
+            "parentId": null,
+            "props": {
+              "x": 359,
+              "y": 5,
+              "width": 83,
+              "height": 132,
+              "chartType": "line",
+              "data": "10,20,30,25,40,35,50",
+              "data2": "",
+              "bgColor": "#FFFFFF",
+              "lineColor": "#2196F3",
+              "lineColor2": "#FF5722",
+              "pointCount": 10,
+              "showPoints": true,
+              "rangeYMin": 0,
+              "rangeYMax": 100,
+              "divLineCount": 3,
+              "divLineCountSec": 5,
+              "updateMode": "shift",
+              "text": "Testo 29:2 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-29-3",
+            "type": "win",
+            "name": "win_29_3",
+            "parentId": null,
+            "props": {
+              "x": 313,
+              "y": 188,
+              "width": 76,
+              "height": 72,
+              "headerHeight": 40,
+              "title": "Window Title",
+              "bgColor": "#FFFFFF",
+              "headerBgColor": "#2196F3",
+              "titleColor": "#FFFFFF",
+              "text": "Testo 29:3 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-29-4",
+            "type": "table",
+            "name": "table_29_4",
+            "parentId": null,
+            "props": {
+              "x": 432,
+              "y": 184,
+              "width": 240,
+              "height": 140,
+              "rows": 4,
+              "cols": 3,
+              "colWidths": "100,100,100",
+              "headerRow": "Col 1,Col 2,Col 3",
+              "cellData": "A1,B1,C1\nA2,B2,C2\nA3,B3,C3",
+              "bgColor": "#FFFFFF",
+              "textColor": "#000000",
+              "borderColor": "#E0E0E0",
+              "headerBgColor": "#F5F5F5",
+              "fontSize": 14,
+              "text": "Testo 29:4 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-29-5",
+            "type": "line",
+            "name": "line_29_5",
+            "parentId": null,
+            "props": {
+              "x": 457,
+              "y": 133,
+              "width": 36,
+              "height": 68,
+              "points": "0,0 200,0",
+              "lineColor": "#000000",
+              "lineWidth": 2,
+              "rounded": false,
+              "text": "Testo 29:5 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

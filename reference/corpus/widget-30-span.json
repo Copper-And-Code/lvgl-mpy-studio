@@ -1,0 +1,36 @@
+{
+  "generatedDate": "2023-11-14T22:13:49.000Z",
+  "project": {
+    "projectName": "One span",
+    "pages": [
+      {
+        "id": "p1",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "w29",
+            "type": "span",
+            "name": "Span Group_w29",
+            "parentId": null,
+            "props": {
+              "x": 107,
+              "y": 88,
+              "width": 200,
+              "height": 60,
+              "spans": "Normal text|14|#000000\nBold text|16|#FF0000\nSmall text|12|#666666",
+              "bgColor": "#FFFFFF",
+              "mode": "wrap"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

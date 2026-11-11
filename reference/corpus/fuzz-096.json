@@ -1,0 +1,42 @@
+{
+  "generatedDate": "2023-11-14T22:15:28.000Z",
+  "project": {
+    "projectName": "Random 96",
+    "pages": [
+      {
+        "id": "p96",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-96-0",
+            "type": "roller",
+            "name": "roller_96_0",
+            "parentId": null,
+            "props": {
+              "x": 257,
+              "y": 338,
+              "width": 228,
+              "height": 80,
+              "options": "Option 1\nOption 2\nOption 3\nOption 4\nOption 5",
+              "selected": 0,
+              "visibleRows": 3,
+              "bgColor": "#F5F5F5",
+              "selectedColor": "#2196F3",
+              "textColor": "#000000",
+              "fontSize": 16,
+              "infinite": false,
+              "text": "Testo 96:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

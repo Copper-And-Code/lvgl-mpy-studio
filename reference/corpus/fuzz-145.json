@@ -1,0 +1,84 @@
+{
+  "generatedDate": "2023-11-14T22:16:17.000Z",
+  "project": {
+    "projectName": "Random 145",
+    "pages": [
+      {
+        "id": "p145",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-145-0",
+            "type": "switch",
+            "name": "switch_145_0",
+            "parentId": null,
+            "props": {
+              "x": 655,
+              "y": 139,
+              "width": 191,
+              "height": 106,
+              "checked": false,
+              "onColor": "#4CAF50",
+              "offColor": "#BDBDBD",
+              "knobColor": "#FFFFFF",
+              "disabled": false,
+              "text": "Testo 145:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-145-1",
+            "type": "scale",
+            "name": "scale_145_1",
+            "parentId": null,
+            "props": {
+              "x": 44,
+              "y": 18,
+              "width": 259,
+              "height": 44,
+              "min": 0,
+              "max": 100,
+              "majorTickEvery": 10,
+              "majorTickLength": 15,
+              "minorTickCount": 4,
+              "minorTickLength": 8,
+              "labelShow": true,
+              "lineColor": "#000000",
+              "textColor": "#000000",
+              "mode": "horizontal",
+              "text": "Testo 145:1 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-145-2",
+            "type": "tileview",
+            "name": "tileview_145_2",
+            "parentId": null,
+            "props": {
+              "x": 78,
+              "y": 315,
+              "width": 37,
+              "height": 124,
+              "rows": 2,
+              "cols": 2,
+              "bgColor": "#FFFFFF",
+              "text": "Testo 145:2 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

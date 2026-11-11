@@ -1,0 +1,39 @@
+{
+  "generatedDate": "2023-11-14T22:15:17.000Z",
+  "project": {
+    "projectName": "Random 85",
+    "pages": [
+      {
+        "id": "p85",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-85-0",
+            "type": "imagebutton",
+            "name": "imagebutton_85_0",
+            "parentId": null,
+            "props": {
+              "x": 241,
+              "y": 129,
+              "width": 86,
+              "height": 153,
+              "src": "",
+              "text": "Testo 85:0 \" \\ Città",
+              "bgColor": "#2196F3",
+              "textColor": "#FFFFFF",
+              "fontSize": 14,
+              "radius": 5
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

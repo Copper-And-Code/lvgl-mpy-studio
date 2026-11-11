@@ -1,0 +1,172 @@
+{
+  "generatedDate": "2023-11-14T22:14:46.000Z",
+  "project": {
+    "projectName": "Random 54",
+    "pages": [
+      {
+        "id": "p54",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-54-0",
+            "type": "win",
+            "name": "win_54_0",
+            "parentId": null,
+            "props": {
+              "x": 417,
+              "y": 362,
+              "width": 149,
+              "height": 91,
+              "headerHeight": 40,
+              "title": "Window Title",
+              "bgColor": "#FFFFFF",
+              "headerBgColor": "#2196F3",
+              "titleColor": "#FFFFFF",
+              "text": "Testo 54:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-54-1",
+            "type": "led",
+            "name": "led_54_1",
+            "parentId": null,
+            "props": {
+              "x": 589,
+              "y": 6,
+              "width": 194,
+              "height": 79,
+              "color": "#FF0000",
+              "brightness": 255,
+              "text": "Testo 54:1 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-54-2",
+            "type": "switch",
+            "name": "switch_54_2",
+            "parentId": null,
+            "props": {
+              "x": 331,
+              "y": 157,
+              "width": 141,
+              "height": 55,
+              "checked": false,
+              "onColor": "#4CAF50",
+              "offColor": "#BDBDBD",
+              "knobColor": "#FFFFFF",
+              "disabled": false,
+              "text": "Testo 54:2 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-54-3",
+            "type": "chart",
+            "name": "chart_54_3",
+            "parentId": null,
+            "props": {
+              "x": 242,
+              "y": 76,
+              "width": 57,
+              "height": 70,
+              "chartType": "line",
+              "data": "10,20,30,25,40,35,50",
+              "data2": "",
+              "bgColor": "#FFFFFF",
+              "lineColor": "#2196F3",
+              "lineColor2": "#FF5722",
+              "pointCount": 10,
+              "showPoints": true,
+              "rangeYMin": 0,
+              "rangeYMax": 100,
+              "divLineCount": 3,
+              "divLineCountSec": 5,
+              "updateMode": "shift",
+              "text": "Testo 54:3 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-54-4",
+            "type": "calendar",
+            "name": "calendar_54_4",
+            "parentId": null,
+            "props": {
+              "x": 69,
+              "y": 319,
+              "width": 38,
+              "height": 126,
+              "year": 2026,
+              "month": 10,
+              "day": 28,
+              "showHeader": true,
+              "bgColor": "#FFFFFF",
+              "todayColor": "#2196F3",
+              "selectedColor": "#1976D2",
+              "text": "Testo 54:4 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-54-5",
+            "type": "image",
+            "name": "image_54_5",
+            "parentId": null,
+            "props": {
+              "x": 301,
+              "y": 180,
+              "width": 238,
+              "height": 61,
+              "src": "",
+              "fit": "contain",
+              "bgColor": "#F0F0F0",
+              "rotation": 0,
+              "zoom": 256,
+              "antialias": true,
+              "pivotX": 0,
+              "pivotY": 0,
+              "text": "Testo 54:5 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-54-6",
+            "type": "led",
+            "name": "led_54_6",
+            "parentId": null,
+            "props": {
+              "x": 409,
+              "y": 131,
+              "width": 142,
+              "height": 61,
+              "color": "#FF0000",
+              "brightness": 255,
+              "text": "Testo 54:6 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

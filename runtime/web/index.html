@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{title}</title>
+<style>
+  :root { color-scheme: dark; }
+  html, body { margin: 0; height: 100%; background: #101318; color: #d8dde6; font: 14px system-ui, sans-serif; }
+  main { min-height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 16px; box-sizing: border-box; }
+  canvas { display: block; max-width: 100%; max-height: calc(100vh - 64px); aspect-ratio: {width} / {height}; background: #000; touch-action: none; image-rendering: pixelated; }
+  #status { min-height: 1.2em; white-space: pre-wrap; text-align: center; }
+  #status.failed { color: #ff8a80; }
+</style>
+</head>
+<body>
+<main>
+  <canvas id="canvas" width="{width}" height="{height}" oncontextmenu="event.preventDefault()"></canvas>
+  <div id="status">Loading…</div>
+</main>
+<script type="module" src="lms_web.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+{
+  "generatedDate": "2023-11-14T22:14:05.000Z",
+  "project": {
+    "projectName": "Random 13",
+    "pages": [
+      {
+        "id": "p13",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-13-0",
+            "type": "scale",
+            "name": "scale_13_0",
+            "parentId": null,
+            "props": {
+              "x": 298,
+              "y": 172,
+              "width": 41,
+              "height": 121,
+              "min": 0,
+              "max": 100,
+              "majorTickEvery": 10,
+              "majorTickLength": 15,
+              "minorTickCount": 4,
+              "minorTickLength": 8,
+              "labelShow": true,
+              "lineColor": "#000000",
+              "textColor": "#000000",
+              "mode": "horizontal",
+              "text": "Testo 13:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

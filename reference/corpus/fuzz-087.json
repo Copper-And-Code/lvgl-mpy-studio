@@ -1,0 +1,150 @@
+{
+  "generatedDate": "2023-11-14T22:15:19.000Z",
+  "project": {
+    "projectName": "Random 87",
+    "pages": [
+      {
+        "id": "p87",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-87-0",
+            "type": "spinner",
+            "name": "spinner_87_0",
+            "parentId": null,
+            "props": {
+              "x": 222,
+              "y": 166,
+              "width": 196,
+              "height": 89,
+              "speed": 1000,
+              "arcLength": 60,
+              "color": "#2196F3",
+              "lineWidth": 8,
+              "text": "Testo 87:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-87-1",
+            "type": "spinner",
+            "name": "spinner_87_1",
+            "parentId": null,
+            "props": {
+              "x": 58,
+              "y": 107,
+              "width": 35,
+              "height": 73,
+              "speed": 1000,
+              "arcLength": 60,
+              "color": "#2196F3",
+              "lineWidth": 8,
+              "text": "Testo 87:1 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-87-2",
+            "type": "spinbox",
+            "name": "spinbox_87_2",
+            "parentId": null,
+            "props": {
+              "x": 272,
+              "y": 153,
+              "width": 243,
+              "height": 154,
+              "min": 0,
+              "max": 999,
+              "value": 0,
+              "digitCount": 4,
+              "separatorPos": 0,
+              "step": 1,
+              "rollover": false,
+              "bgColor": "#FFFFFF",
+              "textColor": "#000000",
+              "fontSize": 16,
+              "text": "Testo 87:2 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-87-3",
+            "type": "win",
+            "name": "win_87_3",
+            "parentId": null,
+            "props": {
+              "x": 121,
+              "y": 273,
+              "width": 131,
+              "height": 141,
+              "headerHeight": 40,
+              "title": "Window Title",
+              "bgColor": "#FFFFFF",
+              "headerBgColor": "#2196F3",
+              "titleColor": "#FFFFFF",
+              "text": "Testo 87:3 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-87-4",
+            "type": "image",
+            "name": "image_87_4",
+            "parentId": null,
+            "props": {
+              "x": 168,
+              "y": 267,
+              "width": 97,
+              "height": 46,
+              "src": "",
+              "fit": "contain",
+              "bgColor": "#F0F0F0",
+              "rotation": 0,
+              "zoom": 256,
+              "antialias": true,
+              "pivotX": 0,
+              "pivotY": 0,
+              "text": "Testo 87:4 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-87-5",
+            "type": "win",
+            "name": "win_87_5",
+            "parentId": null,
+            "props": {
+              "x": 520,
+              "y": 187,
+              "width": 37,
+              "height": 84,
+              "headerHeight": 40,
+              "title": "Window Title",
+              "bgColor": "#FFFFFF",
+              "headerBgColor": "#2196F3",
+              "titleColor": "#FFFFFF",
+              "text": "Testo 87:5 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

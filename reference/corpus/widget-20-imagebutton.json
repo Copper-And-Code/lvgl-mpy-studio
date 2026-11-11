@@ -1,0 +1,39 @@
+{
+  "generatedDate": "2023-11-14T22:13:39.000Z",
+  "project": {
+    "projectName": "One imagebutton",
+    "pages": [
+      {
+        "id": "p1",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "w19",
+            "type": "imagebutton",
+            "name": "Image Button_w19",
+            "parentId": null,
+            "props": {
+              "x": 77,
+              "y": 68,
+              "width": 120,
+              "height": 120,
+              "src": "",
+              "text": "Button",
+              "bgColor": "#2196F3",
+              "textColor": "#FFFFFF",
+              "fontSize": 14,
+              "radius": 5
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

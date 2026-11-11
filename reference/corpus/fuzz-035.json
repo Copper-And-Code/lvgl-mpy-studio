@@ -1,0 +1,41 @@
+{
+  "generatedDate": "2023-11-14T22:14:27.000Z",
+  "project": {
+    "projectName": "Random 35",
+    "pages": [
+      {
+        "id": "p35",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-35-0",
+            "type": "calendar",
+            "name": "calendar_35_0",
+            "parentId": null,
+            "props": {
+              "x": 271,
+              "y": 27,
+              "width": 24,
+              "height": 54,
+              "year": 2026,
+              "month": 10,
+              "day": 28,
+              "showHeader": true,
+              "bgColor": "#FFFFFF",
+              "todayColor": "#2196F3",
+              "selectedColor": "#1976D2",
+              "text": "Testo 35:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

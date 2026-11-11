@@ -1,0 +1,39 @@
+{
+  "generatedDate": "2023-11-14T22:13:53.000Z",
+  "project": {
+    "projectName": "Random 1",
+    "pages": [
+      {
+        "id": "p1",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-1-0",
+            "type": "label",
+            "name": "label_1_0",
+            "parentId": null,
+            "props": {
+              "x": 482,
+              "y": 8,
+              "width": 99,
+              "height": 62,
+              "text": "Testo 1:0 \" \\ Città",
+              "textColor": "#000000",
+              "fontSize": 14,
+              "longMode": "LV_LABEL_LONG_MODE_WRAP",
+              "textAlign": "LV_TEXT_ALIGN_CENTER",
+              "recolor": false
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

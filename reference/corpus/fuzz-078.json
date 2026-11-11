@@ -1,0 +1,60 @@
+{
+  "generatedDate": "2023-11-14T22:15:10.000Z",
+  "project": {
+    "projectName": "Random 78",
+    "pages": [
+      {
+        "id": "p78",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-78-0",
+            "type": "calendar",
+            "name": "calendar_78_0",
+            "parentId": null,
+            "props": {
+              "x": 285,
+              "y": 394,
+              "width": 21,
+              "height": 65,
+              "year": 2026,
+              "month": 10,
+              "day": 28,
+              "showHeader": true,
+              "bgColor": "#FFFFFF",
+              "todayColor": "#2196F3",
+              "selectedColor": "#1976D2",
+              "text": "Testo 78:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-78-1",
+            "type": "span",
+            "name": "span_78_1",
+            "parentId": null,
+            "props": {
+              "x": 431,
+              "y": 123,
+              "width": 204,
+              "height": 153,
+              "spans": "Normal text|14|#000000\nBold text|16|#FF0000\nSmall text|12|#666666",
+              "bgColor": "#FFFFFF",
+              "mode": "wrap",
+              "text": "Testo 78:1 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

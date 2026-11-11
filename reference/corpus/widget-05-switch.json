@@ -1,0 +1,38 @@
+{
+  "generatedDate": "2023-11-14T22:13:24.000Z",
+  "project": {
+    "projectName": "One switch",
+    "pages": [
+      {
+        "id": "p1",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "w4",
+            "type": "switch",
+            "name": "Switch_w4",
+            "parentId": null,
+            "props": {
+              "x": 32,
+              "y": 38,
+              "width": 60,
+              "height": 30,
+              "checked": false,
+              "onColor": "#4CAF50",
+              "offColor": "#BDBDBD",
+              "knobColor": "#FFFFFF",
+              "disabled": false
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

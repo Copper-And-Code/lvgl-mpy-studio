@@ -1,0 +1,91 @@
+{
+  "generatedDate": "2023-11-14T22:14:48.000Z",
+  "project": {
+    "projectName": "Random 56",
+    "pages": [
+      {
+        "id": "p56",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-56-0",
+            "type": "calendar",
+            "name": "calendar_56_0",
+            "parentId": null,
+            "props": {
+              "x": 378,
+              "y": 147,
+              "width": 210,
+              "height": 145,
+              "year": 2026,
+              "month": 10,
+              "day": 28,
+              "showHeader": true,
+              "bgColor": "#FFFFFF",
+              "todayColor": "#2196F3",
+              "selectedColor": "#1976D2",
+              "text": "Testo 56:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-56-1",
+            "type": "scale",
+            "name": "scale_56_1",
+            "parentId": null,
+            "props": {
+              "x": 511,
+              "y": 138,
+              "width": 35,
+              "height": 137,
+              "min": 0,
+              "max": 100,
+              "majorTickEvery": 10,
+              "majorTickLength": 15,
+              "minorTickCount": 4,
+              "minorTickLength": 8,
+              "labelShow": true,
+              "lineColor": "#000000",
+              "textColor": "#000000",
+              "mode": "horizontal",
+              "text": "Testo 56:1 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-56-2",
+            "type": "tabview",
+            "name": "tabview_56_2",
+            "parentId": null,
+            "props": {
+              "x": 130,
+              "y": 309,
+              "width": 48,
+              "height": 111,
+              "tabPosition": "top",
+              "tabBarSize": 40,
+              "tabs": "Tab 1\nTab 2\nTab 3",
+              "activeTab": 0,
+              "bgColor": "#FFFFFF",
+              "tabBgColor": "#F5F5F5",
+              "tabActiveColor": "#2196F3",
+              "textColor": "#000000",
+              "text": "Testo 56:2 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

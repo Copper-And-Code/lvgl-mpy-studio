@@ -1,0 +1,164 @@
+{
+  "generatedDate": "2023-11-14T22:17:03.000Z",
+  "project": {
+    "projectName": "Random 191",
+    "pages": [
+      {
+        "id": "p191",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-191-0",
+            "type": "checkbox",
+            "name": "checkbox_191_0",
+            "parentId": null,
+            "props": {
+              "x": 122,
+              "y": 316,
+              "width": 54,
+              "height": 95,
+              "text": "Testo 191:0 \" \\ Città",
+              "checked": false,
+              "textColor": "#000000",
+              "fontSize": 14,
+              "checkedColor": "#2196F3",
+              "disabled": false
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-191-1",
+            "type": "button",
+            "name": "button_191_1",
+            "parentId": null,
+            "props": {
+              "x": 69,
+              "y": 398,
+              "width": 130,
+              "height": 80,
+              "text": "Testo 191:1 \" \\ Città",
+              "bgColor": "#2196F3",
+              "textColor": "#FFFFFF",
+              "fontSize": 14,
+              "radius": 5
+            },
+            "events": [
+              {
+                "id": "e1",
+                "type": "LV_EVENT_CLICKED",
+                "callback": "button_191_1_changed",
+                "code": "// handled by app"
+              }
+            ],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-191-2",
+            "type": "span",
+            "name": "span_191_2",
+            "parentId": null,
+            "props": {
+              "x": 132,
+              "y": 91,
+              "width": 258,
+              "height": 95,
+              "spans": "Normal text|14|#000000\nBold text|16|#FF0000\nSmall text|12|#666666",
+              "bgColor": "#FFFFFF",
+              "mode": "wrap",
+              "text": "Testo 191:2 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-191-3",
+            "type": "line",
+            "name": "line_191_3",
+            "parentId": null,
+            "props": {
+              "x": 383,
+              "y": 387,
+              "width": 47,
+              "height": 13,
+              "points": "0,0 200,0",
+              "lineColor": "#000000",
+              "lineWidth": 2,
+              "rounded": false,
+              "text": "Testo 191:3 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-191-4",
+            "type": "led",
+            "name": "led_191_4",
+            "parentId": null,
+            "props": {
+              "x": 236,
+              "y": 151,
+              "width": 65,
+              "height": 128,
+              "color": "#FF0000",
+              "brightness": 255,
+              "text": "Testo 191:4 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-191-5",
+            "type": "spinner",
+            "name": "spinner_191_5",
+            "parentId": null,
+            "props": {
+              "x": 42,
+              "y": 31,
+              "width": 54,
+              "height": 142,
+              "speed": 1000,
+              "arcLength": 60,
+              "color": "#2196F3",
+              "lineWidth": 8,
+              "text": "Testo 191:5 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-191-6",
+            "type": "win",
+            "name": "win_191_6",
+            "parentId": null,
+            "props": {
+              "x": 302,
+              "y": 144,
+              "width": 157,
+              "height": 35,
+              "headerHeight": 40,
+              "title": "Window Title",
+              "bgColor": "#FFFFFF",
+              "headerBgColor": "#2196F3",
+              "titleColor": "#FFFFFF",
+              "text": "Testo 191:6 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

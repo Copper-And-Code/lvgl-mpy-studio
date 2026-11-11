@@ -1,0 +1,2478 @@
+{
+  "button": {
+    "type": "button",
+    "name": "Button",
+    "lvglType": "lv_button",
+    "icon": "🔘",
+    "category": "Basic",
+    "defaultProps": {
+      "x": 50,
+      "y": 50,
+      "width": 100,
+      "height": 40,
+      "text": "Button",
+      "bgColor": "#2196F3",
+      "textColor": "#FFFFFF",
+      "fontSize": 14,
+      "radius": 5
+    },
+    "properties": [
+      {
+        "name": "x",
+        "type": "number",
+        "label": "X Position"
+      },
+      {
+        "name": "y",
+        "type": "number",
+        "label": "Y Position"
+      },
+      {
+        "name": "width",
+        "type": "number",
+        "label": "Width"
+      },
+      {
+        "name": "height",
+        "type": "number",
+        "label": "Height"
+      },
+      {
+        "name": "text",
+        "type": "string",
+        "label": "Text"
+      },
+      {
+        "name": "bgColor",
+        "type": "color",
+        "label": "Background Color"
+      },
+      {
+        "name": "textColor",
+        "type": "color",
+        "label": "Text Color"
+      },
+      {
+        "name": "fontSize",
+        "type": "number",
+        "label": "Font Size"
+      },
+      {
+        "name": "font",
+        "type": "font",
+        "label": "Font"
+      },
+      {
+        "name": "radius",
+        "type": "number",
+        "label": "Corner Radius"
+      }
+    ]
+  },
+  "label": {
+    "type": "label",
+    "name": "Label",
+    "lvglType": "lv_label",
+    "icon": "📝",
+    "category": "Basic",
+    "defaultProps": {
+      "x": 50,
+      "y": 50,
+      "width": 120,
+      "height": 30,
+      "text": "Label Text",
+      "textColor": "#000000",
+      "fontSize": 14,
+      "longMode": "LV_LABEL_LONG_MODE_WRAP",
+      "textAlign": "LV_TEXT_ALIGN_CENTER",
+      "recolor": false
+    },
+    "properties": [
+      {
+        "name": "x",
+        "type": "number",
+        "label": "X Position"
+      },
+      {
+        "name": "y",
+        "type": "number",
+        "label": "Y Position"
+      },
+      {
+        "name": "width",
+        "type": "number",
+        "label": "Width"
+      },
+      {
+        "name": "height",
+        "type": "number",
+        "label": "Height"
+      },
+      {
+        "name": "text",
+        "type": "string",
+        "label": "Text"
+      },
+      {
+        "name": "textColor",
+        "type": "color",
+        "label": "Text Color"
+      },
+      {
+        "name": "fontSize",
+        "type": "number",
+        "label": "Font Size"
+      },
+      {
+        "name": "font",
+        "type": "font",
+        "label": "Font"
+      },
+      {
+        "name": "longMode",
+        "type": "select",
+        "label": "Long Mode",
+        "options": [
+          "LV_LABEL_LONG_MODE_WRAP",
+          "LV_LABEL_LONG_MODE_DOTS",
+          "LV_LABEL_LONG_MODE_SCROLL",
+          "LV_LABEL_LONG_MODE_SCROLL_CIRCULAR",
+          "LV_LABEL_LONG_MODE_CLIP"
+        ]
+      },
+      {
+        "name": "textAlign",
+        "type": "select",
+        "label": "Text Alignment",
+        "options": [
+          "LV_TEXT_ALIGN_LEFT",
+          "LV_TEXT_ALIGN_CENTER",
+          "LV_TEXT_ALIGN_RIGHT",
+          "LV_TEXT_ALIGN_AUTO"
+        ]
+      },
+      {
+        "name": "recolor",
+        "type": "boolean",
+        "label": "Recolor Enable"
+      }
+    ]
+  },
+  "panel": {
+    "type": "panel",
+    "name": "Panel",
+    "lvglType": "lv_obj",
+    "icon": "▭",
+    "category": "Basic",
+    "defaultProps": {
+      "x": 50,
+      "y": 50,
+      "width": 200,
+      "height": 150,
+      "bgColor": "#F5F5F5",
+      "borderColor": "#BDBDBD",
+      "borderWidth": 2,
+      "radius": 5,
+      "flexFlow": "none",
+      "flexMainPlace": "none",
+      "flexCrossPlace": "none",
+      "padTop": 0,
+      "padBottom": 0,
+      "padLeft": 0,
+      "padRight": 0,
+      "padRow": 0,
+      "padColumn": 0,
+      "scrollbarMode": "LV_SCROLLBAR_MODE_AUTO"
+    },
+    "properties": [
+      {
+        "name": "x",
+        "type": "number",
+        "label": "X Position"
+      },
+      {
+        "name": "y",
+        "type": "number",
+        "label": "Y Position"
+      },
+      {
+        "name": "width",
+        "type": "number",
+        "label": "Width"
+      },
+      {
+        "name": "height",
+        "type": "number",
+        "label": "Height"
+      },
+      {
+        "name": "bgColor",
+        "type": "color",
+        "label": "Background Color"
+      },
+      {
+        "name": "borderColor",
+        "type": "color",
+        "label": "Border Color"
+      },
+      {
+        "name": "borderWidth",
+        "type": "number",
+        "label": "Border Width"
+      },
+      {
+        "name": "radius",
+        "type": "number",
+        "label": "Corner Radius"
+      },
+      {
+        "name": "flexFlow",
+        "type": "select",
+        "label": "Flex Flow",
+        "options": [
+          "none",
+          "LV_FLEX_FLOW_ROW",
+          "LV_FLEX_FLOW_COLUMN",
+          "LV_FLEX_FLOW_ROW_WRAP",
+          "LV_FLEX_FLOW_COLUMN_WRAP",
+          "LV_FLEX_FLOW_ROW_REVERSE",
+          "LV_FLEX_FLOW_COLUMN_REVERSE"
+        ]
+      },
+      {
+        "name": "flexMainPlace",
+        "type": "select",
+        "label": "Flex Main Align",
+        "options": [
+          "none",
+          "LV_FLEX_ALIGN_START",
+          "LV_FLEX_ALIGN_END",
+          "LV_FLEX_ALIGN_CENTER",
+          "LV_FLEX_ALIGN_SPACE_EVENLY",
+          "LV_FLEX_ALIGN_SPACE_AROUND",
+          "LV_FLEX_ALIGN_SPACE_BETWEEN"
+        ]
+      },
+      {
+        "name": "flexCrossPlace",
+        "type": "select",
+        "label": "Flex Cross Align",
+        "options": [
+          "none",
+          "LV_FLEX_ALIGN_START",
+          "LV_FLEX_ALIGN_END",
+          "LV_FLEX_ALIGN_CENTER",
+          "LV_FLEX_ALIGN_SPACE_EVENLY",
+          "LV_FLEX_ALIGN_SPACE_AROUND",
+          "LV_FLEX_ALIGN_SPACE_BETWEEN"
+        ]
+      },
+      {
+        "name": "padTop",
+        "type": "number",
+        "label": "Padding Top"
+      },
+      {
+        "name": "padBottom",
+        "type": "number",
+        "label": "Padding Bottom"
+      },
+      {
+        "name": "padLeft",
+        "type": "number",
+        "label": "Padding Left"
+      },
+      {
+        "name": "padRight",
+        "type": "number",
+        "label": "Padding Right"
+      },
+      {
+        "name": "padRow",
+        "type": "number",
+        "label": "Row Gap"
+      },
+      {
+        "name": "padColumn",
+        "type": "number",
+        "label": "Column Gap"
+      },
+      {
+        "name": "scrollbarMode",
+        "type": "select",
+        "label": "Scrollbar",
+        "options": [
+          "LV_SCROLLBAR_MODE_OFF",
+          "LV_SCROLLBAR_MODE_ON",
+          "LV_SCROLLBAR_MODE_ACTIVE",
+          "LV_SCROLLBAR_MODE_AUTO"
+        ]
+      }
+    ]
+  },
+  "slider": {
+    "type": "slider",
+    "name": "Slider",
+    "lvglType": "lv_slider",
+    "icon": "🎚️",
+    "category": "Input",
+    "defaultProps": {
+      "x": 50,
+      "y": 50,
+      "width": 200,
+      "height": 20,
+      "min": 0,
+      "max": 100,
+      "value": 50,
+      "bgColor": "#E0E0E0",
+      "indicatorColor": "#2196F3",
+      "knobColor": "#1976D2",
+      "mode": "normal",
+      "isRange": false,
+      "leftValue": 0
+    },
+    "properties": [
+      {
+        "name": "x",
+        "type": "number",
+        "label": "X Position"
+      },
+      {
+        "name": "y",
+        "type": "number",
+        "label": "Y Position"
+      },
+      {
+        "name": "width",
+        "type": "number",
+        "label": "Width"
+      },
+      {
+        "name": "height",
+        "type": "number",
+        "label": "Height"
+      },
+      {
+        "name": "min",
+        "type": "number",
+        "label": "Min Value"
+      },
+      {
+        "name": "max",
+        "type": "number",
+        "label": "Max Value"
+      },
+      {
+        "name": "value",
+        "type": "number",
+        "label": "Current Value"
+      },
+      {
+        "name": "bgColor",
+        "type": "color",
+        "label": "Background Color"
+      },
+      {
+        "name": "indicatorColor",
+        "type": "color",
+        "label": "Indicator Color"
+      },
+      {
+        "name": "knobColor",
+        "type": "color",
+        "label": "Knob Color"
+      },
+      {
+        "name": "mode",
+        "type": "select",
+        "label": "Mode",
+        "options": [
+          "normal",
+          "symmetrical",
+          "range"
+        ]
+      },
+      {
+        "name": "isRange",
+        "type": "boolean",
+        "label": "Range Mode"
+      },
+      {
+        "name": "leftValue",
+        "type": "number",
+        "label": "Left Value (Range)"
+      }
+    ]
+  },
+  "switch": {
+    "type": "switch",
+    "name": "Switch",
+    "lvglType": "lv_switch",
+    "icon": "🔀",
+    "category": "Input",
+    "defaultProps": {
+      "x": 50,
+      "y": 50,
+      "width": 60,
+      "height": 30,
+      "checked": false,
+      "onColor": "#4CAF50",
+      "offColor": "#BDBDBD",
+      "knobColor": "#FFFFFF",
+      "disabled": false
+    },
+    "properties": [
+      {
+        "name": "x",
+        "type": "number",
+        "label": "X Position"
+      },
+      {
+        "name": "y",
+        "type": "number",
+        "label": "Y Position"
+      },
+      {
+        "name": "width",
+        "type": "number",
+        "label": "Width"
+      },
+      {
+        "name": "height",
+        "type": "number",
+        "label": "Height"
+      },
+      {
+        "name": "checked",
+        "type": "boolean",
+        "label": "Checked"
+      },
+      {
+        "name": "onColor",
+        "type": "color",
+        "label": "On Color"
+      },
+      {
+        "name": "offColor",
+        "type": "color",
+        "label": "Off Color"
+      },
+      {
+        "name": "knobColor",
+        "type": "color",
+        "label": "Knob Color"
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "label": "Disabled"
+      }
+    ]
+  },
+  "checkbox": {
+    "type": "checkbox",
+    "name": "Checkbox",
+    "lvglType": "lv_checkbox",
+    "icon": "☑️",
+    "category": "Input",
+    "defaultProps": {
+      "x": 50,
+      "y": 50,
+      "width": 150,
+      "height": 30,
+      "text": "Checkbox",
+      "checked": false,
+      "textColor": "#000000",
+      "fontSize": 14,
+      "checkedColor": "#2196F3",
+      "disabled": false
+    },
+    "properties": [
+      {
+        "name": "x",
+        "type": "number",
+        "label": "X Position"
+      },
+      {
+        "name": "y",
+        "type": "number",
+        "label": "Y Position"
+      },
+      {
+        "name": "width",
+        "type": "number",
+        "label": "Width"
+      },
+      {
+        "name": "height",
+        "type": "number",
+        "label": "Height"
+      },
+      {
+        "name": "text",
+        "type": "string",
+        "label": "Text"
+      },
+      {
+        "name": "checked",
+        "type": "boolean",
+        "label": "Checked"
+      },
+      {
+        "name": "textColor",
+        "type": "color",
+        "label": "Text Color"
+      },
+      {
+        "name": "fontSize",
+        "type": "number",
+        "label": "Font Size"
+      },
+      {
+        "name": "font",
+        "type": "font",
+        "label": "Font"
+      },
+      {
+        "name": "checkedColor",
+        "type": "color",
+        "label": "Checked Color"
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "label": "Disabled"
+      }
+    ]
+  },
+  "textarea": {
+    "type": "textarea",
+    "name": "Text Area",
+    "lvglType": "lv_textarea",
+    "icon": "📄",
+    "category": "Input",
+    "defaultProps": {
+      "x": 50,
+      "y": 50,
+      "width": 200,
+      "height": 100,
+      "text": "",
+      "placeholder": "Type here",
+      "bgColor": "#FFFFFF",
+      "textColor": "#000000",
+      "fontSize": 14,
+      "oneLine": false,
+      "password": false,
+      "maxLength": 0,
+      "acceptedChars": ""
+    },
+    "properties": [
+      {
+        "name": "x",
+        "type": "number",
+        "label": "X Position"
+      },
+      {
+        "name": "y",
+        "type": "number",
+        "label": "Y Position"
+      },
+      {
+        "name": "width",
+        "type": "number",
+        "label": "Width"
+      },
+      {
+        "name": "height",
+        "type": "number",
+        "label": "Height"
+      },
+      {
+        "name": "text",
+        "type": "string",
+        "label": "Text"
+      },
+      {
+        "name": "placeholder",
+        "type": "string",
+        "label": "Placeholder"
+      },
+      {
+        "name": "bgColor",
+        "type": "color",
+        "label": "Background Color"
+      },
+      {
+        "name": "textColor",
+        "type": "color",
+        "label": "Text Color"
+      },
+      {
+        "name": "fontSize",
+        "type": "number",
+        "label": "Font Size"
+      },
+      {
+        "name": "font",
+        "type": "font",
+        "label": "Font"
+      },
+      {
+        "name": "oneLine",
+        "type": "boolean",
+        "label": "One Line Mode"
+      },
+      {
+        "name": "password",
+        "type": "boolean",
+        "label": "Password Mode"
+      },
+      {
+        "name": "maxLength",
+        "type": "number",
+        "label": "Max Length (0=unlimited)"
+      },
+      {
+        "name": "acceptedChars",
+        "type": "string",
+        "label": "Accepted Chars"
+      }
+    ]
+  },
+  "dropdown": {
+    "type": "dropdown",
+    "name": "Dropdown",
+    "lvglType": "lv_dropdown",
+    "icon": "▼",
+    "category": "Input",
+    "defaultProps": {
+      "x": 50,
+      "y": 50,
+      "width": 150,
+      "height": 40,
+      "options": "Option 1\nOption 2\nOption 3",
+      "selected": 0,
+      "bgColor": "#FFFFFF",
+      "textColor": "#000000",
+      "fontSize": 14,
+      "dir": "LV_DIR_BOTTOM",
+      "symbol": "LV_SYMBOL_DOWN",
+      "highlightSelected": true
+    },
+    "properties": [
+      {
+        "name": "x",
+        "type": "number",
+        "label": "X Position"
+      },
+      {
+        "name": "y",
+        "type": "number",
+        "label": "Y Position"
+      },
+      {
+        "name": "width",
+        "type": "number",
+        "label": "Width"
+      },
+      {
+        "name": "height",
+        "type": "number",
+        "label": "Height"
+      },
+      {
+        "name": "options",
+        "type": "string",
+        "label": "Options (newline separated)"
+      },
+      {
+        "name": "selected",
+        "type": "number",
+        "label": "Selected Index"
+      },
+      {
+        "name": "bgColor",
+        "type": "color",
+        "label": "Background Color"
+      },
+      {
+        "name": "textColor",
+        "type": "color",
+        "label": "Text Color"
+      },
+      {
+        "name": "fontSize",
+        "type": "number",
+        "label": "Font Size"
+      },
+      {
+        "name": "font",
+        "type": "font",
+        "label": "Font"
+      },
+      {
+        "name": "dir",
+        "type": "select",
+        "label": "Dropdown Direction",
+        "options": [
+          "LV_DIR_NONE",
+          "LV_DIR_LEFT",
+          "LV_DIR_RIGHT",
+          "LV_DIR_TOP",
+          "LV_DIR_BOTTOM",
+          "LV_DIR_HOR",
+          "LV_DIR_VER",
+          "LV_DIR_ALL"
+        ]
+      },
+      {
+        "name": "highlightSelected",
+        "type": "boolean",
+        "label": "Highlight Selected"
+      }
+    ]
+  },
+  "roller": {
+    "type": "roller",
+    "name": "Roller",
+    "lvglType": "lv_roller",
+    "icon": "🎰",
+    "category": "Input",
+    "defaultProps": {
+      "x": 50,
+      "y": 50,
+      "width": 100,
+      "height": 150,
+      "options": "Option 1\nOption 2\nOption 3\nOption 4\nOption 5",
+      "selected": 0,
+      "visibleRows": 3,
+      "bgColor": "#F5F5F5",
+      "selectedColor": "#2196F3",
+      "textColor": "#000000",
+      "fontSize": 16,
+      "infinite": false
+    },
+    "properties": [
+      {
+        "name": "x",
+        "type": "number",
+        "label": "X Position"
+      },
+      {
+        "name": "y",
+        "type": "number",
+        "label": "Y Position"
+      },
+      {
+        "name": "width",
+        "type": "number",
+        "label": "Width"
+      },
+      {
+        "name": "height",
+        "type": "number",
+        "label": "Height"
+      },
+      {
+        "name": "options",
+        "type": "string",
+        "label": "Options (newline separated)"
+      },
+      {
+        "name": "selected",
+        "type": "number",
+        "label": "Selected Index"
+      },
+      {
+        "name": "visibleRows",
+        "type": "number",
+        "label": "Visible Rows"
+      },
+      {
+        "name": "bgColor",
+        "type": "color",
+        "label": "Background Color"
+      },
+      {
+        "name": "selectedColor",
+        "type": "color",
+        "label": "Selected Color"
+      },
+      {
+        "name": "textColor",
+        "type": "color",
+        "label": "Text Color"
+      },
+      {
+        "name": "fontSize",
+        "type": "number",
+        "label": "Font Size"
+      },
+      {
+        "name": "font",
+        "type": "font",
+        "label": "Font"
+      },
+      {
+        "name": "infinite",
+        "type": "boolean",
+        "label": "Infinite Scroll"
+      }
+    ]
+  },
+  "spinbox": {
+    "type": "spinbox",
+    "name": "Spinbox",
+    "lvglType": "lv_spinbox",
+    "icon": "🔢",
+    "category": "Input",
+    "defaultProps": {
+      "x": 50,
+      "y": 50,
+      "width": 120,
+      "height": 40,
+      "min": 0,
+      "max": 999,
+      "value": 0,
+      "digitCount": 4,
+      "separatorPos": 0,
+      "step": 1,
+      "rollover": false,
+      "bgColor": "#FFFFFF",
+      "textColor": "#000000",
+      "fontSize": 16
+    },
+    "properties": [
+      {
+        "name": "x",
+        "type": "number",
+        "label": "X Position"
+      },
+      {
+        "name": "y",
+        "type": "number",
+        "label": "Y Position"
+      },
+      {
+        "name": "width",
+        "type": "number",
+        "label": "Width"
+      },
+      {
+        "name": "height",
+        "type": "number",
+        "label": "Height"
+      },
+      {
+        "name": "min",
+        "type": "number",
+        "label": "Min Value"
+      },
+      {
+        "name": "max",
+        "type": "number",
+        "label": "Max Value"
+      },
+      {
+        "name": "value",
+        "type": "number",
+        "label": "Value"
+      },
+      {
+        "name": "digitCount",
+        "type": "number",
+        "label": "Digit Count"
+      },
+      {
+        "name": "separatorPos",
+        "type": "number",
+        "label": "Decimal Position"
+      },
+      {
+        "name": "step",
+        "type": "number",
+        "label": "Step"
+      },
+      {
+        "name": "rollover",
+        "type": "boolean",
+        "label": "Rollover"
+      },
+      {
+        "name": "bgColor",
+        "type": "color",
+        "label": "Background Color"
+      },
+      {
+        "name": "textColor",
+        "type": "color",
+        "label": "Text Color"
+      },
+      {
+        "name": "fontSize",
+        "type": "number",
+        "label": "Font Size"
+      },
+      {
+        "name": "font",
+        "type": "font",
+        "label": "Font"
+      }
+    ]
+  },
+  "keyboard": {
+    "type": "keyboard",
+    "name": "Keyboard",
+    "lvglType": "lv_keyboard",
+    "icon": "⌨️",
+    "category": "Input",
+    "defaultProps": {
+      "x": 0,
+      "y": 280,
+      "width": 480,
+      "height": 200,
+      "mode": "text_lower",
+      "textarea": "",
+      "popover": true
+    },
+    "properties": [
+      {
+        "name": "x",
+        "type": "number",
+        "label": "X Position"
+      },
+      {
+        "name": "y",
+        "type": "number",
+        "label": "Y Position"
+      },
+      {
+        "name": "width",
+        "type": "number",
+        "label": "Width"
+      },
+      {
+        "name": "height",
+        "type": "number",
+        "label": "Height"
+      },
+      {
+        "name": "mode",
+        "type": "select",
+        "label": "Mode",
+        "options": [
+          "text_lower",
+          "text_upper",
+          "text_special",
+          "number"
+        ]
+      },
+      {
+        "name": "popover",
+        "type": "boolean",
+        "label": "Key Popover"
+      }
+    ]
+  },
+  "bar": {
+    "type": "bar",
+    "name": "Progress Bar",
+    "lvglType": "lv_bar",
+    "icon": "▰",
+    "category": "Display",
+    "defaultProps": {
+      "x": 50,
+      "y": 50,
+      "width": 200,
+      "height": 20,
+      "min": 0,
+      "max": 100,
+      "value": 50,
+      "bgColor": "#E0E0E0",
+      "indicatorColor": "#4CAF50",
+      "mode": "LV_BAR_MODE_NORMAL",
+      "animated": true,
+      "startValue": 0
+    },
+    "properties": [
+      {
+        "name": "x",
+        "type": "number",
+        "label": "X Position"
+      },
+      {
+        "name": "y",
+        "type": "number",
+        "label": "Y Position"
+      },
+      {
+        "name": "width",
+        "type": "number",
+        "label": "Width"
+      },
+      {
+        "name": "height",
+        "type": "number",
+        "label": "Height"
+      },
+      {
+        "name": "min",
+        "type": "number",
+        "label": "Min Value"
+      },
+      {
+        "name": "max",
+        "type": "number",
+        "label": "Max Value"
+      },
+      {
+        "name": "value",
+        "type": "number",
+        "label": "Current Value"
+      },
+      {
+        "name": "bgColor",
+        "type": "color",
+        "label": "Background Color"
+      },
+      {
+        "name": "indicatorColor",
+        "type": "color",
+        "label": "Indicator Color"
+      },
+      {
+        "name": "mode",
+        "type": "select",
+        "label": "Bar Mode",
+        "options": [
+          "LV_BAR_MODE_NORMAL",
+          "LV_BAR_MODE_SYMMETRICAL",
+          "LV_BAR_MODE_RANGE"
+        ]
+      },
+      {
+        "name": "animated",
+        "type": "boolean",
+        "label": "Animated"
+      },
+      {
+        "name": "startValue",
+        "type": "number",
+        "label": "Start Value (Range Mode)"
+      }
+    ]
+  },
+  "arc": {
+    "type": "arc",
+    "name": "Arc",
+    "lvglType": "lv_arc",
+    "icon": "◔",
+    "category": "Display",
+    "defaultProps": {
+      "x": 50,
+      "y": 50,
+      "width": 100,
+      "height": 100,
+      "min": 0,
+      "max": 100,
+      "value": 50,
+      "bgColor": "#E0E0E0",
+      "indicatorColor": "#FF9800",
+      "startAngle": 135,
+      "endAngle": 45,
+      "rotation": 0,
+      "mode": "LV_ARC_MODE_NORMAL",
+      "knobColor": "#FF9800",
+      "lineWidth": 10
+    },
+    "properties": [
+      {
+        "name": "x",
+        "type": "number",
+        "label": "X Position"
+      },
+      {
+        "name": "y",
+        "type": "number",
+        "label": "Y Position"
+      },
+      {
+        "name": "width",
+        "type": "number",
+        "label": "Width"
+      },
+      {
+        "name": "height",
+        "type": "number",
+        "label": "Height"
+      },
+      {
+        "name": "min",
+        "type": "number",
+        "label": "Min Value"
+      },
+      {
+        "name": "max",
+        "type": "number",
+        "label": "Max Value"
+      },
+      {
+        "name": "value",
+        "type": "number",
+        "label": "Current Value"
+      },
+      {
+        "name": "bgColor",
+        "type": "color",
+        "label": "Background Color"
+      },
+      {
+        "name": "indicatorColor",
+        "type": "color",
+        "label": "Indicator Color"
+      },
+      {
+        "name": "knobColor",
+        "type": "color",
+        "label": "Knob Color"
+      },
+      {
+        "name": "startAngle",
+        "type": "number",
+        "label": "Start Angle"
+      },
+      {
+        "name": "endAngle",
+        "type": "number",
+        "label": "End Angle"
+      },
+      {
+        "name": "rotation",
+        "type": "number",
+        "label": "Rotation"
+      },
+      {
+        "name": "mode",
+        "type": "select",
+        "label": "Arc Mode",
+        "options": [
+          "LV_ARC_MODE_NORMAL",
+          "LV_ARC_MODE_SYMMETRICAL",
+          "LV_ARC_MODE_REVERSE"
+        ]
+      },
+      {
+        "name": "lineWidth",
+        "type": "number",
+        "label": "Line Width"
+      }
+    ]
+  },
+  "spinner": {
+    "type": "spinner",
+    "name": "Spinner",
+    "lvglType": "lv_spinner",
+    "icon": "⟳",
+    "category": "Display",
+    "defaultProps": {
+      "x": 50,
+      "y": 50,
+      "width": 50,
+      "height": 50,
+      "speed": 1000,
+      "arcLength": 60,
+      "color": "#2196F3",
+      "lineWidth": 8
+    },
+    "properties": [
+      {
+        "name": "x",
+        "type": "number",
+        "label": "X Position"
+      },
+      {
+        "name": "y",
+        "type": "number",
+        "label": "Y Position"
+      },
+      {
+        "name": "width",
+        "type": "number",
+        "label": "Width"
+      },
+      {
+        "name": "height",
+        "type": "number",
+        "label": "Height"
+      },
+      {
+        "name": "speed",
+        "type": "number",
+        "label": "Animation Speed (ms)"
+      },
+      {
+        "name": "arcLength",
+        "type": "number",
+        "label": "Arc Length (degrees)"
+      },
+      {
+        "name": "color",
+        "type": "color",
+        "label": "Color"
+      },
+      {
+        "name": "lineWidth",
+        "type": "number",
+        "label": "Line Width"
+      }
+    ]
+  },
+  "led": {
+    "type": "led",
+    "name": "LED",
+    "lvglType": "lv_led",
+    "icon": "💡",
+    "category": "Display",
+    "defaultProps": {
+      "x": 50,
+      "y": 50,
+      "width": 30,
+      "height": 30,
+      "color": "#FF0000",
+      "brightness": 255
+    },
+    "properties": [
+      {
+        "name": "x",
+        "type": "number",
+        "label": "X Position"
+      },
+      {
+        "name": "y",
+        "type": "number",
+        "label": "Y Position"
+      },
+      {
+        "name": "width",
+        "type": "number",
+        "label": "Width"
+      },
+      {
+        "name": "height",
+        "type": "number",
+        "label": "Height"
+      },
+      {
+        "name": "color",
+        "type": "color",
+        "label": "Color"
+      },
+      {
+        "name": "brightness",
+        "type": "number",
+        "label": "Brightness (0-255)",
+        "min": 0,
+        "max": 255
+      }
+    ]
+  },
+  "chart": {
+    "type": "chart",
+    "name": "Chart",
+    "lvglType": "lv_chart",
+    "icon": "📊",
+    "category": "Data",
+    "defaultProps": {
+      "x": 50,
+      "y": 50,
+      "width": 250,
+      "height": 150,
+      "chartType": "line",
+      "data": "10,20,30,25,40,35,50",
+      "data2": "",
+      "bgColor": "#FFFFFF",
+      "lineColor": "#2196F3",
+      "lineColor2": "#FF5722",
+      "pointCount": 10,
+      "showPoints": true,
+      "rangeYMin": 0,
+      "rangeYMax": 100,
+      "divLineCount": 3,
+      "divLineCountSec": 5,
+      "updateMode": "shift"
+    },
+    "properties": [
+      {
+        "name": "x",
+        "type": "number",
+        "label": "X Position"
+      },
+      {
+        "name": "y",
+        "type": "number",
+        "label": "Y Position"
+      },
+      {
+        "name": "width",
+        "type": "number",
+        "label": "Width"
+      },
+      {
+        "name": "height",
+        "type": "number",
+        "label": "Height"
+      },
+      {
+        "name": "chartType",
+        "type": "select",
+        "label": "Chart Type",
+        "options": [
+          "line",
+          "bar",
+          "scatter"
+        ]
+      },
+      {
+        "name": "data",
+        "type": "string",
+        "label": "Series 1 Data (comma sep.)"
+      },
+      {
+        "name": "data2",
+        "type": "string",
+        "label": "Series 2 Data (comma sep.)"
+      },
+      {
+        "name": "bgColor",
+        "type": "color",
+        "label": "Background Color"
+      },
+      {
+        "name": "lineColor",
+        "type": "color",
+        "label": "Series 1 Color"
+      },
+      {
+        "name": "lineColor2",
+        "type": "color",
+        "label": "Series 2 Color"
+      },
+      {
+        "name": "pointCount",
+        "type": "number",
+        "label": "Point Count"
+      },
+      {
+        "name": "showPoints",
+        "type": "boolean",
+        "label": "Show Points"
+      },
+      {
+        "name": "rangeYMin",
+        "type": "number",
+        "label": "Y-Axis Min"
+      },
+      {
+        "name": "rangeYMax",
+        "type": "number",
+        "label": "Y-Axis Max"
+      },
+      {
+        "name": "divLineCount",
+        "type": "number",
+        "label": "Horizontal Div Lines"
+      },
+      {
+        "name": "divLineCountSec",
+        "type": "number",
+        "label": "Vertical Div Lines"
+      },
+      {
+        "name": "updateMode",
+        "type": "select",
+        "label": "Update Mode",
+        "options": [
+          "shift",
+          "circular"
+        ]
+      }
+    ]
+  },
+  "table": {
+    "type": "table",
+    "name": "Table",
+    "lvglType": "lv_table",
+    "icon": "📋",
+    "category": "Data",
+    "defaultProps": {
+      "x": 50,
+      "y": 50,
+      "width": 300,
+      "height": 200,
+      "rows": 4,
+      "cols": 3,
+      "colWidths": "100,100,100",
+      "headerRow": "Col 1,Col 2,Col 3",
+      "cellData": "A1,B1,C1\nA2,B2,C2\nA3,B3,C3",
+      "bgColor": "#FFFFFF",
+      "textColor": "#000000",
+      "borderColor": "#E0E0E0",
+      "headerBgColor": "#F5F5F5",
+      "fontSize": 14
+    },
+    "properties": [
+      {
+        "name": "x",
+        "type": "number",
+        "label": "X Position"
+      },
+      {
+        "name": "y",
+        "type": "number",
+        "label": "Y Position"
+      },
+      {
+        "name": "width",
+        "type": "number",
+        "label": "Width"
+      },
+      {
+        "name": "height",
+        "type": "number",
+        "label": "Height"
+      },
+      {
+        "name": "rows",
+        "type": "number",
+        "label": "Rows"
+      },
+      {
+        "name": "cols",
+        "type": "number",
+        "label": "Columns"
+      },
+      {
+        "name": "colWidths",
+        "type": "string",
+        "label": "Column Widths (comma sep.)"
+      },
+      {
+        "name": "headerRow",
+        "type": "string",
+        "label": "Header Row (comma sep.)"
+      },
+      {
+        "name": "cellData",
+        "type": "string",
+        "label": "Cell Data (comma/newline)"
+      },
+      {
+        "name": "bgColor",
+        "type": "color",
+        "label": "Background Color"
+      },
+      {
+        "name": "textColor",
+        "type": "color",
+        "label": "Text Color"
+      },
+      {
+        "name": "borderColor",
+        "type": "color",
+        "label": "Border Color"
+      },
+      {
+        "name": "headerBgColor",
+        "type": "color",
+        "label": "Header Bg Color"
+      },
+      {
+        "name": "fontSize",
+        "type": "number",
+        "label": "Font Size"
+      },
+      {
+        "name": "font",
+        "type": "font",
+        "label": "Font"
+      }
+    ]
+  },
+  "scale": {
+    "type": "scale",
+    "name": "Scale",
+    "lvglType": "lv_scale",
+    "icon": "📏",
+    "category": "Data",
+    "defaultProps": {
+      "x": 50,
+      "y": 50,
+      "width": 200,
+      "height": 60,
+      "min": 0,
+      "max": 100,
+      "majorTickEvery": 10,
+      "majorTickLength": 15,
+      "minorTickCount": 4,
+      "minorTickLength": 8,
+      "labelShow": true,
+      "lineColor": "#000000",
+      "textColor": "#000000",
+      "mode": "horizontal"
+    },
+    "properties": [
+      {
+        "name": "x",
+        "type": "number",
+        "label": "X Position"
+      },
+      {
+        "name": "y",
+        "type": "number",
+        "label": "Y Position"
+      },
+      {
+        "name": "width",
+        "type": "number",
+        "label": "Width"
+      },
+      {
+        "name": "height",
+        "type": "number",
+        "label": "Height"
+      },
+      {
+        "name": "min",
+        "type": "number",
+        "label": "Min Value"
+      },
+      {
+        "name": "max",
+        "type": "number",
+        "label": "Max Value"
+      },
+      {
+        "name": "majorTickEvery",
+        "type": "number",
+        "label": "Major Tick Every"
+      },
+      {
+        "name": "majorTickLength",
+        "type": "number",
+        "label": "Major Tick Length"
+      },
+      {
+        "name": "minorTickCount",
+        "type": "number",
+        "label": "Minor Ticks Between Majors"
+      },
+      {
+        "name": "minorTickLength",
+        "type": "number",
+        "label": "Minor Tick Length"
+      },
+      {
+        "name": "labelShow",
+        "type": "boolean",
+        "label": "Show Labels"
+      },
+      {
+        "name": "lineColor",
+        "type": "color",
+        "label": "Line Color"
+      },
+      {
+        "name": "textColor",
+        "type": "color",
+        "label": "Text Color"
+      },
+      {
+        "name": "mode",
+        "type": "select",
+        "label": "Mode",
+        "options": [
+          "horizontal",
+          "vertical",
+          "round_inner",
+          "round_outer"
+        ]
+      }
+    ]
+  },
+  "image": {
+    "type": "image",
+    "name": "Image",
+    "lvglType": "lv_image",
+    "icon": "🖼️",
+    "category": "Media",
+    "defaultProps": {
+      "x": 50,
+      "y": 50,
+      "width": 100,
+      "height": 100,
+      "src": "",
+      "fit": "contain",
+      "bgColor": "#F0F0F0",
+      "rotation": 0,
+      "zoom": 256,
+      "antialias": true,
+      "pivotX": 0,
+      "pivotY": 0
+    },
+    "properties": [
+      {
+        "name": "x",
+        "type": "number",
+        "label": "X Position"
+      },
+      {
+        "name": "y",
+        "type": "number",
+        "label": "Y Position"
+      },
+      {
+        "name": "width",
+        "type": "number",
+        "label": "Width"
+      },
+      {
+        "name": "height",
+        "type": "number",
+        "label": "Height"
+      },
+      {
+        "name": "src",
+        "type": "image",
+        "label": "Image"
+      },
+      {
+        "name": "fit",
+        "type": "select",
+        "label": "Object Fit",
+        "options": [
+          "contain",
+          "cover",
+          "fill"
+        ]
+      },
+      {
+        "name": "bgColor",
+        "type": "color",
+        "label": "Background Color"
+      },
+      {
+        "name": "rotation",
+        "type": "number",
+        "label": "Rotation (0.1 deg)"
+      },
+      {
+        "name": "zoom",
+        "type": "number",
+        "label": "Zoom (256=100%)"
+      },
+      {
+        "name": "antialias",
+        "type": "boolean",
+        "label": "Antialias"
+      },
+      {
+        "name": "pivotX",
+        "type": "number",
+        "label": "Pivot X"
+      },
+      {
+        "name": "pivotY",
+        "type": "number",
+        "label": "Pivot Y"
+      }
+    ]
+  },
+  "imagebutton": {
+    "type": "imagebutton",
+    "name": "Image Button",
+    "lvglType": "lv_imagebutton",
+    "icon": "🖼️🔘",
+    "category": "Media",
+    "defaultProps": {
+      "x": 50,
+      "y": 50,
+      "width": 120,
+      "height": 120,
+      "src": "",
+      "text": "Button",
+      "bgColor": "#2196F3",
+      "textColor": "#FFFFFF",
+      "fontSize": 14,
+      "radius": 5
+    },
+    "properties": [
+      {
+        "name": "x",
+        "type": "number",
+        "label": "X Position"
+      },
+      {
+        "name": "y",
+        "type": "number",
+        "label": "Y Position"
+      },
+      {
+        "name": "width",
+        "type": "number",
+        "label": "Width"
+      },
+      {
+        "name": "height",
+        "type": "number",
+        "label": "Height"
+      },
+      {
+        "name": "src",
+        "type": "image",
+        "label": "Image"
+      },
+      {
+        "name": "text",
+        "type": "string",
+        "label": "Text"
+      },
+      {
+        "name": "bgColor",
+        "type": "color",
+        "label": "Background Color"
+      },
+      {
+        "name": "textColor",
+        "type": "color",
+        "label": "Text Color"
+      },
+      {
+        "name": "fontSize",
+        "type": "number",
+        "label": "Font Size"
+      },
+      {
+        "name": "font",
+        "type": "font",
+        "label": "Font"
+      },
+      {
+        "name": "radius",
+        "type": "number",
+        "label": "Corner Radius"
+      }
+    ]
+  },
+  "tabview": {
+    "type": "tabview",
+    "name": "Tab View",
+    "lvglType": "lv_tabview",
+    "icon": "📑",
+    "category": "Navigation",
+    "defaultProps": {
+      "x": 50,
+      "y": 50,
+      "width": 300,
+      "height": 250,
+      "tabPosition": "top",
+      "tabBarSize": 40,
+      "tabs": "Tab 1\nTab 2\nTab 3",
+      "activeTab": 0,
+      "bgColor": "#FFFFFF",
+      "tabBgColor": "#F5F5F5",
+      "tabActiveColor": "#2196F3",
+      "textColor": "#000000"
+    },
+    "properties": [
+      {
+        "name": "x",
+        "type": "number",
+        "label": "X Position"
+      },
+      {
+        "name": "y",
+        "type": "number",
+        "label": "Y Position"
+      },
+      {
+        "name": "width",
+        "type": "number",
+        "label": "Width"
+      },
+      {
+        "name": "height",
+        "type": "number",
+        "label": "Height"
+      },
+      {
+        "name": "tabPosition",
+        "type": "select",
+        "label": "Tab Position",
+        "options": [
+          "top",
+          "bottom",
+          "left",
+          "right"
+        ]
+      },
+      {
+        "name": "tabBarSize",
+        "type": "number",
+        "label": "Tab Bar Size"
+      },
+      {
+        "name": "tabs",
+        "type": "string",
+        "label": "Tabs (newline separated)"
+      },
+      {
+        "name": "activeTab",
+        "type": "number",
+        "label": "Active Tab Index"
+      },
+      {
+        "name": "bgColor",
+        "type": "color",
+        "label": "Background Color"
+      },
+      {
+        "name": "tabBgColor",
+        "type": "color",
+        "label": "Tab Bar Bg Color"
+      },
+      {
+        "name": "tabActiveColor",
+        "type": "color",
+        "label": "Active Tab Color"
+      },
+      {
+        "name": "textColor",
+        "type": "color",
+        "label": "Text Color"
+      }
+    ]
+  },
+  "tileview": {
+    "type": "tileview",
+    "name": "Tile View",
+    "lvglType": "lv_tileview",
+    "icon": "🔲",
+    "category": "Navigation",
+    "defaultProps": {
+      "x": 50,
+      "y": 50,
+      "width": 300,
+      "height": 250,
+      "rows": 2,
+      "cols": 2,
+      "bgColor": "#FFFFFF"
+    },
+    "properties": [
+      {
+        "name": "x",
+        "type": "number",
+        "label": "X Position"
+      },
+      {
+        "name": "y",
+        "type": "number",
+        "label": "Y Position"
+      },
+      {
+        "name": "width",
+        "type": "number",
+        "label": "Width"
+      },
+      {
+        "name": "height",
+        "type": "number",
+        "label": "Height"
+      },
+      {
+        "name": "rows",
+        "type": "number",
+        "label": "Tile Rows"
+      },
+      {
+        "name": "cols",
+        "type": "number",
+        "label": "Tile Columns"
+      },
+      {
+        "name": "bgColor",
+        "type": "color",
+        "label": "Background Color"
+      }
+    ]
+  },
+  "menu": {
+    "type": "menu",
+    "name": "Menu",
+    "lvglType": "lv_menu",
+    "icon": "☰",
+    "category": "Navigation",
+    "defaultProps": {
+      "x": 50,
+      "y": 50,
+      "width": 250,
+      "height": 300,
+      "bgColor": "#FFFFFF",
+      "sidebarWidth": 80,
+      "headerTitle": "Menu",
+      "items": "Item 1\nItem 2\nItem 3\nItem 4",
+      "textColor": "#000000",
+      "selectedColor": "#2196F3"
+    },
+    "properties": [
+      {
+        "name": "x",
+        "type": "number",
+        "label": "X Position"
+      },
+      {
+        "name": "y",
+        "type": "number",
+        "label": "Y Position"
+      },
+      {
+        "name": "width",
+        "type": "number",
+        "label": "Width"
+      },
+      {
+        "name": "height",
+        "type": "number",
+        "label": "Height"
+      },
+      {
+        "name": "bgColor",
+        "type": "color",
+        "label": "Background Color"
+      },
+      {
+        "name": "sidebarWidth",
+        "type": "number",
+        "label": "Sidebar Width"
+      },
+      {
+        "name": "headerTitle",
+        "type": "string",
+        "label": "Header Title"
+      },
+      {
+        "name": "items",
+        "type": "string",
+        "label": "Menu Items (newline sep.)"
+      },
+      {
+        "name": "textColor",
+        "type": "color",
+        "label": "Text Color"
+      },
+      {
+        "name": "selectedColor",
+        "type": "color",
+        "label": "Selected Color"
+      }
+    ]
+  },
+  "win": {
+    "type": "win",
+    "name": "Window",
+    "lvglType": "lv_win",
+    "icon": "🪟",
+    "category": "Navigation",
+    "defaultProps": {
+      "x": 50,
+      "y": 50,
+      "width": 300,
+      "height": 250,
+      "headerHeight": 40,
+      "title": "Window Title",
+      "bgColor": "#FFFFFF",
+      "headerBgColor": "#2196F3",
+      "titleColor": "#FFFFFF"
+    },
+    "properties": [
+      {
+        "name": "x",
+        "type": "number",
+        "label": "X Position"
+      },
+      {
+        "name": "y",
+        "type": "number",
+        "label": "Y Position"
+      },
+      {
+        "name": "width",
+        "type": "number",
+        "label": "Width"
+      },
+      {
+        "name": "height",
+        "type": "number",
+        "label": "Height"
+      },
+      {
+        "name": "headerHeight",
+        "type": "number",
+        "label": "Header Height"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "label": "Title"
+      },
+      {
+        "name": "bgColor",
+        "type": "color",
+        "label": "Background Color"
+      },
+      {
+        "name": "headerBgColor",
+        "type": "color",
+        "label": "Header Bg Color"
+      },
+      {
+        "name": "titleColor",
+        "type": "color",
+        "label": "Title Color"
+      }
+    ]
+  },
+  "list": {
+    "type": "list",
+    "name": "List",
+    "lvglType": "lv_list",
+    "icon": "📃",
+    "category": "Container",
+    "defaultProps": {
+      "x": 50,
+      "y": 50,
+      "width": 200,
+      "height": 300,
+      "items": "Item 1\nItem 2\nItem 3\nItem 4\nItem 5",
+      "bgColor": "#FFFFFF",
+      "textColor": "#000000",
+      "selectedColor": "#E3F2FD",
+      "fontSize": 14
+    },
+    "properties": [
+      {
+        "name": "x",
+        "type": "number",
+        "label": "X Position"
+      },
+      {
+        "name": "y",
+        "type": "number",
+        "label": "Y Position"
+      },
+      {
+        "name": "width",
+        "type": "number",
+        "label": "Width"
+      },
+      {
+        "name": "height",
+        "type": "number",
+        "label": "Height"
+      },
+      {
+        "name": "items",
+        "type": "string",
+        "label": "Items (newline separated)"
+      },
+      {
+        "name": "bgColor",
+        "type": "color",
+        "label": "Background Color"
+      },
+      {
+        "name": "textColor",
+        "type": "color",
+        "label": "Text Color"
+      },
+      {
+        "name": "selectedColor",
+        "type": "color",
+        "label": "Selected Item Color"
+      },
+      {
+        "name": "fontSize",
+        "type": "number",
+        "label": "Font Size"
+      },
+      {
+        "name": "font",
+        "type": "font",
+        "label": "Font"
+      }
+    ]
+  },
+  "msgbox": {
+    "type": "msgbox",
+    "name": "Message Box",
+    "lvglType": "lv_msgbox",
+    "icon": "💬",
+    "category": "Container",
+    "defaultProps": {
+      "x": 50,
+      "y": 50,
+      "width": 250,
+      "height": 180,
+      "title": "Notice",
+      "text": "This is a message box",
+      "buttons": "OK\nCancel",
+      "closeButton": true,
+      "bgColor": "#FFFFFF",
+      "textColor": "#000000",
+      "titleColor": "#333333",
+      "fontSize": 14
+    },
+    "properties": [
+      {
+        "name": "x",
+        "type": "number",
+        "label": "X Position"
+      },
+      {
+        "name": "y",
+        "type": "number",
+        "label": "Y Position"
+      },
+      {
+        "name": "width",
+        "type": "number",
+        "label": "Width"
+      },
+      {
+        "name": "height",
+        "type": "number",
+        "label": "Height"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "label": "Title"
+      },
+      {
+        "name": "text",
+        "type": "string",
+        "label": "Message Text"
+      },
+      {
+        "name": "buttons",
+        "type": "string",
+        "label": "Buttons (newline sep.)"
+      },
+      {
+        "name": "closeButton",
+        "type": "boolean",
+        "label": "Show Close Button"
+      },
+      {
+        "name": "bgColor",
+        "type": "color",
+        "label": "Background Color"
+      },
+      {
+        "name": "textColor",
+        "type": "color",
+        "label": "Text Color"
+      },
+      {
+        "name": "titleColor",
+        "type": "color",
+        "label": "Title Color"
+      },
+      {
+        "name": "fontSize",
+        "type": "number",
+        "label": "Font Size"
+      },
+      {
+        "name": "font",
+        "type": "font",
+        "label": "Font"
+      }
+    ]
+  },
+  "buttonmatrix": {
+    "type": "buttonmatrix",
+    "name": "Button Matrix",
+    "lvglType": "lv_buttonmatrix",
+    "icon": "⊞",
+    "category": "Container",
+    "defaultProps": {
+      "x": 50,
+      "y": 50,
+      "width": 250,
+      "height": 120,
+      "map": "1,2,3\n4,5,6\n7,8,9\n*,0,#",
+      "bgColor": "#FFFFFF",
+      "btnColor": "#E0E0E0",
+      "textColor": "#000000",
+      "fontSize": 14,
+      "oneCheck": false
+    },
+    "properties": [
+      {
+        "name": "x",
+        "type": "number",
+        "label": "X Position"
+      },
+      {
+        "name": "y",
+        "type": "number",
+        "label": "Y Position"
+      },
+      {
+        "name": "width",
+        "type": "number",
+        "label": "Width"
+      },
+      {
+        "name": "height",
+        "type": "number",
+        "label": "Height"
+      },
+      {
+        "name": "map",
+        "type": "string",
+        "label": "Button Map (comma/newline)"
+      },
+      {
+        "name": "bgColor",
+        "type": "color",
+        "label": "Background Color"
+      },
+      {
+        "name": "btnColor",
+        "type": "color",
+        "label": "Button Color"
+      },
+      {
+        "name": "textColor",
+        "type": "color",
+        "label": "Text Color"
+      },
+      {
+        "name": "fontSize",
+        "type": "number",
+        "label": "Font Size"
+      },
+      {
+        "name": "font",
+        "type": "font",
+        "label": "Font"
+      },
+      {
+        "name": "oneCheck",
+        "type": "boolean",
+        "label": "One Check Mode"
+      }
+    ]
+  },
+  "calendar": {
+    "type": "calendar",
+    "name": "Calendar",
+    "lvglType": "lv_calendar",
+    "icon": "📅",
+    "category": "Container",
+    "defaultProps": {
+      "x": 50,
+      "y": 50,
+      "width": 230,
+      "height": 230,
+      "year": 2026,
+      "month": 10,
+      "day": 28,
+      "showHeader": true,
+      "bgColor": "#FFFFFF",
+      "todayColor": "#2196F3",
+      "selectedColor": "#1976D2"
+    },
+    "properties": [
+      {
+        "name": "x",
+        "type": "number",
+        "label": "X Position"
+      },
+      {
+        "name": "y",
+        "type": "number",
+        "label": "Y Position"
+      },
+      {
+        "name": "width",
+        "type": "number",
+        "label": "Width"
+      },
+      {
+        "name": "height",
+        "type": "number",
+        "label": "Height"
+      },
+      {
+        "name": "year",
+        "type": "number",
+        "label": "Year"
+      },
+      {
+        "name": "month",
+        "type": "number",
+        "label": "Month (1-12)"
+      },
+      {
+        "name": "day",
+        "type": "number",
+        "label": "Day"
+      },
+      {
+        "name": "showHeader",
+        "type": "boolean",
+        "label": "Show Header"
+      },
+      {
+        "name": "bgColor",
+        "type": "color",
+        "label": "Background Color"
+      },
+      {
+        "name": "todayColor",
+        "type": "color",
+        "label": "Today Highlight Color"
+      },
+      {
+        "name": "selectedColor",
+        "type": "color",
+        "label": "Selected Day Color"
+      }
+    ]
+  },
+  "line": {
+    "type": "line",
+    "name": "Line",
+    "lvglType": "lv_line",
+    "icon": "╱",
+    "category": "Container",
+    "defaultProps": {
+      "x": 50,
+      "y": 50,
+      "width": 200,
+      "height": 5,
+      "points": "0,0 200,0",
+      "lineColor": "#000000",
+      "lineWidth": 2,
+      "rounded": false
+    },
+    "properties": [
+      {
+        "name": "x",
+        "type": "number",
+        "label": "X Position"
+      },
+      {
+        "name": "y",
+        "type": "number",
+        "label": "Y Position"
+      },
+      {
+        "name": "width",
+        "type": "number",
+        "label": "Width"
+      },
+      {
+        "name": "height",
+        "type": "number",
+        "label": "Height"
+      },
+      {
+        "name": "points",
+        "type": "string",
+        "label": "Points (x,y pairs space sep.)"
+      },
+      {
+        "name": "lineColor",
+        "type": "color",
+        "label": "Line Color"
+      },
+      {
+        "name": "lineWidth",
+        "type": "number",
+        "label": "Line Width"
+      },
+      {
+        "name": "rounded",
+        "type": "boolean",
+        "label": "Rounded Ends"
+      }
+    ]
+  },
+  "span": {
+    "type": "span",
+    "name": "Span Group",
+    "lvglType": "lv_spangroup",
+    "icon": "🔤",
+    "category": "Container",
+    "defaultProps": {
+      "x": 50,
+      "y": 50,
+      "width": 200,
+      "height": 60,
+      "spans": "Normal text|14|#000000\nBold text|16|#FF0000\nSmall text|12|#666666",
+      "bgColor": "#FFFFFF",
+      "mode": "wrap"
+    },
+    "properties": [
+      {
+        "name": "x",
+        "type": "number",
+        "label": "X Position"
+      },
+      {
+        "name": "y",
+        "type": "number",
+        "label": "Y Position"
+      },
+      {
+        "name": "width",
+        "type": "number",
+        "label": "Width"
+      },
+      {
+        "name": "height",
+        "type": "number",
+        "label": "Height"
+      },
+      {
+        "name": "spans",
+        "type": "string",
+        "label": "Spans (text|size|color per line)"
+      },
+      {
+        "name": "font",
+        "type": "font",
+        "label": "Font"
+      },
+      {
+        "name": "bgColor",
+        "type": "color",
+        "label": "Background Color"
+      },
+      {
+        "name": "mode",
+        "type": "select",
+        "label": "Overflow Mode",
+        "options": [
+          "wrap",
+          "expand",
+          "break",
+          "clip"
+        ]
+      }
+    ]
+  }
+}

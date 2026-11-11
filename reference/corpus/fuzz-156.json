@@ -1,0 +1,45 @@
+{
+  "generatedDate": "2023-11-14T22:16:28.000Z",
+  "project": {
+    "projectName": "Random 156",
+    "pages": [
+      {
+        "id": "p156",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-156-0",
+            "type": "arc",
+            "name": "arc_156_0",
+            "parentId": null,
+            "props": {
+              "x": 232,
+              "y": 71,
+              "width": 146,
+              "height": 37,
+              "min": 0,
+              "max": 100,
+              "value": 50,
+              "bgColor": "#E0E0E0",
+              "indicatorColor": "#FF9800",
+              "startAngle": 135,
+              "endAngle": 45,
+              "rotation": 0,
+              "mode": "LV_ARC_MODE_NORMAL",
+              "knobColor": "#FF9800",
+              "lineWidth": 10,
+              "text": "Testo 156:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

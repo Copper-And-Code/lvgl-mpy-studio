@@ -1,0 +1,39 @@
+{
+  "generatedDate": "2023-11-14T22:14:03.000Z",
+  "project": {
+    "projectName": "Random 11",
+    "pages": [
+      {
+        "id": "p11",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-11-0",
+            "type": "checkbox",
+            "name": "checkbox_11_0",
+            "parentId": null,
+            "props": {
+              "x": 241,
+              "y": 56,
+              "width": 44,
+              "height": 135,
+              "text": "Testo 11:0 \" \\ Città",
+              "checked": false,
+              "textColor": "#000000",
+              "fontSize": 14,
+              "checkedColor": "#2196F3",
+              "disabled": false
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "generatedDate": "2023-11-14T22:16:34.000Z",
+  "project": {
+    "projectName": "Random 162",
+    "pages": [
+      {
+        "id": "p162",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-162-0",
+            "type": "dropdown",
+            "name": "dropdown_162_0",
+            "parentId": null,
+            "props": {
+              "x": 261,
+              "y": 8,
+              "width": 165,
+              "height": 67,
+              "options": "Option 1\nOption 2\nOption 3",
+              "selected": 0,
+              "bgColor": "#FFFFFF",
+              "textColor": "#000000",
+              "fontSize": 14,
+              "dir": "LV_DIR_BOTTOM",
+              "symbol": "LV_SYMBOL_DOWN",
+              "highlightSelected": true,
+              "text": "Testo 162:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-162-1",
+            "type": "calendar",
+            "name": "calendar_162_1",
+            "parentId": null,
+            "props": {
+              "x": 468,
+              "y": 374,
+              "width": 165,
+              "height": 83,
+              "year": 2026,
+              "month": 10,
+              "day": 28,
+              "showHeader": true,
+              "bgColor": "#FFFFFF",
+              "todayColor": "#2196F3",
+              "selectedColor": "#1976D2",
+              "text": "Testo 162:1 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-162-2",
+            "type": "calendar",
+            "name": "calendar_162_2",
+            "parentId": null,
+            "props": {
+              "x": 61,
+              "y": 38,
+              "width": 36,
+              "height": 11,
+              "year": 2026,
+              "month": 10,
+              "day": 28,
+              "showHeader": true,
+              "bgColor": "#FFFFFF",
+              "todayColor": "#2196F3",
+              "selectedColor": "#1976D2",
+              "text": "Testo 162:2 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-162-3",
+            "type": "image",
+            "name": "image_162_3",
+            "parentId": null,
+            "props": {
+              "x": 178,
+              "y": 360,
+              "width": 202,
+              "height": 33,
+              "src": "",
+              "fit": "contain",
+              "bgColor": "#F0F0F0",
+              "rotation": 0,
+              "zoom": 256,
+              "antialias": true,
+              "pivotX": 0,
+              "pivotY": 0,
+              "text": "Testo 162:3 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

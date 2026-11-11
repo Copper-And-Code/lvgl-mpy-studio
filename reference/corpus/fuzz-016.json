@@ -1,0 +1,45 @@
+{
+  "generatedDate": "2023-11-14T22:14:08.000Z",
+  "project": {
+    "projectName": "Random 16",
+    "pages": [
+      {
+        "id": "p16",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-16-0",
+            "type": "button",
+            "name": "button_16_0",
+            "parentId": null,
+            "props": {
+              "x": 22,
+              "y": 297,
+              "width": 213,
+              "height": 142,
+              "text": "Testo 16:0 \" \\ Città",
+              "bgColor": "#2196F3",
+              "textColor": "#FFFFFF",
+              "fontSize": 14,
+              "radius": 5
+            },
+            "events": [
+              {
+                "id": "e0",
+                "type": "LV_EVENT_CLICKED",
+                "callback": "button_16_0_changed",
+                "code": "// handled by app"
+              }
+            ],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

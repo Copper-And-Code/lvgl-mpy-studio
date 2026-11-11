@@ -1,0 +1,43 @@
+{
+  "generatedDate": "2023-11-14T22:13:37.000Z",
+  "project": {
+    "projectName": "One scale",
+    "pages": [
+      {
+        "id": "p1",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "w17",
+            "type": "scale",
+            "name": "Scale_w17",
+            "parentId": null,
+            "props": {
+              "x": 71,
+              "y": 64,
+              "width": 200,
+              "height": 60,
+              "min": 0,
+              "max": 100,
+              "majorTickEvery": 10,
+              "majorTickLength": 15,
+              "minorTickCount": 4,
+              "minorTickLength": 8,
+              "labelShow": true,
+              "lineColor": "#000000",
+              "textColor": "#000000",
+              "mode": "horizontal"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

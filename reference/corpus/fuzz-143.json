@@ -1,0 +1,143 @@
+{
+  "generatedDate": "2023-11-14T22:16:15.000Z",
+  "project": {
+    "projectName": "Random 143",
+    "pages": [
+      {
+        "id": "p143",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-143-0",
+            "type": "win",
+            "name": "win_143_0",
+            "parentId": null,
+            "props": {
+              "x": 626,
+              "y": 295,
+              "width": 167,
+              "height": 137,
+              "headerHeight": 40,
+              "title": "Window Title",
+              "bgColor": "#FFFFFF",
+              "headerBgColor": "#2196F3",
+              "titleColor": "#FFFFFF",
+              "text": "Testo 143:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-143-1",
+            "type": "textarea",
+            "name": "textarea_143_1",
+            "parentId": null,
+            "props": {
+              "x": 608,
+              "y": 139,
+              "width": 71,
+              "height": 58,
+              "text": "Testo 143:1 \" \\ Città",
+              "placeholder": "Type here",
+              "bgColor": "#FFFFFF",
+              "textColor": "#000000",
+              "fontSize": 14,
+              "oneLine": false,
+              "password": false,
+              "maxLength": 0,
+              "acceptedChars": ""
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-143-2",
+            "type": "panel",
+            "name": "panel_143_2",
+            "parentId": null,
+            "props": {
+              "x": 561,
+              "y": 202,
+              "width": 199,
+              "height": 71,
+              "bgColor": "#F5F5F5",
+              "borderColor": "#BDBDBD",
+              "borderWidth": 2,
+              "radius": 5,
+              "flexFlow": "none",
+              "flexMainPlace": "none",
+              "flexCrossPlace": "none",
+              "padTop": 0,
+              "padBottom": 0,
+              "padLeft": 0,
+              "padRight": 0,
+              "padRow": 0,
+              "padColumn": 0,
+              "scrollbarMode": "LV_SCROLLBAR_MODE_AUTO",
+              "text": "Testo 143:2 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-143-3",
+            "type": "spinner",
+            "name": "spinner_143_3",
+            "parentId": null,
+            "props": {
+              "x": 31,
+              "y": 73,
+              "width": 184,
+              "height": 84,
+              "speed": 1000,
+              "arcLength": 60,
+              "color": "#2196F3",
+              "lineWidth": 8,
+              "text": "Testo 143:3 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-143-4",
+            "type": "panel",
+            "name": "panel_143_4",
+            "parentId": null,
+            "props": {
+              "x": 293,
+              "y": 180,
+              "width": 72,
+              "height": 88,
+              "bgColor": "#F5F5F5",
+              "borderColor": "#BDBDBD",
+              "borderWidth": 2,
+              "radius": 5,
+              "flexFlow": "none",
+              "flexMainPlace": "none",
+              "flexCrossPlace": "none",
+              "padTop": 0,
+              "padBottom": 0,
+              "padLeft": 0,
+              "padRight": 0,
+              "padRow": 0,
+              "padColumn": 0,
+              "scrollbarMode": "LV_SCROLLBAR_MODE_AUTO",
+              "text": "Testo 143:4 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

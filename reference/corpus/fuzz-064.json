@@ -1,0 +1,145 @@
+{
+  "generatedDate": "2023-11-14T22:14:56.000Z",
+  "project": {
+    "projectName": "Random 64",
+    "pages": [
+      {
+        "id": "p64",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-64-0",
+            "type": "span",
+            "name": "span_64_0",
+            "parentId": null,
+            "props": {
+              "x": 308,
+              "y": 174,
+              "width": 234,
+              "height": 17,
+              "spans": "Normal text|14|#000000\nBold text|16|#FF0000\nSmall text|12|#666666",
+              "bgColor": "#FFFFFF",
+              "mode": "wrap",
+              "text": "Testo 64:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-64-1",
+            "type": "chart",
+            "name": "chart_64_1",
+            "parentId": null,
+            "props": {
+              "x": 523,
+              "y": 133,
+              "width": 109,
+              "height": 122,
+              "chartType": "line",
+              "data": "10,20,30,25,40,35,50",
+              "data2": "",
+              "bgColor": "#FFFFFF",
+              "lineColor": "#2196F3",
+              "lineColor2": "#FF5722",
+              "pointCount": 10,
+              "showPoints": true,
+              "rangeYMin": 0,
+              "rangeYMax": 100,
+              "divLineCount": 3,
+              "divLineCountSec": 5,
+              "updateMode": "shift",
+              "text": "Testo 64:1 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-64-2",
+            "type": "line",
+            "name": "line_64_2",
+            "parentId": null,
+            "props": {
+              "x": 425,
+              "y": 52,
+              "width": 82,
+              "height": 40,
+              "points": "0,0 200,0",
+              "lineColor": "#000000",
+              "lineWidth": 2,
+              "rounded": false,
+              "text": "Testo 64:2 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-64-3",
+            "type": "led",
+            "name": "led_64_3",
+            "parentId": null,
+            "props": {
+              "x": 129,
+              "y": 395,
+              "width": 160,
+              "height": 73,
+              "color": "#FF0000",
+              "brightness": 255,
+              "text": "Testo 64:3 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-64-4",
+            "type": "label",
+            "name": "label_64_4",
+            "parentId": null,
+            "props": {
+              "x": 550,
+              "y": 181,
+              "width": 91,
+              "height": 45,
+              "text": "Testo 64:4 \" \\ Città",
+              "textColor": "#000000",
+              "fontSize": 14,
+              "longMode": "LV_LABEL_LONG_MODE_WRAP",
+              "textAlign": "LV_TEXT_ALIGN_CENTER",
+              "recolor": false
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-64-5",
+            "type": "spinner",
+            "name": "spinner_64_5",
+            "parentId": null,
+            "props": {
+              "x": 572,
+              "y": 391,
+              "width": 147,
+              "height": 112,
+              "speed": 1000,
+              "arcLength": 60,
+              "color": "#2196F3",
+              "lineWidth": 8,
+              "text": "Testo 64:5 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

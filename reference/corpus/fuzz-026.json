@@ -1,0 +1,71 @@
+{
+  "generatedDate": "2023-11-14T22:14:18.000Z",
+  "project": {
+    "projectName": "Random 26",
+    "pages": [
+      {
+        "id": "p26",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-26-0",
+            "type": "textarea",
+            "name": "textarea_26_0",
+            "parentId": null,
+            "props": {
+              "x": 141,
+              "y": 33,
+              "width": 24,
+              "height": 29,
+              "text": "Testo 26:0 \" \\ Città",
+              "placeholder": "Type here",
+              "bgColor": "#FFFFFF",
+              "textColor": "#000000",
+              "fontSize": 14,
+              "oneLine": false,
+              "password": false,
+              "maxLength": 0,
+              "acceptedChars": ""
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-26-1",
+            "type": "chart",
+            "name": "chart_26_1",
+            "parentId": null,
+            "props": {
+              "x": 593,
+              "y": 248,
+              "width": 199,
+              "height": 36,
+              "chartType": "line",
+              "data": "10,20,30,25,40,35,50",
+              "data2": "",
+              "bgColor": "#FFFFFF",
+              "lineColor": "#2196F3",
+              "lineColor2": "#FF5722",
+              "pointCount": 10,
+              "showPoints": true,
+              "rangeYMin": 0,
+              "rangeYMax": 100,
+              "divLineCount": 3,
+              "divLineCountSec": 5,
+              "updateMode": "shift",
+              "text": "Testo 26:1 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

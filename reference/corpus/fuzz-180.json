@@ -1,0 +1,99 @@
+{
+  "generatedDate": "2023-11-14T22:16:52.000Z",
+  "project": {
+    "projectName": "Random 180",
+    "pages": [
+      {
+        "id": "p180",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-180-0",
+            "type": "spinner",
+            "name": "spinner_180_0",
+            "parentId": null,
+            "props": {
+              "x": 475,
+              "y": 167,
+              "width": 234,
+              "height": 98,
+              "speed": 1000,
+              "arcLength": 60,
+              "color": "#2196F3",
+              "lineWidth": 8,
+              "text": "Testo 180:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-180-1",
+            "type": "keyboard",
+            "name": "keyboard_180_1",
+            "parentId": null,
+            "props": {
+              "x": 181,
+              "y": 46,
+              "width": 89,
+              "height": 21,
+              "mode": "text_lower",
+              "textarea": "",
+              "popover": true,
+              "text": "Testo 180:1 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-180-2",
+            "type": "win",
+            "name": "win_180_2",
+            "parentId": null,
+            "props": {
+              "x": 254,
+              "y": 184,
+              "width": 123,
+              "height": 132,
+              "headerHeight": 40,
+              "title": "Window Title",
+              "bgColor": "#FFFFFF",
+              "headerBgColor": "#2196F3",
+              "titleColor": "#FFFFFF",
+              "text": "Testo 180:2 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-180-3",
+            "type": "imagebutton",
+            "name": "imagebutton_180_3",
+            "parentId": null,
+            "props": {
+              "x": 190,
+              "y": 60,
+              "width": 83,
+              "height": 16,
+              "src": "",
+              "text": "Testo 180:3 \" \\ Città",
+              "bgColor": "#2196F3",
+              "textColor": "#FFFFFF",
+              "fontSize": 14,
+              "radius": 5
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

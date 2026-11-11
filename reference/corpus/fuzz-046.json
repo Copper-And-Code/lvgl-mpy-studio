@@ -1,0 +1,81 @@
+{
+  "generatedDate": "2023-11-14T22:14:38.000Z",
+  "project": {
+    "projectName": "Random 46",
+    "pages": [
+      {
+        "id": "p46",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-46-0",
+            "type": "spinbox",
+            "name": "spinbox_46_0",
+            "parentId": null,
+            "props": {
+              "x": 425,
+              "y": 4,
+              "width": 145,
+              "height": 87,
+              "min": 0,
+              "max": 999,
+              "value": 0,
+              "digitCount": 4,
+              "separatorPos": 0,
+              "step": 1,
+              "rollover": false,
+              "bgColor": "#FFFFFF",
+              "textColor": "#000000",
+              "fontSize": 16,
+              "text": "Testo 46:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-46-1",
+            "type": "led",
+            "name": "led_46_1",
+            "parentId": null,
+            "props": {
+              "x": 652,
+              "y": 84,
+              "width": 64,
+              "height": 62,
+              "color": "#FF0000",
+              "brightness": 255,
+              "text": "Testo 46:1 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-46-2",
+            "type": "keyboard",
+            "name": "keyboard_46_2",
+            "parentId": null,
+            "props": {
+              "x": 462,
+              "y": 127,
+              "width": 231,
+              "height": 97,
+              "mode": "text_lower",
+              "textarea": "",
+              "popover": true,
+              "text": "Testo 46:2 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

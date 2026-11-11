@@ -1,0 +1,35 @@
+LVGL MPY Studio
+Copyright (c) 2026 Nunzio Raciti
+
+The IDE is licensed under GPL-3.0-or-later; see LICENSE. Generated code and the
+components embedded in projects are under MIT; see LICENSING.md.
+This software comes with absolutely no warranty.
+
+LVGL MPY Studio - third-party notices
+
+PySide6 and Qt are distributed as separate shared libraries in the package.
+PySide6: LGPL-3.0-only, https://www.pyside.org and https://code.qt.io/cgit/pyside/pyside-setup.git/
+Qt: LGPL-3.0-only for the modules used, https://www.qt.io and https://code.qt.io/cgit/qt/
+LGPL text: https://www.gnu.org/licenses/lgpl-3.0.txt
+The libraries can be replaced and the application restarted from the _internal folder.
+
+LVGL: MIT, https://github.com/lvgl/lvgl
+MicroPython: MIT, https://github.com/micropython/micropython
+PyDevices lvgl-micropython and lvgl-bindings: MIT
+https://github.com/PyDevices/lvgl-micropython
+https://github.com/PyDevices/lvgl-bindings
+mpremote: MIT, https://github.com/micropython/micropython
+pyserial: BSD-3-Clause, https://github.com/pyserial/pyserial
+QtAwesome and QtPy: MIT, https://github.com/spyder-ide/qtawesome and https://github.com/spyder-ide/qtpy ; texts in licenses/QtAwesome.txt and licenses/QtPy.txt
+Material Design Icons 6.9.96 (font only): Apache-2.0, https://pictogrammers.com/library/mdi/ ; text in licenses/MaterialDesignIcons.txt
+SDL2: zlib, https://www.libsdl.org
+Python: PSF License, https://docs.python.org/3/license.html
+Microsoft Visual C++ 2015-2022 Redistributable: app-local runtime in the portable package,
+https://learn.microsoft.com/cpp/windows/latest-supported-vc-redist
+MinGW-w64 and GCC runtime: licenses of the respective components with the GCC Runtime Library Exception,
+https://mingw-w64.org and https://gcc.gnu.org/onlinedocs/libstdc++/manual/license.html
+The MSYS2/w64devkit toolchain is not included: it is only needed to rebuild the C target.
+FFmpeg: LGPL-2.1 or later, included with Qt Multimedia, https://ffmpeg.org
+
+Exact versions are listed in docs/target.md and pyproject.toml.
+Full license texts are in the licenses folder.

@@ -1,0 +1,41 @@
+{
+  "generatedDate": "2023-11-14T22:13:28.000Z",
+  "project": {
+    "projectName": "One roller",
+    "pages": [
+      {
+        "id": "p1",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "w8",
+            "type": "roller",
+            "name": "Roller_w8",
+            "parentId": null,
+            "props": {
+              "x": 44,
+              "y": 46,
+              "width": 100,
+              "height": 150,
+              "options": "Option 1\nOption 2\nOption 3\nOption 4\nOption 5",
+              "selected": 0,
+              "visibleRows": 3,
+              "bgColor": "#F5F5F5",
+              "selectedColor": "#2196F3",
+              "textColor": "#000000",
+              "fontSize": 16,
+              "infinite": false
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

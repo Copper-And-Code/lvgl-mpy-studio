@@ -1,0 +1,94 @@
+{
+  "generatedDate": "2023-11-14T22:14:39.000Z",
+  "project": {
+    "projectName": "Random 47",
+    "pages": [
+      {
+        "id": "p47",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-47-0",
+            "type": "textarea",
+            "name": "textarea_47_0",
+            "parentId": null,
+            "props": {
+              "x": 235,
+              "y": 333,
+              "width": 53,
+              "height": 107,
+              "text": "Testo 47:0 \" \\ Città",
+              "placeholder": "Type here",
+              "bgColor": "#FFFFFF",
+              "textColor": "#000000",
+              "fontSize": 14,
+              "oneLine": false,
+              "password": false,
+              "maxLength": 0,
+              "acceptedChars": ""
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-47-1",
+            "type": "textarea",
+            "name": "textarea_47_1",
+            "parentId": null,
+            "props": {
+              "x": 166,
+              "y": 167,
+              "width": 78,
+              "height": 105,
+              "text": "Testo 47:1 \" \\ Città",
+              "placeholder": "Type here",
+              "bgColor": "#FFFFFF",
+              "textColor": "#000000",
+              "fontSize": 14,
+              "oneLine": false,
+              "password": false,
+              "maxLength": 0,
+              "acceptedChars": ""
+            },
+            "events": [
+              {
+                "id": "e1",
+                "type": "LV_EVENT_VALUE_CHANGED",
+                "callback": "textarea_47_1_changed",
+                "code": "// handled by app"
+              }
+            ],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-47-2",
+            "type": "list",
+            "name": "list_47_2",
+            "parentId": null,
+            "props": {
+              "x": 511,
+              "y": 259,
+              "width": 150,
+              "height": 19,
+              "items": "Item 1\nItem 2\nItem 3\nItem 4\nItem 5",
+              "bgColor": "#FFFFFF",
+              "textColor": "#000000",
+              "selectedColor": "#E3F2FD",
+              "fontSize": 14,
+              "text": "Testo 47:2 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

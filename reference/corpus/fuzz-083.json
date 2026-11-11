@@ -1,0 +1,149 @@
+{
+  "generatedDate": "2023-11-14T22:15:15.000Z",
+  "project": {
+    "projectName": "Random 83",
+    "pages": [
+      {
+        "id": "p83",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-83-0",
+            "type": "textarea",
+            "name": "textarea_83_0",
+            "parentId": null,
+            "props": {
+              "x": 7,
+              "y": 187,
+              "width": 211,
+              "height": 34,
+              "text": "Testo 83:0 \" \\ Città",
+              "placeholder": "Type here",
+              "bgColor": "#FFFFFF",
+              "textColor": "#000000",
+              "fontSize": 14,
+              "oneLine": false,
+              "password": false,
+              "maxLength": 0,
+              "acceptedChars": ""
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-83-1",
+            "type": "span",
+            "name": "span_83_1",
+            "parentId": null,
+            "props": {
+              "x": 337,
+              "y": 58,
+              "width": 247,
+              "height": 123,
+              "spans": "Normal text|14|#000000\nBold text|16|#FF0000\nSmall text|12|#666666",
+              "bgColor": "#FFFFFF",
+              "mode": "wrap",
+              "text": "Testo 83:1 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-83-2",
+            "type": "line",
+            "name": "line_83_2",
+            "parentId": null,
+            "props": {
+              "x": 600,
+              "y": 47,
+              "width": 81,
+              "height": 97,
+              "points": "0,0 200,0",
+              "lineColor": "#000000",
+              "lineWidth": 2,
+              "rounded": false,
+              "text": "Testo 83:2 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-83-3",
+            "type": "msgbox",
+            "name": "msgbox_83_3",
+            "parentId": null,
+            "props": {
+              "x": 585,
+              "y": 26,
+              "width": 239,
+              "height": 125,
+              "title": "Notice",
+              "text": "Testo 83:3 \" \\ Città",
+              "buttons": "OK\nCancel",
+              "closeButton": true,
+              "bgColor": "#FFFFFF",
+              "textColor": "#000000",
+              "titleColor": "#333333",
+              "fontSize": 14
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-83-4",
+            "type": "tabview",
+            "name": "tabview_83_4",
+            "parentId": null,
+            "props": {
+              "x": 585,
+              "y": 250,
+              "width": 263,
+              "height": 88,
+              "tabPosition": "top",
+              "tabBarSize": 40,
+              "tabs": "Tab 1\nTab 2\nTab 3",
+              "activeTab": 0,
+              "bgColor": "#FFFFFF",
+              "tabBgColor": "#F5F5F5",
+              "tabActiveColor": "#2196F3",
+              "textColor": "#000000",
+              "text": "Testo 83:4 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-83-5",
+            "type": "imagebutton",
+            "name": "imagebutton_83_5",
+            "parentId": null,
+            "props": {
+              "x": 484,
+              "y": 348,
+              "width": 198,
+              "height": 74,
+              "src": "",
+              "text": "Testo 83:5 \" \\ Città",
+              "bgColor": "#2196F3",
+              "textColor": "#FFFFFF",
+              "fontSize": 14,
+              "radius": 5
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,211 @@
+{
+  "generatedDate": "2023-11-14T22:14:31.000Z",
+  "project": {
+    "projectName": "Random 39",
+    "pages": [
+      {
+        "id": "p39",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-39-0",
+            "type": "buttonmatrix",
+            "name": "buttonmatrix_39_0",
+            "parentId": null,
+            "props": {
+              "x": 335,
+              "y": 339,
+              "width": 169,
+              "height": 13,
+              "map": "1,2,3\n4,5,6\n7,8,9\n*,0,#",
+              "bgColor": "#FFFFFF",
+              "btnColor": "#E0E0E0",
+              "textColor": "#000000",
+              "fontSize": 14,
+              "oneCheck": false,
+              "text": "Testo 39:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-39-1",
+            "type": "span",
+            "name": "span_39_1",
+            "parentId": null,
+            "props": {
+              "x": 377,
+              "y": 350,
+              "width": 44,
+              "height": 153,
+              "spans": "Normal text|14|#000000\nBold text|16|#FF0000\nSmall text|12|#666666",
+              "bgColor": "#FFFFFF",
+              "mode": "wrap",
+              "text": "Testo 39:1 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-39-2",
+            "type": "roller",
+            "name": "roller_39_2",
+            "parentId": null,
+            "props": {
+              "x": 292,
+              "y": 311,
+              "width": 153,
+              "height": 47,
+              "options": "Option 1\nOption 2\nOption 3\nOption 4\nOption 5",
+              "selected": 0,
+              "visibleRows": 3,
+              "bgColor": "#F5F5F5",
+              "selectedColor": "#2196F3",
+              "textColor": "#000000",
+              "fontSize": 16,
+              "infinite": false,
+              "text": "Testo 39:2 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-39-3",
+            "type": "arc",
+            "name": "arc_39_3",
+            "parentId": null,
+            "props": {
+              "x": 189,
+              "y": 84,
+              "width": 209,
+              "height": 45,
+              "min": 0,
+              "max": 100,
+              "value": 50,
+              "bgColor": "#E0E0E0",
+              "indicatorColor": "#FF9800",
+              "startAngle": 135,
+              "endAngle": 45,
+              "rotation": 0,
+              "mode": "LV_ARC_MODE_NORMAL",
+              "knobColor": "#FF9800",
+              "lineWidth": 10,
+              "text": "Testo 39:3 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-39-4",
+            "type": "arc",
+            "name": "arc_39_4",
+            "parentId": null,
+            "props": {
+              "x": 331,
+              "y": 210,
+              "width": 196,
+              "height": 79,
+              "min": 0,
+              "max": 100,
+              "value": 50,
+              "bgColor": "#E0E0E0",
+              "indicatorColor": "#FF9800",
+              "startAngle": 135,
+              "endAngle": 45,
+              "rotation": 0,
+              "mode": "LV_ARC_MODE_NORMAL",
+              "knobColor": "#FF9800",
+              "lineWidth": 10,
+              "text": "Testo 39:4 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-39-5",
+            "type": "arc",
+            "name": "arc_39_5",
+            "parentId": null,
+            "props": {
+              "x": 281,
+              "y": 221,
+              "width": 165,
+              "height": 106,
+              "min": 0,
+              "max": 100,
+              "value": 50,
+              "bgColor": "#E0E0E0",
+              "indicatorColor": "#FF9800",
+              "startAngle": 135,
+              "endAngle": 45,
+              "rotation": 0,
+              "mode": "LV_ARC_MODE_NORMAL",
+              "knobColor": "#FF9800",
+              "lineWidth": 10,
+              "text": "Testo 39:5 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-39-6",
+            "type": "bar",
+            "name": "bar_39_6",
+            "parentId": null,
+            "props": {
+              "x": 229,
+              "y": 73,
+              "width": 47,
+              "height": 54,
+              "min": 0,
+              "max": 100,
+              "value": 50,
+              "bgColor": "#E0E0E0",
+              "indicatorColor": "#4CAF50",
+              "mode": "LV_BAR_MODE_NORMAL",
+              "animated": true,
+              "startValue": 0,
+              "text": "Testo 39:6 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-39-7",
+            "type": "msgbox",
+            "name": "msgbox_39_7",
+            "parentId": null,
+            "props": {
+              "x": 441,
+              "y": 308,
+              "width": 247,
+              "height": 130,
+              "title": "Notice",
+              "text": "Testo 39:7 \" \\ Città",
+              "buttons": "OK\nCancel",
+              "closeButton": true,
+              "bgColor": "#FFFFFF",
+              "textColor": "#000000",
+              "titleColor": "#333333",
+              "fontSize": 14
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

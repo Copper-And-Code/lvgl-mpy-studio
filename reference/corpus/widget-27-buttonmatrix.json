@@ -1,0 +1,39 @@
+{
+  "generatedDate": "2023-11-14T22:13:46.000Z",
+  "project": {
+    "projectName": "One buttonmatrix",
+    "pages": [
+      {
+        "id": "p1",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "w26",
+            "type": "buttonmatrix",
+            "name": "Button Matrix_w26",
+            "parentId": null,
+            "props": {
+              "x": 98,
+              "y": 82,
+              "width": 250,
+              "height": 120,
+              "map": "1,2,3\n4,5,6\n7,8,9\n*,0,#",
+              "bgColor": "#FFFFFF",
+              "btnColor": "#E0E0E0",
+              "textColor": "#000000",
+              "fontSize": 14,
+              "oneCheck": false
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

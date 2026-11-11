@@ -1,0 +1,283 @@
+{
+  "schemaVersion": 2,
+  "projectName": "Simon",
+  "display": {
+    "width": 1024,
+    "height": 600,
+    "colorFormat": "RGB565"
+  },
+  "pages": [
+    {
+      "id": "6feeb57f25ed439dae8b5724f4f6f113",
+      "name": "main",
+      "canvasSize": [
+        1024,
+        600
+      ],
+      "widgets": [
+        {
+          "id": "4c6bb924da3b4c8f8ec9ddec76f44334",
+          "name": "buzzer1",
+          "type": "buzzer",
+          "props": {},
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "f197af6b3ef34bc88dba3e498d81e10d",
+          "name": "background",
+          "type": "panel",
+          "props": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 600,
+            "bgColor": "#101827",
+            "borderColor": "#BDBDBD",
+            "borderWidth": 0,
+            "radius": 0,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_OFF"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "abbb92133f5b4f9e901830fc1e5af6c9",
+          "name": "title",
+          "type": "label",
+          "props": {
+            "x": 25,
+            "y": 17,
+            "width": 500,
+            "height": 42,
+            "text": "SIMON",
+            "textColor": "#FFFFFF",
+            "fontSize": 24,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_LEFT",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "577050f2b8754ade991f5b206f88343c",
+          "name": "status",
+          "type": "label",
+          "props": {
+            "x": 29,
+            "y": 76,
+            "width": 976,
+            "height": 44,
+            "text": "Press START and repeat the sequence",
+            "textColor": "#D5DEEB",
+            "fontSize": 24,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "18e644fc0f064a0f853035fbbc3c5d28",
+          "name": "green",
+          "type": "button",
+          "props": {
+            "x": 71,
+            "y": 150,
+            "width": 420,
+            "height": 175,
+            "text": "GREEN",
+            "bgColor": "#16834B",
+            "textColor": "#FFFFFF",
+            "fontSize": 24,
+            "radius": 18
+          },
+          "events": {
+            "CLICKED": "green_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "11534dc3c64240a4b1569a5e23f3deb8",
+          "name": "red",
+          "type": "button",
+          "props": {
+            "x": 534,
+            "y": 150,
+            "width": 420,
+            "height": 175,
+            "text": "RED",
+            "bgColor": "#B52F3B",
+            "textColor": "#FFFFFF",
+            "fontSize": 24,
+            "radius": 18
+          },
+          "events": {
+            "CLICKED": "red_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "a912717b06c14bc887a18cffc98a511a",
+          "name": "yellow",
+          "type": "button",
+          "props": {
+            "x": 70,
+            "y": 355,
+            "width": 420,
+            "height": 175,
+            "text": "YELLOW",
+            "bgColor": "#C69214",
+            "textColor": "#FFFFFF",
+            "fontSize": 24,
+            "radius": 18
+          },
+          "events": {
+            "CLICKED": "yellow_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "f05b1c830fcd44ed959010e35297f054",
+          "name": "blue",
+          "type": "button",
+          "props": {
+            "x": 534,
+            "y": 354,
+            "width": 420,
+            "height": 175,
+            "text": "BLUE",
+            "bgColor": "#245DB5",
+            "textColor": "#FFFFFF",
+            "fontSize": 24,
+            "radius": 18
+          },
+          "events": {
+            "CLICKED": "blue_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "7f0a27ab151a4892bd123c0cbdbc8388",
+          "name": "start",
+          "type": "button",
+          "props": {
+            "x": 699,
+            "y": 12,
+            "width": 300,
+            "height": 54,
+            "text": "START / RESET",
+            "bgColor": "#596579",
+            "textColor": "#FFFFFF",
+            "fontSize": 16,
+            "radius": 5
+          },
+          "events": {
+            "CLICKED": "start_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "module": "import urandom as random\n\nSIREN_MS = 600                 # mistake: broken siren falling from 1000 to 200 Hz\n\nsimon_timer = None\nsimon_siren_timer = None\nsimon_wait = 0\nsimon_sequence = []\nsimon_colors = [0x16834B, 0xB52F3B, 0xC69214, 0x245DB5]\nsimon_bright = [0x35E887, 0xFF6070, 0xFFE052, 0x58A6FF]\nsimon_notes = [415, 310, 252, 209]\nsimon_buttons = []\n\n\ndef screen_size():\n    display = lv.display_get_default()\n    return display.get_horizontal_resolution(), display.get_vertical_resolution()\n\n\ndef simon_layout():\n    # Fits any screen: the unit is 1/240 of the short side.\n    width, height = screen_size()\n    unit = min(width, height) / 240\n    small = width < 400\n    margin, bar, gap = int(6 * unit), int(26 * unit), int(6 * unit)\n    ui.background.set_size(width, height)\n    button = width // 2 + margin if width < 600 else width * 3 // 10\n    ui.start.set_pos(width - margin - button, margin)\n    ui.start.set_size(button, bar)\n    ui.title.set_pos(margin, margin)\n    ui.title.set_size(width - button - 3 * margin, bar)\n    top = margin + bar + gap // 2\n    status = int(34 * unit) if width < 600 else int(18 * unit)  # two lines on narrow screens\n    ui.status.set_pos(margin, top)\n    ui.status.set_size(width - 2 * margin, status)\n    if small:\n        ui.status.set_style_text_font(lv.font_montserrat_14, lv.PART.MAIN)\n    top += status + gap // 2\n    pad_w, pad_h = (width - 2 * margin - gap) // 2, (height - top - margin - gap) // 2\n    for index, pad in enumerate(simon_buttons):\n        pad.set_pos(margin + index % 2 * (pad_w + gap), top + index // 2 * (pad_h + gap))\n        pad.set_size(pad_w, pad_h)\n        if small:\n            pad.get_child(0).set_style_text_font(lv.font_montserrat_16, lv.PART.MAIN)\n\n\ndef simon_light(index, bright=True):\n    colors = simon_bright if bright else simon_colors\n    simon_buttons[index].set_style_bg_color(lv.color_hex(colors[index]), lv.PART.MAIN)\n    if bright:\n        ui.buzzer1.beep(simon_notes[index], 420)\n\n\ndef simon_siren(timer):\n    global simon_wait, simon_siren_timer\n    simon_wait = max(0, simon_wait - 20)\n    if simon_wait and (simon_wait // 60) % 2:\n        ui.buzzer1.tone(200 + 800 * simon_wait // SIREN_MS)\n    else:\n        ui.buzzer1.off()\n    if not simon_wait:\n        timer.delete()\n        simon_siren_timer = None\n\n\ndef simon_reset():\n    global simon_timer, simon_sequence, simon_playing, simon_playback\n    global simon_show_index, simon_user_index, simon_buttons, simon_siren_timer\n    simon_buttons = [ui.green, ui.red, ui.yellow, ui.blue]\n    if simon_timer is not None:\n        simon_timer.delete()\n        simon_timer = None\n    if simon_siren_timer is not None:\n        ui.buzzer1.off()\n        simon_siren_timer.delete()\n        simon_siren_timer = None\n    simon_sequence = []\n    simon_playing = False\n    simon_playback = False\n    simon_show_index = 0\n    simon_user_index = 0\n    for index in range(4):\n        simon_light(index, False)\n    ui.status.set_text(\"Press START and repeat the sequence\")\n\n\ndef simon_tick(_timer):\n    global simon_show_index, simon_playback, simon_user_index\n    if not simon_playing or not simon_playback:\n        return\n    if simon_show_index < len(simon_sequence):\n        for index in range(4):\n            simon_light(index, False)\n        simon_light(simon_sequence[simon_show_index])\n        simon_show_index += 1\n    else:\n        for index in range(4):\n            simon_light(index, False)\n        simon_playback = False\n        simon_user_index = 0\n        ui.status.set_text(\"Your turn: repeat \" + str(len(simon_sequence)) + \" colors\")\n\n\ndef simon_start():\n    global simon_timer, simon_playing, simon_playback, simon_show_index\n    simon_reset()\n    simon_sequence.append(random.getrandbits(2))\n    simon_playing = True\n    simon_playback = True\n    simon_show_index = 0\n    ui.status.set_text(\"Watch the sequence...\")\n    simon_timer = lv.timer_create(simon_tick, 550, None)\n\n\ndef simon_press(index):\n    global simon_playback, simon_playing, simon_show_index, simon_user_index\n    global simon_timer, simon_siren_timer, simon_wait\n    if not simon_playing or simon_playback:\n        return\n    for pad in range(4):\n        simon_light(pad, False)\n    if index != simon_sequence[simon_user_index]:\n        simon_playing = False\n        simon_timer.delete()\n        simon_timer = None\n        simon_wait = SIREN_MS\n        simon_siren_timer = lv.timer_create(simon_siren, 20, None)\n        ui.status.set_text(\"Wrong sequence! Score: \" + str(len(simon_sequence) - 1))\n        return\n    simon_light(index)\n    simon_user_index += 1\n    if simon_user_index == len(simon_sequence):\n        if len(simon_sequence) == 8:\n            simon_playing = False\n            simon_timer.delete()\n            simon_timer = None\n            ui.status.set_text(\"You win! 8 sequences completed\")\n            return\n        simon_sequence.append(random.getrandbits(2))\n        simon_playback = True\n        simon_show_index = 0\n        ui.status.set_text(\"Well done! Watch the next round...\")\n",
+    "handlers": {
+      "main_screen_loaded": {
+        "widget": "main",
+        "event": "SCREEN_LOADED",
+        "body": "simon_reset()\nsimon_layout()\n"
+      },
+      "green_clicked": {
+        "widget": "green",
+        "event": "CLICKED",
+        "body": "simon_press(0)"
+      },
+      "red_clicked": {
+        "widget": "red",
+        "event": "CLICKED",
+        "body": "simon_press(1)"
+      },
+      "yellow_clicked": {
+        "widget": "yellow",
+        "event": "CLICKED",
+        "body": "simon_press(2)"
+      },
+      "blue_clicked": {
+        "widget": "blue",
+        "event": "CLICKED",
+        "body": "simon_press(3)"
+      },
+      "start_clicked": {
+        "widget": "start",
+        "event": "CLICKED",
+        "body": "simon_start()"
+      }
+    }
+  },
+  "currentPageId": "6feeb57f25ed439dae8b5724f4f6f113",
+  "assets": {},
+  "variables": [],
+  "projectId": "3e58fadebc16488da1266f63d9b466e8",
+  "board": {
+    "schemaVersion": 1,
+    "id": "stm32h7_core_v1_3_1024x600",
+    "revision": 3,
+    "name": "STM32H7_CORE V1.3 (1024×600)",
+    "adapter": "stm32h7_uart",
+    "firmware": {
+      "microPython": "1.29",
+      "lvgl": "9.5",
+      "modules": [
+        "lvgl",
+        "display_driver",
+        "gt911",
+        "st_ltdc"
+      ]
+    },
+    "physicalWidth": 1024,
+    "physicalHeight": 600,
+    "logicalWidth": 1024,
+    "logicalHeight": 600,
+    "scale": 1,
+    "colorFormat": "RGB565",
+    "fonts": [
+      14,
+      16,
+      24,
+      32,
+      40
+    ],
+    "orientations": [
+      0
+    ],
+    "config": {
+      "driver": "display_driver",
+      "touch": "gt911",
+      "buffers": "driver",
+      "eventLoop": "driver",
+      "appRoot": "/flash/lms_apps",
+      "mainPath": "/flash/main.py"
+    }
+  }
+}

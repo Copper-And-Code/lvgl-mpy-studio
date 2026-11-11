@@ -1,0 +1,157 @@
+{
+  "generatedDate": "2023-11-14T22:14:17.000Z",
+  "project": {
+    "projectName": "Random 25",
+    "pages": [
+      {
+        "id": "p25",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-25-0",
+            "type": "win",
+            "name": "win_25_0",
+            "parentId": null,
+            "props": {
+              "x": 349,
+              "y": 386,
+              "width": 179,
+              "height": 45,
+              "headerHeight": 40,
+              "title": "Window Title",
+              "bgColor": "#FFFFFF",
+              "headerBgColor": "#2196F3",
+              "titleColor": "#FFFFFF",
+              "text": "Testo 25:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-25-1",
+            "type": "spinbox",
+            "name": "spinbox_25_1",
+            "parentId": null,
+            "props": {
+              "x": 333,
+              "y": 153,
+              "width": 51,
+              "height": 52,
+              "min": 0,
+              "max": 999,
+              "value": 0,
+              "digitCount": 4,
+              "separatorPos": 0,
+              "step": 1,
+              "rollover": false,
+              "bgColor": "#FFFFFF",
+              "textColor": "#000000",
+              "fontSize": 16,
+              "text": "Testo 25:1 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-25-2",
+            "type": "calendar",
+            "name": "calendar_25_2",
+            "parentId": null,
+            "props": {
+              "x": 171,
+              "y": 369,
+              "width": 97,
+              "height": 63,
+              "year": 2026,
+              "month": 10,
+              "day": 28,
+              "showHeader": true,
+              "bgColor": "#FFFFFF",
+              "todayColor": "#2196F3",
+              "selectedColor": "#1976D2",
+              "text": "Testo 25:2 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-25-3",
+            "type": "span",
+            "name": "span_25_3",
+            "parentId": null,
+            "props": {
+              "x": 426,
+              "y": 232,
+              "width": 37,
+              "height": 79,
+              "spans": "Normal text|14|#000000\nBold text|16|#FF0000\nSmall text|12|#666666",
+              "bgColor": "#FFFFFF",
+              "mode": "wrap",
+              "text": "Testo 25:3 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-25-4",
+            "type": "scale",
+            "name": "scale_25_4",
+            "parentId": null,
+            "props": {
+              "x": 100,
+              "y": 105,
+              "width": 27,
+              "height": 73,
+              "min": 0,
+              "max": 100,
+              "majorTickEvery": 10,
+              "majorTickLength": 15,
+              "minorTickCount": 4,
+              "minorTickLength": 8,
+              "labelShow": true,
+              "lineColor": "#000000",
+              "textColor": "#000000",
+              "mode": "horizontal",
+              "text": "Testo 25:4 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-25-5",
+            "type": "bar",
+            "name": "bar_25_5",
+            "parentId": null,
+            "props": {
+              "x": 356,
+              "y": 302,
+              "width": 82,
+              "height": 92,
+              "min": 0,
+              "max": 100,
+              "value": 50,
+              "bgColor": "#E0E0E0",
+              "indicatorColor": "#4CAF50",
+              "mode": "LV_BAR_MODE_NORMAL",
+              "animated": true,
+              "startValue": 0,
+              "text": "Testo 25:5 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "generatedDate": "2023-11-14T22:14:26.000Z",
+  "project": {
+    "projectName": "Random 34",
+    "pages": [
+      {
+        "id": "p34",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-34-0",
+            "type": "calendar",
+            "name": "calendar_34_0",
+            "parentId": null,
+            "props": {
+              "x": 615,
+              "y": 371,
+              "width": 256,
+              "height": 119,
+              "year": 2026,
+              "month": 10,
+              "day": 28,
+              "showHeader": true,
+              "bgColor": "#FFFFFF",
+              "todayColor": "#2196F3",
+              "selectedColor": "#1976D2",
+              "text": "Testo 34:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-34-1",
+            "type": "imagebutton",
+            "name": "imagebutton_34_1",
+            "parentId": null,
+            "props": {
+              "x": 212,
+              "y": 205,
+              "width": 78,
+              "height": 78,
+              "src": "",
+              "text": "Testo 34:1 \" \\ Città",
+              "bgColor": "#2196F3",
+              "textColor": "#FFFFFF",
+              "fontSize": 14,
+              "radius": 5
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-34-2",
+            "type": "spinbox",
+            "name": "spinbox_34_2",
+            "parentId": null,
+            "props": {
+              "x": 605,
+              "y": 359,
+              "width": 177,
+              "height": 89,
+              "min": 0,
+              "max": 999,
+              "value": 0,
+              "digitCount": 4,
+              "separatorPos": 0,
+              "step": 1,
+              "rollover": false,
+              "bgColor": "#FFFFFF",
+              "textColor": "#000000",
+              "fontSize": 16,
+              "text": "Testo 34:2 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

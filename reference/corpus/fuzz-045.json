@@ -1,0 +1,84 @@
+{
+  "generatedDate": "2023-11-14T22:14:37.000Z",
+  "project": {
+    "projectName": "Random 45",
+    "pages": [
+      {
+        "id": "p45",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-45-0",
+            "type": "span",
+            "name": "span_45_0",
+            "parentId": null,
+            "props": {
+              "x": 467,
+              "y": 318,
+              "width": 109,
+              "height": 77,
+              "spans": "Normal text|14|#000000\nBold text|16|#FF0000\nSmall text|12|#666666",
+              "bgColor": "#FFFFFF",
+              "mode": "wrap",
+              "text": "Testo 45:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-45-1",
+            "type": "textarea",
+            "name": "textarea_45_1",
+            "parentId": null,
+            "props": {
+              "x": 641,
+              "y": 316,
+              "width": 45,
+              "height": 102,
+              "text": "Testo 45:1 \" \\ Città",
+              "placeholder": "Type here",
+              "bgColor": "#FFFFFF",
+              "textColor": "#000000",
+              "fontSize": 14,
+              "oneLine": false,
+              "password": false,
+              "maxLength": 0,
+              "acceptedChars": ""
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-45-2",
+            "type": "msgbox",
+            "name": "msgbox_45_2",
+            "parentId": null,
+            "props": {
+              "x": 441,
+              "y": 19,
+              "width": 90,
+              "height": 49,
+              "title": "Notice",
+              "text": "Testo 45:2 \" \\ Città",
+              "buttons": "OK\nCancel",
+              "closeButton": true,
+              "bgColor": "#FFFFFF",
+              "textColor": "#000000",
+              "titleColor": "#333333",
+              "fontSize": 14
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

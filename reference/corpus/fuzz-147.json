@@ -1,0 +1,100 @@
+{
+  "generatedDate": "2023-11-14T22:16:19.000Z",
+  "project": {
+    "projectName": "Random 147",
+    "pages": [
+      {
+        "id": "p147",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-147-0",
+            "type": "led",
+            "name": "led_147_0",
+            "parentId": null,
+            "props": {
+              "x": 688,
+              "y": 195,
+              "width": 127,
+              "height": 15,
+              "color": "#FF0000",
+              "brightness": 255,
+              "text": "Testo 147:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-147-1",
+            "type": "imagebutton",
+            "name": "imagebutton_147_1",
+            "parentId": null,
+            "props": {
+              "x": 337,
+              "y": 106,
+              "width": 182,
+              "height": 127,
+              "src": "",
+              "text": "Testo 147:1 \" \\ Città",
+              "bgColor": "#2196F3",
+              "textColor": "#FFFFFF",
+              "fontSize": 14,
+              "radius": 5
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-147-2",
+            "type": "keyboard",
+            "name": "keyboard_147_2",
+            "parentId": null,
+            "props": {
+              "x": 23,
+              "y": 223,
+              "width": 200,
+              "height": 23,
+              "mode": "text_lower",
+              "textarea": "",
+              "popover": true,
+              "text": "Testo 147:2 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-147-3",
+            "type": "roller",
+            "name": "roller_147_3",
+            "parentId": null,
+            "props": {
+              "x": 506,
+              "y": 368,
+              "width": 267,
+              "height": 50,
+              "options": "Option 1\nOption 2\nOption 3\nOption 4\nOption 5",
+              "selected": 0,
+              "visibleRows": 3,
+              "bgColor": "#F5F5F5",
+              "selectedColor": "#2196F3",
+              "textColor": "#000000",
+              "fontSize": 16,
+              "infinite": false,
+              "text": "Testo 147:3 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

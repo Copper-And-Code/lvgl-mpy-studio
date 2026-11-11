@@ -1,0 +1,59 @@
+{
+  "scenarios": [
+    {
+      "name": "tour",
+      "page": "main",
+      "seed": 1,
+      "steps": [
+        {
+          "action": "wait",
+          "ms": 300
+        },
+        {
+          "action": "screenshot",
+          "label": "catania"
+        },
+        {
+          "action": "tap",
+          "widget": "refresh"
+        },
+        {
+          "action": "wait",
+          "ms": 200
+        },
+        {
+          "action": "assert",
+          "expr": "ui.city.get_text() == 'Milan'"
+        },
+        {
+          "action": "tap",
+          "widget": "settings_button"
+        },
+        {
+          "action": "wait_until",
+          "page": "settings"
+        },
+        {
+          "action": "tap",
+          "widget": "units"
+        },
+        {
+          "action": "wait",
+          "ms": 300
+        },
+        {
+          "action": "tap",
+          "widget": "back"
+        },
+        {
+          "action": "wait_until",
+          "page": "main"
+        },
+        {
+          "action": "assert",
+          "expr": "ui.temperature.get_text() == '53 F'"
+        }
+      ]
+    }
+  ]
+}

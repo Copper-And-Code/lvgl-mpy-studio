@@ -1,0 +1,145 @@
+{
+  "generatedDate": "2023-11-14T22:14:44.000Z",
+  "project": {
+    "projectName": "Random 52",
+    "pages": [
+      {
+        "id": "p52",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-52-0",
+            "type": "imagebutton",
+            "name": "imagebutton_52_0",
+            "parentId": null,
+            "props": {
+              "x": 24,
+              "y": 212,
+              "width": 66,
+              "height": 83,
+              "src": "",
+              "text": "Testo 52:0 \" \\ Città",
+              "bgColor": "#2196F3",
+              "textColor": "#FFFFFF",
+              "fontSize": 14,
+              "radius": 5
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-52-1",
+            "type": "keyboard",
+            "name": "keyboard_52_1",
+            "parentId": null,
+            "props": {
+              "x": 114,
+              "y": 314,
+              "width": 89,
+              "height": 17,
+              "mode": "text_lower",
+              "textarea": "",
+              "popover": true,
+              "text": "Testo 52:1 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-52-2",
+            "type": "checkbox",
+            "name": "checkbox_52_2",
+            "parentId": null,
+            "props": {
+              "x": 543,
+              "y": 15,
+              "width": 96,
+              "height": 118,
+              "text": "Testo 52:2 \" \\ Città",
+              "checked": false,
+              "textColor": "#000000",
+              "fontSize": 14,
+              "checkedColor": "#2196F3",
+              "disabled": false
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-52-3",
+            "type": "span",
+            "name": "span_52_3",
+            "parentId": null,
+            "props": {
+              "x": 455,
+              "y": 144,
+              "width": 160,
+              "height": 159,
+              "spans": "Normal text|14|#000000\nBold text|16|#FF0000\nSmall text|12|#666666",
+              "bgColor": "#FFFFFF",
+              "mode": "wrap",
+              "text": "Testo 52:3 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-52-4",
+            "type": "arc",
+            "name": "arc_52_4",
+            "parentId": null,
+            "props": {
+              "x": 333,
+              "y": 41,
+              "width": 267,
+              "height": 82,
+              "min": 0,
+              "max": 100,
+              "value": 50,
+              "bgColor": "#E0E0E0",
+              "indicatorColor": "#FF9800",
+              "startAngle": 135,
+              "endAngle": 45,
+              "rotation": 0,
+              "mode": "LV_ARC_MODE_NORMAL",
+              "knobColor": "#FF9800",
+              "lineWidth": 10,
+              "text": "Testo 52:4 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-52-5",
+            "type": "spinner",
+            "name": "spinner_52_5",
+            "parentId": null,
+            "props": {
+              "x": 493,
+              "y": 366,
+              "width": 126,
+              "height": 84,
+              "speed": 1000,
+              "arcLength": 60,
+              "color": "#2196F3",
+              "lineWidth": 8,
+              "text": "Testo 52:5 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,430 @@
+{
+  "schemaVersion": 2,
+  "projectName": "TicTacToe",
+  "display": {
+    "width": 1024,
+    "height": 600,
+    "colorFormat": "RGB565"
+  },
+  "pages": [
+    {
+      "id": "aa93542ecd254a23969710ca3225568f",
+      "name": "main",
+      "canvasSize": [
+        1024,
+        600
+      ],
+      "widgets": [
+        {
+          "id": "8ceb25e3fa7d418e98c2060e71e233a1",
+          "name": "background",
+          "type": "panel",
+          "props": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 600,
+            "bgColor": "#101827",
+            "borderColor": "#BDBDBD",
+            "borderWidth": 0,
+            "radius": 0,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_OFF"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "8f23a4c3cd3445ec88111aeafe197ae6",
+          "name": "title",
+          "type": "label",
+          "props": {
+            "x": 24,
+            "y": 18,
+            "width": 500,
+            "height": 42,
+            "text": "TIC TAC TOE",
+            "textColor": "#FFFFFF",
+            "fontSize": 24,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_LEFT",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "f5f71e3387f1404cbe19e438442600aa",
+          "name": "status",
+          "type": "label",
+          "props": {
+            "x": 24,
+            "y": 76,
+            "width": 976,
+            "height": 44,
+            "text": "Your turn (X)",
+            "textColor": "#D5DEEB",
+            "fontSize": 24,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "4616fb606e8d4b1f95f31526a8ff1d74",
+          "name": "cell_0",
+          "type": "button",
+          "props": {
+            "x": 292,
+            "y": 142,
+            "width": 140,
+            "height": 126,
+            "text": " ",
+            "bgColor": "#263449",
+            "textColor": "#FFFFFF",
+            "fontSize": 24,
+            "radius": 8
+          },
+          "events": {
+            "CLICKED": "cell_0_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "e9d5329b1511411392b106e86472382d",
+          "name": "cell_1",
+          "type": "button",
+          "props": {
+            "x": 446,
+            "y": 142,
+            "width": 140,
+            "height": 126,
+            "text": " ",
+            "bgColor": "#263449",
+            "textColor": "#FFFFFF",
+            "fontSize": 24,
+            "radius": 8
+          },
+          "events": {
+            "CLICKED": "cell_1_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "b20015eb93184779a4f0eead89099d98",
+          "name": "cell_2",
+          "type": "button",
+          "props": {
+            "x": 600,
+            "y": 142,
+            "width": 140,
+            "height": 126,
+            "text": " ",
+            "bgColor": "#263449",
+            "textColor": "#FFFFFF",
+            "fontSize": 24,
+            "radius": 8
+          },
+          "events": {
+            "CLICKED": "cell_2_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "96ee7d31d66a4380bc1340c272e20a0a",
+          "name": "cell_3",
+          "type": "button",
+          "props": {
+            "x": 292,
+            "y": 282,
+            "width": 140,
+            "height": 126,
+            "text": " ",
+            "bgColor": "#263449",
+            "textColor": "#FFFFFF",
+            "fontSize": 24,
+            "radius": 8
+          },
+          "events": {
+            "CLICKED": "cell_3_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "80d49827a80441b9850fff387d260d8b",
+          "name": "cell_4",
+          "type": "button",
+          "props": {
+            "x": 446,
+            "y": 282,
+            "width": 140,
+            "height": 126,
+            "text": " ",
+            "bgColor": "#263449",
+            "textColor": "#FFFFFF",
+            "fontSize": 24,
+            "radius": 8
+          },
+          "events": {
+            "CLICKED": "cell_4_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "6eae740ea9a044469b24461e6cb2b6ed",
+          "name": "cell_5",
+          "type": "button",
+          "props": {
+            "x": 600,
+            "y": 282,
+            "width": 140,
+            "height": 126,
+            "text": " ",
+            "bgColor": "#263449",
+            "textColor": "#FFFFFF",
+            "fontSize": 24,
+            "radius": 8
+          },
+          "events": {
+            "CLICKED": "cell_5_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "8e5edde4d75c4731b4d7b28f7dd4fa7d",
+          "name": "cell_6",
+          "type": "button",
+          "props": {
+            "x": 292,
+            "y": 422,
+            "width": 140,
+            "height": 126,
+            "text": " ",
+            "bgColor": "#263449",
+            "textColor": "#FFFFFF",
+            "fontSize": 24,
+            "radius": 8
+          },
+          "events": {
+            "CLICKED": "cell_6_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "6503d4dfe90e44d88f826c017a4332de",
+          "name": "cell_7",
+          "type": "button",
+          "props": {
+            "x": 446,
+            "y": 422,
+            "width": 140,
+            "height": 126,
+            "text": " ",
+            "bgColor": "#263449",
+            "textColor": "#FFFFFF",
+            "fontSize": 24,
+            "radius": 8
+          },
+          "events": {
+            "CLICKED": "cell_7_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "e9a87356d4fe4d1cacb35da08a23df9a",
+          "name": "cell_8",
+          "type": "button",
+          "props": {
+            "x": 600,
+            "y": 422,
+            "width": 140,
+            "height": 126,
+            "text": " ",
+            "bgColor": "#263449",
+            "textColor": "#FFFFFF",
+            "fontSize": 24,
+            "radius": 8
+          },
+          "events": {
+            "CLICKED": "cell_8_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "9c31a70ef2a54c25a1ca00f228a501c4",
+          "name": "mode",
+          "type": "button",
+          "props": {
+            "x": 494,
+            "y": 12,
+            "width": 220,
+            "height": 54,
+            "text": "CPU: ON",
+            "bgColor": "#596579",
+            "textColor": "#FFFFFF",
+            "fontSize": 16,
+            "radius": 5
+          },
+          "events": {
+            "CLICKED": "mode_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "6bf507c72f4948e9ade8797820623084",
+          "name": "reset",
+          "type": "button",
+          "props": {
+            "x": 744,
+            "y": 12,
+            "width": 250,
+            "height": 54,
+            "text": "NEW GAME",
+            "bgColor": "#596579",
+            "textColor": "#FFFFFF",
+            "fontSize": 16,
+            "radius": 5
+          },
+          "events": {
+            "CLICKED": "reset_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "module": "def screen_size():\n    display = lv.display_get_default()\n    return display.get_horizontal_resolution(), display.get_vertical_resolution()\n\n\nttt_cells = []\nttt_cpu = True\nttt_lines = [(0, 1, 2), (3, 4, 5), (6, 7, 8), (0, 3, 6), (1, 4, 7), (2, 5, 8), (0, 4, 8), (2, 4, 6)]\n\n\ndef ttt_reset():\n    global ttt_board, ttt_turn, ttt_over, ttt_cells\n    ttt_cells = [ui.cell_0, ui.cell_1, ui.cell_2, ui.cell_3, ui.cell_4, ui.cell_5, ui.cell_6, ui.cell_7, ui.cell_8]\n    ttt_board = [\"\"] * 9\n    ttt_turn = \"X\"\n    ttt_over = False\n    for cell in ttt_cells:\n        cell.get_child(0).set_text(\"\")\n        cell.set_style_bg_color(lv.color_hex(0x263449), lv.PART.MAIN)\n    ui.mode.get_child(0).set_text(\"CPU: ON\" if ttt_cpu else \"2 PLAYERS\")\n    ui.status.set_text(\"Your turn (X)\" if ttt_cpu else \"X's turn\")\n\n\ndef ttt_layout():\n    # Fits any screen: the unit is 1/240 of the short side.\n    width, height = screen_size()\n    unit = min(width, height) / 240\n    small = width < 400\n    margin, bar, gap = int(6 * unit), int(26 * unit), int(4 * unit)\n    ui.background.set_size(width, height)\n    button = (width - 3 * margin) // 2 if width < 600 else width // 4\n    ui.reset.set_pos(width - margin - button, margin)\n    ui.reset.set_size(button, bar)\n    ui.mode.set_pos(width - 2 * margin - 2 * button, margin)\n    ui.mode.set_size(button, bar)\n    if width < 600:\n        ui.title.add_flag(lv.obj.FLAG.HIDDEN)\n    ui.title.set_pos(margin, margin)\n    ui.title.set_size(width - 2 * button - 4 * margin, bar)\n    top = margin + bar + gap\n    ui.status.set_pos(margin, top)\n    ui.status.set_size(width - 2 * margin, int(16 * unit))\n    if small:\n        ui.status.set_style_text_font(lv.font_montserrat_14, lv.PART.MAIN)\n    top += int(18 * unit)\n    cell = (min(width - 2 * margin, height - top - margin) - 2 * gap) // 3\n    left = (width - 3 * cell - 2 * gap) // 2\n    for index, button in enumerate(ttt_cells):\n        button.set_pos(left + index % 3 * (cell + gap), top + index // 3 * (cell + gap))\n        button.set_size(cell, cell)\n\n\ndef ttt_toggle_mode():\n    global ttt_cpu\n    ttt_cpu = not ttt_cpu\n    ttt_reset()\n\n\ndef ttt_place(index):\n    global ttt_turn, ttt_over\n    ttt_board[index] = ttt_turn\n    ttt_cells[index].get_child(0).set_text(ttt_turn)\n    for a, b, c in ttt_lines:\n        if ttt_board[a] and ttt_board[a] == ttt_board[b] == ttt_board[c]:\n            ttt_over = True\n            for position in (a, b, c):\n                ttt_cells[position].set_style_bg_color(lv.color_hex(0x16834B), lv.PART.MAIN)\n            ui.status.set_text(ttt_turn + \" wins! Select NEW GAME\")\n            return\n    if \"\" not in ttt_board:\n        ttt_over = True\n        ui.status.set_text(\"Draw! Select NEW GAME\")\n        return\n    ttt_turn = \"O\" if ttt_turn == \"X\" else \"X\"\n    ui.status.set_text((\"Your turn (X)\" if ttt_turn == \"X\" else \"CPU is playing...\") if ttt_cpu else ttt_turn + \"'s turn\")\n\n\ndef ttt_winning_move(symbol):\n    for a, b, c in ttt_lines:\n        line = [ttt_board[a], ttt_board[b], ttt_board[c]]\n        if line.count(symbol) == 2 and \"\" in line:\n            return (a, b, c)[line.index(\"\")]\n    return -1\n\n\ndef ttt_cpu_move():\n    move = ttt_winning_move(\"O\")\n    if move < 0:\n        move = ttt_winning_move(\"X\")\n    if move < 0 and not ttt_board[4]:\n        move = 4\n    if move < 0:\n        for index in (0, 2, 6, 8):\n            if not ttt_board[index]:\n                move = index\n                break\n    if move < 0:\n        move = ttt_board.index(\"\")\n    ttt_place(move)\n\n\ndef ttt_move(index):\n    if ttt_over or ttt_board[index] or ttt_cpu and ttt_turn != \"X\":\n        return\n    ttt_place(index)\n    if ttt_cpu and not ttt_over:\n        ttt_cpu_move()\n",
+    "handlers": {
+      "mode_clicked": {
+        "widget": "mode",
+        "event": "CLICKED",
+        "body": "ttt_toggle_mode()"
+      },
+      "reset_clicked": {
+        "widget": "reset",
+        "event": "CLICKED",
+        "body": "ttt_reset()"
+      },
+      "main_screen_loaded": {
+        "widget": "main",
+        "event": "SCREEN_LOADED",
+        "body": "ttt_reset()\nttt_layout()\n"
+      },
+      "cell_0_clicked": {
+        "widget": "cell_0",
+        "event": "CLICKED",
+        "body": "ttt_move(0)"
+      },
+      "cell_1_clicked": {
+        "widget": "cell_1",
+        "event": "CLICKED",
+        "body": "ttt_move(1)"
+      },
+      "cell_2_clicked": {
+        "widget": "cell_2",
+        "event": "CLICKED",
+        "body": "ttt_move(2)"
+      },
+      "cell_3_clicked": {
+        "widget": "cell_3",
+        "event": "CLICKED",
+        "body": "ttt_move(3)"
+      },
+      "cell_4_clicked": {
+        "widget": "cell_4",
+        "event": "CLICKED",
+        "body": "ttt_move(4)"
+      },
+      "cell_5_clicked": {
+        "widget": "cell_5",
+        "event": "CLICKED",
+        "body": "ttt_move(5)"
+      },
+      "cell_6_clicked": {
+        "widget": "cell_6",
+        "event": "CLICKED",
+        "body": "ttt_move(6)"
+      },
+      "cell_7_clicked": {
+        "widget": "cell_7",
+        "event": "CLICKED",
+        "body": "ttt_move(7)"
+      },
+      "cell_8_clicked": {
+        "widget": "cell_8",
+        "event": "CLICKED",
+        "body": "ttt_move(8)"
+      }
+    }
+  },
+  "currentPageId": "aa93542ecd254a23969710ca3225568f",
+  "assets": {},
+  "variables": [],
+  "projectId": "89c206fb9dd54b5d82d325932672d4eb",
+  "board": {
+    "schemaVersion": 1,
+    "id": "stm32h7_core_v1_3_1024x600",
+    "revision": 3,
+    "name": "STM32H7_CORE V1.3 (1024×600)",
+    "adapter": "stm32h7_uart",
+    "firmware": {
+      "microPython": "1.29",
+      "lvgl": "9.5",
+      "modules": [
+        "lvgl",
+        "display_driver",
+        "gt911",
+        "st_ltdc"
+      ]
+    },
+    "physicalWidth": 1024,
+    "physicalHeight": 600,
+    "logicalWidth": 1024,
+    "logicalHeight": 600,
+    "scale": 1,
+    "colorFormat": "RGB565",
+    "fonts": [
+      14,
+      16,
+      24,
+      32,
+      40
+    ],
+    "orientations": [
+      0
+    ],
+    "config": {
+      "driver": "display_driver",
+      "touch": "gt911",
+      "buffers": "driver",
+      "eventLoop": "driver",
+      "appRoot": "/flash/lms_apps",
+      "mainPath": "/flash/main.py"
+    }
+  }
+}

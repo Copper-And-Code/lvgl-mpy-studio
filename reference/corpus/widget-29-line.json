@@ -1,0 +1,37 @@
+{
+  "generatedDate": "2023-11-14T22:13:48.000Z",
+  "project": {
+    "projectName": "One line",
+    "pages": [
+      {
+        "id": "p1",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "w28",
+            "type": "line",
+            "name": "Line_w28",
+            "parentId": null,
+            "props": {
+              "x": 104,
+              "y": 86,
+              "width": 200,
+              "height": 5,
+              "points": "0,0 200,0",
+              "lineColor": "#000000",
+              "lineWidth": 2,
+              "rounded": false
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

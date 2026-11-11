@@ -1,0 +1,88 @@
+{
+  "generatedDate": "2023-11-14T22:14:40.000Z",
+  "project": {
+    "projectName": "Random 48",
+    "pages": [
+      {
+        "id": "p48",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-48-0",
+            "type": "spinner",
+            "name": "spinner_48_0",
+            "parentId": null,
+            "props": {
+              "x": 205,
+              "y": 390,
+              "width": 218,
+              "height": 107,
+              "speed": 1000,
+              "arcLength": 60,
+              "color": "#2196F3",
+              "lineWidth": 8,
+              "text": "Testo 48:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-48-1",
+            "type": "spinbox",
+            "name": "spinbox_48_1",
+            "parentId": null,
+            "props": {
+              "x": 607,
+              "y": 314,
+              "width": 167,
+              "height": 36,
+              "min": 0,
+              "max": 999,
+              "value": 0,
+              "digitCount": 4,
+              "separatorPos": 0,
+              "step": 1,
+              "rollover": false,
+              "bgColor": "#FFFFFF",
+              "textColor": "#000000",
+              "fontSize": 16,
+              "text": "Testo 48:1 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-48-2",
+            "type": "dropdown",
+            "name": "dropdown_48_2",
+            "parentId": null,
+            "props": {
+              "x": 415,
+              "y": 276,
+              "width": 182,
+              "height": 119,
+              "options": "Option 1\nOption 2\nOption 3",
+              "selected": 0,
+              "bgColor": "#FFFFFF",
+              "textColor": "#000000",
+              "fontSize": 14,
+              "dir": "LV_DIR_BOTTOM",
+              "symbol": "LV_SYMBOL_DOWN",
+              "highlightSelected": true,
+              "text": "Testo 48:2 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

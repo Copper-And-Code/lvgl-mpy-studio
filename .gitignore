@@ -1,0 +1,32 @@
+.venv/
+.reference/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.hypothesis/
+build/
+!lvgl_mpy_studio/build/
+!lvgl_mpy_studio/build/*.py
+/dist/
+/cache/
+runtime/out/
+runtime/out-win64/
+runtime/out-web/
+runtime/src/
+runtime/modules/lvgl-bindings
+runtime/modules/lvgl-micropython
+runtime/modules/lvsim
+*.egg-info/
+.coverage
+
+# Local trials and files
+/runtime/out-w0-spike/
+/examples/dist/
+/examples/progetto.json
+/codex_resume.sh
+/claude_resume.sh
+/examples/*/dist/
+
+# Local working notes
+prompts/
+export_py/

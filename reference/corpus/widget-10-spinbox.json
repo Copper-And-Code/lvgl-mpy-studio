@@ -1,0 +1,43 @@
+{
+  "generatedDate": "2023-11-14T22:13:29.000Z",
+  "project": {
+    "projectName": "One spinbox",
+    "pages": [
+      {
+        "id": "p1",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "w9",
+            "type": "spinbox",
+            "name": "Spinbox_w9",
+            "parentId": null,
+            "props": {
+              "x": 47,
+              "y": 48,
+              "width": 120,
+              "height": 40,
+              "min": 0,
+              "max": 999,
+              "value": 0,
+              "digitCount": 4,
+              "separatorPos": 0,
+              "step": 1,
+              "rollover": false,
+              "bgColor": "#FFFFFF",
+              "textColor": "#000000",
+              "fontSize": 16
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

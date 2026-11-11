@@ -1,0 +1,92 @@
+{
+  "generatedDate": "2023-11-14T22:15:53.000Z",
+  "project": {
+    "projectName": "Random 121",
+    "pages": [
+      {
+        "id": "p121",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-121-0",
+            "type": "image",
+            "name": "image_121_0",
+            "parentId": null,
+            "props": {
+              "x": 383,
+              "y": 228,
+              "width": 117,
+              "height": 152,
+              "src": "",
+              "fit": "contain",
+              "bgColor": "#F0F0F0",
+              "rotation": 0,
+              "zoom": 256,
+              "antialias": true,
+              "pivotX": 0,
+              "pivotY": 0,
+              "text": "Testo 121:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-121-1",
+            "type": "image",
+            "name": "image_121_1",
+            "parentId": null,
+            "props": {
+              "x": 55,
+              "y": 127,
+              "width": 110,
+              "height": 145,
+              "src": "",
+              "fit": "contain",
+              "bgColor": "#F0F0F0",
+              "rotation": 0,
+              "zoom": 256,
+              "antialias": true,
+              "pivotX": 0,
+              "pivotY": 0,
+              "text": "Testo 121:1 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-121-2",
+            "type": "scale",
+            "name": "scale_121_2",
+            "parentId": null,
+            "props": {
+              "x": 514,
+              "y": 128,
+              "width": 236,
+              "height": 48,
+              "min": 0,
+              "max": 100,
+              "majorTickEvery": 10,
+              "majorTickLength": 15,
+              "minorTickCount": 4,
+              "minorTickLength": 8,
+              "labelShow": true,
+              "lineColor": "#000000",
+              "textColor": "#000000",
+              "mode": "horizontal",
+              "text": "Testo 121:2 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=LVGL MPY Studio
+Comment=Visual IDE for LVGL 9.5, MicroPython and C
+Exec=lvgl-mpy-studio
+Icon=lvgl-mpy-studio
+Terminal=false
+Categories=Development;IDE;

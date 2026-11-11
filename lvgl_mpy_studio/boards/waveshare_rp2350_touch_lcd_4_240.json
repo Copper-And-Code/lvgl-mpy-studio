@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "waveshare_rp2350_touch_lcd_4_240",
+  "revision": 3,
+  "name": "Waveshare RP2350-Touch-LCD-4 (240×240)",
+  "adapter": "waveshare_rgbpanel",
+  "firmware": {
+    "microPython": "1.29",
+    "lvgl": "9.5",
+    "modules": [
+      "lvgl",
+      "display_driver",
+      "rgbpanel",
+      "gt911"
+    ]
+  },
+  "fonts": [14, 16, 24, 32, 40],
+  "physicalWidth": 480,
+  "physicalHeight": 480,
+  "logicalWidth": 240,
+  "logicalHeight": 240,
+  "scale": 2,
+  "colorFormat": "RGB565",
+  "orientations": [
+    0
+  ],
+  "config": {
+    "driver": "display_driver",
+    "touch": "gt911",
+    "buffers": "driver",
+    "eventLoop": "driver"
+  },
+  "buzzer": {
+    "pin": 1
+  }
+}

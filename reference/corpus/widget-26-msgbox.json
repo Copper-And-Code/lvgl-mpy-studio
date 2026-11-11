@@ -1,0 +1,41 @@
+{
+  "generatedDate": "2023-11-14T22:13:45.000Z",
+  "project": {
+    "projectName": "One msgbox",
+    "pages": [
+      {
+        "id": "p1",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "w25",
+            "type": "msgbox",
+            "name": "Message Box_w25",
+            "parentId": null,
+            "props": {
+              "x": 95,
+              "y": 80,
+              "width": 250,
+              "height": 180,
+              "title": "Notice",
+              "text": "This is a message box",
+              "buttons": "OK\nCancel",
+              "closeButton": true,
+              "bgColor": "#FFFFFF",
+              "textColor": "#000000",
+              "titleColor": "#333333",
+              "fontSize": 14
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

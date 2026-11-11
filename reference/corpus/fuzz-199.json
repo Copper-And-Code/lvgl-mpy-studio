@@ -1,0 +1,77 @@
+{
+  "generatedDate": "2023-11-14T22:17:11.000Z",
+  "project": {
+    "projectName": "Random 199",
+    "pages": [
+      {
+        "id": "p199",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-199-0",
+            "type": "tileview",
+            "name": "tileview_199_0",
+            "parentId": null,
+            "props": {
+              "x": 421,
+              "y": 346,
+              "width": 86,
+              "height": 60,
+              "rows": 2,
+              "cols": 2,
+              "bgColor": "#FFFFFF",
+              "text": "Testo 199:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-199-1",
+            "type": "checkbox",
+            "name": "checkbox_199_1",
+            "parentId": null,
+            "props": {
+              "x": 523,
+              "y": 375,
+              "width": 215,
+              "height": 98,
+              "text": "Testo 199:1 \" \\ Città",
+              "checked": false,
+              "textColor": "#000000",
+              "fontSize": 14,
+              "checkedColor": "#2196F3",
+              "disabled": false
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-199-2",
+            "type": "keyboard",
+            "name": "keyboard_199_2",
+            "parentId": null,
+            "props": {
+              "x": 273,
+              "y": 253,
+              "width": 133,
+              "height": 141,
+              "mode": "text_lower",
+              "textarea": "",
+              "popover": true,
+              "text": "Testo 199:2 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

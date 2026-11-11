@@ -1,0 +1,149 @@
+{
+  "generatedDate": "2023-11-14T22:15:42.000Z",
+  "project": {
+    "projectName": "Random 110",
+    "pages": [
+      {
+        "id": "p110",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-110-0",
+            "type": "switch",
+            "name": "switch_110_0",
+            "parentId": null,
+            "props": {
+              "x": 210,
+              "y": 144,
+              "width": 247,
+              "height": 105,
+              "checked": false,
+              "onColor": "#4CAF50",
+              "offColor": "#BDBDBD",
+              "knobColor": "#FFFFFF",
+              "disabled": false,
+              "text": "Testo 110:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-110-1",
+            "type": "table",
+            "name": "table_110_1",
+            "parentId": null,
+            "props": {
+              "x": 572,
+              "y": 91,
+              "width": 189,
+              "height": 139,
+              "rows": 4,
+              "cols": 3,
+              "colWidths": "100,100,100",
+              "headerRow": "Col 1,Col 2,Col 3",
+              "cellData": "A1,B1,C1\nA2,B2,C2\nA3,B3,C3",
+              "bgColor": "#FFFFFF",
+              "textColor": "#000000",
+              "borderColor": "#E0E0E0",
+              "headerBgColor": "#F5F5F5",
+              "fontSize": 14,
+              "text": "Testo 110:1 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-110-2",
+            "type": "label",
+            "name": "label_110_2",
+            "parentId": null,
+            "props": {
+              "x": 516,
+              "y": 397,
+              "width": 67,
+              "height": 134,
+              "text": "Testo 110:2 \" \\ Città",
+              "textColor": "#000000",
+              "fontSize": 14,
+              "longMode": "LV_LABEL_LONG_MODE_WRAP",
+              "textAlign": "LV_TEXT_ALIGN_CENTER",
+              "recolor": false
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-110-3",
+            "type": "win",
+            "name": "win_110_3",
+            "parentId": null,
+            "props": {
+              "x": 130,
+              "y": 339,
+              "width": 55,
+              "height": 152,
+              "headerHeight": 40,
+              "title": "Window Title",
+              "bgColor": "#FFFFFF",
+              "headerBgColor": "#2196F3",
+              "titleColor": "#FFFFFF",
+              "text": "Testo 110:3 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-110-4",
+            "type": "checkbox",
+            "name": "checkbox_110_4",
+            "parentId": null,
+            "props": {
+              "x": 65,
+              "y": 256,
+              "width": 47,
+              "height": 93,
+              "text": "Testo 110:4 \" \\ Città",
+              "checked": false,
+              "textColor": "#000000",
+              "fontSize": 14,
+              "checkedColor": "#2196F3",
+              "disabled": false
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-110-5",
+            "type": "label",
+            "name": "label_110_5",
+            "parentId": null,
+            "props": {
+              "x": 65,
+              "y": 105,
+              "width": 158,
+              "height": 33,
+              "text": "Testo 110:5 \" \\ Città",
+              "textColor": "#000000",
+              "fontSize": 14,
+              "longMode": "LV_LABEL_LONG_MODE_WRAP",
+              "textAlign": "LV_TEXT_ALIGN_CENTER",
+              "recolor": false
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

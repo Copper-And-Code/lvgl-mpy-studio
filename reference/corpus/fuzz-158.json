@@ -1,0 +1,86 @@
+{
+  "generatedDate": "2023-11-14T22:16:30.000Z",
+  "project": {
+    "projectName": "Random 158",
+    "pages": [
+      {
+        "id": "p158",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-158-0",
+            "type": "tileview",
+            "name": "tileview_158_0",
+            "parentId": null,
+            "props": {
+              "x": 526,
+              "y": 326,
+              "width": 115,
+              "height": 137,
+              "rows": 2,
+              "cols": 2,
+              "bgColor": "#FFFFFF",
+              "text": "Testo 158:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-158-1",
+            "type": "calendar",
+            "name": "calendar_158_1",
+            "parentId": null,
+            "props": {
+              "x": 309,
+              "y": 89,
+              "width": 72,
+              "height": 32,
+              "year": 2026,
+              "month": 10,
+              "day": 28,
+              "showHeader": true,
+              "bgColor": "#FFFFFF",
+              "todayColor": "#2196F3",
+              "selectedColor": "#1976D2",
+              "text": "Testo 158:1 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-158-2",
+            "type": "spinbox",
+            "name": "spinbox_158_2",
+            "parentId": null,
+            "props": {
+              "x": 162,
+              "y": 381,
+              "width": 119,
+              "height": 89,
+              "min": 0,
+              "max": 999,
+              "value": 0,
+              "digitCount": 4,
+              "separatorPos": 0,
+              "step": 1,
+              "rollover": false,
+              "bgColor": "#FFFFFF",
+              "textColor": "#000000",
+              "fontSize": 16,
+              "text": "Testo 158:2 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

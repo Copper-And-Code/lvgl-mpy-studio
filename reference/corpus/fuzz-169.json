@@ -1,0 +1,77 @@
+{
+  "generatedDate": "2023-11-14T22:16:41.000Z",
+  "project": {
+    "projectName": "Random 169",
+    "pages": [
+      {
+        "id": "p169",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-169-0",
+            "type": "span",
+            "name": "span_169_0",
+            "parentId": null,
+            "props": {
+              "x": 281,
+              "y": 114,
+              "width": 258,
+              "height": 157,
+              "spans": "Normal text|14|#000000\nBold text|16|#FF0000\nSmall text|12|#666666",
+              "bgColor": "#FFFFFF",
+              "mode": "wrap",
+              "text": "Testo 169:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-169-1",
+            "type": "imagebutton",
+            "name": "imagebutton_169_1",
+            "parentId": null,
+            "props": {
+              "x": 171,
+              "y": 195,
+              "width": 234,
+              "height": 146,
+              "src": "",
+              "text": "Testo 169:1 \" \\ Città",
+              "bgColor": "#2196F3",
+              "textColor": "#FFFFFF",
+              "fontSize": 14,
+              "radius": 5
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-169-2",
+            "type": "span",
+            "name": "span_169_2",
+            "parentId": null,
+            "props": {
+              "x": 497,
+              "y": 320,
+              "width": 145,
+              "height": 50,
+              "spans": "Normal text|14|#000000\nBold text|16|#FF0000\nSmall text|12|#666666",
+              "bgColor": "#FFFFFF",
+              "mode": "wrap",
+              "text": "Testo 169:2 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

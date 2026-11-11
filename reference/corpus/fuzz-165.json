@@ -1,0 +1,103 @@
+{
+  "generatedDate": "2023-11-14T22:16:37.000Z",
+  "project": {
+    "projectName": "Random 165",
+    "pages": [
+      {
+        "id": "p165",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-165-0",
+            "type": "spinner",
+            "name": "spinner_165_0",
+            "parentId": null,
+            "props": {
+              "x": 419,
+              "y": 147,
+              "width": 203,
+              "height": 129,
+              "speed": 1000,
+              "arcLength": 60,
+              "color": "#2196F3",
+              "lineWidth": 8,
+              "text": "Testo 165:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-165-1",
+            "type": "switch",
+            "name": "switch_165_1",
+            "parentId": null,
+            "props": {
+              "x": 431,
+              "y": 242,
+              "width": 142,
+              "height": 148,
+              "checked": false,
+              "onColor": "#4CAF50",
+              "offColor": "#BDBDBD",
+              "knobColor": "#FFFFFF",
+              "disabled": false,
+              "text": "Testo 165:1 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-165-2",
+            "type": "dropdown",
+            "name": "dropdown_165_2",
+            "parentId": null,
+            "props": {
+              "x": 481,
+              "y": 146,
+              "width": 258,
+              "height": 136,
+              "options": "Option 1\nOption 2\nOption 3",
+              "selected": 0,
+              "bgColor": "#FFFFFF",
+              "textColor": "#000000",
+              "fontSize": 14,
+              "dir": "LV_DIR_BOTTOM",
+              "symbol": "LV_SYMBOL_DOWN",
+              "highlightSelected": true,
+              "text": "Testo 165:2 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-165-3",
+            "type": "spinner",
+            "name": "spinner_165_3",
+            "parentId": null,
+            "props": {
+              "x": 69,
+              "y": 90,
+              "width": 179,
+              "height": 11,
+              "speed": 1000,
+              "arcLength": 60,
+              "color": "#2196F3",
+              "lineWidth": 8,
+              "text": "Testo 165:3 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

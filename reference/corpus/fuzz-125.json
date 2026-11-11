@@ -1,0 +1,138 @@
+{
+  "generatedDate": "2023-11-14T22:15:57.000Z",
+  "project": {
+    "projectName": "Random 125",
+    "pages": [
+      {
+        "id": "p125",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-125-0",
+            "type": "chart",
+            "name": "chart_125_0",
+            "parentId": null,
+            "props": {
+              "x": 97,
+              "y": 65,
+              "width": 92,
+              "height": 26,
+              "chartType": "line",
+              "data": "10,20,30,25,40,35,50",
+              "data2": "",
+              "bgColor": "#FFFFFF",
+              "lineColor": "#2196F3",
+              "lineColor2": "#FF5722",
+              "pointCount": 10,
+              "showPoints": true,
+              "rangeYMin": 0,
+              "rangeYMax": 100,
+              "divLineCount": 3,
+              "divLineCountSec": 5,
+              "updateMode": "shift",
+              "text": "Testo 125:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-125-1",
+            "type": "bar",
+            "name": "bar_125_1",
+            "parentId": null,
+            "props": {
+              "x": 4,
+              "y": 217,
+              "width": 142,
+              "height": 65,
+              "min": 0,
+              "max": 100,
+              "value": 50,
+              "bgColor": "#E0E0E0",
+              "indicatorColor": "#4CAF50",
+              "mode": "LV_BAR_MODE_NORMAL",
+              "animated": true,
+              "startValue": 0,
+              "text": "Testo 125:1 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-125-2",
+            "type": "checkbox",
+            "name": "checkbox_125_2",
+            "parentId": null,
+            "props": {
+              "x": 535,
+              "y": 131,
+              "width": 165,
+              "height": 87,
+              "text": "Testo 125:2 \" \\ Città",
+              "checked": false,
+              "textColor": "#000000",
+              "fontSize": 14,
+              "checkedColor": "#2196F3",
+              "disabled": false
+            },
+            "events": [
+              {
+                "id": "e2",
+                "type": "LV_EVENT_VALUE_CHANGED",
+                "callback": "checkbox_125_2_changed",
+                "code": ""
+              }
+            ],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-125-3",
+            "type": "checkbox",
+            "name": "checkbox_125_3",
+            "parentId": null,
+            "props": {
+              "x": 215,
+              "y": 345,
+              "width": 125,
+              "height": 117,
+              "text": "Testo 125:3 \" \\ Città",
+              "checked": false,
+              "textColor": "#000000",
+              "fontSize": 14,
+              "checkedColor": "#2196F3",
+              "disabled": false
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-125-4",
+            "type": "led",
+            "name": "led_125_4",
+            "parentId": null,
+            "props": {
+              "x": 582,
+              "y": 130,
+              "width": 52,
+              "height": 99,
+              "color": "#FF0000",
+              "brightness": 255,
+              "text": "Testo 125:4 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

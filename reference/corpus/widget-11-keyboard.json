@@ -1,0 +1,36 @@
+{
+  "generatedDate": "2023-11-14T22:13:30.000Z",
+  "project": {
+    "projectName": "One keyboard",
+    "pages": [
+      {
+        "id": "p1",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "w10",
+            "type": "keyboard",
+            "name": "Keyboard_w10",
+            "parentId": null,
+            "props": {
+              "x": 50,
+              "y": 50,
+              "width": 480,
+              "height": 200,
+              "mode": "text_lower",
+              "textarea": "",
+              "popover": true
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

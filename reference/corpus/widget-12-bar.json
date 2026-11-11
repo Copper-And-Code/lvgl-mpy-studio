@@ -1,0 +1,41 @@
+{
+  "generatedDate": "2023-11-14T22:13:31.000Z",
+  "project": {
+    "projectName": "One bar",
+    "pages": [
+      {
+        "id": "p1",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "w11",
+            "type": "bar",
+            "name": "Progress Bar_w11",
+            "parentId": null,
+            "props": {
+              "x": 53,
+              "y": 52,
+              "width": 200,
+              "height": 20,
+              "min": 0,
+              "max": 100,
+              "value": 50,
+              "bgColor": "#E0E0E0",
+              "indicatorColor": "#4CAF50",
+              "mode": "LV_BAR_MODE_NORMAL",
+              "animated": true,
+              "startValue": 0
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

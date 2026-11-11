@@ -1,0 +1,73 @@
+{
+  "generatedDate": "2023-11-14T22:14:13.000Z",
+  "project": {
+    "projectName": "Random 21",
+    "pages": [
+      {
+        "id": "p21",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-21-0",
+            "type": "chart",
+            "name": "chart_21_0",
+            "parentId": null,
+            "props": {
+              "x": 264,
+              "y": 350,
+              "width": 249,
+              "height": 123,
+              "chartType": "line",
+              "data": "10,20,30,25,40,35,50",
+              "data2": "",
+              "bgColor": "#FFFFFF",
+              "lineColor": "#2196F3",
+              "lineColor2": "#FF5722",
+              "pointCount": 10,
+              "showPoints": true,
+              "rangeYMin": 0,
+              "rangeYMax": 100,
+              "divLineCount": 3,
+              "divLineCountSec": 5,
+              "updateMode": "shift",
+              "text": "Testo 21:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-21-1",
+            "type": "scale",
+            "name": "scale_21_1",
+            "parentId": null,
+            "props": {
+              "x": 82,
+              "y": 37,
+              "width": 152,
+              "height": 115,
+              "min": 0,
+              "max": 100,
+              "majorTickEvery": 10,
+              "majorTickLength": 15,
+              "minorTickCount": 4,
+              "minorTickLength": 8,
+              "labelShow": true,
+              "lineColor": "#000000",
+              "textColor": "#000000",
+              "mode": "horizontal",
+              "text": "Testo 21:1 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

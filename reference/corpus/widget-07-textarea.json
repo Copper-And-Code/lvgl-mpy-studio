@@ -1,0 +1,42 @@
+{
+  "generatedDate": "2023-11-14T22:13:26.000Z",
+  "project": {
+    "projectName": "One textarea",
+    "pages": [
+      {
+        "id": "p1",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "w6",
+            "type": "textarea",
+            "name": "Text Area_w6",
+            "parentId": null,
+            "props": {
+              "x": 38,
+              "y": 42,
+              "width": 200,
+              "height": 100,
+              "text": "",
+              "placeholder": "Type here",
+              "bgColor": "#FFFFFF",
+              "textColor": "#000000",
+              "fontSize": 14,
+              "oneLine": false,
+              "password": false,
+              "maxLength": 0,
+              "acceptedChars": ""
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

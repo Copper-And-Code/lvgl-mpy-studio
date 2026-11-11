@@ -1,0 +1,86 @@
+{
+  "generatedDate": "2023-11-14T22:15:33.000Z",
+  "project": {
+    "projectName": "Random 101",
+    "pages": [
+      {
+        "id": "p101",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-101-0",
+            "type": "chart",
+            "name": "chart_101_0",
+            "parentId": null,
+            "props": {
+              "x": 442,
+              "y": 323,
+              "width": 246,
+              "height": 54,
+              "chartType": "line",
+              "data": "10,20,30,25,40,35,50",
+              "data2": "",
+              "bgColor": "#FFFFFF",
+              "lineColor": "#2196F3",
+              "lineColor2": "#FF5722",
+              "pointCount": 10,
+              "showPoints": true,
+              "rangeYMin": 0,
+              "rangeYMax": 100,
+              "divLineCount": 3,
+              "divLineCountSec": 5,
+              "updateMode": "shift",
+              "text": "Testo 101:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-101-1",
+            "type": "led",
+            "name": "led_101_1",
+            "parentId": null,
+            "props": {
+              "x": 656,
+              "y": 149,
+              "width": 98,
+              "height": 153,
+              "color": "#FF0000",
+              "brightness": 255,
+              "text": "Testo 101:1 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-101-2",
+            "type": "switch",
+            "name": "switch_101_2",
+            "parentId": null,
+            "props": {
+              "x": 640,
+              "y": 168,
+              "width": 107,
+              "height": 34,
+              "checked": false,
+              "onColor": "#4CAF50",
+              "offColor": "#BDBDBD",
+              "knobColor": "#FFFFFF",
+              "disabled": false,
+              "text": "Testo 101:2 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

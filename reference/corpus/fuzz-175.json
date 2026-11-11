@@ -1,0 +1,84 @@
+{
+  "generatedDate": "2023-11-14T22:16:47.000Z",
+  "project": {
+    "projectName": "Random 175",
+    "pages": [
+      {
+        "id": "p175",
+        "name": "Main",
+        "canvasSize": {
+          "width": 800,
+          "height": 480
+        },
+        "widgets": [
+          {
+            "id": "random-175-0",
+            "type": "win",
+            "name": "win_175_0",
+            "parentId": null,
+            "props": {
+              "x": 307,
+              "y": 85,
+              "width": 136,
+              "height": 69,
+              "headerHeight": 40,
+              "title": "Window Title",
+              "bgColor": "#FFFFFF",
+              "headerBgColor": "#2196F3",
+              "titleColor": "#FFFFFF",
+              "text": "Testo 175:0 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-175-1",
+            "type": "tabview",
+            "name": "tabview_175_1",
+            "parentId": null,
+            "props": {
+              "x": 636,
+              "y": 218,
+              "width": 188,
+              "height": 94,
+              "tabPosition": "top",
+              "tabBarSize": 40,
+              "tabs": "Tab 1\nTab 2\nTab 3",
+              "activeTab": 0,
+              "bgColor": "#FFFFFF",
+              "tabBgColor": "#F5F5F5",
+              "tabActiveColor": "#2196F3",
+              "textColor": "#000000",
+              "text": "Testo 175:1 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          },
+          {
+            "id": "random-175-2",
+            "type": "list",
+            "name": "list_175_2",
+            "parentId": null,
+            "props": {
+              "x": 664,
+              "y": 4,
+              "width": 101,
+              "height": 133,
+              "items": "Item 1\nItem 2\nItem 3\nItem 4\nItem 5",
+              "bgColor": "#FFFFFF",
+              "textColor": "#000000",
+              "selectedColor": "#E3F2FD",
+              "fontSize": 14,
+              "text": "Testo 175:2 \" \\ Città"
+            },
+            "events": [],
+            "animations": [],
+            "customStyles": {}
+          }
+        ]
+      }
+    ]
+  }
+}

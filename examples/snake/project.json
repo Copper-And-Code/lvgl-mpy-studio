@@ -1,0 +1,200 @@
+{
+  "schemaVersion": 2,
+  "projectName": "Snake",
+  "display": {
+    "width": 1024,
+    "height": 600,
+    "colorFormat": "RGB565"
+  },
+  "pages": [
+    {
+      "id": "a876c95186af41b997d3beb753917fca",
+      "name": "main",
+      "canvasSize": [
+        1024,
+        600
+      ],
+      "widgets": [
+        {
+          "id": "699c2b4ee01c4dc291b28d11ebec0445",
+          "name": "buzzer1",
+          "type": "buzzer",
+          "props": {},
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "a1a5492794214b739f53723890084d7c",
+          "name": "timer1",
+          "type": "timer",
+          "props": {
+            "period": 20,
+            "enabled": true
+          },
+          "events": {
+            "TICK": "timer1_tick"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "ee37b3e1dfd34376961778fa26cd2de8",
+          "name": "background",
+          "type": "panel",
+          "props": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 600,
+            "bgColor": "#101010",
+            "borderColor": "#BDBDBD",
+            "borderWidth": 0,
+            "radius": 0,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_OFF"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "d11f039c8a7c4174b4a257ebfe447a78",
+          "name": "score_label",
+          "type": "label",
+          "props": {
+            "x": 15,
+            "y": 3,
+            "width": 800,
+            "height": 40,
+            "text": "Score 0   Best 0",
+            "textColor": "#FFFFFF",
+            "fontSize": 32,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_LEFT",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "64ccd38ddc574ccbac6e0a83dd926a98",
+          "name": "field",
+          "type": "panel",
+          "props": {
+            "x": 4,
+            "y": 60,
+            "width": 1015,
+            "height": 525,
+            "bgColor": "#203020",
+            "borderColor": "#BDBDBD",
+            "borderWidth": 0,
+            "radius": 0,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_OFF"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "d83b71608a184c35b556caf97930eee5",
+          "name": "message",
+          "type": "label",
+          "props": {
+            "x": 212,
+            "y": 250,
+            "width": 600,
+            "height": 130,
+            "text": "Snake\nTap to start",
+            "textColor": "#FFFF60",
+            "fontSize": 32,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "module": "# Snake: eat the red squares, without hitting the walls or the tail.\n#\n# Touch the screen on the side you want to turn to: if the snake goes right or\n# left, touch above or below the head; if it goes up or down, touch to the\n# right or left. Touch to start and to play again after a crash.\n#\n# Each segment is a small LVGL object with a shared style; at every step the\n# tail object moves to the new head, so the cost does not grow with the\n# length. Objects are created only when needed.\nimport urandom as random\n\nW = H = TOP = CELL = COLS = ROWS = SEG = HEAD = EYE = PUPIL = 0\nUNIT = 1                       # 1/240 of the short side: everything scales with the screen\n\n\ndef px_(n):\n    return int(n * UNIT + 0.5)\n\n\nSTART_MS, MIN_MS = 220, 90     # step period: from START_MS down to MIN_MS\nCRASH_MS = 600\n\npool = []                      # segment objects, reused between games\nbody_style = None\nhead_obj = None\neyes = []\npupils = []\nfood = None\npoint = None\nX0 = Y0 = 0                    # origin of the field on the screen\nstate = \"idle\"                 # \"idle\", \"run\", \"over\"\nbody = []                      # body[0] is the tail, body[-1] the head\nsegs = []                      # segs[k] is the object drawn at body[k]\noccupied = set()\ndirection = (1, 0)\nturns = []                     # touches not applied yet, at most 2\nfood_cell = None\nscore = 0\nbest = 0\nperiod = START_MS\nelapsed = 0\ncrash_left = 0\n\n\ndef layout():\n    global W, H, UNIT, TOP, CELL, COLS, ROWS, SEG, HEAD, EYE, PUPIL\n    display = lv.display_get_default()\n    W, H = display.get_horizontal_resolution(), display.get_vertical_resolution()\n    UNIT = min(W, H) / 240\n    TOP = px_(18)              # score bar\n    CELL = px_(14)\n    COLS = W // CELL\n    ROWS = (H - TOP) // CELL\n    SEG = CELL - px_(2)        # one segment, with a gap around it\n    HEAD = CELL + px_(2)       # the head is a little larger than a cell\n    EYE, PUPIL = CELL // 3, CELL // 6\n    ui.background.set_size(W, H)\n    ui.score_label.set_pos(px_(6), px_(1))\n    ui.score_label.set_size(W - px_(12), TOP - px_(1))\n    ui.field.set_pos((W - COLS * CELL) // 2, TOP)\n    ui.field.set_size(COLS * CELL, ROWS * CELL)\n    ui.message.set_pos(px_(6), (H - px_(70)) // 2)\n    ui.message.set_size(W - px_(12), px_(70))\n    if W < 400:\n        ui.score_label.set_style_text_font(lv.font_montserrat_14, lv.PART.MAIN)\n        ui.message.set_style_text_font(lv.font_montserrat_16, lv.PART.MAIN)\n\n\ndef show_score():\n    ui.score_label.set_text(\"Score %d   Best %d\" % (score, best))\n\n\ndef show_msg(text):\n    ui.message.set_text(text)\n    ui.message.remove_flag(lv.obj.FLAG.HIDDEN)\n\n\ndef disc(parent, size, color):\n    o = lv.obj(parent)\n    o.remove_style_all()\n    o.set_size(size, size)\n    o.set_style_bg_color(lv.color_hex(color), lv.PART.MAIN)\n    o.set_style_bg_opa(lv.OPA.COVER, lv.PART.MAIN)\n    o.set_style_radius(lv.RADIUS_CIRCLE, lv.PART.MAIN)\n    o.remove_flag(lv.obj.FLAG.CLICKABLE)\n    return o\n\n\ndef segment(i):\n    while len(pool) <= i:\n        s = lv.obj(ui.field)\n        s.remove_style_all()\n        s.add_style(body_style, lv.PART.MAIN)\n        s.set_size(SEG, SEG)\n        s.remove_flag(lv.obj.FLAG.CLICKABLE)\n        pool.append(s)\n    return pool[i]\n\n\ndef place(obj, cell):\n    obj.set_pos(cell[0] * CELL + (CELL - SEG) // 2, cell[1] * CELL + (CELL - SEG) // 2)\n\n\ndef place_head(cell, d):\n    head_obj.set_pos(cell[0] * CELL - (HEAD - CELL) // 2, cell[1] * CELL - (HEAD - CELL) // 2)\n    head_obj.move_foreground()\n    c = HEAD // 2\n    side_x, side_y = -d[1], d[0]  # perpendicular to the direction\n    for k, side in enumerate((-1, 1)):\n        ex = c + d[0] * (CELL // 6) + side * side_x * (CELL // 4) - EYE // 2\n        ey = c + d[1] * (CELL // 6) + side * side_y * (CELL // 4) - EYE // 2\n        eyes[k].set_pos(ex, ey)\n        m = (EYE - PUPIL) // 2    # the pupil looks ahead\n        pupils[k].set_pos(m + d[0] * m, m + d[1] * m)\n\n\ndef new_food():\n    global food_cell\n    free = [(x, y) for x in range(COLS) for y in range(ROWS) if (x, y) not in occupied]\n    if not free:\n        return False\n    food_cell = free[random.randrange(len(free))]\n    place(food, food_cell)\n    return True\n\n\ndef new_game():\n    global state, body, segs, direction, score, period, elapsed\n    for s in pool:\n        s.add_flag(lv.obj.FLAG.HIDDEN)\n    y = ROWS // 2\n    body = [(2, y), (3, y), (4, y)]\n    segs = [segment(k) for k in range(3)]\n    occupied.clear()\n    for c, s in zip(body, segs):\n        occupied.add(c)\n        place(s, c)\n        s.remove_flag(lv.obj.FLAG.HIDDEN)\n    direction = (1, 0)\n    turns.clear()\n    food.remove_flag(lv.obj.FLAG.HIDDEN)\n    head_obj.remove_flag(lv.obj.FLAG.HIDDEN)\n    place_head(body[-1], direction)\n    score, period, elapsed = 0, START_MS, 0\n    new_food()\n    show_score()\n    ui.message.add_flag(lv.obj.FLAG.HIDDEN)\n    state = \"run\"\n\n\ndef crash():\n    global state, best, crash_left\n    state = \"over\"\n    crash_left = CRASH_MS\n    best = max(best, score)\n    show_score()\n    show_msg(\"Game over\\nScore %d\\nTap to play\" % score)\n\n\ndef step():\n    global direction, score, period\n    if turns:\n        direction = turns.pop(0)\n    hx, hy = body[-1]\n    head = (hx + direction[0], hy + direction[1])\n    eat = head == food_cell\n    if not (0 <= head[0] < COLS and 0 <= head[1] < ROWS) or (head in occupied and (eat or head != body[0])):\n        crash()\n        return\n    if eat:\n        s = segment(len(segs))     # it grows: a new object for the head\n        s.remove_flag(lv.obj.FLAG.HIDDEN)\n        score += 1\n        period = max(MIN_MS, START_MS - 8 * score)\n        show_score()\n        ui.buzzer1.tone(880)\n    else:\n        occupied.discard(body.pop(0))  # it moves: the tail becomes the head\n        s = segs.pop(0)\n        ui.buzzer1.off()\n    body.append(head)\n    segs.append(s)\n    occupied.add(head)\n    place(s, head)\n    place_head(head, direction)\n    if eat and not new_food():\n        crash()                    # field full: you won\n\n\ndef on_tick():\n    global elapsed, crash_left\n    if state == \"over\":\n        if crash_left > 0:         # broken siren falling from 1000 to 200 Hz\n            crash_left = max(0, crash_left - 20)\n            if crash_left and (crash_left // 60) % 2:\n                ui.buzzer1.tone(200 + 800 * crash_left // CRASH_MS)\n            else:\n                ui.buzzer1.off()\n        return\n    if state != \"run\":\n        return\n    elapsed += 20\n    if elapsed >= period:\n        elapsed = 0\n        step()\n\n\ndef on_press(e):\n    if state != \"run\":\n        if state == \"idle\" or crash_left == 0:\n            new_game()\n        return\n    if len(turns) >= 2:\n        return\n    lv.indev_active().get_point(point)\n    hx, hy = body[-1]\n    dx = point.x - (X0 + hx * CELL + CELL // 2)\n    dy = point.y - (Y0 + hy * CELL + CELL // 2)\n    cur = turns[-1] if turns else direction\n    if cur[0]:                     # going right or left: turn up or down\n        turns.append((0, 1 if dy > 0 else -1))\n    else:                          # going up or down: turn right or left\n        turns.append((1 if dx > 0 else -1, 0))\n\n\ndef snake_init():\n    global body_style, head_obj, food, point, X0, Y0, state, body, segs\n    layout()\n    pool.clear()               # live editing recreates the page: the old objects no longer exist\n    eyes.clear()\n    pupils.clear()\n    state, body, segs = \"idle\", [], []\n    scr = lv.screen_active()\n    scr.remove_flag(lv.obj.FLAG.SCROLLABLE)\n    X0, Y0 = ui.field.get_x(), ui.field.get_y()\n    ui.background.remove_flag(lv.obj.FLAG.CLICKABLE)\n    ui.background.remove_flag(lv.obj.FLAG.SCROLLABLE)\n    ui.field.remove_flag(lv.obj.FLAG.CLICKABLE)\n    ui.field.remove_flag(lv.obj.FLAG.SCROLLABLE)\n    point = lv.point_t()\n    body_style = lv.style_t()\n    body_style.init()\n    body_style.set_bg_color(lv.color_hex(0x40E040))\n    body_style.set_bg_opa(lv.OPA.COVER)\n    body_style.set_radius(px_(3))\n    food = disc(ui.field, SEG, 0xFF4040)\n    head_obj = disc(ui.field, HEAD, 0x80FF60)\n    head_obj.set_style_border_width(px_(1), lv.PART.MAIN)\n    head_obj.set_style_border_color(lv.color_hex(0x208020), lv.PART.MAIN)\n    for _ in range(2):\n        eye = disc(head_obj, EYE, 0xFFFFFF)\n        eyes.append(eye)\n        pupils.append(disc(eye, PUPIL, 0x000000))\n    food.add_flag(lv.obj.FLAG.HIDDEN)\n    head_obj.add_flag(lv.obj.FLAG.HIDDEN)\n    show_score()\n    show_msg(\"Snake\\nTap to start\")\n    scr.add_event_cb(on_press, lv.EVENT.PRESSED, None)\n",
+    "handlers": {
+      "main_screen_loaded": {
+        "widget": "main",
+        "event": "SCREEN_LOADED",
+        "body": "snake_init()\n"
+      },
+      "timer1_tick": {
+        "widget": "timer1",
+        "event": "TICK",
+        "body": "on_tick()\n"
+      }
+    }
+  },
+  "currentPageId": "a876c95186af41b997d3beb753917fca",
+  "assets": {},
+  "variables": [],
+  "projectId": "b405a2b447d5422192587e6922cfbbb4",
+  "board": {
+    "schemaVersion": 1,
+    "id": "stm32h7_core_v1_3_1024x600",
+    "revision": 3,
+    "name": "STM32H7_CORE V1.3 (1024×600)",
+    "adapter": "stm32h7_uart",
+    "firmware": {
+      "microPython": "1.29",
+      "lvgl": "9.5",
+      "modules": [
+        "lvgl",
+        "display_driver",
+        "gt911",
+        "st_ltdc"
+      ]
+    },
+    "physicalWidth": 1024,
+    "physicalHeight": 600,
+    "logicalWidth": 1024,
+    "logicalHeight": 600,
+    "scale": 1,
+    "colorFormat": "RGB565",
+    "fonts": [
+      14,
+      16,
+      24,
+      32,
+      40
+    ],
+    "orientations": [
+      0
+    ],
+    "config": {
+      "driver": "display_driver",
+      "touch": "gt911",
+      "buffers": "driver",
+      "eventLoop": "driver",
+      "appRoot": "/flash/lms_apps",
+      "mainPath": "/flash/main.py"
+    }
+  }
+}

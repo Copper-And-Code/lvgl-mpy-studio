@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "esp32_4848s040_480",
+  "revision": 3,
+  "name": "ESP32-4848S040 (480×480)",
+  "adapter": "esp32_4848s040",
+  "firmware": {
+    "microPython": "1.29",
+    "lvgl": "9.5",
+    "modules": [
+      "lvgl",
+      "display_driver",
+      "gt911"
+    ]
+  },
+  "fonts": [14, 16, 24, 32, 40],
+  "physicalWidth": 480,
+  "physicalHeight": 480,
+  "logicalWidth": 480,
+  "logicalHeight": 480,
+  "scale": 1,
+  "colorFormat": "RGB565",
+  "orientations": [
+    0
+  ],
+  "config": {
+    "driver": "display_driver",
+    "touch": "gt911",
+    "buffers": "driver",
+    "eventLoop": "driver"
+  },
+  "buzzer": {
+    "audio": true
+  }
+}
