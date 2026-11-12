@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "kind": "block",
+  "id": "buzzer",
+  "version": "1.0.0",
+  "name": "Buzzer",
+  "description": "Plays notes: the buzzer of the board, or the sound of the PC in the simulator.",
+  "author": "Nunzio Raciti",
+  "license": "MIT",
+  "icon": "🔔",
+  "category": "Components",
+  "instances": "one",
+  "properties": [],
+  "methods": [
+    {"name": "tone", "arguments": "freq", "help": "Start a note at freq Hz; it plays until off()."},
+    {"name": "beep", "arguments": "freq, ms=40", "help": "Play a note at freq Hz for ms milliseconds."},
+    {"name": "off", "arguments": "", "help": "Stop the note."}
+  ],
+  "events": [],
+  "simulator": "simulator.py",
+  "board": [
+    {"file": "board_audio.py", "when": {"profile": "buzzer.audio"}},
+    {"file": "board_pwm.py", "constants": {"PIN": {"profile": "buzzer.pin", "type": "integer"}}}
+  ],
+  "unavailable": "This board has no buzzer: calls to the component will do nothing."
+}

@@ -9,7 +9,7 @@ from lvgl_mpy_studio.core.components import is_component
 from lvgl_mpy_studio.core.model import Project
 from lvgl_mpy_studio.core.modules import module_files
 from lvgl_mpy_studio.core.validation import validate_project
-from .components import BUZZER_MODULE, NOTICE, SIMULATOR_BUZZER, has_buzzer, timer_lines, ui_imports
+from .components import BUZZER_MODULE, buzzer_block, has_buzzer, timer_lines, ui_imports
 from .gen_python import build_project_code, generate_python, page_constant
 from .identifiers import IdentifierAllocator
 
@@ -256,7 +256,7 @@ def generate_project(project, output_dir, runtime_dir=None, initial_page=None, e
     files = ["ui.py", "app_events.py", "main.py", "display_driver.py", "sourcemap.json"]
     modules = list(APP_MODULES)
     if has_buzzer(full):
-        (output / f"{BUZZER_MODULE}.py").write_text(NOTICE + SIMULATOR_BUZZER, encoding="utf-8", newline="\n")
+        (output / f"{BUZZER_MODULE}.py").write_text(buzzer_block().simulator_source(), encoding="utf-8", newline="\n")
         files.append(f"{BUZZER_MODULE}.py")
         modules.append(BUZZER_MODULE)
     for name, source in (module_files(project) if isinstance(project, Project) else module_files(Project.from_dict(full))).items():

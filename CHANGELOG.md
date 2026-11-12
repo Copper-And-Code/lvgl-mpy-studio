@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.6.0 — not released yet
+
+### Changed
+
+- **Blocks, first step** (see `docs/plugins-plan.md`). The Buzzer is no longer written inside the IDE: it is a block, a folder with a description and its MicroPython modules, read by the new `core/blocks.py`. Nothing changes for projects and for the generated files, which are the same byte for byte. Blocks copied into the `blocks` folder of the settings are read and checked, but not offered yet.
+
 ## 0.5.1 — 2026-11-12
 
 ### Added

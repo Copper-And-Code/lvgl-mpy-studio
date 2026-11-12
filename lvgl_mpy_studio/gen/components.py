@@ -3,19 +3,20 @@
 from lvgl_mpy_studio.core.boards import builtin_profiles
 from lvgl_mpy_studio.core.components import is_component
 
-from .output.buzzer import AUDIO_BUZZER, NOTICE, PWM_BUZZER, SILENT_BUZZER, SIMULATOR_BUZZER  # noqa: F401  (the generators import them from here)
+from lvgl_mpy_studio.core.blocks import standard_blocks
 
 BUZZER_MODULE = "lms_buzzer"
 
+
+def buzzer_block():
+    return standard_blocks()["buzzer"]
+
+
 def board_buzzer(profile):
+    """The buzzer module for that board, or None when the board has no buzzer."""
     # A project can hold a copy of the profile made before the buzzer existed.
     builtin = next((item for item in builtin_profiles() if item["id"] == profile.get("id")), {})
-    buzzer = profile.get("buzzer") or builtin.get("buzzer") or {}
-    if buzzer.get("audio"):
-        return NOTICE + AUDIO_BUZZER
-    if isinstance(buzzer.get("pin"), int):
-        return NOTICE + PWM_BUZZER.format(pin=buzzer["pin"])
-    return None
+    return buzzer_block().board_source({**profile, "buzzer": profile.get("buzzer") or builtin.get("buzzer") or {}})
 
 
 def project_components(data):

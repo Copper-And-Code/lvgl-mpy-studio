@@ -9,6 +9,7 @@ datas = [
     (str(root / "lvgl_mpy_studio/gen/completion.json"), "lvgl_mpy_studio/gen"),
     (str(root / "lvgl_mpy_studio/translations"), "lvgl_mpy_studio/translations"),
     (str(root / "lvgl_mpy_studio/boards"), "lvgl_mpy_studio/boards"),
+    (str(root / "lvgl_mpy_studio/blocks"), "lvgl_mpy_studio/blocks"),
     (str(root / "lvgl_mpy_studio/icon.ico"), "lvgl_mpy_studio"),
     (str(root / "runtime/out/lvsim-runtime"), "runtime/out"),
     (str(root / "runtime/out/mpy-cross"), "runtime/out"),

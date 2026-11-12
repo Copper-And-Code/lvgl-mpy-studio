@@ -11,7 +11,7 @@ from lvgl_mpy_studio.core.i18n import tr
 from lvgl_mpy_studio.core.modules import module_files
 from lvgl_mpy_studio.core.validation import validate_project
 from .gen_python import build_project_code
-from .components import BUZZER_MODULE, NOTICE, SILENT_BUZZER, board_buzzer, has_buzzer
+from .components import BUZZER_MODULE, board_buzzer, buzzer_block, has_buzzer
 from .project_gen import design_warnings, generate_app_events, legacy_data, screen_statements, ui_source
 
 
@@ -181,9 +181,9 @@ def generate_board(project, profile, output_dir, fonts=None):
     extra_warnings = []
     if has_buzzer(project.to_dict()):
         source = board_buzzer(profile)
-        files[f"{BUZZER_MODULE}.py"] = source or NOTICE + SILENT_BUZZER
+        files[f"{BUZZER_MODULE}.py"] = source or buzzer_block().silent_source()
         if source is None:
-            extra_warnings.append(tr("This board has no buzzer: calls to the component will do nothing."))
+            extra_warnings.append(tr(buzzer_block().manifest["unavailable"]))
     user_modules = module_files(project)
     files.update(user_modules)
     _validate_sources(files, sourcemap)

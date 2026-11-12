@@ -1,14 +1,12 @@
-"""Non-visual components: they are in the project but create no LVGL objects."""
+"""Non-visual components: they are in the project but create no LVGL objects.
+
+The Timer is built in, because it is an lv.timer and not a module. The others are blocks, read
+from their folders by core.blocks; for now only those shipped with the IDE."""
+
+from .blocks import standard_blocks
 
 COMPONENTS = {
-    "buzzer": {
-        "type": "buzzer",
-        "name": "Buzzer",
-        "icon": "🔔",
-        "category": "Components",
-        "defaultProps": {},
-        "properties": [],
-    },
+    **{block.id: block.definition() for block in standard_blocks().values()},
     "timer": {
         "type": "timer",
         "name": "Timer",
@@ -22,7 +20,7 @@ COMPONENTS = {
     },
 }
 
-BUZZER_METHODS = ("beep", "off", "tone")
+BUZZER_METHODS = tuple(sorted(standard_blocks()["buzzer"].methods))
 TIMER_METHODS = ("delete", "get_paused", "pause", "ready", "reset", "resume", "set_period", "set_repeat_count")
 
 

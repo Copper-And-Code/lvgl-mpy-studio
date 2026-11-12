@@ -1,6 +1,6 @@
 # Plan: plugins
 
-Status: proposal, nothing implemented. Written on 2026-11-12 for version 0.6.
+Status: phase 1 done on 2026-11-12, in version 0.6.0; the other phases are not started. Written on 2026-11-12.
 
 ## Goal
 
@@ -33,7 +33,7 @@ Timer stays built in: it is an `lv.timer`, not a module.
 ```
 i2c_bus/
   block.json        description: read by the IDE, never executed
-  board.py          the module for a real board
+  board.py          the module for a real board; a block can have several, see "Board variants"
   simulator.py      the module for the simulators (desktop and web); optional
   LICENSE           required for a block that is shared
   README.md         optional, shown in the IDE
@@ -65,7 +65,9 @@ i2c_bus/
     {"name": "write", "arguments": "address, data", "help": "Write bytes."}
   ],
   "events": [],
-  "instances": "many"
+  "instances": "many",
+  "simulator": "simulator.py",
+  "board": [{"file": "board.py"}]
 }
 ```
 
@@ -80,6 +82,25 @@ Points of the format:
 - `requires.modules` is checked against what the board reports on connection; a missing module
   is a warning before upload, not a traceback after.
 - `schemaVersion` lets the format change without breaking old blocks.
+- `kind` is optional and only accepts `block`: it is the place where IDE extensions will be told apart.
+
+### Board variants
+
+`board` is a list, tried in order: the first variant that applies gives the module. A variant
+applies when its `when.profile` value exists in the board profile and each of its `constants`
+is found there with the right type. The constants are written as `NAME = value` lines above the
+module. The Buzzer uses both:
+
+```json
+"board": [
+  {"file": "board_audio.py", "when": {"profile": "buzzer.audio"}},
+  {"file": "board_pwm.py", "constants": {"PIN": {"profile": "buzzer.pin", "type": "integer"}}}
+],
+"unavailable": "This board has no buzzer: calls to the component will do nothing."
+```
+
+When no variant applies the block gets a module whose methods do nothing, and the text of
+`unavailable` is shown as a warning.
 
 ### The module contract
 
@@ -181,9 +202,11 @@ that behaviour depending on a button or a sensor can be tested without a board.
 
 Each phase ends with the test suite passing and can be released on its own.
 
-1. **Registry and format.** `core/blocks.py`, `block.json` validation, discovery in the three
-   places, Buzzer rewritten as a block with unchanged behaviour. No visible change. The
-   existing Buzzer tests are the proof.
+1. **Registry and format.** Done. `core/blocks.py`, `block.json` validation, discovery among the
+   standard blocks and in the user folder, Buzzer rewritten as a block with unchanged behaviour:
+   the generated files are the same byte for byte. No visible change. User blocks are read and
+   checked but not offered, because generation only knows the Buzzer; the copy inside the
+   project comes with phase 2.
 2. **Generation.** Classes with properties and events, simulator stand-in, copy in the project,
    precompilation, C warning. Digital output and Digital input as first new blocks.
 3. **IDE.** Toolbox categories, properties, completion, the blocks folder and reload commands,
