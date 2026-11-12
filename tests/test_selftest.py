@@ -40,7 +40,7 @@ def test_selftest_lists_and_refuses_unknown_scenarios(tmp_path):
 
 
 def test_selftest_runs_every_scenario_in_the_real_ide(tmp_path):
-    result = run(tmp_path, "--output", str(tmp_path / "report"))
+    result = run(tmp_path, "--output", "report")  # a relative folder, as a CI job gives
     text = (tmp_path / "report/report.txt").read_text()
     assert result.returncode == 0, result.stdout + result.stderr
     assert "RESULT: PASSED" in text and "0 failed, 0 skipped" in text

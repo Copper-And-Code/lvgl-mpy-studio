@@ -20,23 +20,30 @@ from lvgl_mpy_studio.core.i18n import set_language  # noqa: E402
 @pytest.fixture(autouse=True)
 def no_real_serial_ports(monkeypatch):
     """This PC may have real boards attached: a test DeviceSession must never open their ports."""
-    from lvgl_mpy_studio.device import service
-
+    try:
+        from lvgl_mpy_studio.device import service
+    except ImportError:  # without pyserial nothing can open a port
+        return
     monkeypatch.setattr(service, "default_interrupt", lambda port: None)
 
 
 @pytest.fixture(autouse=True)
 def default_language():
     """A test that switches language leaves English, the default, for the next one."""
-    from PySide6.QtCore import QSettings
-
-    QSettings("CopperAndCode", "LVGL MPY Studio").remove("language")
+    try:  # the tests of the core run also where Qt is not installed
+        from PySide6.QtCore import QSettings
+    except ImportError:
+        pass
+    else:
+        QSettings("CopperAndCode", "LVGL MPY Studio").remove("language")
     set_language("en")
 
 
 @pytest.fixture(autouse=True)
 def no_blocking_question(monkeypatch):
     """A failed test can leave a window with unsaved changes: closing it must not wait for an answer."""
-    from PySide6.QtWidgets import QMessageBox
-
+    try:
+        from PySide6.QtWidgets import QMessageBox
+    except ImportError:
+        return
     monkeypatch.setattr(QMessageBox, "question", lambda *arguments, **options: QMessageBox.Discard)

@@ -52,7 +52,8 @@ def main(names=(), show=False, slow_ms=0, output=None, list_only=False, echo=pri
     QApplication.setAttribute(Qt.AA_DontUseNativeDialogs)  # the system's own dialogs cannot be answered from here
     app = QApplication.instance() or QApplication(sys.argv[:1])
     set_language("en")
-    directory = Path(output) if output else Path.cwd() / "lvgl-mpy-studio-selftest" / datetime.now().strftime("%Y%m%d-%H%M%S")
+    # Absolute: the projects are saved through the file dialog, which reads a relative path from its own folder.
+    directory = (Path(output) if output else Path.cwd() / "lvgl-mpy-studio-selftest" / datetime.now().strftime("%Y%m%d-%H%M%S")).resolve()
     report = Report(directory, echo)
     header = [
         f"LVGL MPY Studio {__version__} self-test, {datetime.now().isoformat(timespec='seconds')}",
