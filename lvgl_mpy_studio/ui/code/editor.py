@@ -9,7 +9,7 @@ from PySide6.QtWidgets import QComboBox, QHBoxLayout, QLabel, QLineEdit, QListWi
 
 from lvgl_mpy_studio.build.compiler import CompileError, compile_python, map_error
 from lvgl_mpy_studio.core.actions import CURSOR, SCREEN_ACTIONS, actions_for, method_entries, module_actions, page_actions
-from lvgl_mpy_studio.core.components import BUZZER_METHODS, TIMER_METHODS
+from lvgl_mpy_studio.core.components import is_component, methods_for
 from lvgl_mpy_studio.core.events import PAGE_EVENTS, default_event, events_for, handler_name
 from lvgl_mpy_studio.core.i18n import tr
 from lvgl_mpy_studio.core.modules import set_module_source
@@ -749,10 +749,8 @@ class CodePanel(QWidget):
             widget = self.document.project.find_widget(parts[1])
             if not widget:
                 return []
-            if widget.type == "buzzer":
-                return list(BUZZER_METHODS)
-            if widget.type == "timer":
-                return list(TIMER_METHODS)
+            if is_component(widget.type):
+                return list(methods_for(widget.type))
             object_name = "obj" if widget.type in ("panel", "page") else widget.type
             objects = self._api()["objects"]
             methods = []

@@ -4,6 +4,8 @@ import ast
 import json
 
 from .gen_python import build_project_code, generate_python
+from lvgl_mpy_studio.core.components import block_for, is_component
+
 from .components import ui_imports
 from lvgl_mpy_studio.core.boards import profile_fonts
 from .fonts import convert_fonts
@@ -11,13 +13,13 @@ from .project_gen import code_usage, legacy_data, screen_statements
 
 LIVE_OK = "LVGL_MPY_STUDIO_LIVE_OK"
 LIVE_FAILED = "LVGL_MPY_STUDIO_LIVE_FAILED"
-COMPONENTS = ("buzzer", "timer")
 
 
 def upload_key(project):
     """Changes when a new upload is needed: live editing replaces only the graphics."""
     data = project.to_dict()
-    widgets = [(widget["name"], widget["type"], widget.get("events")) for page in data["pages"] for widget in page["widgets"] if widget["type"] in COMPONENTS]
+    # A block is created with its properties: changing one needs the application started again.
+    widgets = [(widget["name"], widget["type"], widget.get("events"), widget.get("props") if block_for(widget["type"]) else None) for page in data["pages"] for widget in page["widgets"] if is_component(widget["type"])]
     return json.dumps([data.get("code"), data.get("modules"), widgets, data.get("display"), (data.get("board") or {}).get("id")], sort_keys=True, default=str)
 
 

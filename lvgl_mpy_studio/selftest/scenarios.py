@@ -1,5 +1,7 @@
 """The scenarios of the self-test. Each one starts from a new window and an empty folder."""
 
+from PySide6.QtCore import Qt
+
 from lvgl_mpy_studio.core.model import Project
 
 SCENARIOS = {}
@@ -424,3 +426,54 @@ def errors(ide):
         ide.check(ide.window.tabs.currentWidget() is ide.window.code_panel, "the Code tab did not come to the front")
         ide.equal(ide.window.code_panel.current, ("handler", handler), "source open in the editor")
         ide.equal(ide.window.code_panel.editor.textCursor().blockNumber() + 1, 2, "line of the cursor")
+
+
+@scenario("blocks", "Hardware blocks: Digital Output and Digital Input")
+def blocks(ide):
+    with ide.step("Create a new project with a button, a Digital Output and a Digital Input"):
+        ide.choose(ide.window.new_action)
+        button = placed_button(ide, "Toggle")
+        led = ide.add_widget("digital_output")
+        key = ide.add_widget("digital_input")
+        ide.equal((ide.project.find_widget(led).type, ide.project.find_widget(key).type), ("digital_output", "digital_input"), "types of the components")
+        ide.check(ide.drawn(led) is None and ide.drawn(key) is None, "a block is drawn on the page")
+    with ide.step("Set their pins from the Properties panel"):
+        ide.click_tree(led)
+        ide.set_property("pin", 25)
+        ide.click_tree(key)
+        ide.set_property("pin", 14)
+        ide.set_property("debounce", 50)
+        ide.equal(ide.project.find_widget(key).props, {"pull": "up", "active_low": True, "debounce": 50, "pin": 14}, "properties of the input")
+    with ide.step("The Events tab offers the events of the block, and the editor its methods"):
+        from lvgl_mpy_studio.core.events import events_for
+
+        ide.equal(events_for("digital_input"), ["CHANGED", "PRESSED", "RELEASED"], "events of the Digital Input")
+        ide.check("CHANGED" not in events_for("button"), "a button offers the event of a block")
+        ide.equal(ide.window.code_panel._completions(f"ui.{led}."), ["off", "on", "set", "toggle", "value"], "methods suggested for the output")
+        helper = ide.window.code_panel.helper
+        helper.rebuild()
+        group = next(helper.tree.topLevelItem(row) for row in range(helper.tree.topLevelItemCount()) if helper.tree.topLevelItem(row).text(0).startswith(key))
+        offered = [group.child(row).data(0, Qt.UserRole) for row in range(group.childCount())]
+        ide.equal(offered, [f"ui.{key}.value()", f"ui.{key}.simulate(§)"], "what “What do you want to do?” offers for the input")
+    with ide.step("Write the handlers: the button toggles the output, the input reports its changes"):
+        write_handler(ide, key, "PRESSED", 'print("SELFTEST pressed", e.value())')
+        write_handler(ide, key, "RELEASED", 'print("SELFTEST released", e.value())')
+        ide.click_tree(ide.project.pages[0].name)
+        write_handler(ide, button, "CLICKED", f"ui.{led}.toggle()\nui.{key}.simulate(ui.{led}.value())")
+    with ide.step("Save: the file is version 4 and opens again"):
+        import json
+
+        from lvgl_mpy_studio.core.model import Project
+
+        path = ide.directory / "blocks.json"
+        ide.save_as(path)
+        ide.equal(json.loads(path.read_text(encoding="utf-8"))["schemaVersion"], 4, "version of the project file")
+        ide.equal(Project.load(path).find_widget(led).props["pin"], 25, "pin of the output in the file")
+    with ide.step("Start the simulator and touch the button twice"):
+        ide.run()
+        touch_runs(ide, 140, 70, "SELFTEST pressed True", "the button")
+        ide.check(f"{led}: on" in ide.output(), "the simulated output did not say it went on")
+        touch_runs(ide, 140, 70, "SELFTEST released False", "the button")
+        ide.check(f"{led}: off" in ide.output(), "the simulated output did not say it went off")
+        ide.check(not ide.errors(), f"the Errors panel says: {ide.errors()}")
+        ide.stop()

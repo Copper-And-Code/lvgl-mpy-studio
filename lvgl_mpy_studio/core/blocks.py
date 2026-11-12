@@ -7,6 +7,7 @@ cannot be read is reported and skipped; it never stops the IDE."""
 import ast
 import json
 import re
+import shutil
 from dataclasses import dataclass, field
 from functools import lru_cache
 from pathlib import Path
@@ -20,8 +21,12 @@ ID = re.compile(r"[a-z][a-z0-9_]{0,30}")
 NAME = re.compile(r"[A-Za-z_][A-Za-z0-9_]*")
 FILE = re.compile(r"[A-Za-z0-9_]+\.py")
 PROPERTY_TYPES = ("number", "string", "boolean", "select", "color", "pin")
+PROPERTY_VALUES = {"number": (int, float), "string": str, "boolean": bool, "select": str, "color": str, "pin": int}
 CONSTANT_TYPES = {"integer": int, "number": (int, float), "string": str, "boolean": bool}
 INSTANCES = ("one", "many")
+EXTRAS = ("LICENSE", "LICENSE.txt", "README.md")
+MODULE_PREFIX = "lms_"  # reserved: no user module can take the name of a block module
+PIN_MAX = 255
 
 
 class BlockError(ValueError):
@@ -33,6 +38,8 @@ class Block:
     manifest: dict
     files: dict = field(default_factory=dict)  # file name -> text, only the modules the manifest names
     origin: str = "standard"
+    extras: dict = field(default_factory=dict, compare=False)  # LICENSE and README, as text
+    folder: str = field(default="", compare=False)  # where it was read from; empty for one stored in a project
 
     @property
     def id(self):
@@ -42,11 +49,46 @@ class Block:
     def methods(self):
         return tuple(method["name"] for method in self.manifest["methods"])
 
+    @property
+    def events(self):
+        return tuple(event["name"] for event in self.manifest["events"])
+
+    @property
+    def many(self):
+        """True for a class with one object per component, False for a module shared by all."""
+        return self.manifest["instances"] == "many"
+
+    @property
+    def module(self):
+        """The name of the module in the generated application."""
+        return MODULE_PREFIX + self.id
+
     def definition(self):
         """The block as the toolbox, the Properties panel and validation know a component."""
-        properties = [{key: value for key, value in item.items() if key != "default"} for item in self.manifest["properties"]]
+        properties = []
+        for item in self.manifest["properties"]:
+            entry = {key: value for key, value in item.items() if key != "default"}
+            if entry["type"] == "pin":  # a number for now; the list of the pins of the board comes later
+                entry.update(type="number", pin=True, min=0, max=PIN_MAX)
+            properties.append(entry)
         defaults = {item["name"]: item["default"] for item in self.manifest["properties"] if "default" in item}
         return {"type": self.id, "name": self.manifest["name"], "icon": self.manifest.get("icon", ""), "category": self.manifest.get("category", "Components"), "defaultProps": defaults, "properties": properties}
+
+    def to_dict(self):
+        """The copy a project keeps, so that it opens where the block is not installed."""
+        return {"manifest": self.manifest, "files": self.files} | ({"extras": self.extras} if self.extras else {})
+
+    @classmethod
+    def from_dict(cls, data, origin="project"):
+        """The block stored in a project; BlockError if it is not a usable one."""
+        manifest, files = (data or {}).get("manifest"), (data or {}).get("files")
+        if not isinstance(files, dict) or not all(isinstance(name, str) and isinstance(text, str) for name, text in files.items()):
+            raise BlockError("the files of the block are missing")
+        errors = validate(manifest, set(files))
+        if errors:
+            raise BlockError("; ".join(errors))
+        extras = data.get("extras") if isinstance(data.get("extras"), dict) else {}
+        return cls(manifest, dict(files), origin, {name: text for name, text in extras.items() if name in EXTRAS and isinstance(text, str)})
 
     def simulator_source(self):
         """The module for the simulators, or None when the block has none."""
@@ -72,7 +114,23 @@ class Block:
 
     def silent_source(self):
         """A module with every method of the block that does nothing: for a board that lacks the hardware."""
-        return NOTICE + "\n\n".join(f"def {method['name']}({method.get('arguments', '')}):\n    pass\n" for method in self.manifest["methods"])
+        return self._stand_in(lambda method: ["pass"])
+
+    def unsimulated_source(self):
+        """The module for the simulator of a block that has none: the methods exist and say, once, that they do nothing."""
+        name = self.manifest["name"]
+        head = f"_told = set()\n\n\ndef _tell(method):\n    if method not in _told:\n        _told.add(method)\n        print({name + ': '!r} + method + {'() does nothing in the simulator'!r})\n\n\n"
+        return self._stand_in(lambda method: [f"_tell({method['name']!r})"], head)
+
+    def _stand_in(self, body, head=""):
+        methods = self.manifest["methods"]
+        if not self.many:
+            return NOTICE + head + "\n\n".join(f"def {method['name']}({method.get('arguments', '')}):\n" + "".join(f"    {line}\n" for line in body(method)) for method in methods)
+        lines = ["class Block:", "    def __init__(self, name=\"\", **options):", "        self.name = name", "        self.options = options"]
+        for method in methods:
+            arguments = method.get("arguments", "")
+            lines += ["", f"    def {method['name']}(self{', ' + arguments if arguments else ''}):", *(f"        {line}" for line in body(method))]
+        return NOTICE + head + "\n".join(lines) + "\n"
 
 
 def lookup(data, path):
@@ -126,6 +184,8 @@ def validate(manifest, files=()):
     _texts(manifest, ("version", "name", "description", "author", "license"), "block.json", errors)
     if manifest.get("instances") not in INSTANCES:
         errors.append("“instances” must be “one” or “many”")
+    if manifest.get("instances") == "one" and (manifest.get("properties") or manifest.get("events")):
+        errors.append("a block with “instances”: “one” is a module shared by all its components: it cannot have properties or events")
     for key in ("properties", "methods", "events", "board"):
         if not isinstance(manifest.get(key), list):
             errors.append(f"“{key}” must be a list")
@@ -141,6 +201,10 @@ def validate(manifest, files=()):
         names.add(item["name"])
         if item.get("type") not in PROPERTY_TYPES:
             errors.append(f"{where}: “type” must be one of {', '.join(PROPERTY_TYPES)}")
+        elif "default" in item and not isinstance(item["default"], PROPERTY_VALUES[item["type"]]) or isinstance(item.get("default"), bool) and item["type"] != "boolean":
+            errors.append(f"{where}: “default” is not a {item['type']}")
+        if item.get("type") == "select" and not (isinstance(item.get("options"), list) and item["options"] and all(isinstance(option, str) for option in item["options"])):
+            errors.append(f"{where}: a “select” needs its “options”, a list of texts")
         _texts(item, ("label",), where, errors)
     names = set()
     for index, item in enumerate(manifest["methods"]):
@@ -186,8 +250,10 @@ def validate(manifest, files=()):
     return errors
 
 
-def load_block(directory, origin="user"):
-    """Read the block in a folder; BlockError says why it cannot be used."""
+def load_block(directory, origin="user", check_name=True):
+    """Read the block in a folder; BlockError says why it cannot be used.
+
+    check_name: the folder must be named as the id, as it must be once installed."""
     directory = Path(directory)
     try:
         manifest = json.loads((directory / MANIFEST).read_text(encoding="utf-8"))
@@ -197,7 +263,7 @@ def load_block(directory, origin="user"):
         raise BlockError(f"{MANIFEST} is not valid JSON: {exc}") from exc
     present = {path.name for path in directory.iterdir() if path.is_file()}
     errors = validate(manifest, present)
-    if not errors and manifest["id"] != directory.name:
+    if not errors and check_name and manifest["id"] != directory.name:
         errors.append(f"the folder is named {directory.name} and the id is {manifest['id']}: they must be the same")
     if errors:
         raise BlockError("; ".join(errors))
@@ -206,7 +272,13 @@ def load_block(directory, origin="user"):
         files = {name: (directory / name).read_text(encoding="utf-8") for name in sorted(names)}
     except (OSError, ValueError) as exc:
         raise BlockError(f"a module cannot be read: {exc}") from exc
-    return Block(manifest, files, origin)
+    extras = {}
+    for name in sorted(present & set(EXTRAS)):  # shown to the user and copied with the block, never used by the IDE
+        try:
+            extras[name] = (directory / name).read_text(encoding="utf-8")
+        except (OSError, ValueError):
+            pass
+    return Block(manifest, files, origin, extras, str(directory))
 
 
 def discover(directory, origin="user"):
@@ -245,3 +317,38 @@ def standard_blocks():
 def user_blocks():
     """The blocks the user copied into the blocks folder, and the folders that could not be read."""
     return discover(user_dir(), "user")
+
+
+def write_block(block, directory=None):
+    """Install a block: write its folder under the user's blocks folder, replacing one with the same id."""
+    directory = Path(directory) if directory else user_dir()
+    target = directory / block.id
+    temporary = directory / f".{block.id}.installing"
+    shutil.rmtree(temporary, ignore_errors=True)
+    temporary.mkdir(parents=True)
+    try:
+        (temporary / MANIFEST).write_text(json.dumps(block.manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
+        for name, text in {**block.extras, **block.files}.items():
+            (temporary / name).write_text(text, encoding="utf-8", newline="\n")
+        shutil.rmtree(target, ignore_errors=True)
+        temporary.rename(target)
+    finally:
+        shutil.rmtree(temporary, ignore_errors=True)
+    return target
+
+
+def install_block(source):
+    """Copy the block in the folder source into the user's blocks folder; return it as installed.
+
+    Only block.json, the modules it names, the licence and the README are copied."""
+    block = load_block(source, "user", check_name=False)
+    return load_block(write_block(block), "user")
+
+
+def remove_block(block_id):
+    """Delete a block of the user's blocks folder; False if it is not there."""
+    target = user_dir() / block_id
+    if not ID.fullmatch(block_id) or not target.is_dir():
+        return False
+    shutil.rmtree(target)
+    return True

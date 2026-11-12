@@ -31,7 +31,7 @@ def test_the_buzzer_is_a_block_and_the_components_are_unchanged():
     buzzer = standard_blocks()["buzzer"]
     assert buzzer.origin == "standard" and buzzer.manifest["instances"] == "one"
     assert COMPONENTS["buzzer"] == {"type": "buzzer", "name": "Buzzer", "icon": "🔔", "category": "Components", "defaultProps": {}, "properties": []}
-    assert list(COMPONENTS) == ["buzzer", "timer"] and BUZZER_METHODS == ("beep", "off", "tone")
+    assert list(COMPONENTS) == ["buzzer", "digital_input", "digital_output", "timer"] and BUZZER_METHODS == ("beep", "off", "tone")
     assert validate(buzzer.manifest, set(buzzer.files)) == []
 
 
@@ -56,9 +56,9 @@ def test_a_block_folder_is_read_without_running_it(tmp_path):
     block = load_block(directory)
     assert (block.id, block.origin, block.methods) == ("relay", "user", ("on", "set"))
     assert set(block.files) == {"board.py", "simulator.py"}
-    assert block.definition() == {"type": "relay", "name": "Relay", "icon": "", "category": "Components", "defaultProps": {"active_low": False}, "properties": [{"name": "pin", "type": "pin", "label": "Pin"}, {"name": "active_low", "type": "boolean", "label": "Active low"}]}
+    assert block.definition() == {"type": "relay", "name": "Relay", "icon": "", "category": "Components", "defaultProps": {"active_low": False}, "properties": [{"name": "pin", "type": "number", "label": "Pin", "pin": True, "min": 0, "max": 255}, {"name": "active_low", "type": "boolean", "label": "Active low"}]}
     assert block.board_source({}).startswith("raise SystemExit")
-    assert block.silent_source().endswith("def on():\n    pass\n\n\ndef set(value, *, force=False):\n    pass\n")
+    assert block.silent_source().endswith('class Block:\n    def __init__(self, name="", **options):\n        self.name = name\n        self.options = options\n\n    def on(self):\n        pass\n\n    def set(self, value, *, force=False):\n        pass\n')
 
 
 def changed(**changes):
@@ -127,7 +127,7 @@ def test_user_blocks_live_next_to_the_board_profiles(tmp_path, monkeypatch):
     folder(tmp_path / "blocks")
     found, problems = blocks.user_blocks()
     assert list(found) == ["relay"] and found["relay"].origin == "user" and problems == []
-    assert "relay" not in COMPONENTS  # user blocks are not offered yet: generation comes in the next phase
+    assert "relay" not in COMPONENTS  # read when the IDE starts, or when asked
 
 
 def test_constants_go_after_the_leading_comments():

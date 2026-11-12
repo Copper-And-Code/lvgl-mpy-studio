@@ -80,7 +80,7 @@ def test_version_2_file_with_modules_is_read(tmp_path):
 
 def test_unknown_future_version_is_still_refused():
     data = Project().to_dict()
-    data["schemaVersion"] = 4
+    data["schemaVersion"] = 5
     with pytest.raises(ValueError, match="Unsupported"):
         Project.from_dict(data)
     with pytest.raises(ValueError, match="Unsupported"):

@@ -10,7 +10,7 @@ import tempfile
 from typing import Any
 from uuid import uuid4
 
-from .components import COMPONENTS, is_component
+from .components import COMPONENTS, block_for, is_component, register_project_blocks
 from .events import EVENTS, PAGE_EVENTS, default_event, events_for, handler_name
 from .i18n import tr
 from .names import allocate_name, validate_name
@@ -95,9 +95,11 @@ def _run_target(value):
     return None
 
 
-SCHEMA_VERSIONS = (1, 2, 3)
-VALIDATED_VERSIONS = (2, 3)
+SCHEMA_VERSIONS = (1, 2, 3, 4)
+VALIDATED_VERSIONS = (2, 3, 4)
 MODULES_SCHEMA = 3  # the first version with user modules
+BLOCKS_SCHEMA = 4  # the first version with blocks other than the Buzzer
+OLD_COMPONENTS = ("buzzer", "timer")  # the components an IDE before blocks knows
 
 RESIZE_MODES = ("keep", "adapt", "stretch")
 UNIT_PROPS = (
@@ -368,6 +370,7 @@ class Project:
             raise ValueError(f"Unsupported project version: {version}")
         if not isinstance(data.get("pages"), list) or not data["pages"]:
             raise ValueError("Invalid project: no pages")
+        register_project_blocks(data)  # a project brings the blocks it uses: it opens where they are not installed
         for index, raw_page in enumerate(data["pages"]):  # version 1 does not go through the full validation
             if not isinstance(raw_page, dict) or not all(isinstance(raw, dict) and isinstance(raw.get("type"), str) for raw in raw_page.get("widgets") or []):
                 raise ValueError(f"Invalid project: pages[{index}] must be an object with a list of widgets")
@@ -449,7 +452,13 @@ class Project:
     def to_dict(self):
         # Version 3 only when needed: an IDE 0.3 still opens projects without modules and refuses the
         # others, instead of opening them and stopping at start-up with ImportError.
-        result = {"schemaVersion": MODULES_SCHEMA if self.modules else 2, "projectName": self.projectName, "display": {"width": self.display.width, "height": self.display.height, "colorFormat": self.display.colorFormat}, "pages": [page.to_dict() for page in self.pages], "code": self.code.to_dict(), "currentPageId": self.currentPageId, "assets": self.assets, "variables": self.variables}
+        # Version 4 in the same way: an IDE before blocks would not know what the components are.
+        used = {widget.type for widget in self.widgets if is_component(widget.type)}
+        version = BLOCKS_SCHEMA if used - set(OLD_COMPONENTS) else MODULES_SCHEMA if self.modules else 2
+        # The blocks in use travel with the project, as this IDE knows them now; the standard ones are in every IDE.
+        carried = {name: block_for(name).to_dict() for name in sorted(used) if block_for(name) is not None and block_for(name).origin != "standard"}
+        assets = {key: value for key, value in self.assets.items() if key != "blocks"} | ({"blocks": carried} if carried else {})
+        result = {"schemaVersion": version, "projectName": self.projectName, "display": {"width": self.display.width, "height": self.display.height, "colorFormat": self.display.colorFormat}, "pages": [page.to_dict() for page in self.pages], "code": self.code.to_dict(), "currentPageId": self.currentPageId, "assets": assets, "variables": self.variables}
         if self.projectId:
             result["projectId"] = self.projectId
         if self.board is not None:

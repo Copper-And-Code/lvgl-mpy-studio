@@ -15,7 +15,7 @@ def test_toolbox_contains_all_types_and_drop_adds_defaults(qtbot):
     qtbot.addWidget(view)
     toolbox = Toolbox()
     qtbot.addWidget(toolbox)
-    assert len(toolbox.widget_items()) == 32
+    assert len(toolbox.widget_items()) == 34  # 30 LVGL widgets, the Timer and three blocks
     view.designer_scene.add_widget("button", QPointF(30, 40))
     widget = document.project.find_widget("button1")
     assert widget.props["x"] == 30

@@ -11,7 +11,7 @@ from lvgl_mpy_studio.core.i18n import tr
 from lvgl_mpy_studio.core.modules import module_files
 from lvgl_mpy_studio.core.validation import validate_project
 from .gen_python import build_project_code
-from .components import BUZZER_MODULE, board_buzzer, buzzer_block, has_buzzer
+from .components import BUZZER_MODULE, block_files
 from .project_gen import design_warnings, generate_app_events, legacy_data, screen_statements, ui_source
 
 
@@ -178,12 +178,8 @@ def generate_board(project, profile, output_dir, fonts=None):
         "board_profile.json": json.dumps(profile, ensure_ascii=False, indent=2) + "\n",
         "board_adapter.py": f"ADAPTER = {profile['adapter']!r}\nLOGICAL_SIZE = ({profile['logicalWidth']}, {profile['logicalHeight']})\nPHYSICAL_SIZE = ({profile['physicalWidth']}, {profile['physicalHeight']})\nSCALE = {profile['scale']}\n",
     }
-    extra_warnings = []
-    if has_buzzer(project.to_dict()):
-        source = board_buzzer(profile)
-        files[f"{BUZZER_MODULE}.py"] = source or buzzer_block().silent_source()
-        if source is None:
-            extra_warnings.append(tr(buzzer_block().manifest["unavailable"]))
+    block_modules, extra_warnings = block_files(project.to_dict(), profile)
+    files.update(block_modules)
     user_modules = module_files(project)
     files.update(user_modules)
     _validate_sources(files, sourcemap)
@@ -191,5 +187,5 @@ def generate_board(project, profile, output_dir, fonts=None):
         (output / name).write_text(source, encoding="utf-8", newline="\n")
     manifest = {"schemaVersion": 1, "entryPoint": "app_main.py", "profileId": profile["id"], "profileRevision": profile["revision"], "files": {name: hashlib.sha256(source.encode("utf-8")).hexdigest() for name, source in files.items()}}
     (output / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8", newline="\n")
-    precompile = [name for name in PRECOMPILED if name in files] + list(user_modules)
+    precompile = [name for name in PRECOMPILED if name in files] + [name for name in block_modules if name not in PRECOMPILED] + list(user_modules)
     return {"files": list(files) + ["manifest.json"], "warnings": warnings + extra_warnings + _memory_warnings(project), "manifest": manifest, "sourcemap": sourcemap, "profile": profile, "precompile": precompile}

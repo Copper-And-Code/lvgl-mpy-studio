@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "kind": "block",
+  "id": "digital_input",
+  "version": "1.0.0",
+  "name": "Digital Input",
+  "description": "A pin that is read: a push button, a switch, a sensor with an on/off output.",
+  "author": "Nunzio Raciti",
+  "license": "MIT",
+  "icon": "mdi6.gesture-tap-button",
+  "category": "Hardware",
+  "instances": "many",
+  "properties": [
+    {"name": "pin", "type": "pin", "label": "Pin", "role": "gpio.in"},
+    {"name": "pull", "type": "select", "label": "Pull Resistor", "options": ["up", "down", "none"], "default": "up"},
+    {"name": "active_low", "type": "boolean", "label": "Active Low", "default": true},
+    {"name": "debounce", "type": "number", "label": "Debounce (ms)", "default": 30, "min": 0, "max": 1000}
+  ],
+  "methods": [
+    {"name": "value", "arguments": "", "help": "True while the input is active."},
+    {"name": "simulate", "arguments": "value", "help": "Behave as if the input had become active (True) or not (False): for the simulator and for tests."}
+  ],
+  "events": [
+    {"name": "CHANGED", "help": "The input became active or stopped being active"},
+    {"name": "PRESSED", "help": "The input became active"},
+    {"name": "RELEASED", "help": "The input stopped being active"}
+  ],
+  "simulator": "simulator.py",
+  "board": [{"file": "board.py"}]
+}

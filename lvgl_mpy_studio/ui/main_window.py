@@ -167,6 +167,7 @@ class MainWindow(DeviceMixin, ProjectTreeMixin, FilesMixin, ResolutionMixin, Run
         self.board_stop_action = QAction(tr("Stop"), self, triggered=self.stop_board)
         self.autostart_install_action = QAction(tr("Install Autostart…"), self, triggered=self.install_autostart)
         self.autostart_remove_action = QAction(tr("Remove Autostart…"), self, triggered=self.remove_autostart)
+        self.blocks_action = QAction(tr("Manage Blocks…"), self, triggered=self.manage_blocks)
         self.print_action = QAction(tr("Print Sources…"), self, shortcut=QKeySequence.Print, triggered=self.print_sources)
         self.about_action = QAction(tr("About LVGL MPY Studio"), self, triggered=self.show_about)
 
@@ -215,6 +216,7 @@ class MainWindow(DeviceMixin, ProjectTreeMixin, FilesMixin, ResolutionMixin, Run
         device_menu.addAction(self.profiles_action)
         settings_menu = self.menuBar().addMenu(tr("Settings"))
         settings_menu.addAction(self.mcp_action)
+        settings_menu.addAction(self.blocks_action)
         self.language_menu = settings_menu.addMenu(tr("Language"))
         for code, label in (("it", "Italiano"), ("en", "English")):
             action = self.language_menu.addAction(label, lambda checked=False, value=code: self.change_language(value))
@@ -561,6 +563,27 @@ class MainWindow(DeviceMixin, ProjectTreeMixin, FilesMixin, ResolutionMixin, Run
         zoom = view.transform().m11() * factor
         if 0.5 <= zoom <= 4:
             view.scale(factor, factor)
+
+    def manage_blocks(self):
+        from lvgl_mpy_studio.ui.blocks_manager import BlocksDialog
+
+        dialog = BlocksDialog(self.document, self)
+        dialog.blocksChanged.connect(self._blocks_changed)
+        dialog.exec()
+
+    def _blocks_changed(self):
+        """The set of blocks changed: the toolbox and the panels read the definitions again."""
+        from lvgl_mpy_studio.core.components import COMPONENTS
+        from lvgl_mpy_studio.core.model import widget_definitions
+
+        definitions = {**widget_definitions(), **COMPONENTS}
+        self.toolbox.definitions = definitions
+        self.toolbox.populate()
+        self.toolbox.filter(self.toolbox_panel.search.text())
+        self.properties.definitions = dict(definitions)
+        self.properties.rebuild()
+        self.code_panel.populate()
+        self.rebuild_project_tree()
 
     def print_sources(self):
         from lvgl_mpy_studio.ui.printing import PrintSourcesDialog  # Qt's print module is loaded only when asked

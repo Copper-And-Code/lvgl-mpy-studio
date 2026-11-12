@@ -153,6 +153,27 @@ I componenti non si vedono sulla pagina: compaiono nel pannello **Componenti** i
   - Proprietà `period` e `enabled` (se parte da solo).
   - Nel codice: `ui.timer1.pause()`, `ui.timer1.resume()`, `ui.timer1.set_period(500)`.
   - È il modo giusto per animazioni e giochi: un ciclo `while` nel codice bloccherebbe l'interfaccia.
+- **Digital Output** (sotto **Hardware**): un pin della board acceso o spento, per un LED o un relè.
+  - Proprietà `pin`, `active_low` (l'uscita è accesa quando il pin è basso) e `initial` (accesa all'avvio).
+  - Nel codice: `ui.digital_output1.on()`, `.off()`, `.toggle()`, `.set(True)`, `.value()`.
+  - Nel simulatore non c'è un pin: ogni cambiamento viene scritto nel pannello Output.
+- **Digital Input** (sotto **Hardware**): un pin che viene letto, per un pulsante o un interruttore.
+  - Proprietà `pin`, `pull` (la resistenza interna), `active_low` e `debounce` in millisecondi.
+  - Eventi **PRESSED**, **RELEASED** e **CHANGED**; nel gestore `e` è l'ingresso stesso: `e.value()`.
+  - Nel simulatore l'ingresso cambia solo quando il codice chiama `ui.digital_input1.simulate(True)`.
+
+Il pin è il numero che MicroPython usa su quella board.
+
+### Blocchi
+
+Buzzer, Digital Output e Digital Input sono *blocchi*: cartelle con una descrizione (`block.json`) e moduli MicroPython. Altre persone possono scrivere blocchi, e tu puoi aggiungerli:
+
+- **Impostazioni → Gestione blocchi…** elenca i blocchi, da dove viene ciascuno, autore e licenza, e quali componenti del progetto aperto lo usano.
+- **Aggiungi da cartella…** installa il blocco di una cartella che hai scaricato; **Rimuovi** elimina uno che hai installato; **Ricarica** rilegge la cartella dei blocchi; **Apri cartella dei blocchi** la mostra.
+- Un progetto conserva una copia dei blocchi che usa e che non sono forniti con l'IDE, così si apre anche su un computer che non li ha. **Installa dal progetto** installa un blocco di questo tipo su questo computer.
+- Il simulatore esegue il codice di un blocco sul tuo computer, come esegue il codice di un progetto: installa blocchi di persone di cui ti fidi.
+
+`docs/plugins-plan.md` ne descrive il formato.
 
 ## 6. Disegnare la pagina
 

@@ -31,6 +31,19 @@ WIDGET_ICONS = {
     "calendar": "calendar-month-outline", "line": "vector-line", "span": "format-letter-case",
     "buzzer": "volume-high", "timer": "timer-outline",
 }
+BLOCK_ICON = "chip"  # for a block that names no icon, or one the icon font lacks
+
+
+def widget_icon(widget_type):
+    """The icon of a widget or component; a block names its own in block.json, as mdi6.<name>."""
+    if widget_type in WIDGET_ICONS:
+        return icon(WIDGET_ICONS[widget_type])
+    definition = COMPONENTS.get(widget_type)
+    if definition is None:
+        return icon("shape-outline")
+    name = str(definition.get("icon") or "")
+    found = icon(name.removeprefix("mdi6.")) if name.startswith("mdi6.") else None
+    return found if found is not None and not found.isNull() else icon(BLOCK_ICON)
 WIDGET_MIME = "application/x-lvgl-widget"
 WIDGETS_MIME = "application/x-lvgl-widgets"
 MINIMUM_SIZE = 8
@@ -737,7 +750,7 @@ class ComponentTray(QListWidget):
         self.clear()
         for widget in self.document.project.widgets:
             if is_component(widget.type):
-                item = QListWidgetItem(icon(WIDGET_ICONS[widget.type]), widget.name)
+                item = QListWidgetItem(widget_icon(widget.type), widget.name)
                 item.setData(Qt.UserRole, widget.name)
                 self.addItem(item)
                 item.setSelected(widget.name in selected)
@@ -789,7 +802,7 @@ class ToolboxPanel(QWidget):
 
 class Toolbox(QListWidget):
     CATEGORY_ROLE = Qt.UserRole + 1
-    NAMES = {"Basic": "Basic", "Input": "Input", "Display": "Display", "Data": "Data", "Media": "Media", "Navigation": "Navigation", "Container": "Containers", "Components": "Components"}
+    NAMES = {"Basic": "Basic", "Input": "Input", "Display": "Display", "Data": "Data", "Media": "Media", "Navigation": "Navigation", "Container": "Containers", "Components": "Components", "Hardware": "Hardware"}
 
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -814,7 +827,7 @@ class Toolbox(QListWidget):
             header.setData(self.CATEGORY_ROLE, category)
             self.addItem(header)
             for widget_type, definition in entries:
-                item = QListWidgetItem(icon(WIDGET_ICONS.get(widget_type, "shape-outline")), tr(definition.get("name", widget_type)))
+                item = QListWidgetItem(widget_icon(widget_type), tr(definition.get("name", widget_type)))
                 item.setData(Qt.UserRole, widget_type)
                 item.setToolTip(widget_type)
                 self.addItem(item)

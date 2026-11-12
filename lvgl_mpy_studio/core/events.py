@@ -36,10 +36,24 @@ PAGE_EVENTS = ("SCREEN_LOADED",)  # the events a page offers in the editor
 COMPONENT_EVENTS = {"buzzer": (), "timer": ("TICK",)}
 
 
+COMPONENT_ONLY = {"TICK"}  # events no LVGL widget has
+
+
+def register_component_events(component_type, events):
+    """The events of a block: events is a list of (name, description)."""
+    COMPONENT_EVENTS[component_type] = tuple(name for name, _description in events)
+    for name, description in events:
+        if name not in EVENTS:
+            EVENTS[name] = EventDefinition(name, description)
+            COMPONENT_ONLY.add(name)
+    if events:
+        DEFAULT_EVENTS[component_type] = events[0][0]
+
+
 def events_for(widget_type):
     if widget_type in COMPONENT_EVENTS:
         return list(COMPONENT_EVENTS[widget_type])
-    return [name for name in EVENTS if name != "TICK"]
+    return [name for name in EVENTS if name not in COMPONENT_ONLY]
 
 
 def default_event(widget_type):

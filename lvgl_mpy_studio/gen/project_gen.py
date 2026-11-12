@@ -9,7 +9,7 @@ from lvgl_mpy_studio.core.components import is_component
 from lvgl_mpy_studio.core.model import Project
 from lvgl_mpy_studio.core.modules import module_files
 from lvgl_mpy_studio.core.validation import validate_project
-from .components import BUZZER_MODULE, buzzer_block, has_buzzer, timer_lines, ui_imports
+from .components import block_files, component_lines, project_components, ui_imports
 from .gen_python import build_project_code, generate_python, page_constant
 from .identifiers import IdentifierAllocator
 
@@ -73,11 +73,13 @@ def code_usage(data):
     }
 
 
-def timer_statements(data, expose_all=False):
+def component_statements(data, expose_all=False):
+    """The lines that create the timers and the objects of the blocks, with their handlers."""
     code = data.get("code") or {}
     identifiers = handler_identifiers(code)
-    callbacks = {handler.get("widget"): f"app_events.{identifiers[name]}" for name, handler in active_handlers(code).items() if handler.get("event") == "TICK"}
-    return timer_lines(data, callbacks, None if expose_all else code_usage(data)["exposed"])
+    components = {widget["name"] for widget in project_components(data)}
+    callbacks = {(handler.get("widget"), handler.get("event")): f"app_events.{identifiers[name]}" for name, handler in active_handlers(code).items() if handler.get("widget") in components}
+    return component_lines(data, callbacks, None if expose_all else code_usage(data)["exposed"])
 
 
 def handler_identifiers(code):
@@ -135,13 +137,11 @@ def screen_statements(project, model, expose_all=False):
     page_names = [page["name"] for page in data["pages"]]
     for name, handler in active_handlers(code).items():
         owner, event = handler.get("widget"), handler.get("event")
-        if event == "TICK":
-            continue
         if owner in widget_names:
             lines.append(f"ui.{owner}.add_event_cb(app_events.{identifiers[name]}, lv.EVENT.{event}, None)")
         elif owner in page_names:
             lines.append(f"ui.screens[{page_names.index(owner)}].add_event_cb(app_events.{identifiers[name]}, lv.EVENT.{event}, None)")
-    lines.extend(timer_statements(data, expose_all))
+    lines.extend(component_statements(data, expose_all))
     return lines
 
 
@@ -255,10 +255,10 @@ def generate_project(project, output_dir, runtime_dir=None, initial_page=None, e
     shutil.copyfile(runtime_dir / "display_driver.py", output / "display_driver.py")
     files = ["ui.py", "app_events.py", "main.py", "display_driver.py", "sourcemap.json"]
     modules = list(APP_MODULES)
-    if has_buzzer(full):
-        (output / f"{BUZZER_MODULE}.py").write_text(buzzer_block().simulator_source(), encoding="utf-8", newline="\n")
-        files.append(f"{BUZZER_MODULE}.py")
-        modules.append(BUZZER_MODULE)
+    for name, source in block_files(full)[0].items():
+        (output / name).write_text(source, encoding="utf-8", newline="\n")
+        files.append(name)
+        modules.append(name[:-3])
     for name, source in (module_files(project) if isinstance(project, Project) else module_files(Project.from_dict(full))).items():
         (output / name).write_text(source, encoding="utf-8", newline="\n")
         files.append(name)

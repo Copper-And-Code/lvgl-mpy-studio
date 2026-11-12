@@ -1,4 +1,5 @@
-from .components import COMPONENTS
+from .components import COMPONENTS, register_project_blocks
+from .i18n import tr
 from .events import EVENTS
 from .modules import validate_module_name
 from .names import validate_name
@@ -26,12 +27,14 @@ def validate_project(project):
     errors, warnings = [], []
     if not isinstance(data, dict):
         raise ValueError("Invalid project: the document must be a JSON object")
-    if data.get("schemaVersion", 1) not in (2, 3):
+    if data.get("schemaVersion", 1) not in (2, 3, 4):
         raise ValueError(f"Unsupported project version: {data.get('schemaVersion')}")
     pages = data.get("pages")
     if not isinstance(pages, list) or not pages:
         raise ValueError("Invalid project: no pages")
     _dimensions(data["display"] if "display" in data else {}, "display", errors)
+    for block_id, problem in register_project_blocks(data):  # before the types are checked: a project brings its blocks
+        warnings.append(f"assets.blocks.{block_id}: {problem}")
     definitions = {**widget_definitions(), **COMPONENTS}
     identifiers = {}
     used_names = set()
@@ -102,6 +105,9 @@ def validate_project(project):
                 supported = {item["name"] for item in definition.get("properties") or []} | set(definition.get("defaultProps") or {})
                 for key in props.keys() - supported:
                     warnings.append(f"{widget_path}.props.{key}: unsupported property kept but ignored")
+                for item in definition.get("properties") or []:
+                    if item.get("pin") and props.get(item["name"]) is None:
+                        warnings.append(tr("{name}: the property {property} is not set, and the board needs it", name=name, property=item.get("label", item["name"])))
             events = widget["events"] if "events" in widget else {}
             if not isinstance(events, dict):
                 errors.append(f"{widget_path}.events: must be an object")

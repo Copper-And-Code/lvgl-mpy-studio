@@ -3,7 +3,9 @@
 Menu entries are triggered through their action, which is what choosing the entry does. Dialogs
 are answered by a watcher, because a modal dialog stops the code that opened it."""
 
+import sys
 import time
+import traceback
 from contextlib import contextmanager
 
 from PySide6.QtCore import QEventLoop, QPoint, QPointF, Qt, QTimer
@@ -52,6 +54,10 @@ class Ide:
         self.window.resize(1280, 800)
         self.window.show()
         QTest.qWaitForWindowExposed(self.window)
+        # An error inside the IDE is printed and the IDE goes on: here it must fail the step.
+        self._crashes = []
+        self._old_hook = sys.excepthook
+        sys.excepthook = lambda kind, error, trace: self._crashes.append("".join(traceback.format_exception(kind, error, trace)).strip())
         self._watcher = QTimer()
         self._watcher.timeout.connect(self._watch_dialogs)
         self._watcher.start(max(100, slow_ms))
@@ -66,6 +72,8 @@ class Ide:
         try:
             yield
             sleep(0)
+            if self._crashes:
+                raise StepFailed("the IDE raised an error:\n" + "\n".join(self._crashes))
             if self._unexpected:
                 raise StepFailed("a dialog nobody expected appeared: " + "; ".join(self._unexpected))
             if self._dialog_handlers:
@@ -74,6 +82,7 @@ class Ide:
             detail = str(exc) if isinstance(exc, StepFailed) else f"{type(exc).__name__}: {exc}"
             pictures = self.pictures(f"{self._slug()}-{self._number:02}")
             self._unexpected.clear()
+            self._crashes.clear()
             self._dialog_handlers.clear()
             self.report.add(self.scenario, title, FAILED, time.monotonic() - started, detail, pictures)
             raise ScenarioStopped from exc
@@ -446,6 +455,7 @@ class Ide:
             self.window.close()
             sleep(50)
         finally:
+            sys.excepthook = self._old_hook
             self._watcher.stop()
             self.window.deleteLater()
             sleep(0)

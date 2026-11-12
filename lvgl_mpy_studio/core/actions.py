@@ -6,6 +6,7 @@ on the real runtime by tests/test_actions.py.
 
 import re
 
+from lvgl_mpy_studio.core.components import block_for
 from lvgl_mpy_studio.core.i18n import tr
 
 CURSOR = "§"
@@ -74,9 +75,27 @@ COMPONENT_ACTIONS = {
 }
 
 
+def block_actions(block):
+    """What a block offers: its methods, described by the help its author wrote."""
+    actions = []
+    for method in block.manifest["methods"]:
+        arguments = method.get("arguments", "")
+        label = method.get("help") or f"{method['name']}({arguments})"
+        actions.append((label, "ui.{name}." + method["name"] + ("(" + CURSOR + ")" if arguments else "()")))
+    return tuple(actions)
+
+
 def actions_for(widget_type, name):
-    """Actions of the widget, the most useful first: (description, code)."""
-    actions = COMPONENT_ACTIONS.get(widget_type) or (*SPECIFIC.get(widget_type, ()), *COMMON)
+    """Actions of the widget, the most useful first: (description, code).
+
+    A component is not drawn: it only has its own actions, never those of the LVGL objects."""
+    block = block_for(widget_type)
+    if widget_type in COMPONENT_ACTIONS:
+        actions = COMPONENT_ACTIONS[widget_type]
+    elif block is not None:
+        actions = block_actions(block)
+    else:
+        actions = (*SPECIFIC.get(widget_type, ()), *COMMON)
     return [(label, code.format(name=name)) for label, code in actions]
 
 

@@ -153,6 +153,27 @@ Components are not visible on the page: they appear in the **Components** panel 
   - Properties `period` and `enabled` (whether it starts on its own).
   - In code: `ui.timer1.pause()`, `ui.timer1.resume()`, `ui.timer1.set_period(500)`.
   - It is the right way to do animations and games: a `while` loop in the code would block the interface.
+- **Digital Output** (under **Hardware**): a pin of the board driven on or off, for an LED or a relay.
+  - Properties `pin`, `active_low` (the output is on when the pin is low) and `initial` (on at start).
+  - In code: `ui.digital_output1.on()`, `.off()`, `.toggle()`, `.set(True)`, `.value()`.
+  - In the simulator there is no pin: each change is written in the Output panel.
+- **Digital Input** (under **Hardware**): a pin that is read, for a push button or a switch.
+  - Properties `pin`, `pull` (the internal resistor), `active_low` and `debounce` in milliseconds.
+  - Events **PRESSED**, **RELEASED** and **CHANGED**; in the handler, `e` is the input itself: `e.value()`.
+  - In the simulator the input changes only when the code calls `ui.digital_input1.simulate(True)`.
+
+The pin is the number MicroPython uses on that board.
+
+### Blocks
+
+Buzzer, Digital Output and Digital Input are *blocks*: folders with a description (`block.json`) and MicroPython modules. Other people can write blocks, and you can add them:
+
+- **Settings → Manage Blocks…** lists the blocks, where each comes from, its author and licence, and which components of the open project use it.
+- **Add from Folder…** installs the block in a folder you downloaded; **Remove** deletes one you installed; **Reload** reads the blocks folder again; **Open Blocks Folder** shows it.
+- A project keeps a copy of the blocks it uses that are not shipped with the IDE, so it opens on a computer that lacks them. **Install from Project** installs such a block on this computer.
+- The simulator runs the code of a block on your computer, as it runs the code of a project: install blocks from people you trust.
+
+`docs/plugins-plan.md` describes the format.
 
 ## 6. Drawing the page
 

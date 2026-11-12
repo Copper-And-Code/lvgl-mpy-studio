@@ -1,6 +1,6 @@
 # Plan: plugins
 
-Status: phase 1 done on 2026-11-12, in version 0.6.0; the other phases are not started. Written on 2026-11-12.
+Status: phases 1 and 2 done on 2026-11-12, in version 0.6.0, with the Block Manager of phase 3; the rest is not started. Written on 2026-11-12.
 
 ## Goal
 
@@ -108,9 +108,15 @@ When no variant applies the block gets a module whose methods do nothing, and th
 between the simulator and the board:
 
 - `instances: many` — a class named `Block`; the generator writes
-  `ui.<name> = <module>.Block(bus=0, scl=5, sda=4, freq=400000)`, with the properties as
-  keyword arguments. A block with events also receives them as keyword arguments.
+  `ui.<name> = <module>.Block(name='<name>', bus=0, scl=5, sda=4, freq=400000)`: the name of the
+  component, for its messages, then the properties as keyword arguments. A handler the user
+  wrote for an event arrives as `on_<event>=`, for example `on_pressed=`; the block calls it
+  with itself as the only argument. The object is created after the pages, and only if the
+  code uses it or it has a handler.
 - `instances: one` — module-level functions; the generator writes `import <module> as <name>`.
+  Such a block is shared by all its components, so it has no properties and no events.
+
+The module is named `lms_<id>` in the generated application.
 
 A block without `simulator.py` gets a generated stand-in: every method listed in `block.json`
 exists, does nothing, returns `None` and prints one line in the simulator console the first
@@ -191,7 +197,11 @@ that behaviour depending on a button or a sensor can be tested without a board.
 ## Risks
 
 - **A block breaks the application on the board.** It is the user's own risk, as with their
-  own code; the IDE shows the author and the licence, and never runs block code on the PC.
+  own code; the IDE shows the author and the licence.
+- **Block code runs on the PC inside the simulator.** The IDE itself never runs block code,
+  but the simulator runs `simulator.py` as it runs the code of the project, with the same
+  access to files. A block from someone else deserves the trust given to a project from
+  someone else, and so does a project that carries a block inside.
 - **Memory.** Each block is a module on a board with little RAM. The size budget already shown
   for the project counts block modules.
 - **The format is hard to change once published.** Hence `schemaVersion`, and the standard
@@ -207,10 +217,19 @@ Each phase ends with the test suite passing and can be released on its own.
    the generated files are the same byte for byte. No visible change. User blocks are read and
    checked but not offered, because generation only knows the Buzzer; the copy inside the
    project comes with phase 2.
-2. **Generation.** Classes with properties and events, simulator stand-in, copy in the project,
-   precompilation, C warning. Digital output and Digital input as first new blocks.
-3. **IDE.** Toolbox categories, properties, completion, the blocks folder and reload commands,
-   **Update block**, MCP tools.
+2. **Generation.** Done. Classes with properties and events, simulator stand-in, copy in the
+   project (for blocks that are not standard), project file version 4, precompilation, C
+   warning. Digital Output and Digital Input are the first new blocks, tried in the simulator
+   and with a fake `machine` in the tests, not yet on a board. User blocks are offered in the
+   toolbox when the IDE starts. Left out: setting an input from `simulate` scenarios; for now
+   the code calls `simulate(value)` on the input.
+3. **IDE.** Partly done: toolbox category, properties, completion and **What do you want to
+   do?** from the methods of the block, and **Settings → Manage Blocks…**, which lists the
+   blocks with their origin, adds one from a folder, removes it, reloads, opens the blocks
+   folder and installs on this computer a block that only the open project carries. **Update
+   block** is not needed: a project is saved with the blocks as they are installed now. Still
+   to do: the MCP tool `list_blocks`, blocks in `project_info`, translations of the texts of
+   the standard blocks, and `docs/blocks.md`.
 4. **Pins.** `pins` in profiles, the `pin` editor, conflict warnings.
 5. **The remaining standard blocks**: PWM, ADC, I2C, SPI, UART, each tried on a real board.
 6. **Documentation.** `docs/blocks.md`: how to write a block, with one block built step by

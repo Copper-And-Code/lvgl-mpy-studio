@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "kind": "block",
+  "id": "digital_output",
+  "version": "1.0.0",
+  "name": "Digital Output",
+  "description": "A pin driven on or off: an LED, a relay, an enable line.",
+  "author": "Nunzio Raciti",
+  "license": "MIT",
+  "icon": "mdi6.led-on",
+  "category": "Hardware",
+  "instances": "many",
+  "properties": [
+    {"name": "pin", "type": "pin", "label": "Pin", "role": "gpio.out"},
+    {"name": "active_low", "type": "boolean", "label": "Active Low", "default": false},
+    {"name": "initial", "type": "boolean", "label": "On at Start", "default": false}
+  ],
+  "methods": [
+    {"name": "on", "arguments": "", "help": "Turn the output on."},
+    {"name": "off", "arguments": "", "help": "Turn the output off."},
+    {"name": "toggle", "arguments": "", "help": "Turn it on if it is off, off if it is on."},
+    {"name": "set", "arguments": "value", "help": "Turn it on with True, off with False."},
+    {"name": "value", "arguments": "", "help": "True if the output is on."}
+  ],
+  "events": [],
+  "simulator": "simulator.py",
+  "board": [{"file": "board.py"}]
+}

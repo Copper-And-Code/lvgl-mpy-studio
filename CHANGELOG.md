@@ -2,6 +2,12 @@
 
 ## 0.6.0 — not released yet
 
+### Added
+
+- **Hardware blocks.** Two new components under **Hardware** in the toolbox: **Digital Output** (a pin on or off: LED, relay) and **Digital Input** (a pin that is read, with debounce and the events PRESSED, RELEASED and CHANGED). They work in the simulator, where the output writes its changes in the Output panel and the input is set from code with `simulate()`. Not yet tried on a real board.
+- **Blocks from other people.** **Settings → Manage Blocks…** lists the blocks with their origin, author and licence, adds one from a folder, removes it, reloads them and opens the blocks folder; the toolbox follows at once. A project keeps a copy of such blocks, so it opens on a computer that lacks them; a project that uses blocks is saved as version 4, which earlier IDEs refuse instead of misreading. The module a block provides for the simulator runs on the PC, like the code of a project: use blocks from people you trust.
+- The self-test has a ninth scenario for the blocks, and now fails a step when the IDE raises an error that it would otherwise only print.
+
 ### Changed
 
 - **Blocks, first step** (see `docs/plugins-plan.md`). The Buzzer is no longer written inside the IDE: it is a block, a folder with a description and its MicroPython modules, read by the new `core/blocks.py`. Nothing changes for projects and for the generated files, which are the same byte for byte. Blocks copied into the `blocks` folder of the settings are read and checked, but not offered yet.

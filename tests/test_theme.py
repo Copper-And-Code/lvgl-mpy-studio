@@ -17,8 +17,14 @@ def window_for(qtbot):
 
 
 def test_every_widget_type_has_an_icon(qapp):
-    assert set(widget_definitions()) | set(COMPONENTS) == set(WIDGET_ICONS)
+    from lvgl_mpy_studio.core.components import BLOCKS
+    from lvgl_mpy_studio.ui.designer.scene import widget_icon
+
+    assert (set(widget_definitions()) | set(COMPONENTS)) - set(BLOCKS) | {"buzzer"} == set(WIDGET_ICONS)
     assert not [name for name in WIDGET_ICONS.values() if theme.icon(name).isNull()]
+    # A block names its icon in block.json; one it does not name, or that the font lacks, still gets one.
+    assert not [name for name in set(widget_definitions()) | set(COMPONENTS) if widget_icon(name).isNull()]
+    assert not [block.id for block in BLOCKS.values() if block.origin == "standard" and block.id != "buzzer" and theme.icon(block.manifest["icon"].removeprefix("mdi6.")).isNull()]
 
 
 def test_missing_icon_font_does_not_break_the_ui(qapp):
@@ -84,7 +90,7 @@ def test_toolbox_is_grouped_and_searchable(qtbot):
     toolbox = panel.toolbox
     assert isinstance(toolbox, Toolbox)
     headers = [toolbox.item(row) for row in range(toolbox.count()) if not toolbox.item(row).data(Qt.UserRole)]
-    assert len(headers) == 8
+    assert len(headers) == 9
     assert not headers[0].flags() & Qt.ItemIsSelectable
     panel.search.setText("slid")
     visible = [item.text() for item in toolbox.widget_items() if not item.isHidden()]
