@@ -34,6 +34,7 @@ include = ["lvgl_mpy_studio*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["."]  # tests import tools/build_site.py
 addopts = "-ra"
 
 [tool.ruff]

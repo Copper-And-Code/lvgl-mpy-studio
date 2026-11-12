@@ -156,7 +156,8 @@ Record in [the status page](status.md) what was checked and on which system.
 ## What is not done
 
 - Binaries are not signed: Windows SmartScreen asks for **More info → Run anyway**.
-- No release with packages has been published on GitHub.
+- Releases are made by hand: no workflow builds or uploads the packages. The two files and their
+  checksums are attached to a GitHub release with `gh release create`.
 - The AppImage has been run only on the computer that built it.
 
 Licences and sources of what a package contains are in `packaging/NOTICE.txt` and

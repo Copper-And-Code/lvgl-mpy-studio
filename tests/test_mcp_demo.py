@@ -1,7 +1,7 @@
 """The "from a prompt to an app" demo: an agent's whole session, replayed against the server.
 
-examples/weather/mcp-session.json holds the tool calls in order; examples/weather/project.json is
-what they produce. If a tool changes so that the session no longer builds the same app, this fails.
+examples/weather/mcp-session.json holds the tool calls in order; examples/weather/mcp-result.json is
+what they produce. examples/weather/project.json is that result reworked later, with icons. If a tool changes so that the session no longer builds the same app, this fails.
 """
 
 import json
@@ -52,7 +52,7 @@ def test_the_recorded_session_builds_the_weather_example(tmp_path, monkeypatch):
     assert [item["passed"] for item in answers["visual_test"]] == [True, True]
     assert all(page["status"] == "passed" for page in answers["visual_test"][1]["pages"])
     assert answers["validate"][0] == {"warnings": [], "outOfBounds": []}
-    assert comparable(Project.load(path)) == comparable(Project.load(EXAMPLE / "project.json"))
+    assert comparable(Project.load(path)) == comparable(Project.load(EXAMPLE / "mcp-result.json"))
     assert characters < 25000  # what the agent has to read for the whole session
 
 

@@ -84,6 +84,7 @@ def gallery(demos):
     for metadata, project, budget in demos:
         identifier = metadata["id"]
         prompt = metadata["prompt"] or metadata["prompt_note"]
+        note = f'<p>{html.escape(metadata["prompt_note"])}</p>' if metadata["prompt"] and metadata["prompt_note"] else ""
         cards.append(f'''<article class="demo-card" id="{identifier}">
 <a href="{identifier}/"><img class="demo-thumbnail" src="{identifier}/thumbnail.png" alt="{html.escape(metadata['name'], quote=True)} initial page"></a>
 <h2>{html.escape(metadata["name"])}</h2>
@@ -98,7 +99,7 @@ def gallery(demos):
 <a class="md-button md-button--primary" href="{identifier}/">Play</a>
 <a class="md-button" href="{REPOSITORY}/tree/main/examples/{identifier}">Source project</a>
 </div>
-<details><summary>Creation prompt</summary><p class="demo-prompt">{html.escape(prompt)}</p></details>
+<details><summary>Creation prompt</summary><p class="demo-prompt">{html.escape(prompt)}</p>{note}</details>
 </article>''')
     return "# Browser demos\n\nThese applications and games run locally in your browser on one shared WebAssembly runtime. The flash and RAM figures are measured by the IDE; RAM is a 64-bit simulator estimate and overestimates 32-bit boards.\n\n" + '<div class="demo-grid">\n' + "\n".join(cards) + "\n</div>\n"
 

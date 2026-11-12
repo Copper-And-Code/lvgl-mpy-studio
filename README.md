@@ -10,7 +10,7 @@ A desktop IDE for designing [LVGL](https://lvgl.io) 9.5 interfaces for MicroPyth
 
 ![The IDE with an industrial monitor running in its simulator](docs/images/ide-simulator.png)
 
-> **Status: 0.6.0, no packages published yet.** The automated tests are many and human testing is scarce: much has been written and checked by machine, and little has been used by people. [What is verified, and how](docs/status.md) says it area by area.
+> **Status: 0.6.1, the first release with packages ([download](https://github.com/Copper-And-Code/lvgl-mpy-studio/releases/latest)).** The automated tests are many and human testing is scarce: much has been written and checked by machine, and little has been used by people. [What is verified, and how](docs/status.md) says it area by area.
 
 ## If you are evaluating this project
 
@@ -24,6 +24,7 @@ A desktop IDE for designing [LVGL](https://lvgl.io) 9.5 interfaces for MicroPyth
 
 ## What it does
 
+- **One engine everywhere.** The board, the simulator, the Linux and Windows executables and the browser version run the same MicroPython and the same LVGL, compiled from the same sources, not an emulation, so every upstream fix and improvement reaches all of them at once ([why](docs/stack.md#one-engine-four-places-it-runs)).
 - **Design.** A drag and drop designer that shows the page as LVGL draws it, at the resolution of the board, with undo, alignment, and a resolution change that adapts the layout.
 - **Code.** Handlers and modules in Python, with completion, plain-language actions that insert the exact LVGL call, and errors that lead to the handler and line, also when they happen on the board.
 - **Run.** A simulator with touch, keyboard and sound; upload to a board as bytecode; changes to the design shown on the running board shortly after an edit.

@@ -5,6 +5,6 @@
   "kind": "application",
   "page": null,
   "prompt": "Build a weather station for the ESP32-4848S040: the current temperature of a city, a five-day forecast, a button to change city, and a settings page to switch between Celsius and Fahrenheit. Check that it works before you finish.",
-  "prompt_note": null,
+  "prompt_note": "An AI agent built the app from this prompt through the MCP server; its session is recorded in mcp-session.json and its result is mcp-result.json. The weather icons and the new layout were added later by another agent, while preparing this site.",
   "order": 20
 }

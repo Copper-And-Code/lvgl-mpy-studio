@@ -14,6 +14,33 @@ says in which repository each layer lives.
 | 2. Firmware | MicroPython boards built out of tree, with frozen drivers | [mpy-lvgl-boards](https://github.com/Copper-And-Code/mpy-lvgl-boards) |
 | 1. Display drivers | C modules that put pixels on an RGB panel | [mpy-lvgl-boards](https://github.com/Copper-And-Code/mpy-lvgl-boards), `modules/` |
 
+## One engine, four places it runs
+
+Nothing here is an emulation or a mock-up. The board, the simulator, the single-file
+executables for Linux and Windows and the browser version all run **the real code, compiled**:
+the MicroPython interpreter and the LVGL library in C, built from the same sources at the same
+pinned versions (`docs/target.md`), for each processor. The application itself is the same
+MicroPython code everywhere; for the board and the executables it is compiled to bytecode by the
+same `mpy-cross`. The simulator is
+MicroPython's own Unix and Windows ports with LVGL compiled in; an executable is that
+simulator with the application packed inside; the browser version is the same code compiled to
+WebAssembly. What differs is only the thin layer that reaches the screen and the input: a
+display driver on the board, a window on the PC, a canvas in the browser.
+
+The consequence matters more than the design: **every fix and every improvement that the
+MicroPython and LVGL projects release reaches all four at once.** A faster renderer, a new
+widget, a corrected font or a fixed garbage collector improves the application on the board,
+what the developer sees in the simulator, the programs given to users and the demos on the web,
+with no porting work in this repository. An application also draws and behaves the same everywhere,
+because nothing in between reinterprets it. What does not carry over is the machine: a board
+has less memory and a slower processor than a PC, so the IDE measures memory on the board itself
+and the status page says which checks were made on hardware.
+
+What it takes is to move the pin: rebuild the runtimes with the new versions, rebuild the board
+firmware in [mpy-lvgl-boards](https://github.com/Copper-And-Code/mpy-lvgl-boards), and run the
+tests, which compare the renderings pixel by pixel. That step is deliberate, so that an upstream
+change is adopted when it has been checked, not when it happens to land.
+
 ## Layers 1 and 2: registers and firmware
 
 The firmware is a separate repository, [mpy-lvgl-boards](https://github.com/Copper-And-Code/mpy-lvgl-boards),

@@ -28,6 +28,7 @@ Create `examples/<id>/demo.json` next to the project:
 - `page` is the page used for the thumbnail, or `null` for the initial page.
 - `order` is a unique integer that controls the gallery order.
 - If no prompt exists, set `prompt` to `null` and explain that in `prompt_note`. Never reconstruct or invent one.
+- If the demo was changed after the prompt produced it, keep the prompt and say what changed, and who changed it, in `prompt_note`.
 
 **When an agent creates a demo from a prompt, save that prompt in `demo.json` at the same time.** Preserving the connection between prompt and result is the purpose of the gallery.
 

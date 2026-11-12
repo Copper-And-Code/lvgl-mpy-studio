@@ -10,7 +10,7 @@ Un IDE desktop per progettare interfacce [LVGL](https://lvgl.io) 9.5 per board M
 
 ![L'IDE con un monitor industriale in esecuzione nel simulatore](docs/images/ide-simulator.png)
 
-> **Stato: 0.6.0, nessun pacchetto ancora pubblicato.** I test automatici sono molti e le prove fatte da persone sono poche: molto è stato scritto e verificato dalle macchine, e poco è stato usato davvero. [Cosa è verificato, e come](docs/status.md) lo dice area per area.
+> **Stato: 0.6.1, la prima release con i pacchetti ([scarica](https://github.com/Copper-And-Code/lvgl-mpy-studio/releases/latest)).** I test automatici sono molti e le prove fatte da persone sono poche: molto è stato scritto e verificato dalle macchine, e poco è stato usato davvero. [Cosa è verificato, e come](docs/status.md) lo dice area per area.
 
 ## Se stai valutando questo progetto
 
@@ -26,6 +26,7 @@ Queste pagine sono in inglese.
 
 ## Cosa fa
 
+- **Un solo motore ovunque.** Board, simulatore, eseguibili per Linux e Windows e versione per il browser eseguono lo stesso MicroPython e lo stesso LVGL, compilati dagli stessi sorgenti e non emulati: ogni correzione e ogni miglioramento dei due progetti arriva a tutti insieme ([perché](docs/stack.md#one-engine-four-places-it-runs)).
 - **Disegno.** Un designer con trascinamento che mostra la pagina come la disegna LVGL, alla risoluzione della board, con annulla, allineamenti e un cambio di risoluzione che adatta il layout.
 - **Codice.** Gestori e moduli in Python, con completamento, azioni in chiaro che inseriscono la chiamata LVGL esatta, ed errori che portano al gestore e alla riga, anche quando avvengono sulla board.
 - **Esecuzione.** Un simulatore con touch, tastiera e suono; caricamento sulla board in bytecode; modifiche grafiche mostrate sulla board in esecuzione poco dopo averle fatte.

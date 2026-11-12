@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.6.1 — 2026-11-12
+
+The first release with packages: an AppImage for Linux and a portable package for Windows.
+
+### Added
+
+- **Project website** with the English documentation and five demos that run in the browser: Fifteen, Weather, Breakout, Simon and EIM-01.
+- **One engine, four places it runs**, in `docs/stack.md`: the board, the simulator, the executables and the browser version run the same compiled MicroPython and LVGL, so upstream fixes reach all of them.
+- **`docs/packaging.md`**: how to build the packages, in which order, and what to check before handing one out.
+
+### Fixed
+
+- The self-test accepts a relative `--output` folder: the projects are saved through the file dialog, which read a relative path from its own folder.
+- The page of a game exported for the browser declares English as its language.
+- The recorded MCP session is checked again against its own result, `examples/weather/mcp-result.json`. The Weather example had been reworked for the website, with icons and a new layout, and no longer matched; the pages now say which version is which.
+- The tests import `tools/build_site.py` also when started as `pytest`, as continuous integration does.
+
 ## 0.6.0 — 2026-11-12
 
 ### Added
