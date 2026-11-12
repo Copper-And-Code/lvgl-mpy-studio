@@ -40,7 +40,7 @@ below as an open question, not as a formality.
 | Visual tests | yes | | used on the EIM-01 example | |
 | Print Sources | yes | | a PDF, read | a real printer |
 | Self-test, visible mode (`--show`) | | | | never run |
-| AppImage for Linux | | yes, run from inside the package | built from the sources of 0.6.0 on the author's computer: self-test, visual tests of EIM-01, board and C generation, single-file games for Linux and Windows, browser version | on another Linux system |
+| AppImage for Linux | | yes, run from inside the package | built from the sources of 0.6.0 on the author's computer: self-test, visual tests of EIM-01, board and C generation, single-file games for Linux (needing glibc 2.34 or later) and Windows, browser version | on another Linux system |
 | Portable Windows package | | | built for 0.6.0; its contents inspected: no bundled ICU, the icon in the program file, the blocks | **started on a real Windows** |
 
 "Author's use" means the author uses it while developing; it is not a test plan.
@@ -51,9 +51,6 @@ below as an open question, not as a formality.
   of ICU that hid the system's. The packaging was corrected in 0.5.1 and a package of 0.6.0
   was built without it, but nobody has started it on Windows yet. Tests under Wine did not
   show the fault and cannot be trusted for this.
-- **Single-file games for Linux need glibc 2.38** when built with the launcher compiled on
-  the author's computer. `runtime/build_onefile_portable.sh` builds one for glibc 2.35 and
-  later; it needs Docker and has to be run again after the launcher changed in 0.6.0.
 - **Pins are numbers.** A block cannot name a pin such as `PA5`, so the blocks cannot be used
   on the STM32H7 boards yet.
 - **The RAM budget** shown in the status bar is measured in the 64-bit simulator and is an
