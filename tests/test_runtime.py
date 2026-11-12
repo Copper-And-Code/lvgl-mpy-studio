@@ -193,7 +193,8 @@ def test_sdl_selftest_under_xvfb(tmp_path):
     env.pop("LVSIM_HEADLESS", None)
     env.pop("LVSIM_CONNECT", None)
     env.pop("LVSIM_TOKEN", None)
-    result = subprocess.run(["xvfb-run", "-a", str(RUNTIME), "main.py"], cwd=output, env=env, capture_output=True, encoding="utf-8", errors="replace", timeout=15)
+    # starting a display server takes a second here and many on a shared machine
+    result = subprocess.run(["xvfb-run", "-a", str(RUNTIME), "main.py"], cwd=output, env=env, capture_output=True, encoding="utf-8", errors="replace", timeout=90)
     assert result.returncode == 0, result.stderr
 
 

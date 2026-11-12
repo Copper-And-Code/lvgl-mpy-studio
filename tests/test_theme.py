@@ -184,3 +184,7 @@ def test_window_paints_its_border_when_margins_are_set(qtbot):
     assert image.pixelColor(width - 1, height // 2).name() == edge
     assert image.pixelColor(0, height // 2).name() == edge
     assert image.pixelColor(width // 2, height - 1).name() == edge
+
+
+def test_the_windows_have_the_application_icon_in_every_size(qapp):
+    assert sorted(size.width() for size in theme.app_icon().availableSizes()) == [16, 24, 32, 48, 64, 128, 256]

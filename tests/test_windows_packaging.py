@@ -30,10 +30,7 @@ def test_windows_build_produces_zip_and_installer():
     assert "lvgl-mpy-studio-windows.spec" in source
 
 
-def test_the_application_has_an_icon(qapp):
-    from lvgl_mpy_studio.ui import theme
-
-    assert sorted(size.width() for size in theme.app_icon().availableSizes()) == [16, 24, 32, 48, 64, 128, 256]
+def test_packages_carry_the_application_icon():
     portable = (ROOT / "packaging/build_windows_portable.sh").read_text(encoding="utf-8")
     assert "windres" in portable and "windows_launcher_icon.o" in portable
     assert (ROOT / "packaging/windows_launcher.rc").read_text(encoding="utf-8").startswith('1 ICON "icon.ico"')
