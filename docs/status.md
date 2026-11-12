@@ -46,6 +46,17 @@ below as an open question, not as a formality.
 
 "Author's use" means the author uses it while developing; it is not a test plan.
 
+## Project website
+
+The English documentation and five browser demos are published at
+<https://copper-and-code.github.io/lvgl-mpy-studio/> from the `gh-pages` branch. On 12 November
+2026, the public home, manual, gallery, and all five demos were checked in Chromium. Each demo
+reported a running WebAssembly application and a non-black canvas; a simulated touch changed the
+Fifteen screen, and no requests went to external domains. The IDE test for **Help → Online
+Documentation** also passed and opens the same public address.
+
+Firefox, Safari, and a real phone with touch and sound have not been tried.
+
 ## Known defects and open points
 
 - **Windows.** The portable package of 0.4 did not start on a real Windows: it bundled a copy
@@ -76,8 +87,6 @@ below as an open question, not as a formality.
 
 ## What is not there
 
-- The pages that **Help → Online Documentation** opens: they will be published when the
-  repository becomes public; until then the link leads nowhere.
 - C on boards: only MicroPython is uploaded. The C export is source code for another project.
 - An online catalogue of blocks, and blocks that depend on other blocks.
 - Extensions that run inside the IDE: blocks are data and MicroPython code, nothing more.

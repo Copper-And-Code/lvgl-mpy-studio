@@ -4,6 +4,8 @@
 
 [English](README.md)
 
+**[Documentation](https://copper-and-code.github.io/lvgl-mpy-studio/) · [Browser demos](https://copper-and-code.github.io/lvgl-mpy-studio/demos/)**
+
 Un IDE desktop per progettare interfacce [LVGL](https://lvgl.io) 9.5 per board MicroPython: disegni le pagine, scrivi i gestori in Python, esegui l'applicazione in un simulatore che usa la vera LVGL e la carichi su una board. Un agente AI può fare lo stesso attraverso un server MCP.
 
 ![L'IDE con un monitor industriale in esecuzione nel simulatore](docs/images/ide-simulator.png)
