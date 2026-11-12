@@ -53,7 +53,7 @@ To see the IDE use itself, with a report of each step:
 
 - [User manual](docs/manual.md), [boards](docs/boards.md), [publishing a game on the web](docs/publish-web.md)
 - [MCP server](docs/mcp.md), [writing a block](docs/blocks.md)
-- [Building, testing and packaging](docs/development.md), [changelog](CHANGELOG.md), [roadmap](docs/roadmap.md)
+- [Building, testing and packaging](docs/development.md), [changelog](CHANGELOG.md)
 
 ## Limits
 

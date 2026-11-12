@@ -6,7 +6,7 @@
 
 **Cause:** Ubuntu GCC packages with the POSIX thread model install executables with a `-posix` suffix; standard names such as `x86_64-w64-mingw32-gcc` are normally created by `update-alternatives`, which requires administrator rights.
 
-**Solution:** download the Ubuntu packages with `apt-get download`, extract them with `dpkg-deb -x` into a local toolchain, and recreate the standard symlinks to the `-posix` binaries in its `usr/bin` directory. GCC 13.2.0 then correctly built a PE32+ and the whole MicroPython/LVGL runtime. Commands and versions are in `docs/log/w0-spike.md`.
+**Solution:** download the Ubuntu packages with `apt-get download`, extract them with `dpkg-deb -x` into a local toolchain, and recreate the standard symlinks to the `-posix` binaries in its `usr/bin` directory. GCC 13.2.0 then correctly built a PE32+ and the whole MicroPython/LVGL runtime.
 
 ## W0 spike runtime dependencies
 

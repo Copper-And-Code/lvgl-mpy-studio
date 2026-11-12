@@ -653,5 +653,6 @@
   "Behave as if the input had become active (True) or not (False): for the simulator and for tests.": "Si comporta come se l'ingresso fosse diventato attivo (True) o no (False): per il simulatore e per le prove.",
   "The input became active or stopped being active": "L'ingresso è diventato attivo o ha smesso di esserlo",
   "The input became active": "L'ingresso è diventato attivo",
-  "The input stopped being active": "L'ingresso ha smesso di essere attivo"
+  "The input stopped being active": "L'ingresso ha smesso di essere attivo",
+  "Online Documentation": "Documentazione online"
 }

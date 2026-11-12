@@ -73,6 +73,8 @@ below as an open question, not as a formality.
 
 ## What is not there
 
+- The pages that **Help → Online Documentation** opens: they will be published when the
+  repository becomes public; until then the link leads nowhere.
 - C on boards: only MicroPython is uploaded. The C export is source code for another project.
 - An online catalogue of blocks, and blocks that depend on other blocks.
 - Extensions that run inside the IDE: blocks are data and MicroPython code, nothing more.

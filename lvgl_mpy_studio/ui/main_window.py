@@ -1,11 +1,11 @@
 import copy
 import json
 
-from PySide6.QtCore import QRectF, QSettings, QSize, Qt, QTimer, Signal
-from PySide6.QtGui import QAction, QKeySequence, QPainter
+from PySide6.QtCore import QRectF, QSettings, QSize, Qt, QTimer, QUrl, Signal
+from PySide6.QtGui import QAction, QDesktopServices, QKeySequence, QPainter
 from PySide6.QtWidgets import QApplication, QDockWidget, QLabel, QLineEdit, QMainWindow, QMenu, QMessageBox, QPlainTextEdit, QSizePolicy, QTabWidget, QToolBar, QToolButton, QTreeWidget, QWidget
 
-from lvgl_mpy_studio import __version__
+from lvgl_mpy_studio import WEBSITE, __version__
 from lvgl_mpy_studio.core.boards import ProfileStore, portable_profile, validate_profile
 from lvgl_mpy_studio.core.i18n import DEFAULT_LANGUAGE, set_language, tr
 from lvgl_mpy_studio.platform import stop_background
@@ -170,6 +170,7 @@ class MainWindow(DeviceMixin, ProjectTreeMixin, FilesMixin, ResolutionMixin, Run
         self.autostart_remove_action = QAction(tr("Remove Autostart…"), self, triggered=self.remove_autostart)
         self.blocks_action = QAction(tr("Manage Blocks…"), self, triggered=self.manage_blocks)
         self.print_action = QAction(tr("Print Sources…"), self, shortcut=QKeySequence.Print, triggered=self.print_sources)
+        self.website_action = QAction(tr("Online Documentation"), self, shortcut=QKeySequence.HelpContents, triggered=self.open_website)
         self.about_action = QAction(tr("About LVGL MPY Studio"), self, triggered=self.show_about)
 
     def _make_menus(self):
@@ -223,6 +224,8 @@ class MainWindow(DeviceMixin, ProjectTreeMixin, FilesMixin, ResolutionMixin, Run
             action = self.language_menu.addAction(label, lambda checked=False, value=code: self.change_language(value))
             action.setData(code)
         help_menu = self.menuBar().addMenu(tr("Help"))
+        help_menu.addAction(self.website_action)
+        help_menu.addSeparator()
         help_menu.addAction(self.about_action)
         self._apply_mnemonics()
 
@@ -671,6 +674,11 @@ class MainWindow(DeviceMixin, ProjectTreeMixin, FilesMixin, ResolutionMixin, Run
             self._report_outside(profile["logicalWidth"], profile["logicalHeight"])
         return True
 
+    def open_website(self):
+        """The pages of the project in the browser; if none opens, the address is at least shown."""
+        if not QDesktopServices.openUrl(QUrl(WEBSITE)):
+            self.statusBar().showMessage(WEBSITE, 15000)
+
     def show_about(self):
         info = getattr(self, "_device_info", None) or {}
         missing = tr("Version not detected") if self.device.port else tr("Board not connected")
@@ -686,6 +694,7 @@ class MainWindow(DeviceMixin, ProjectTreeMixin, FilesMixin, ResolutionMixin, Run
             f"<p><b>{tr('IDE version')}:</b> {__version__}<br>"
             f"<b>MicroPython:</b> {micro_version}<br>"
             f"<b>LVGL:</b> {lvgl_version}</p>"
+            f"<p><a href='{WEBSITE}'>{WEBSITE}</a></p>"
             f"<p><b>{tr('Credits')}:</b> Nunzio Raciti (in vibe coding)</p>"
             f"<p>Copyright (c) 2026 Nunzio Raciti<br>{tr('License: GPL-3.0-or-later. Generated code is under the MIT license.')}<br>"
             f"{tr('This program comes with absolutely no warranty. It is free software: you may redistribute and modify it under the terms of the license.')}</p>",

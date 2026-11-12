@@ -500,12 +500,31 @@ def test_about_shows_ide_firmware_versions_and_credits(qtbot, tmp_path, monkeypa
     text = messages[-1][2]
     assert __version__ == "0.6.0"
     assert f"IDE version:</b> {__version__}" in text
+    assert "https://copper-and-code.github.io/lvgl-mpy-studio/" in text
+
     assert "<b>MicroPython:</b> 1.29.0<br>" in text
     assert "<b>LVGL:</b> 9.5.0" in text
     assert "Nunzio Raciti (in vibe coding)" in text
     assert "GPL-3.0-or-later" in text
     assert "MIT" in text
     window.document.undo_stack.setClean()
+
+
+
+def test_help_opens_the_pages_of_the_project(qtbot, monkeypatch):
+    from PySide6.QtGui import QDesktopServices
+
+    window = MainWindow()
+    qtbot.addWidget(window)
+    opened = []
+    monkeypatch.setattr(QDesktopServices, "openUrl", lambda url: opened.append(url.toString()) or True)
+    help_menu = window.menuBar().actions()[-1].menu()
+    assert help_menu.actions()[0] is window.website_action and help_menu.actions()[-1] is window.about_action
+    window.website_action.trigger()
+    assert opened == ["https://copper-and-code.github.io/lvgl-mpy-studio/"]
+    monkeypatch.setattr(QDesktopServices, "openUrl", lambda url: False)  # no browser: the address is shown instead
+    window.website_action.trigger()
+    assert window.statusBar().currentMessage() == "https://copper-and-code.github.io/lvgl-mpy-studio/"
 
 
 def test_device_console_preserves_utf8_and_ignores_empty(qtbot):
