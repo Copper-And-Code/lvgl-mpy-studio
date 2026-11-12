@@ -40,7 +40,8 @@ below as an open question, not as a formality.
 | Visual tests | yes | | used on the EIM-01 example | |
 | Print Sources | yes | | a PDF, read | a real printer |
 | Self-test, visible mode (`--show`) | | | | never run |
-| Packages for 0.5.1 and 0.6.0 | | | | not built |
+| AppImage for Linux | | yes, run from inside the package | built from the sources of 0.6.0 on the author's computer: self-test, visual tests of EIM-01, board and C generation, single-file games for Linux and Windows, browser version | on another Linux system |
+| Windows packages for 0.5.1 and 0.6.0 | | | | not built |
 
 "Author's use" means the author uses it while developing; it is not a test plan.
 
