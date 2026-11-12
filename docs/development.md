@@ -82,7 +82,7 @@ MicroPython and C share `lvsim_io`: loopback TCP with a token in the IDE panel, 
 QT_QPA_PLATFORM=offscreen .venv/bin/pytest -q
 ```
 
-The suite covers generation, fuzzing, the runtime, the GUI, the protocol, all 30 widgets and MicroPython/C pixel parity. The tests use a temporary configuration folder and never open serial ports. The whole suite takes about ten minutes; without `tests/test_windows_c.py` and `tests/test_parity.py`, about four. A CI workflow for Linux and Windows exists and is switched off while the repository is private.
+The suite covers generation, fuzzing, the runtime, the GUI, the protocol, all 30 widgets and MicroPython/C pixel parity. The tests use a temporary configuration folder and never open serial ports. The whole suite takes about ten minutes; without `tests/test_windows_c.py` and `tests/test_parity.py`, about four. A CI workflow runs the suite and the self-test on Linux and on Windows at each push; it does not build packages.
 
 ```bash
 .venv/bin/lvgl-mpy-studio selftest

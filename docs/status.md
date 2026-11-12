@@ -36,7 +36,7 @@ below as an open question, not as a formality.
 | Block Manager, blocks from other people | yes | | | used by a person; a block written by someone else |
 | Browser version (WebAssembly) | yes | | Chromium, two resolutions | Firefox, Safari, phones |
 | Single-file executables | yes, on Linux and under Wine | | Linux | Windows, natively |
-| Windows | yes, under Wine | yes, on Windows 11 from the portable package: 76 steps passed of 78, see below | the portable package of 0.6.0 started by the author on Windows 11 | boards and builds on Windows |
+| Windows | yes, under Wine, and natively in continuous integration | yes, on Windows 11 from the portable package and in continuous integration | the portable package of 0.6.0 started by the author on Windows 11 | boards and builds on Windows |
 | MCP server | yes, and a recorded session | | | the board tools, on hardware |
 | Visual tests | yes | | used on the EIM-01 example | |
 | Print Sources | yes | | a PDF, read | a real printer |
@@ -66,8 +66,11 @@ below as an open question, not as a formality.
 - **Renaming a Python module** does not rewrite the code that imports it; the IDE warns.
 - **Reference images that hold a changing value** fail when the generator changes: the EIM-01
   example shows the free memory on a page, and its image had to be regenerated for 0.6.
-- **Continuous integration is off** while the repository is private. The suite is run locally
-  before each commit; the two slowest files are not always among the tests run.
+- **Continuous integration covers tests, not packages.** Since the repository became public,
+  each push runs the whole suite and the self-test on Linux, and on Windows the tests of the
+  core, of the runtime and of the IDE, and the self-test. On the Linux machine 72 tests are
+  skipped, because they need what is not built there: the launchers of single-file games, the
+  WebAssembly runtime, Wine, a browser. Packages are built and checked by hand.
 - **An upload sends every file again**, also those that did not change: a project with fonts
   takes tens of seconds on a slow link each time.
 

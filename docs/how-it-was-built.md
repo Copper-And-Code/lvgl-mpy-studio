@@ -41,6 +41,8 @@ the 162 commits of the first two weeks, 139 carry that line.
 - **The IDE tests itself**: `lvgl-mpy-studio selftest` drives the real window with mouse and
   keyboard through nine scenarios and reports each step. It found real defects that the unit
   tests had missed.
+- **Each push is checked on other machines**: the suite and the self-test run on Linux and on
+  Windows in continuous integration.
 - **Agents do not publish.** Pushes, tags, releases and anything that touches a board need the
   author's explicit go-ahead.
 - **Claims are separated from checks.** A feature is described as tried on a board only when
