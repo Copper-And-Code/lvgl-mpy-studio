@@ -30,6 +30,27 @@ def test_windows_build_produces_zip_and_installer():
     assert "lvgl-mpy-studio-windows.spec" in source
 
 
+def test_the_application_has_an_icon(qapp):
+    from lvgl_mpy_studio.ui import theme
+
+    assert sorted(size.width() for size in theme.app_icon().availableSizes()) == [16, 24, 32, 48, 64, 128, 256]
+    portable = (ROOT / "packaging/build_windows_portable.sh").read_text(encoding="utf-8")
+    assert "windres" in portable and "windows_launcher_icon.o" in portable
+    assert (ROOT / "packaging/windows_launcher.rc").read_text(encoding="utf-8").startswith('1 ICON "icon.ico"')
+    for name in ("lvgl-mpy-studio.spec", "lvgl-mpy-studio-windows.spec"):
+        assert "lvgl_mpy_studio/icon.ico" in (ROOT / "packaging" / name).read_text(encoding="utf-8")
+    assert "SetupIconFile" in (ROOT / "packaging/lvgl-mpy-studio.iss").read_text(encoding="utf-8")
+
+
+def test_windows_packages_leave_icu_to_windows():
+    # Qt6Core imports unversioned names from the icuuc.dll of Windows: a bundled
+    # ICU hides it and only exports versioned names, so Qt does not load.
+    for name in ("build_windows_portable.sh", "build_windows.ps1", "lvgl-mpy-studio-windows.spec", "lvgl-mpy-studio.iss"):
+        source = (ROOT / "packaging" / name).read_text(encoding="utf-8").lower()
+        assert not any(word in source for word in ("icu4c", "icuuc72", "icuin", "icudt", "icu_archive")), name
+    assert "ICU" not in (ROOT / "THIRD_PARTY.md").read_text(encoding="utf-8")
+
+
 def test_windows_portable_bundles_msvc_runtime():
     source = (ROOT / "packaging/build_windows_portable.sh").read_text(encoding="utf-8")
     assert "vc_redist.x64.exe" in source

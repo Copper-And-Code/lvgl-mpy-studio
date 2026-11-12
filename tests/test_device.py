@@ -262,6 +262,22 @@ def test_upload_sends_bytecode_and_verifies_sizes(tmp_path):
     assert "ui.mpy" in result["files"]
 
 
+def test_upload_reports_bytes_at_each_file(tmp_path):
+    session = DeviceSession(runner=FakeRunner())
+    current = project()
+    current.board = builtin_profiles()[0]
+    session.connect("/dev/fake", current.board)
+    reports = []
+    result = session.upload(current, tmp_path, progress=lambda *report: reports.append(report))
+    sizes = {name: (tmp_path / name).stat().st_size for name in result["files"]}
+    total = sum(sizes.values())
+    # mpremote says nothing while it writes: one report as each file starts, and one at the end
+    assert [report[2] for report in reports] == [*sizes, ""]
+    assert all(report[1] == total for report in reports)
+    assert [report[0] for report in reports] == [sum(list(sizes.values())[:index]) for index in range(len(sizes) + 1)]
+    assert all(report[3] == sizes[report[2]] for report in reports[:-1])
+
+
 def test_upload_sends_the_user_modules_and_stop_forgets_them(tmp_path):
     from lvgl_mpy_studio.core.modules import create_module
 

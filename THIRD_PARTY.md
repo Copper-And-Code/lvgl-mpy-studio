@@ -14,7 +14,6 @@ The notices distributed with the application are in `packaging/NOTICE.txt`.
 - **Material Design Icons 6.9.96**: Apache-2.0, <https://pictogrammers.com/library/mdi/>; IDE only. Only this font is packaged, not the others shipped with QtAwesome.
 - **MinGW-w64 / GCC runtime**: <https://mingw-w64.org> and GCC Runtime Library Exception, <https://gcc.gnu.org/onlinedocs/libstdc++/manual/license.html>.
 - **Python**: PSF License, <https://docs.python.org/3/license.html>.
-- **ICU4C 72.1 (Microsoft build)**: Unicode/ICU License, included as `ICU-LICENSE.txt` in the portable package; sources: <https://github.com/microsoft/icu>.
 - **Microsoft Visual C++ 2015-2022 Redistributable**: app-local runtime in the portable package, <https://learn.microsoft.com/cpp/windows/latest-supported-vc-redist>.
 
 MSYS2 and w64devkit are detected but neither included nor installed automatically. Pinned versions are in `docs/target.md` and `pyproject.toml`.

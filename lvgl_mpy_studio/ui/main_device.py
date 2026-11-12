@@ -9,7 +9,7 @@ from lvgl_mpy_studio.core.boards import portable_profile
 from lvgl_mpy_studio.core.i18n import device_error_text, tr
 from lvgl_mpy_studio.device.service import DeviceError
 from lvgl_mpy_studio.gen import live
-from lvgl_mpy_studio.ui.device_panel import DeviceWorker, SelectDeviceDialog
+from lvgl_mpy_studio.ui.device_panel import DeviceWorker, SelectDeviceDialog, UploadProgress
 
 
 LIVE_DELAY_MS = 500
@@ -150,12 +150,21 @@ class DeviceMixin:
         self._worker = worker
         worker.succeeded.connect(lambda result: self._device_succeeded(result, success))
         worker.failed.connect(self._device_failed)
-        worker.progress.connect(lambda current, total: self.statusBar().showMessage(tr("Uploading {current}/{total}", current=current, total=total)))
+        worker.progress.connect(self._upload_reported)
         worker.finished.connect(self._device_finished)
         worker.finished.connect(worker.deleteLater)
         self._update_device_actions()
         worker.start()
         return True
+
+    def _upload_reported(self, sent, total, name, size):
+        if self._upload_progress is not None:
+            self._upload_progress.report(sent, total, name, size)
+
+    def _close_upload_progress(self):
+        dialog, self._upload_progress = self._upload_progress, None
+        if dialog is not None:
+            dialog.finish()
 
     def _device_succeeded(self, result, callback):
         if callback:
@@ -176,6 +185,7 @@ class DeviceMixin:
         worker = self.sender()
         if worker is not self._worker:
             return
+        self._close_upload_progress()
         self._device_cancel = None
         self._worker = None
         following, self._device_next = self._device_next, None
@@ -272,6 +282,8 @@ class DeviceMixin:
         operation = lambda: self.device.upload(project, output, run=run, progress=self._worker.progress.emit, cancel=self._device_cancel)
         def completed(result):
             self._show_warnings(result.get("warnings", []))
+            if self._upload_progress is not None:  # the next upload to this board starts from the speed seen now
+                self.settings.setValue(self._upload_rate_key, self._upload_progress.rate)
             self._device_sourcemap = result.get("sourcemap")
             self._device_trace = ""
             self._device_mapped_traces.clear()
@@ -284,7 +296,12 @@ class DeviceMixin:
             self.device_console.append(message + "\n")
             if run and result.get("sourcemap"):
                 self._start_device_console()
-        return self._device_task(operation, completed)
+        if not self._device_task(operation, completed):
+            return False
+        self._upload_rate_key = f"device/uploadRate/{project.board['id']}"
+        self._upload_progress = UploadProgress(self, rate=self.settings.value(self._upload_rate_key, 0, type=float))
+        self._upload_progress.cancelRequested.connect(self.cancel_device_operation)
+        return True
 
     def _start_device_console(self):
         if not self.device.port:

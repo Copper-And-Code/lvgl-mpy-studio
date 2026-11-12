@@ -10,6 +10,7 @@ datas = [
     (str(root / "lvgl_mpy_studio/gen/completion.json"), "lvgl_mpy_studio/gen"),
     (str(root / "lvgl_mpy_studio/translations"), "lvgl_mpy_studio/translations"),
     (str(root / "lvgl_mpy_studio/boards"), "lvgl_mpy_studio/boards"),
+    (str(root / "lvgl_mpy_studio/icon.ico"), "lvgl_mpy_studio"),
     (str(root / "runtime/display_driver.py"), "runtime"),
     (str(root / "native/lvsim"), "native/lvsim"),
     # Only what is needed to build the C target: no tests, demos, documentation or scripts.
@@ -50,5 +51,5 @@ analysis = Analysis(
 # The PyInstaller hook adds every QtAwesome font: the others have different licences and are not needed.
 analysis.datas = [item for item in analysis.datas if "qtawesome/fonts" not in item[0].replace("\\", "/") or "materialdesignicons6" in item[0]]
 pyz = PYZ(analysis.pure)
-exe = EXE(pyz, analysis.scripts, [], exclude_binaries=True, name="LVGL_MPY_STUDIO", console=False)
+exe = EXE(pyz, analysis.scripts, [], exclude_binaries=True, name="LVGL_MPY_STUDIO", console=False, icon=str(root / "lvgl_mpy_studio/icon.ico"))
 collection = COLLECT(exe, analysis.binaries, analysis.datas, name="LVGL_MPY_STUDIO")

@@ -7,8 +7,6 @@ BUILD="$ROOT/build/windows-portable"
 OUT="$BUILD/LVGL_MPY_STUDIO"
 PYTHON_VERSION=3.12.10
 PYTHON_ARCHIVE="$CACHE/python-$PYTHON_VERSION-embed-amd64.zip"
-ICU_ARCHIVE="$CACHE/microsoft-icu-win64.zip"
-ICU_URL="https://api.nuget.org/v3-flatcontainer/microsoft.icu.icu4c.runtime.win-x64/72.1.0.3/microsoft.icu.icu4c.runtime.win-x64.72.1.0.3.nupkg"
 VC_REDIST="$CACHE/vc_redist.x64.exe"
 VC_URL="https://aka.ms/vs/17/release/vc_redist.x64.exe"
 HOST_PYTHON=${PYTHON:-"$ROOT/.venv/bin/python"}
@@ -17,9 +15,6 @@ IDE_VERSION=$("$HOST_PYTHON" -c 'from lvgl_mpy_studio import __version__; print(
 mkdir -p "$WHEELS"
 if [ ! -f "$PYTHON_ARCHIVE" ]; then
     curl -fL --retry 3 "https://www.python.org/ftp/python/$PYTHON_VERSION/python-$PYTHON_VERSION-embed-amd64.zip" -o "$PYTHON_ARCHIVE"
-fi
-if [ ! -f "$ICU_ARCHIVE" ]; then
-    curl -fL --retry 3 "$ICU_URL" -o "$ICU_ARCHIVE"
 fi
 if [ ! -f "$VC_REDIST" ]; then
     curl -fL --retry 3 "$VC_URL" -o "$VC_REDIST"
@@ -64,12 +59,9 @@ for path in "$VC_RUNTIME"/*.dll_amd64; do
 done
 # Only the font the IDE uses: the others in QtAwesome have different licences.
 find "$OUT/python/Lib/site-packages/qtawesome/fonts" -type f ! -name 'materialdesignicons6*' -delete
-QT_DIR="$OUT/python/Lib/site-packages/PySide6"
-for name in icudt72.dll icuin72.dll icuuc72.dll; do
-    unzip -p "$ICU_ARCHIVE" "runtimes/win-x64/native/$name" > "$QT_DIR/$name"
-done
-cp "$QT_DIR/icuuc72.dll" "$QT_DIR/icuuc.dll"
-unzip -p "$ICU_ARCHIVE" LICENSE > "$OUT/ICU-LICENSE.txt"
+# No ICU here: Qt6Core imports the unversioned names (ucnv_open, ...) from the
+# icuuc.dll of Windows. A copy next to Qt hides that one, and the redistributable
+# builds only export versioned names (ucnv_open_72), so Qt would not load.
 
 tar -C "$ROOT" --exclude=__pycache__ --exclude='*.pyc' -cf - lvgl_mpy_studio | tar -xf - -C "$OUT"
 cp "$ROOT/packaging/launcher.py" "$OUT/"
@@ -96,8 +88,10 @@ cp "$ROOT/packaging/NOTICE.txt" "$ROOT/THIRD_PARTY.md" "$ROOT/README.md" "$ROOT/
 mkdir -p "$OUT/licenses"
 cp "$ROOT"/packaging/licenses/* "$ROOT"/lvgl_mpy_studio/gen/output/licenses/* "$OUT/licenses/"
 
+# The icon of the .exe: Explorer shows the first icon resource of the file.
+x86_64-w64-mingw32-windres -I "$ROOT/lvgl_mpy_studio" "$ROOT/packaging/windows_launcher.rc" -O coff -o "$BUILD/windows_launcher_icon.o"
 x86_64-w64-mingw32-gcc -O2 -Wall -Wextra -Werror -mwindows -municode -static-libgcc \
-    "$ROOT/packaging/windows_launcher.c" -o "$OUT/LVGL_MPY_STUDIO.exe"
+    "$ROOT/packaging/windows_launcher.c" "$BUILD/windows_launcher_icon.o" -o "$OUT/LVGL_MPY_STUDIO.exe"
 printf '@echo off\r\n"%%~dp0python\\python.exe" -m lvgl_mpy_studio %%*\r\n' > "$OUT/LVGL_MPY_STUDIO_console.bat"
 printf '%s\r\n' 'LVGL MPY Studio - portable Windows x86-64 version' '' \
     'Start LVGL_MPY_STUDIO.exe. Do not move files out of this folder.' \

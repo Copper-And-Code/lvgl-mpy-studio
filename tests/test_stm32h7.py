@@ -114,7 +114,11 @@ class FakeUart:
     def soft_reset(self, cancel=None):
         return self.runner(["soft-reset"], 15)
 
-    def put(self, local, remote, timeout=30, cancel=None):
+    def put(self, local, remote, timeout=30, cancel=None, progress=None):
+        if progress:  # two steps, as a file written in chunks
+            size = Path(local).stat().st_size
+            progress(size // 2)
+            progress(size)
         return self.runner(["fs", "cp", local, ":" + remote], timeout)
 
     def get(self, remote, local, timeout=30, cancel=None):
@@ -151,7 +155,9 @@ def test_uart_configures_lines_once_and_uses_chunked_raw_repl(tmp_path):
     local = tmp_path / "payload.bin"
     local.write_bytes(payload)
     entered = serial.writes.count(b"\r\x01")
-    transport.put(local, "/flash/payload.bin")
+    written = []
+    transport.put(local, "/flash/payload.bin", progress=written.append)
+    assert written == [768] and len(payload) == 768
     assert serial.writes.count(b"\r\x01") - entered == 2  # open and close: the chunks stay in the raw REPL
     restored = tmp_path / "restored.bin"
     transport.get("/flash/payload.bin", restored)
@@ -196,8 +202,13 @@ def test_stm32_session_reuses_uart_for_upload_run_and_disconnect(tmp_path):
     assert result["active"] is True
     assert result["appPath"].startswith("/flash/lms_apps/")
     assert all(destination.startswith(":/flash/lms_apps/") for _source, destination in transports[0].runner.copies)
-    assert session.upload(stm32_project(), tmp_path / "two", run=True)["active"] is True
+    reports = []
+    assert session.upload(stm32_project(), tmp_path / "two", run=True, progress=lambda *report: reports.append(report))["active"] is True
     assert len(transports) == 1
+    sent, total = [report[0] for report in reports], reports[0][1]
+    assert sent == sorted(sent) and sent[0] == 0 and sent[-1] == total > 0
+    names = {report[2] for report in reports}
+    assert "app_main.py" in names and len(sent) > 2 * (len(names) - 1)  # the serial adapter reports inside each file
     assert transports[0].closed == 0
     assert transports[0].runner.resets == 2
     assert all("rgbpanel" not in call[0][-1] for call, _timeout in transports[0].runner.calls if "LVGL_MPY_STUDIO_INFO=" in call[0][-1])

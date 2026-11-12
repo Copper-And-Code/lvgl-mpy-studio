@@ -1,9 +1,10 @@
 """Theme of the IDE: it follows the system, light or dark, without fixed colours in the panels."""
 
 from dataclasses import dataclass
+from pathlib import Path
 
 from PySide6.QtCore import QObject, Qt, QTimer, Signal
-from PySide6.QtGui import QColor, QGuiApplication, QIcon
+from PySide6.QtGui import QColor, QGuiApplication, QIcon, QImageReader, QPixmap
 from PySide6.QtWidgets import QApplication
 
 WARNING = "#B26A00"
@@ -76,6 +77,16 @@ def icon(name, color=None):
         return _icon_font.icon(f"mdi6.{name}", color=color or QApplication.palette().windowText().color().name())
     except Exception:
         return QIcon()
+
+
+def app_icon():
+    """The icon of the windows, with every size stored in the file."""
+    result = QIcon()
+    reader = QImageReader(str(Path(__file__).parent.parent / "icon.ico"))
+    for index in range(reader.imageCount()):
+        reader.jumpToImage(index)
+        result.addPixmap(QPixmap.fromImage(reader.read()))
+    return result
 
 
 class Theme(QObject):

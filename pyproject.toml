@@ -29,7 +29,7 @@ include = ["lvgl_mpy_studio*"]
 [tool.setuptools.package-data]
 "lvgl_mpy_studio.gen" = ["widgets.json", "completion.json"]
 "lvgl_mpy_studio.gen.output" = ["LICENSE", "licenses/*.txt"]
-"lvgl_mpy_studio" = ["translations/*.json", "boards/*.json"]
+"lvgl_mpy_studio" = ["translations/*.json", "boards/*.json", "icon.ico"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

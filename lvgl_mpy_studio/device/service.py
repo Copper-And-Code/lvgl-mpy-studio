@@ -198,6 +198,17 @@ class DeviceSession(AutostartMixin):
         self._check_cancel(cancel)
         return output
 
+    def _put(self, source, destination, cancel=None, written=None):
+        """Copy a file to the board. Over the serial adapter `written` follows the bytes; mpremote says nothing until the end."""
+        if self._uart is None or written is None:
+            return self._execute(["connect", self.port, "fs", "cp", str(source), f":{destination}"], timeout=30)
+        self.stop_console()
+        with self._lock:
+            try:
+                return self._uart.put(str(source), destination, 30, cancel, written)
+            except UartError as exc:
+                raise DeviceError(exc.code, exc.output) from exc
+
     def _exec(self, source, timeout=20, cancel=None):
         """Run MicroPython source on the board without resetting it, and return what it printed."""
         options = {"cancel": cancel} if cancel is not None else {}
@@ -497,13 +508,16 @@ print('LVGL_MPY_STUDIO_INFO='+json.dumps(r))'''.replace("@MODULES@", repr(module
                 prepare = f"import os\ntry:\n os.mkdir({app_root!r})\nexcept OSError:\n pass\n{_remove_tree_script(staging)}"
                 self._exec(prepare, 20)
                 self._exec(f"import os\nos.mkdir({staging!r})", 20)
-                total = len(generated["files"])
-                for index, name in enumerate(generated["files"], 1):
-                    self._check_cancel(cancel)
-                    self._execute(["connect", self.port, "fs", "cp", str(output / name), f":{staging}/{name}"], timeout=30)
-                    if progress:
-                        progress(index, total)
                 checks = {name: (output / name).stat().st_size for name in generated["files"]}
+                total, sent = sum(checks.values()), 0
+                for name, size in checks.items():
+                    self._check_cancel(cancel)
+                    if progress:  # sent bytes, all bytes, the file being written and its size
+                        progress(sent, total, name, size)
+                    self._put(output / name, f"{staging}/{name}", cancel, (lambda done, sent=sent, name=name, size=size: progress(sent + done, total, name, size)) if progress else None)
+                    sent += size
+                if progress:
+                    progress(total, total, "", 0)
                 script = "import os,json\nr={}\nfor n in %r:\n try:r[n]=os.stat('%s/'+n)[6]\n except OSError:r[n]=-1\nprint('LVGL_MPY_STUDIO_SIZES='+json.dumps(r))" % (list(checks), staging)
                 result = self._exec(script, 20)
                 actual = marked_json(result, "LVGL_MPY_STUDIO_SIZES", missing={})

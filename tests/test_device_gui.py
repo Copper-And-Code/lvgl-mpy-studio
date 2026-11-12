@@ -11,7 +11,7 @@ from lvgl_mpy_studio.core.model import Project
 from lvgl_mpy_studio.device.service import DeviceError
 from lvgl_mpy_studio.gen.components import BUZZER_MODULE
 from lvgl_mpy_studio.gen.gen_c import generate_c
-from lvgl_mpy_studio.ui.device_panel import DeviceConsole
+from lvgl_mpy_studio.ui.device_panel import DeviceConsole, UploadProgress
 from lvgl_mpy_studio.ui.main_window import MainWindow
 from lvgl_mpy_studio.ui.project_settings import ProjectSettingsDialog
 from lvgl_mpy_studio.ui.run_target import SIMULATOR_MICROPYTHON, board_target
@@ -261,13 +261,79 @@ def test_project_settings_locks_resolution_to_profile(qtbot):
     dialog.reject()
 
 
+def test_upload_progress_follows_bytes_and_estimates_inside_a_file(qtbot):
+    now = [100.0]
+    dialog = UploadProgress(clock=lambda: now[0], rate=5_000)
+    qtbot.addWidget(dialog)
+    assert dialog.bar.maximum() == 0 and dialog.shown_bytes() == 0  # busy until the first report
+    now[0] += 4  # preparation: it does not count as writing
+    dialog.report(0, 100_000, "app_main.py", 20_000)
+    now[0] += 1  # nothing measured yet: the speed of the last upload moves the bar
+    dialog._refresh()
+    assert dialog.shown_bytes() == 5_000 and "about 19 s left" in dialog.detail_label.text()
+    now[0] += 1
+    dialog.report(20_000, 100_000, "ui.mpy", 80_000)  # 10 kB/s so far
+    assert dialog.bar.value() == 200 and "ui.mpy" in dialog.file_label.text()
+    assert dialog.rate == 10_000
+    assert "20 of 98 kB" in dialog.detail_label.text() and "about 8 s left" in dialog.detail_label.text()
+    now[0] += 3  # nothing reported: the estimate moves the bar
+    dialog._refresh()
+    assert dialog.shown_bytes() == 50_000 and dialog.bar.value() == 500
+    now[0] += 60  # a slow file: the bar waits just before its end
+    dialog._refresh()
+    assert dialog.shown_bytes() == 96_000
+    dialog.report(100_000, 100_000, "", 0)
+    assert dialog.bar.value() == 1000 and "left" not in dialog.detail_label.text()
+    assert UploadProgress(clock=lambda: now[0]).rate == UploadProgress.FIRST_RATE
+
+    asked = []
+    dialog.cancelRequested.connect(lambda: asked.append(True))
+    dialog.reject()
+    dialog.reject()
+    assert asked == [True] and not dialog.cancel_button.isEnabled()
+    assert "Cancelling" in dialog.detail_label.text()
+    dialog.finish()
+
+
+def test_slow_upload_shows_its_progress_and_can_be_cancelled(qtbot, tmp_path, monkeypatch):
+    import threading
+
+    window = board_window(qtbot, tmp_path)
+    window.show()
+    monkeypatch.setattr(UploadProgress, "DELAY_MS", 0)
+    window.settings.remove("device/uploadRate")
+    release = threading.Event()
+
+    def upload(project, output, run, progress, cancel):
+        progress(2048, 8192, "ui.mpy", 4096)
+        release.wait(3)
+        if cancel.is_set():
+            raise DeviceError("device.cancelled")
+        return {"output": "", "active": False, "warnings": []}
+
+    monkeypatch.setattr(window.device, "upload", upload)
+    window.device.port = "/dev/fake"
+    window._update_device_actions()
+    assert window.upload_board()
+    dialog = window._upload_progress
+    qtbot.waitUntil(lambda: dialog.isVisible() and dialog.bar.maximum() == 1000, timeout=3000)
+    assert "ui.mpy" in dialog.file_label.text()
+    dialog.cancel_button.click()
+    assert window._device_cancel.is_set()
+    release.set()
+    wait_worker(qtbot, window)
+    assert not window.settings.contains(window._upload_rate_key)  # a cancelled upload teaches no speed
+    assert window._upload_progress is None  # closed and deleted with the operation
+    assert not [widget for widget in window.findChildren(UploadProgress) if widget.isVisible()]
+
+
 def test_board_actions_upload_console_stop_and_failure(qtbot, tmp_path, monkeypatch):
     window = board_window(qtbot, tmp_path)
     calls = []
 
     def upload(project, output, run, progress, cancel):
         calls.append((project.projectName, output, run))
-        progress(2, 7)
+        progress(2048, 8192, "ui.mpy", 4096)
         return {"output": "pronto ü\n", "active": run, "warnings": []}
 
     monkeypatch.setattr(window.device, "upload", upload)
@@ -415,7 +481,7 @@ def test_about_shows_ide_firmware_versions_and_credits(qtbot, tmp_path, monkeypa
     window._device_info = {"implementationVersion": [1, 29, 0, ""], "lvglVersion": "9.5.0"}
     window.about_action.trigger()
     text = messages[-1][2]
-    assert __version__ == "0.5.0"
+    assert __version__ == "0.5.1"
     assert f"IDE version:</b> {__version__}" in text
     assert "<b>MicroPython:</b> 1.29.0<br>" in text
     assert "<b>LVGL:</b> 9.5.0" in text

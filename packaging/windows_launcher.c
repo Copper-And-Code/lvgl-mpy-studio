@@ -32,7 +32,7 @@ int WINAPI wWinMain(HINSTANCE instance, HINSTANCE previous, PWSTR arguments, int
     PROCESS_INFORMATION process = {0};
     if (!CreateProcessW(NULL, command, NULL, NULL, FALSE, CREATE_NO_WINDOW, NULL, directory, &startup, &process)) {
         wchar_t message[512];
-        swprintf(message, 512, L"Impossibile avviare Python portatile.\nErrore Windows: %lu", GetLastError());
+        swprintf(message, 512, L"The bundled Python could not be started.\nWindows error: %lu", GetLastError());
         MessageBoxW(NULL, message, L"LVGL MPY Studio", MB_ICONERROR | MB_OK);
         return 1;
     }

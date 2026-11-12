@@ -111,14 +111,18 @@ class UartTransport:
         except (OSError, serial.SerialException) as exc:
             raise UartError("device.absent", str(exc)) from exc
 
-    def put(self, local, remote, timeout=30, cancel=None):
-        """Write the file in chunks without leaving the raw REPL: entering it for each chunk cost 0.2 s."""
+    def put(self, local, remote, timeout=30, cancel=None, progress=None):
+        """Write the file in chunks without leaving the raw REPL: entering it for each chunk cost 0.2 s.
+
+        `progress` is called with the bytes written so far."""
         data = Path(local).read_bytes()
         self.execute(f"import binascii\nf=open({remote!r},'wb')", timeout, cancel)
         try:
             for offset in range(0, len(data), PUT_CHUNK):
                 chunk = base64.b64encode(data[offset:offset + PUT_CHUNK]).decode("ascii")
                 self._run_raw(f"f.write(binascii.a2b_base64({chunk!r}))", timeout, cancel)
+                if progress:
+                    progress(min(offset + PUT_CHUNK, len(data)))
         finally:
             self.execute("f.close()", timeout)  # enters the raw REPL again: this also works after an error half way
 

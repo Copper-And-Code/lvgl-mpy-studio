@@ -1,5 +1,5 @@
 #ifndef MyAppVersion
-#define MyAppVersion "0.4.0"
+#define MyAppVersion "0.5.1"
 #endif
 
 [Setup]
@@ -16,6 +16,7 @@ OutputBaseFilename=LVGL_MPY_STUDIO-{#MyAppVersion}-Setup-win64
 Compression=lzma2
 SolidCompression=yes
 WizardStyle=modern
+SetupIconFile=..\lvgl_mpy_studio\icon.ico
 ArchitecturesAllowed=x64compatible
 ArchitecturesInstallIn64BitMode=x64compatible
 UninstallDisplayIcon={app}\LVGL_MPY_STUDIO.exe

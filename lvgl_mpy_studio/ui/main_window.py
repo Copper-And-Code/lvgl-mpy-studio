@@ -63,6 +63,7 @@ class MainWindow(DeviceMixin, ProjectTreeMixin, FilesMixin, ResolutionMixin, Run
         self.device_app_active = False
         self._worker = None
         self._device_cancel = None
+        self._upload_progress = None
         self._device_next = None
         self._building = False
         self._drag_frame_pending = False

@@ -1,6 +1,17 @@
 # Changelog
 
-## 0.5.0 — not released yet
+## 0.5.1 — not released yet
+
+### Changed
+
+- **Upload progress.** Sending an application to a board opens a small window with a bar that follows the bytes sent, the file being written, the time elapsed and an estimate of the time left, and a Cancel button. On boards reached through mpremote the bar moves inside a file by estimate, from the speed of the last upload to that board. It appears when the upload lasts more than a moment. Until now the only sign was a file count in the status bar, which stood still for most of a long upload.
+
+### Fixed
+
+- The portable Windows package did not start on Windows: it carried a copy of ICU 72 next to Qt, which hid the `icuuc.dll` of the system and lacks the functions Qt asks for. The package no longer includes ICU. Wine did not show the fault, because it starts a program even when imported functions are missing.
+- The Windows packages had no icon: the program file, the taskbar and the windows showed a generic one. The windows have the icon on Linux too.
+
+## 0.5.0 — not released
 
 ### Added
 

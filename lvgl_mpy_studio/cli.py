@@ -235,9 +235,16 @@ def main(argv: list[str] | None = None) -> int:
             parser.exit(1, f"lvgl-mpy-studio: {exc}\n")
 
     from PySide6.QtWidgets import QApplication
+    from .ui import theme
     from .ui.main_window import MainWindow
 
+    if sys.platform == "win32":
+        # Without its own identity the taskbar shows the icon of pythonw.exe, which hosts the IDE.
+        import ctypes
+
+        ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID("CopperAndCode.LvglMpyStudio")
     app = QApplication.instance() or QApplication(sys.argv[:1])
+    app.setWindowIcon(theme.app_icon())
     window = MainWindow()
     window.show()
     return app.exec()
