@@ -807,6 +807,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#project-website" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Project website
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#known-defects-and-open-points" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -981,6 +992,17 @@
     <span class="md-ellipsis">
       
         How each area was checked
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-website" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Project website
       
     </span>
   </a>
@@ -1228,6 +1250,14 @@ below as an open question, not as a formality.</p>
 </tbody>
 </table>
 <p>"Author's use" means the author uses it while developing; it is not a test plan.</p>
+<h2 id="project-website">Project website<a class="headerlink" href="#project-website" title="Permanent link">&para;</a></h2>
+<p>The English documentation and five browser demos are published at
+<a href="https://copper-and-code.github.io/lvgl-mpy-studio/">https://copper-and-code.github.io/lvgl-mpy-studio/</a> from the <code>gh-pages</code> branch. On 12 November
+2026, the public home, manual, gallery, and all five demos were checked in Chromium. Each demo
+reported a running WebAssembly application and a non-black canvas; a simulated touch changed the
+Fifteen screen, and no requests went to external domains. The IDE test for <strong>Help → Online
+Documentation</strong> also passed and opens the same public address.</p>
+<p>Firefox, Safari, and a real phone with touch and sound have not been tried.</p>
 <h2 id="known-defects-and-open-points">Known defects and open points<a class="headerlink" href="#known-defects-and-open-points" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Windows.</strong> The portable package of 0.4 did not start on a real Windows: it bundled a copy
@@ -1258,8 +1288,6 @@ below as an open question, not as a formality.</p>
 </ul>
 <h2 id="what-is-not-there">What is not there<a class="headerlink" href="#what-is-not-there" title="Permanent link">&para;</a></h2>
 <ul>
-<li>The pages that <strong>Help → Online Documentation</strong> opens: they will be published when the
-  repository becomes public; until then the link leads nowhere.</li>
 <li>C on boards: only MicroPython is uploaded. The C export is source code for another project.</li>
 <li>An online catalogue of blocks, and blocks that depend on other blocks.</li>
 <li>Extensions that run inside the IDE: blocks are data and MicroPython code, nothing more.</li>
