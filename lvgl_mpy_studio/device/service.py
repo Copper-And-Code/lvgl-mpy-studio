@@ -492,10 +492,6 @@ print('LVGL_MPY_STUDIO_INFO='+json.dumps(r))'''.replace("@MODULES@", repr(module
                     generated["warnings"].append(tr("The board has Montserrat fonts {board}, the profile lists {profile}: the code uses those of the board, so text can differ from the preview. Set them in the board profile.", board=", ".join(str(size) for size in sorted(fonts)), profile=", ".join(str(size) for size in profile_fonts(profile))))
                 if (project.assets or {}).get("fonts") and info.get("binfont") is False:
                     generated["warnings"].append(tr("This firmware cannot load fonts at run time: the fonts of the project are replaced by the built-in font."))
-                if (project.assets or {}).get("fonts") and info.get("binfont") is not False:
-                    warning = font_memory_warning(legacy_data(project), info.get("memoryFree"))
-                    if warning:
-                        generated["warnings"].append(warning)
                 generated = precompile_board(generated, output, info.get("mpy"))
                 self.state = "transferring"
                 app_id = self._app_id(project, profile)
@@ -505,6 +501,14 @@ print('LVGL_MPY_STUDIO_INFO='+json.dumps(r))'''.replace("@MODULES@", repr(module
                 backup = f"{current}.previous"
                 self._check_cancel(cancel)
                 self._reset()
+                if (project.assets or {}).get("fonts") and info.get("binfont") is not False:
+                    # Asked again now: before the reset the application already on the board held its own
+                    # memory. The probe loads the display driver, as the application will, so what it
+                    # reports is what the application finds; the second reset gives a clean start.
+                    warning = font_memory_warning(legacy_data(project), self._info(profile).get("memoryFree"))
+                    self._reset()
+                    if warning:
+                        generated["warnings"].append(warning)
                 prepare = f"import os\ntry:\n os.mkdir({app_root!r})\nexcept OSError:\n pass\n{_remove_tree_script(staging)}"
                 self._exec(prepare, 20)
                 self._exec(f"import os\nos.mkdir({staging!r})", 20)
@@ -541,7 +545,11 @@ except OSError:
                 self._exec(activate, 20)
                 self.state = "ready"
                 if run:
-                    return self.run(project, output_dir=output, _uploaded=True, _generated=generated)
+                    try:
+                        return self.run(project, output_dir=output, _uploaded=True, _generated=generated)
+                    except DeviceError as exc:
+                        exc.warnings = generated["warnings"]  # they often say why it did not start
+                        raise
                 return {"appPath": current, **generated}
             except Exception:  # an unexpected error too must leave the session usable
                 self.state = "error"

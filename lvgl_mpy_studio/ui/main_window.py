@@ -372,6 +372,7 @@ class MainWindow(DeviceMixin, ProjectTreeMixin, FilesMixin, ResolutionMixin, Run
         self.sim_tab_index = self.tabs.addTab(self.sim_panel, tr("Simulator"))
         self.tabs.currentChanged.connect(self._request_preview)
         self.tabs.currentChanged.connect(self._schedule_live)
+        self.tabs.currentChanged.connect(self._fit_if_resized)
 
     def _sync_designers(self):
         pages = self.document.project.pages
@@ -383,6 +384,7 @@ class MainWindow(DeviceMixin, ProjectTreeMixin, FilesMixin, ResolutionMixin, Run
         for position, page in enumerate(pages):
             if page.id not in self.designers:
                 view = DesignerView(self.document, page.id)
+                view.fitted_size = self._display_size()  # only a later change of resolution fits it again
                 view.designer_scene.selectionNamesChanged.connect(self.properties.set_selection)
                 view.designer_scene.widgetActivated.connect(self.open_handler)
                 view.setProperty("_lvgl_dynamic_tab", True)
@@ -433,6 +435,7 @@ class MainWindow(DeviceMixin, ProjectTreeMixin, FilesMixin, ResolutionMixin, Run
         self._sync_device_session()
         self._schedule_budget()
         self._sync_designers()
+        QTimer.singleShot(0, self._fit_if_resized)  # after the scene took its new size
         self.rebuild_project_tree()
         self._update_title()
         self._update_device_actions()
@@ -556,11 +559,23 @@ class MainWindow(DeviceMixin, ProjectTreeMixin, FilesMixin, ResolutionMixin, Run
         if 0.5 <= zoom <= 4:
             view.scale(factor, factor)
 
+    def _display_size(self):
+        display = self.document.project.display
+        return display.width, display.height
+
     def _fit_canvas(self):
         view = self._active_designer()
         if view is not None:
-            display = self.document.project.display
-            view.fitInView(QRectF(-8, -8, display.width + 16, display.height + 16), Qt.KeepAspectRatio)
+            width, height = view.fitted_size = self._display_size()
+            view.fitInView(QRectF(-8, -8, width + 16, height + 16), Qt.KeepAspectRatio)
+
+    def _fit_if_resized(self, *_ignored):
+        """A new resolution leaves the page too big or too small for the window: show it whole again.
+
+        Each page is fitted when it is the one shown, so a hidden tab gets it when the user opens it."""
+        view = self._active_designer()
+        if view is not None and view.fitted_size != self._display_size():
+            self._fit_canvas()
 
     def _update_undo_text(self):
         stack = self.document.undo_stack

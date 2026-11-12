@@ -720,7 +720,8 @@ def _call_tool(params):
     except RevisionConflict as exc:
         return {"content": [{"type": "text", "text": _text(exc.data)}], "structuredContent": exc.data, "isError": True}
     except DeviceError as exc:
-        return {"content": [{"type": "text", "text": f"{exc.code}: {device_error_text(exc.code, exc.output)}\n{exc.output}"}], "isError": True}
+        warnings = "".join(f"\nWarning: {warning}" for warning in exc.warnings)
+        return {"content": [{"type": "text", "text": f"{exc.code}: {device_error_text(exc.code, exc.output)}\n{exc.output}{warnings}"}], "isError": True}
     except CompileError as exc:
         return {"content": [{"type": "text", "text": str(exc)}], "isError": True}
     except (ValueError, OSError, RuntimeError) as exc:  # expected errors: the message is enough

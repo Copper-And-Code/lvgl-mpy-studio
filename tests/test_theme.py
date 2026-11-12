@@ -1,6 +1,6 @@
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QColor, QTextCharFormat
-from PySide6.QtWidgets import QDockWidget, QToolBar
+from PySide6.QtWidgets import QDialog, QDockWidget, QToolBar
 
 from lvgl_mpy_studio.ui import theme
 from lvgl_mpy_studio.ui.code.editor import PythonHighlighter
@@ -98,6 +98,35 @@ def test_dragging_a_category_header_does_nothing(qtbot):
     qtbot.addWidget(toolbox)
     toolbox.setCurrentRow(0)
     toolbox.startDrag(Qt.CopyAction)
+
+
+def test_a_new_resolution_fits_the_page_again(qtbot, monkeypatch):
+    window = window_for(qtbot)
+    window.resize(1200, 800)
+    window.show()
+    qtbot.waitExposed(window)
+    monkeypatch.setattr("lvgl_mpy_studio.ui.resolution.ResizeDialog.exec", lambda self: QDialog.Accepted)
+    window.document.execute("page", lambda project: project.pages.append(project.new_page("Second")))
+    first, second = (window.designers[page.id][1] for page in window.document.project.pages)
+    window.tabs.setCurrentWidget(first)
+    window._zoom(1.25)
+    zoomed = first.transform().m11()
+
+    def whole(view):
+        area = view.mapToScene(view.viewport().rect()).boundingRect()
+        display = window.document.project.display
+        return area.width() >= display.width and area.height() >= display.height
+
+    window.document.execute("text", lambda project: setattr(project, "projectName", "other"))
+    qtbot.wait(50)
+    assert first.transform().m11() == zoomed  # a change that is not a resolution keeps the zoom
+    assert window.change_resolution(1920, 1080)
+    qtbot.waitUntil(lambda: whole(first), timeout=2000)
+    assert not whole(second) or second.fitted_size != (1920, 1080)  # the hidden page waits
+    window.tabs.setCurrentWidget(second)
+    qtbot.waitUntil(lambda: whole(second) and second.fitted_size == (1920, 1080), timeout=2000)
+    window.document.undo_stack.undo()
+    qtbot.waitUntil(lambda: second.fitted_size != (1920, 1080) and whole(second), timeout=2000)
 
 
 def test_fit_shows_the_whole_page(qtbot):

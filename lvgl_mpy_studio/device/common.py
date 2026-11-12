@@ -12,6 +12,7 @@ class DeviceError(RuntimeError):
         self.code = code
         self.output = output
         self.errors = errors or []
+        self.warnings = []  # found before the failure, e.g. fonts larger than the free memory
 
 
 def write_json_atomic(path, payload):

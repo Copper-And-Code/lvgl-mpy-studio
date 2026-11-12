@@ -174,6 +174,7 @@ class DeviceMixin:
         self._device_next = None
         text = device_error_text(error.code, error.output) if isinstance(error, DeviceError) else str(error)
         self.device_console.append(text + "\n")
+        self._show_warnings(getattr(error, "warnings", []))
         if isinstance(error, DeviceError) and error.errors:
             for mapped in error.errors:
                 self._add_error_row(mapped)

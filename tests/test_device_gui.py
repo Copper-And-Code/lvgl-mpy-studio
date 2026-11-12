@@ -327,6 +327,23 @@ def test_slow_upload_shows_its_progress_and_can_be_cancelled(qtbot, tmp_path, mo
     assert not [widget for widget in window.findChildren(UploadProgress) if widget.isVisible()]
 
 
+def test_a_failed_start_still_shows_the_warnings(qtbot, tmp_path, monkeypatch):
+    window = board_window(qtbot, tmp_path)
+
+    def upload(project, output, run, progress, cancel):
+        error = DeviceError("device.command", "MemoryError: memory allocation failed")
+        error.warnings = ["The fonts of the project need about 143 kB of RAM"]
+        raise error
+
+    monkeypatch.setattr(window.device, "upload", upload)
+    window.device.port = "/dev/fake"
+    window._update_device_actions()
+    assert window.upload_board(run=True)
+    wait_worker(qtbot, window)
+    assert "need about 143 kB" in window.output.toPlainText()
+    assert window.errors.topLevelItemCount() == 1
+
+
 def test_board_actions_upload_console_stop_and_failure(qtbot, tmp_path, monkeypatch):
     window = board_window(qtbot, tmp_path)
     calls = []

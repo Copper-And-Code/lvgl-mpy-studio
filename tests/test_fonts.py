@@ -268,3 +268,41 @@ def test_fonts_too_heavy_for_the_board_are_reported():
     assert warning and "192 kB free" in warning and "need about 1" in warning  # some 60 kB of font, two and a half times over
     project.find_widget("text").props["font"] = ""
     assert font_memory_warning(legacy_data(project), 192_000) is None
+
+
+def test_memory_is_measured_after_the_reset_and_the_warning_survives_a_failed_start(tmp_path):
+    from test_device import FakeRunner
+
+    from lvgl_mpy_studio.core.boards import builtin_profiles
+    from lvgl_mpy_studio.device.service import DeviceError, DeviceSession
+
+    class Runner(FakeRunner):
+        free = 0
+        fails = False
+
+        def __call__(self, command, timeout):
+            script = command[-1] if command else ""
+            # while the previous application runs the board has little free; once it is reset, its real room
+            self.info["memoryFree"] = self.free if self.resets else 47_000
+            if self.fails and "import app_main" in script:
+                raise DeviceError("device.command", "MemoryError: memory allocation failed")
+            return super().__call__(command, timeout)
+
+    def upload(free, fails=False, size=60):
+        project, _name = with_font(size=size)
+        project.board = next(profile for profile in builtin_profiles() if "rp2350" in profile["id"])
+        project.set_display_size(project.board["logicalWidth"], project.board["logicalHeight"])
+        runner = Runner()
+        runner.free, runner.fails = free, fails
+        session = DeviceSession(runner=runner)
+        session.connect("/dev/fake", project.board)
+        try:
+            return session.upload(project, tmp_path / f"{free}-{fails}", run=True)
+        finally:
+            assert runner.resets == 2  # one to free the memory to measure, one to start clean
+
+    assert not [warning for warning in upload(28_000_000)["warnings"] if "RAM" in warning]
+    assert [warning for warning in upload(192_000)["warnings"] if "192 kB free" in warning]
+    with pytest.raises(DeviceError) as failure:
+        upload(192_000, fails=True)
+    assert [warning for warning in failure.value.warnings if "192 kB free" in warning]

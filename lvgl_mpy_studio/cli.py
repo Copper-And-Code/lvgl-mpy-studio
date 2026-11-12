@@ -230,7 +230,7 @@ def main(argv: list[str] | None = None) -> int:
         except KeyboardInterrupt:
             return 130
         except DeviceError as exc:
-            parser.exit(1, f"lvgl-mpy-studio: {device_error_text(exc.code, exc.output)}\n")
+            parser.exit(1, f"lvgl-mpy-studio: {device_error_text(exc.code, exc.output)}\n" + "".join(f"warning: {warning}\n" for warning in exc.warnings))
         except (OSError, ValueError, RuntimeError, CompileError) as exc:  # RuntimeError: manifest, simulator, Release build
             parser.exit(1, f"lvgl-mpy-studio: {exc}\n")
 
