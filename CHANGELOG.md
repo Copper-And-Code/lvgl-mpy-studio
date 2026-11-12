@@ -14,6 +14,7 @@
 
 ### Changed
 
+- The launcher of single-file executables no longer carries the old name: its modules are `lms_boot` and `lms_licenses`, its marker is `LMSAPP01`, and the Windows runtimes describe themselves as LVGL MPY Studio. Games already built keep working, because each carries its own launcher.
 - **Blocks, first step** (see `docs/plugins-plan.md`). The Buzzer is no longer written inside the IDE: it is a block, a folder with a description and its MicroPython modules, read by the new `core/blocks.py`. Nothing changes for projects and for the generated files, which are the same byte for byte. Blocks copied into the `blocks` folder of the settings are read and checked, but not offered yet.
 
 ## 0.5.1 — 2026-11-12

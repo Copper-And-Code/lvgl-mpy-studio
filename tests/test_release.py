@@ -105,7 +105,7 @@ def test_single_file_runs_alone(tmp_path):
     assert [item.name for item in (tmp_path / "dist").iterdir()] == ["release_test"]
     elsewhere = tmp_path / "elsewhere"
     elsewhere.mkdir()
-    for name in ("main.py", "lvgl_ide_boot.py"):
+    for name in ("main.py", "lms_boot.py"):
         (elsewhere / name).write_text("print('FAKE')\nraise SystemExit(3)\n", encoding="utf-8")
     result = subprocess.run([str(executable), "--selftest"], cwd=elsewhere, capture_output=True, text=True, timeout=20)
     assert result.returncode == 0 and "FAKE" not in result.stdout, result.stdout + result.stderr

@@ -5756,7 +5756,7 @@
   "board": {
     "schemaVersion": 1,
     "id": "stm32h7_core_v1_3_1024x600",
-    "revision": 1,
+    "revision": 3,
     "name": "STM32H7_CORE V1.3 (1024×600)",
     "adapter": "stm32h7_uart",
     "firmware": {
@@ -5775,6 +5775,13 @@
     "logicalHeight": 600,
     "scale": 1,
     "colorFormat": "RGB565",
+    "fonts": [
+      14,
+      16,
+      24,
+      32,
+      40
+    ],
     "orientations": [
       0
     ],
@@ -5783,7 +5790,7 @@
       "touch": "gt911",
       "buffers": "driver",
       "eventLoop": "driver",
-      "appRoot": "/flash/lvgl_ide_apps",
+      "appRoot": "/flash/lms_apps",
       "mainPath": "/flash/main.py"
     }
   }

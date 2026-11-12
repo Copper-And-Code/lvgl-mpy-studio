@@ -14,11 +14,11 @@ BEGIN
         BLOCK "040904b0"
         BEGIN
             VALUE "CompanyName", "Nunzio Raciti"
-            VALUE "FileDescription", "LVGL IDE MicroPython Simulator Runtime"
+            VALUE "FileDescription", "LVGL MPY Studio MicroPython Simulator Runtime"
             VALUE "FileVersion", "@IDE_VERSION@ (@IDE_COMMIT@)"
             VALUE "InternalName", "lvsim-runtime"
             VALUE "OriginalFilename", "lvsim-runtime.exe"
-            VALUE "ProductName", "LVGL IDE"
+            VALUE "ProductName", "LVGL MPY Studio"
             VALUE "ProductVersion", "@IDE_VERSION@"
         END
     END

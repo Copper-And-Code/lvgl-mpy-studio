@@ -82,9 +82,9 @@ int main(int argc, char **argv) {
     }
     #endif
     lvsim_set_env("MICROPYPATH", ".frozen");
-    #define LVSIM_ENTRY "import sys\nsys.path[:] = ['.frozen']\nimport lvgl_ide_boot"
+    #define LVSIM_ENTRY "import sys\nsys.path[:] = ['.frozen']\nimport lms_boot"
     if (argc == 2 && strcmp(argv[1], "--licenses") == 0) {
-        char *arguments[] = {argv[0], "-c", "import sys\nsys.path[:] = ['.frozen']\nimport lvgl_ide_licenses"};
+        char *arguments[] = {argv[0], "-c", "import sys\nsys.path[:] = ['.frozen']\nimport lms_licenses"};
         return micropython_main(3, arguments);
     }
     #else

@@ -13,8 +13,8 @@ if ! command -v x86_64-w64-mingw32-gcc >/dev/null 2>&1; then
 fi
 test -f "$SDL_DIR/lib/libSDL2.a" || { echo "SDL2 for MinGW not found: run runtime/build_windows.sh" >&2; exit 1; }
 mkdir -p "$BUILD/frozen"
-cp "$ROOT/runtime/onefile/lvgl_ide_boot.py" "$ROOT/runtime/onefile/manifest.py" "$BUILD/frozen/"
-python3 - "$ROOT/lvgl_mpy_studio/gen/output/licenses" "$BUILD/frozen/lvgl_ide_licenses.py" <<'PY'
+cp "$ROOT/runtime/onefile/lms_boot.py" "$ROOT/runtime/onefile/manifest.py" "$BUILD/frozen/"
+python3 - "$ROOT/lvgl_mpy_studio/gen/output/licenses" "$BUILD/frozen/lms_licenses.py" <<'PY'
 import pathlib, sys
 texts = [f"===== {path.stem} =====\n{path.read_text(encoding='utf-8')}" for path in sorted(pathlib.Path(sys.argv[1]).glob("*.txt"))]
 pathlib.Path(sys.argv[2]).write_text(f"print({chr(10).join(texts)!r})\n", encoding="utf-8")

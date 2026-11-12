@@ -10,8 +10,8 @@ export SDL_OUT=$(realpath -m "${SDL_OUT:-$OUT/sdl2-static}")
 SDL="$SDL_OUT/bin/sdl2-config"
 test -x "$SDL" || "$ROOT/runtime/build_sdl_static.sh"
 mkdir -p "$BUILD/frozen"
-cp "$ROOT/runtime/onefile/lvgl_ide_boot.py" "$ROOT/runtime/onefile/manifest.py" "$BUILD/frozen/"
-python3 - "$ROOT/lvgl_mpy_studio/gen/output/licenses" "$BUILD/frozen/lvgl_ide_licenses.py" <<'PY'
+cp "$ROOT/runtime/onefile/lms_boot.py" "$ROOT/runtime/onefile/manifest.py" "$BUILD/frozen/"
+python3 - "$ROOT/lvgl_mpy_studio/gen/output/licenses" "$BUILD/frozen/lms_licenses.py" <<'PY'
 import pathlib, sys
 texts = [f"===== {path.stem} =====\n{path.read_text(encoding='utf-8')}" for path in sorted(pathlib.Path(sys.argv[1]).glob("*.txt"))]
 pathlib.Path(sys.argv[2]).write_text(f"print({chr(10).join(texts)!r})\n", encoding="utf-8")

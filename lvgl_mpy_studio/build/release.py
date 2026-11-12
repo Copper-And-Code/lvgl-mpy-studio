@@ -87,7 +87,7 @@ def _frozen_runtime(generated):
     return executable
 
 
-ONEFILE_MAGIC = b"LVGLIDE1"
+ONEFILE_MAGIC = b"LMSAPP01"  # the launcher in runtime/onefile/lms_boot.py looks for the same
 
 
 def onefile_runtime(windows=IS_WINDOWS):
