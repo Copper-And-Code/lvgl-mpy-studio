@@ -59,7 +59,7 @@ Per vedere l'IDE usarsi da solo, con il rapporto di ogni passo:
 
 - [Manuale utente](docs/manual.it.md), [board](docs/boards.it.md), [pubblicare un gioco sul web](docs/publish-web.it.md)
 - [Server MCP](docs/mcp.md), [scrivere un blocco](docs/blocks.md)
-- [Compilazione, test e pacchetti](docs/development.md), [changelog](CHANGELOG.md)
+- [Compilazione e test](docs/development.md), [costruire i pacchetti](docs/packaging.md), [changelog](CHANGELOG.md)
 
 ## Limiti
 

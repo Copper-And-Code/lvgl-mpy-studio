@@ -92,32 +92,4 @@ The self-test opens the real IDE and drives it through nine scenarios; see the [
 
 ## Packages
 
-Linux:
-
-```bash
-.venv/bin/pip install -e '.[packaging]'
-./packaging/build.sh
-```
-
-This produces `dist/LVGL_MPY_STUDIO-x86_64.AppImage`. On Windows, from PowerShell with Python and Inno Setup 6:
-
-```powershell
-python -m pip install -e '.[packaging]'
-powershell -ExecutionPolicy Bypass -File packaging/build_windows.ps1
-```
-
-This produces `LVGL_MPY_STUDIO-<version>-win64.zip` and `LVGL_MPY_STUDIO-<version>-Setup-win64.exe`. The installer uses `%LOCALAPPDATA%` and does not require administrator rights.
-
-From Linux, after building the Windows runtimes, you can also build a package with embeddable Python 3.12.10:
-
-```bash
-./packaging/build_windows_portable.sh
-```
-
-This produces `dist/LVGL_MPY_STUDIO-<version>-portable-win64.zip`. Extract the whole archive and start `LVGL_MPY_STUDIO.exe`; Python does not need to be installed. `LVGL_MPY_STUDIO_console.bat` is available for diagnostics.
-
-Qt stays in separate shared libraries. Licenses and sources are listed in `packaging/NOTICE.txt` and `THIRD_PARTY.md`.
-
-Binaries are not signed: SmartScreen may ask for **More info → Run anyway**.
-
-Pinned versions: MicroPython 1.29.0, LVGL 9.5.0, PySide6 6.12.0. See `docs/target.md` and `docs/decisions.md`.
+[Building the packages](packaging.md) has the commands, what each runtime is for, and how to check a package before giving it out.
