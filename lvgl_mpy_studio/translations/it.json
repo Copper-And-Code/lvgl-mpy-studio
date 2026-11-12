@@ -586,5 +586,14 @@
   "built-in font": "font incluso",
   "Add Font": "Aggiungi font",
   "The fonts of the project need about {need} kB of RAM and the board has {free} kB free: use fewer sizes, or the built-in fonts.": "I font del progetto richiedono circa {need} kB di RAM e la board ne ha {free} kB liberi: usa meno misure, oppure i font inclusi.",
-  "This firmware cannot load fonts at run time: the fonts of the project are replaced by the built-in font.": "Questo firmware non sa caricare font durante l'esecuzione: i font del progetto sono sostituiti da quello incluso."
+  "This firmware cannot load fonts at run time: the fonts of the project are replaced by the built-in font.": "Questo firmware non sa caricare font durante l'esecuzione: i font del progetto sono sostituiti da quello incluso.",
+  "Print Sources…": "Stampa sorgenti…",
+  "Print Sources": "Stampa sorgenti",
+  "Handlers": "Gestori",
+  "The open source: {name}": "Il sorgente aperto: {name}",
+  "All the sources of the project ({count})": "Tutti i sorgenti del progetto ({count})",
+  "Line numbers": "Numeri di riga",
+  "Preview…": "Anteprima…",
+  "Print…": "Stampa…",
+  "Page {page} of {pages}": "Pagina {page} di {pages}"
 }

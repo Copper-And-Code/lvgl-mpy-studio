@@ -2,6 +2,10 @@
 
 ## 0.5.1 — not released yet
 
+### Added
+
+- **Print Sources.** **File → Print Sources…** (Ctrl+P) prints the source open in the editor or all the sources of the project, with line numbers, the colours of the editor, wrapped long lines, and a header and footer on each page. It has a preview, and a PDF comes from the system print dialog.
+
 ### Changed
 
 - **Upload progress.** Sending an application to a board opens a small window with a bar that follows the bytes sent, the file being written, the time elapsed and an estimate of the time left, and a Cancel button. On boards reached through mpremote the bar moves inside a file by estimate, from the speed of the last upload to that board. It appears when the upload lasts more than a moment. Until now the only sign was a file count in the status bar, which stood still for most of a long upload.

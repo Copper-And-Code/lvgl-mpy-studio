@@ -168,7 +168,7 @@ I componenti non si vedono sulla pagina: compaiono nel pannello **Componenti** i
 
 ## 7. Risoluzione
 
-La risoluzione è quella dello schermo per cui disegni, ed è la stessa del simulatore. La cambi con un clic dal pulsante nella barra degli strumenti, per esempio **480×480**:
+La risoluzione è quella dello schermo per cui disegni, ed è la stessa del simulatore. Dopo un cambio la pagina viene di nuovo adattata alla finestra. La cambi con un clic dal pulsante nella barra degli strumenti, per esempio **480×480**:
 
 - **Board**: le risoluzioni delle board conosciute, con il loro nome.
 - **Comuni**: 240×240, 480×480, 1024×600 e 1024×1024.
@@ -275,6 +275,10 @@ Nell'editor, dopo `ui.` o `ui.label1.`, **Ctrl+Spazio** mostra i suggerimenti.
 Gli errori di sintassi compaiono nel pannello **Errori** quando avvii l'app, e sotto l'editor mentre scrivi; un errore durante l'esecuzione compare con l'eccezione, e passando sopra la riga si vede il traceback intero. Il doppio clic porta al gestore o al modulo e alla riga giusti, che viene evidenziata, anche se l'errore è avvenuto sulla board.
 
 Se l'errore nasce in un modulo, la prima riga è quella del modulo; il gestore che l'ha chiamato segue, marcato **chiamato da qui**.
+
+### Stampa
+
+**File → Stampa sorgenti…** (Ctrl+P) stampa il sorgente aperto nell'editor, oppure tutti i sorgenti del progetto: il codice generale, i gestori scritti come le funzioni che diventano, e ogni modulo, ciascuno da una pagina nuova. Le pagine riportano il nome del progetto e del sorgente, la data e il numero di pagine; le righe sono numerate e colorate come nell'editor, e una riga lunga va a capo invece di essere tagliata. **Anteprima…** mostra prima le pagine. Per avere un PDF, scegli la stampa su file nella finestra di stampa del sistema.
 
 ## 9. Il simulatore
 
@@ -396,6 +400,7 @@ Lo stesso controllo vale per ogni programma che scrive il file del progetto, com
 | Tasti | Azione |
 |---|---|
 | Ctrl+N, Ctrl+O, Ctrl+S, Ctrl+Shift+S | Nuovo, Apri, Salva, Salva con nome |
+| Ctrl+P | Stampa sorgenti |
 | Ctrl+Z, Ctrl+Shift+Z | Annulla, Ripeti |
 | Ctrl+X, Ctrl+C, Ctrl+V, Canc | Taglia, Copia, Incolla, Elimina |
 | Ctrl+D | Duplica |

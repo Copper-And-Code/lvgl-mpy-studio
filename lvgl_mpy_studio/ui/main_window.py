@@ -167,6 +167,7 @@ class MainWindow(DeviceMixin, ProjectTreeMixin, FilesMixin, ResolutionMixin, Run
         self.board_stop_action = QAction(tr("Stop"), self, triggered=self.stop_board)
         self.autostart_install_action = QAction(tr("Install Autostart…"), self, triggered=self.install_autostart)
         self.autostart_remove_action = QAction(tr("Remove Autostart…"), self, triggered=self.remove_autostart)
+        self.print_action = QAction(tr("Print Sources…"), self, shortcut=QKeySequence.Print, triggered=self.print_sources)
         self.about_action = QAction(tr("About LVGL MPY Studio"), self, triggered=self.show_about)
 
     def _make_menus(self):
@@ -174,6 +175,8 @@ class MainWindow(DeviceMixin, ProjectTreeMixin, FilesMixin, ResolutionMixin, Run
         file_menu.addActions((self.new_action, self.open_action, self.save_action, self.save_as_action))
         self.recent_menu = file_menu.addMenu(tr("Recent Files"))
         self.recent_menu.aboutToShow.connect(self._populate_recent)
+        file_menu.addSeparator()
+        file_menu.addAction(self.print_action)
         file_menu.addSeparator()
         file_menu.addAction(self.exit_action)
         edit_menu = self.menuBar().addMenu(tr("Edit"))
@@ -558,6 +561,11 @@ class MainWindow(DeviceMixin, ProjectTreeMixin, FilesMixin, ResolutionMixin, Run
         zoom = view.transform().m11() * factor
         if 0.5 <= zoom <= 4:
             view.scale(factor, factor)
+
+    def print_sources(self):
+        from lvgl_mpy_studio.ui.printing import PrintSourcesDialog  # Qt's print module is loaded only when asked
+
+        PrintSourcesDialog(self.document.project, self.code_panel.current, self).exec()
 
     def _display_size(self):
         display = self.document.project.display

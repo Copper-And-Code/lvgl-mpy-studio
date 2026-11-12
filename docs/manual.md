@@ -168,7 +168,7 @@ Components are not visible on the page: they appear in the **Components** panel 
 
 ## 7. Resolution
 
-The resolution is that of the screen you draw for, and it is the same in the simulator. You change it with one click from the button in the toolbar, for example **480×480**:
+The resolution is that of the screen you draw for, and it is the same in the simulator. After a change the page is fitted to the window again. You change it with one click from the button in the toolbar, for example **480×480**:
 
 - **Board**: the resolutions of the known boards, with their names.
 - **Common**: 240×240, 480×480, 1024×600 and 1024×1024.
@@ -275,6 +275,10 @@ In the editor, after `ui.` or `ui.label1.`, **Ctrl+Space** shows suggestions.
 Syntax errors appear in the **Errors** panel when you start the app, and under the editor while you type; an error while running appears with its exception, and hovering over the line shows the whole traceback. A double click goes to the right handler or module and line, which is highlighted, even if the error happened on the board.
 
 If the error starts in a module, the first line is that of the module; the handler that called it follows, marked **called from here**.
+
+### Printing
+
+**File → Print Sources…** (Ctrl+P) prints the source open in the editor, or all the sources of the project: the general code, the handlers written as the functions they become, and each module, each starting on a new page. Pages carry the project and source names, the date and the page count; lines are numbered and coloured as in the editor, and a long line wraps instead of being cut. **Preview…** shows the pages first. To get a PDF, choose to print to a file in the system print dialog.
 
 ## 9. The simulator
 
@@ -396,6 +400,7 @@ The same check applies to any program that writes the project file, the command 
 | Keys | Action |
 |---|---|
 | Ctrl+N, Ctrl+O, Ctrl+S, Ctrl+Shift+S | New, Open, Save, Save As |
+| Ctrl+P | Print Sources |
 | Ctrl+Z, Ctrl+Shift+Z | Undo, Redo |
 | Ctrl+X, Ctrl+C, Ctrl+V, Del | Cut, Copy, Paste, Delete |
 | Ctrl+D | Duplicate |
