@@ -1,5 +1,6 @@
 import copy
 import json
+from pathlib import Path
 
 import pytest
 
@@ -137,3 +138,43 @@ def test_constants_go_after_the_leading_comments():
     block = Block({**MANIFEST, "board": [{"file": "board.py", "constants": {"RATE": {"profile": "uart.rate", "type": "number"}}}]}, {"board.py": "x = RATE\n"})
     assert block.board_source({"uart": {"rate": 9600}}) == "RATE = 9600\nx = RATE\n"
     assert block.board_source({"uart": {"rate": "fast"}}) is None and block.board_source({}) is None
+
+
+def test_standard_blocks_have_italian_texts():
+    """The texts of a block are shown through tr(): those of the blocks shipped with the IDE are translated."""
+    catalog = json.loads(Path("lvgl_mpy_studio/translations/it.json").read_text(encoding="utf-8"))
+    missing = []
+    for block in standard_blocks().values():
+        manifest = block.manifest
+        texts = [manifest["name"], manifest["description"], *(item["label"] for item in manifest["properties"])]
+        texts += [item["help"] for item in manifest["methods"]] + [item["help"] for item in manifest["events"]]
+        missing += [f"{block.id}: {text}" for text in texts if text not in catalog and text != "Buzzer"]
+    assert not missing
+
+
+def test_the_example_of_the_guide_is_a_block_that_installs_and_generates(tmp_path, monkeypatch):
+    from lvgl_mpy_studio.core import components
+    from lvgl_mpy_studio.core.model import Project
+    from lvgl_mpy_studio.gen.project_gen import generate_project
+
+    monkeypatch.setattr(blocks, "config_dir", lambda: tmp_path / "config")
+    installed = blocks.install_block("examples/blocks/blinker")
+    assert sorted(path.name for path in (tmp_path / "config/blocks/blinker").iterdir()) == ["LICENSE", "README.md", "block.json", "board.py", "simulator.py"]
+    components.register(installed)
+    try:
+        project = Project("Guide")
+        project.add_widget(project.pages[0], "blinker", {"pin": 25}, "blinker1")
+        project.ensure_handler("blinker1", "BLINKED")
+        project.code.handlers["blinker1_blinked"].body = "print(e.is_running())"
+        generate_project(project, tmp_path / "app")
+        assert "ui.blinker1 = lms_blinker.Block(name='blinker1', pin=25, period=500, running=True, on_blinked=app_events.blinker1_blinked)" in (tmp_path / "app/main.py").read_text()
+        guide = Path("docs/blocks.md").read_text(encoding="utf-8")
+        assert "ui.blinker1 = lms_blinker.Block(name='blinker1', pin=25, period=500, running=True, on_blinked=app_events.blinker1_blinked)" in guide
+        shown = json.loads(guide.split("```json\n", 1)[1].split("```", 1)[0])
+        shipped = dict(installed.manifest, author=shown["author"])
+        shipped.pop("kind")
+        for item in shipped["properties"]:
+            item.pop("role", None)
+        assert shown == shipped  # the guide shows the example as it is
+    finally:
+        components.reload_blocks()

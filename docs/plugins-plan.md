@@ -1,6 +1,6 @@
 # Plan: plugins
 
-Status: phases 1 and 2 done on 2026-11-12, in version 0.6.0, with the Block Manager of phase 3; the rest is not started. Written on 2026-11-12.
+Status: phases 1 and 2 done on 2026-11-12, in version 0.6.0, with phase 3; phases 4 to 6 are not started, except the guide of phase 6. Written on 2026-11-12.
 
 ## Goal
 
@@ -223,17 +223,18 @@ Each phase ends with the test suite passing and can be released on its own.
    and with a fake `machine` in the tests, not yet on a board. User blocks are offered in the
    toolbox when the IDE starts. Left out: setting an input from `simulate` scenarios; for now
    the code calls `simulate(value)` on the input.
-3. **IDE.** Partly done: toolbox category, properties, completion and **What do you want to
-   do?** from the methods of the block, and **Settings → Manage Blocks…**, which lists the
-   blocks with their origin, adds one from a folder, removes it, reloads, opens the blocks
-   folder and installs on this computer a block that only the open project carries. **Update
-   block** is not needed: a project is saved with the blocks as they are installed now. Still
-   to do: the MCP tool `list_blocks`, blocks in `project_info`, translations of the texts of
-   the standard blocks, and `docs/blocks.md`.
+3. **IDE.** Done. Toolbox category, properties, completion and **What do you want to do?**
+   from the methods of the block; **Settings → Manage Blocks…**, which lists the blocks with
+   their origin, adds one from a folder, removes it, reloads, opens the blocks folder and
+   installs on this computer a block that only the open project carries; the MCP tool
+   `list_blocks` and the blocks in `project_info`; Italian texts for the standard blocks.
+   **Update block** turned out not to be needed: a project is saved with the blocks as they
+   are installed now.
 4. **Pins.** `pins` in profiles, the `pin` editor, conflict warnings.
 5. **The remaining standard blocks**: PWM, ADC, I2C, SPI, UART, each tried on a real board.
-6. **Documentation.** `docs/blocks.md`: how to write a block, with one block built step by
-   step; a chapter in the manual.
+6. **Documentation.** Done ahead of its turn: `docs/blocks.md` builds a block step by step,
+   the example is in `examples/blocks/blinker`, and the manual has a chapter. To be updated
+   as phases 4 and 5 change what a block can do.
 
 Hardware checks needed: every standard block on at least one of the three boards, with a
 wiring note in the test log. Phase 5 cannot be closed in the simulator alone.

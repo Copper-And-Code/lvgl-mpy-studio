@@ -173,7 +173,7 @@ Buzzer, Digital Output e Digital Input sono *blocchi*: cartelle con una descrizi
 - Un progetto conserva una copia dei blocchi che usa e che non sono forniti con l'IDE, così si apre anche su un computer che non li ha. **Installa dal progetto** installa un blocco di questo tipo su questo computer.
 - Il simulatore esegue il codice di un blocco sul tuo computer, come esegue il codice di un progetto: installa blocchi di persone di cui ti fidi.
 
-`docs/plugins-plan.md` ne descrive il formato.
+`docs/blocks.md` spiega come scriverne uno, con `examples/blocks/blinker` come esempio.
 
 ## 6. Disegnare la pagina
 

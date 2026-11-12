@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "kind": "block",
+  "id": "blinker",
+  "version": "1.0.0",
+  "name": "Blinker",
+  "description": "A pin that blinks by itself: a status LED that needs no code to keep going.",
+  "author": "Nunzio Raciti",
+  "license": "MIT",
+  "icon": "mdi6.alarm-light-outline",
+  "category": "Hardware",
+  "instances": "many",
+  "properties": [
+    {"name": "pin", "type": "pin", "label": "Pin", "role": "gpio.out"},
+    {"name": "period", "type": "number", "label": "Period (ms)", "default": 500, "min": 20, "max": 60000},
+    {"name": "running", "type": "boolean", "label": "Blink at Start", "default": true}
+  ],
+  "methods": [
+    {"name": "start", "arguments": "", "help": "Start blinking."},
+    {"name": "stop", "arguments": "", "help": "Stop blinking and leave the pin off."},
+    {"name": "set_period", "arguments": "ms", "help": "Change how long the pin stays on and off, in milliseconds."},
+    {"name": "is_running", "arguments": "", "help": "True while it blinks."}
+  ],
+  "events": [
+    {"name": "BLINKED", "help": "The pin went on"}
+  ],
+  "simulator": "simulator.py",
+  "board": [{"file": "board.py"}]
+}

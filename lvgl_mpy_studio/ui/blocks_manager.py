@@ -1,5 +1,7 @@
 """The Block Manager: what is installed, where it comes from, and how to add or remove a block."""
 
+import html
+
 from PySide6.QtCore import Qt, QUrl, Signal
 from PySide6.QtGui import QDesktopServices
 from PySide6.QtWidgets import QDialog, QDialogButtonBox, QFileDialog, QHBoxLayout, QLabel, QMessageBox, QPushButton, QTextBrowser, QTreeWidget, QTreeWidgetItem, QVBoxLayout
@@ -68,7 +70,7 @@ class BlocksDialog(QDialog):
         self.tree.clear()
         for block in sorted(components.BLOCKS.values(), key=lambda item: (item.origin != "standard", item.manifest["name"].lower())):
             manifest = block.manifest
-            item = QTreeWidgetItem([manifest["name"], manifest["version"], tr(ORIGINS[block.origin]), manifest["author"], manifest["license"], ", ".join(used.get(block.id, []))])
+            item = QTreeWidgetItem([tr(manifest["name"]), manifest["version"], tr(ORIGINS[block.origin]), manifest["author"], manifest["license"], ", ".join(used.get(block.id, []))])
             item.setData(0, Qt.UserRole, block.id)
             self.tree.addTopLevelItem(item)
             if block.id == select:
@@ -93,7 +95,7 @@ class BlocksDialog(QDialog):
             self.details.clear()
             return
         manifest = block.manifest
-        lines = [f"<b>{manifest['name']}</b> — <code>{manifest['id']}</code>", manifest["description"]]
+        lines = [f"<b>{html.escape(tr(manifest['name']))}</b> — <code>{manifest['id']}</code>", html.escape(tr(manifest["description"]))]
         if manifest["properties"]:
             lines.append("<b>" + tr("Properties") + ":</b> " + ", ".join(item["name"] for item in manifest["properties"]))
         if manifest["methods"]:
@@ -102,7 +104,7 @@ class BlocksDialog(QDialog):
             lines.append("<b>" + tr("Events") + ":</b> " + ", ".join(item["name"] for item in manifest["events"]))
         lines.append("<b>" + tr("In the simulator") + ":</b> " + (tr("its own module") if manifest.get("simulator") else tr("a stand-in whose methods do nothing")))
         if block.folder:
-            lines.append("<b>" + tr("Folder") + ":</b> " + block.folder)
+            lines.append("<b>" + tr("Folder") + ":</b> " + html.escape(block.folder))
         self.details.setHtml("<br>".join(lines))
 
     def _changed(self, select=None):
@@ -165,7 +167,7 @@ class BlocksDialog(QDialog):
         if block is None or block.origin != "user":
             return False
         users = used_blocks(self.document.project).get(block.id, [])
-        question = tr("Remove the block {name} from this computer?", name=block.manifest["name"])
+        question = tr("Remove the block {name} from this computer?", name=tr(block.manifest["name"]))
         if users:
             question += "\n\n" + tr("The open project uses it ({names}): it keeps working with the copy inside the project.", names=", ".join(users))
         if QMessageBox.question(self, tr("Block Manager"), question, QMessageBox.Yes | QMessageBox.No, QMessageBox.No) != QMessageBox.Yes:

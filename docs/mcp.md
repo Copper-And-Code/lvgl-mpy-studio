@@ -18,14 +18,14 @@ There are no limits compared to the IDE. With the server on, an agent can run pr
 |---|---|
 | Project | `create_project`, `project_info`, `validate`, `set_resolution`, `adapt_page`, `list_boards`, `set_board` |
 | Images and fonts | `add_image`, `remove_image`, `add_font`, `remove_font`; `project_info` lists them |
-| Design | `list_widget_types`, `add_page`, `rename_page`, `remove_page`, `add_widget`, `add_widgets`, `update_widget`, `move_widget`, `remove_widget` |
+| Design | `list_widget_types`, `list_blocks`, `add_page`, `rename_page`, `remove_page`, `add_widget`, `add_widgets`, `update_widget`, `move_widget`, `remove_widget` |
 | Code | `get_code`, `patch_code`, `set_handler`, `set_module_code`, `suggest_code` |
 | Python modules | `list_modules`, `create_module`, `rename_module`, `delete_module` |
 | Checks | `render_page`, `simulate`, `visual_test`, `save_scenario`, `measure` |
 | Output | `generate_code`, `build` |
 | Board | `device_list_ports`, `device_connect`, `device_disconnect`, `device_info`, `device_upload`, `device_stop`, `device_reset`, `device_exec`, `device_read_console`, `device_live_update`, `device_autostart_install`, `device_autostart_remove` |
 
-`list_widget_types` returns every type with its properties, default values and events; the list is long, so `names_only` returns just the names and `types` the details of the ones asked for. `list_boards` gives the resolution and the Montserrat font sizes of each board. Text asked in a size the target lacks, or with a character outside the built-in font, is reported in the `warnings` of the call that sets it and by `validate`.
+`list_widget_types` returns every type with its properties, default values and events; the list is long, so `names_only` returns just the names and `types` the details of the ones asked for. `list_blocks` describes the blocks: non-visual components such as Digital Output and Digital Input, added with `add_widget` and used from code through their methods. `list_boards` gives the resolution and the Montserrat font sizes of each board. Text asked in a size the target lacks, or with a character outside the built-in font, is reported in the `warnings` of the call that sets it and by `validate`.
 
 `create_project` takes `width` and `height`, or `board` for the resolution and board of a profile from `list_boards`; without them a project is 800×480. `set_resolution` takes `mode`: `stretch`, the default, `adapt`, which keeps proportions as in the IDE, or `keep`, which leaves the widgets alone so that `adapt_page` can adapt one page at a time.
 

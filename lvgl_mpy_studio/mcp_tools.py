@@ -324,6 +324,11 @@ SPECS = {
         },
         ["project"],
     ),
+    "list_blocks": (
+        "List the blocks: non-visual components such as Digital Output, Digital Input and Buzzer, added with add_widget like a widget and used from code as ui.<name>.<method>(). Returns the properties, the methods with their help and the events of each. An event gets a handler with set_handler; inside it, e is the component. Pass project to include the blocks that project carries.",
+        {"project": PROJECT},
+        [],
+    ),
     "list_boards": (
         "List the board profiles, with the resolution and the Montserrat font sizes of each. A project without a board has sizes 14, 16, 24, 32 and 40; text in another size is drawn in the nearest one.",
         {},

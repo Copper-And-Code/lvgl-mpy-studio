@@ -239,7 +239,7 @@ def test_tool_list_describes_the_new_tools(enabled):
     assert "module" in tools["get_code"]["inputSchema"]["properties"] and "module" in tools["patch_code"]["inputSchema"]["properties"]
     assert "expected_revision" in tools["patch_code"]["inputSchema"]["properties"]
     assert "expected_revision" not in tools["project_info"]["inputSchema"]["properties"]
-    assert len(tools) == 48
+    assert len(tools) == 49
 
 
 def test_round_trip_through_the_tools_loses_nothing(project):

@@ -19,7 +19,7 @@ from .build.preview import render_with_log
 from .build.visual import PASSED, UPDATED, baseline_dir, encode_png, rgb565_to_rgb, run_visual_tests, save_scenario as save_scenario_file
 from .core.actions import SCREEN_ACTIONS, actions_for
 from .core.boards import ProfileStore, profile_fonts, portable_profile
-from .core.components import COMPONENTS, is_component
+from .core.components import BLOCKS, COMPONENTS, block_for, is_component
 from .core.events import events_for
 from .core.i18n import device_error_text, set_language
 from .core import assets
@@ -214,8 +214,35 @@ def project_info(arguments):
         "modules": [{"name": module.name, "source": module.source} for module in project.modules],
         "images": assets.images(project),
         "fonts": assets.fonts(project),
+        "blocks": [{"id": block_id, "components": names} for block_id, names in sorted(_used_blocks(project).items())],
         "outOfBounds": project.widgets_outside(),
     }
+
+
+def _used_blocks(project):
+    used = {}
+    for widget in project.widgets:
+        if block_for(widget.type) is not None:
+            used.setdefault(widget.type, []).append(widget.name)
+    return used
+
+
+def _block_description(block):
+    manifest = block.manifest
+    return {
+        "id": block.id, "name": manifest["name"], "version": manifest["version"], "origin": block.origin, "description": manifest["description"],
+        "properties": [{key: item[key] for key in ("name", "type", "options", "default") if key in item} for item in manifest["properties"]],
+        "methods": [{"call": f"ui.<name>.{item['name']}({item.get('arguments', '')})", "help": item.get("help", "")} for item in manifest["methods"]],
+        "events": [{"name": item["name"], "help": item.get("help", "")} for item in manifest["events"]],
+        "simulated": bool(manifest.get("simulator")),
+    }
+
+
+def list_blocks(arguments):
+    project = arguments.get("project")
+    if project:  # a project brings the blocks it uses: they count as available for it
+        _load(arguments)
+    return [_block_description(block) for block in sorted(BLOCKS.values(), key=lambda item: item.id)]
 
 
 def list_widget_types(arguments):
@@ -231,7 +258,12 @@ def list_widget_types(arguments):
 
 def _type_description(name, definition):
     properties = [{key: item[key] for key in ("name", "type", "options") if key in item} for item in definition.get("properties") or []]
-    return {"properties": properties, "defaults": definition.get("defaultProps") or {}, "events": events_for(name)}
+    description = {"properties": properties, "defaults": definition.get("defaultProps") or {}, "events": events_for(name)}
+    block = block_for(name)
+    if block is not None:  # not drawn: the code calls its methods, described by list_blocks
+        description["block"] = True
+        description["methods"] = list(block.methods)
+    return description
 
 
 def suggest_code(arguments):

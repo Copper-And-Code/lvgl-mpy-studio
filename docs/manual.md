@@ -173,7 +173,7 @@ Buzzer, Digital Output and Digital Input are *blocks*: folders with a descriptio
 - A project keeps a copy of the blocks it uses that are not shipped with the IDE, so it opens on a computer that lacks them. **Install from Project** installs such a block on this computer.
 - The simulator runs the code of a block on your computer, as it runs the code of a project: install blocks from people you trust.
 
-`docs/plugins-plan.md` describes the format.
+`docs/blocks.md` explains how to write one, with `examples/blocks/blinker` as the example.
 
 ## 6. Drawing the page
 
