@@ -32,7 +32,7 @@ below as an open question, not as a formality.
 | Upload progress window | yes | | RP2350: the figures it shows | the window itself, watched by a person |
 | Buzzer | yes | yes, in the simulator | | on a board |
 | Block: Digital Output | yes, with a fake `machine` | yes, in the simulator | STM32H7_CORE: the two LEDs of the board on pins `B0` and `B1`, driven from a Timer, the pin levels read back and the LEDs seen by the author | other boards |
-| Block: Digital Input | yes, with a fake `machine` | yes, in the simulator | | on any board |
+| Block: Digital Input | yes, with a fake `machine` | yes, in the simulator | STM32H7_CORE: the two keys of the board on pins `A0` and `A1`; the author saw the LEDs follow the keys | other boards; the debounce, which was not measured |
 | Block Manager, blocks from other people | yes | | | used by a person; a block written by someone else |
 | Browser version (WebAssembly) | yes | | Chromium, two resolutions | Firefox, Safari, phones |
 | Single-file executables | yes, on Linux and under Wine | | Linux | Windows, natively |
