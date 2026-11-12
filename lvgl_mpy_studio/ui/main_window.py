@@ -695,7 +695,7 @@ class MainWindow(DeviceMixin, ProjectTreeMixin, FilesMixin, ResolutionMixin, Run
             f"<b>MicroPython:</b> {micro_version}<br>"
             f"<b>LVGL:</b> {lvgl_version}</p>"
             f"<p><a href='{WEBSITE}'>{WEBSITE}</a></p>"
-            f"<p><b>{tr('Credits')}:</b> Nunzio Raciti (in vibe coding)</p>"
+            f"<p><b>{tr('Credits')}:</b> {tr('designed and directed by {name}, developed with AI agents', name='Nunzio Raciti')}</p>"
             f"<p>Copyright (c) 2026 Nunzio Raciti<br>{tr('License: GPL-3.0-or-later. Generated code is under the MIT license.')}<br>"
             f"{tr('This program comes with absolutely no warranty. It is free software: you may redistribute and modify it under the terms of the license.')}</p>",
         )

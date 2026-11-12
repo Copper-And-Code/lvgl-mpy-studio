@@ -654,5 +654,6 @@
   "The input became active or stopped being active": "L'ingresso è diventato attivo o ha smesso di esserlo",
   "The input became active": "L'ingresso è diventato attivo",
   "The input stopped being active": "L'ingresso ha smesso di essere attivo",
-  "Online Documentation": "Documentazione online"
+  "Online Documentation": "Documentazione online",
+  "designed and directed by {name}, developed with AI agents": "progettato e diretto da {name}, sviluppato con agenti AI"
 }

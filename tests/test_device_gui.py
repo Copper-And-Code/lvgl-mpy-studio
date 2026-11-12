@@ -504,7 +504,7 @@ def test_about_shows_ide_firmware_versions_and_credits(qtbot, tmp_path, monkeypa
 
     assert "<b>MicroPython:</b> 1.29.0<br>" in text
     assert "<b>LVGL:</b> 9.5.0" in text
-    assert "Nunzio Raciti (in vibe coding)" in text
+    assert "designed and directed by Nunzio Raciti, developed with AI agents" in text
     assert "GPL-3.0-or-later" in text
     assert "MIT" in text
     window.document.undo_stack.setClean()
