@@ -112,3 +112,18 @@ def test_background_processes_are_stopped_before_the_program_leaves(tmp_path):
         assert not platform._background  # stopped, not left running
     else:
         raise AssertionError("the timeout did not stop the process")
+
+
+def test_programs_run_with_captured_output_open_no_console_window():
+    """Started from the .exe, which has no console, each such program would flash a window on Windows: four at every compilation."""
+    import re
+    from pathlib import Path
+
+    missing = []
+    for path in sorted(Path("lvgl_mpy_studio").rglob("*.py")):
+        for number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+            starts = re.search(r"subprocess\.(run|Popen|check_output)\(|_process_factory\(", line) and "def " not in line
+            captured = "capture_output=True" in line or "subprocess.PIPE" in line
+            if starts and captured and "creationflags=CREATE_NO_WINDOW" not in line and "**options" not in line:
+                missing.append(f"{path}:{number}")
+    assert not missing

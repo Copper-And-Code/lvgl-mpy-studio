@@ -15,7 +15,7 @@ import time
 from lvgl_mpy_studio.core.boards import compatible, portable_profile, profile_fonts, validate_profile
 from lvgl_mpy_studio.core.i18n import tr
 from lvgl_mpy_studio.gen.board_gen import BoardSyntaxError, generate_board, precompile_board
-from lvgl_mpy_studio.platform import IS_WINDOWS
+from lvgl_mpy_studio.platform import CREATE_NO_WINDOW, IS_WINDOWS
 from lvgl_mpy_studio.gen.fonts import font_memory_warning
 from lvgl_mpy_studio.gen.live import LIVE_OK
 from lvgl_mpy_studio.gen.project_gen import legacy_data
@@ -138,7 +138,7 @@ class DeviceSession(AutostartMixin):
 
     def _run_process(self, command, timeout, cancel=None):
         try:
-            process = self._process_factory(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, encoding="utf-8", errors="replace")
+            process = self._process_factory(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, encoding="utf-8", errors="replace", creationflags=CREATE_NO_WINDOW)
             started = time.monotonic()
             while True:
                 try:
@@ -239,7 +239,7 @@ class DeviceSession(AutostartMixin):
             try:
                 command = mpremote_command() + ["connect", self.port, "resume", "repl"]
                 if self._custom_process_factory or pty is None:
-                    process = self._process_factory(command, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, bufsize=0)
+                    process = self._process_factory(command, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, bufsize=0, creationflags=CREATE_NO_WINDOW)
                 else:
                     master, slave = pty.openpty()
                     process = self._process_factory(command, stdin=slave, stdout=slave, stderr=slave, bufsize=0, close_fds=True)

@@ -10,6 +10,7 @@ from lvgl_mpy_studio.core.boards import ADAPTERS, compatible, portable_profile, 
 from lvgl_mpy_studio.core.i18n import tr
 from lvgl_mpy_studio.core.modules import module_files
 from lvgl_mpy_studio.core.validation import validate_project
+from lvgl_mpy_studio.platform import CREATE_NO_WINDOW
 from .gen_python import build_project_code
 from .components import BUZZER_MODULE, block_files
 from .project_gen import design_warnings, generate_app_events, legacy_data, screen_statements, ui_source
@@ -88,7 +89,7 @@ def _validate_sources(files, sourcemap):
                 continue
             path = Path(directory) / name
             path.write_text(source, encoding="utf-8", newline="\n")
-            result = subprocess.run([str(compiler), "-o", str(Path(directory) / (name + ".mpy")), str(path)], capture_output=True, text=True, encoding="utf-8", errors="replace")
+            result = subprocess.run([str(compiler), "-o", str(Path(directory) / (name + ".mpy")), str(path)], capture_output=True, text=True, encoding="utf-8", errors="replace", creationflags=CREATE_NO_WINDOW)
             if result.returncode:
                 output = (result.stderr + result.stdout).strip()
                 match = re.search(r":(\d+):(\d+)", output)
@@ -102,7 +103,7 @@ def _bytecode_file(source, target):
     compiler = default_mpy_cross()
     if not compiler.is_file():
         return None
-    result = subprocess.run([str(compiler), "-s", source.name, "-o", str(target), str(source)], capture_output=True, text=True, encoding="utf-8", errors="replace")
+    result = subprocess.run([str(compiler), "-s", source.name, "-o", str(target), str(source)], capture_output=True, text=True, encoding="utf-8", errors="replace", creationflags=CREATE_NO_WINDOW)
     return target.read_bytes() if result.returncode == 0 and target.is_file() else None
 
 

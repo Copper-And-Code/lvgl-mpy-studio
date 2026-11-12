@@ -6,7 +6,7 @@ import shutil
 import struct
 import subprocess
 
-from lvgl_mpy_studio.platform import IS_WINDOWS, exe_name, runtime_path
+from lvgl_mpy_studio.platform import CREATE_NO_WINDOW, IS_WINDOWS, exe_name, runtime_path
 from .c_compiler import compile_c
 from .compiler import cache_root, compile_python, default_mpy_cross, root_dir
 from lvgl_mpy_studio.gen.gen_c import generate_c
@@ -81,7 +81,7 @@ def _frozen_runtime(generated):
             f"USER_C_MODULES={root / 'runtime/modules'}", f"BINDINGS_DIR={root / '.reference/lvgl-bindings'}",
             f"BUILD={build}", f"FROZEN_MANIFEST={manifest}",
         ]
-        result = subprocess.run(command, capture_output=True, text=True, encoding="utf-8", errors="replace")
+        result = subprocess.run(command, capture_output=True, text=True, encoding="utf-8", errors="replace", creationflags=CREATE_NO_WINDOW)
         if result.returncode:
             raise RuntimeError(result.stderr[-12000:] or result.stdout[-12000:])
     return executable

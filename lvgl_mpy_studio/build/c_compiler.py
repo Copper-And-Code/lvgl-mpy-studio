@@ -4,7 +4,7 @@ import re
 import shutil
 import subprocess
 
-from lvgl_mpy_studio.platform import IS_WINDOWS, exe_name
+from lvgl_mpy_studio.platform import CREATE_NO_WINDOW, IS_WINDOWS, exe_name
 from .compiler import CompileError
 
 TOOLCHAIN_HELP = "Windows C toolchain not found. Install MSYS2 MinGW64 or w64devkit and add gcc, ar and make to PATH; see https://github.com/skeeto/w64devkit and https://www.msys2.org/"
@@ -60,7 +60,7 @@ def compile_c(directory, jobs=None):
         environment = os.environ.copy()
         if toolchain_bin:
             environment["PATH"] = toolchain_bin + os.pathsep + environment.get("PATH", "")
-    result = subprocess.run(command, capture_output=True, text=True, encoding="utf-8", errors="replace", env=environment)
+    result = subprocess.run(command, capture_output=True, text=True, encoding="utf-8", errors="replace", env=environment, creationflags=CREATE_NO_WINDOW)
     if result.returncode:
         raise CompileError(parse_c_errors(result.stderr + result.stdout, directory))
     return directory / exe_name("app")

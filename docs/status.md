@@ -54,8 +54,10 @@ below as an open question, not as a formality.
   mistake of the self-test, which compared a path written with `\` with the same path written
   with `/`; the step after it was skipped. The run also showed a real defect: when the program
   ended while a measurement was running, a simulator process stayed alive and its temporary
-  folder could not be removed. Both are corrected; the corrected package has not been run on
-  Windows yet. Tests under Wine had shown neither.
+  folder could not be removed. Both are corrected, and the author ran the corrected package on Windows 11 without that
+  error. Tests under Wine had shown neither. A third defect, reported by the author, is
+  corrected and not yet seen on Windows: started from the program file, a console window
+  flashed four times at almost every operation.
 - **The IDE does not know the pins of a board.** A block takes the pin the user types, a
   number or a name such as `PA5`, and nothing warns when it is one the display or the memory
   already uses.

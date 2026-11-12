@@ -6,7 +6,7 @@ import subprocess
 import sys
 
 from lvgl_mpy_studio.core.i18n import tr
-from lvgl_mpy_studio.platform import mpy_cross_path, root_dir
+from lvgl_mpy_studio.platform import CREATE_NO_WINDOW, mpy_cross_path, root_dir
 
 
 def cache_root():
@@ -25,7 +25,7 @@ def compile_python(directory, mpy_cross=None):
     executable = Path(mpy_cross).resolve() if mpy_cross else default_mpy_cross()
     errors = []
     for path in sorted(directory.glob("*.py")):
-        result = subprocess.run([str(executable), str(path)], capture_output=True, text=True, encoding="utf-8", errors="replace", cwd=directory)
+        result = subprocess.run([str(executable), str(path)], capture_output=True, text=True, encoding="utf-8", errors="replace", cwd=directory, creationflags=CREATE_NO_WINDOW)
         if result.returncode:
             errors.extend(parse_compiler_errors(result.stderr + result.stdout, directory))
     if errors:

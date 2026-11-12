@@ -5793,5 +5793,9 @@
       "appRoot": "/flash/lms_apps",
       "mainPath": "/flash/main.py"
     }
+  },
+  "runTarget": {
+    "kind": "board",
+    "language": "micropython"
   }
 }
