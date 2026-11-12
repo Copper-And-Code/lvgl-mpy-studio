@@ -1,0 +1,10 @@
+{
+  "id": "weather",
+  "name": "Weather",
+  "description": "A weather station with a five-day forecast, three cities, and a settings page for Celsius or Fahrenheit.",
+  "kind": "application",
+  "page": null,
+  "prompt": "Build a weather station for the ESP32-4848S040: the current temperature of a city, a five-day forecast, a button to change city, and a settings page to switch between Celsius and Fahrenheit. Check that it works before you finish.",
+  "prompt_note": null,
+  "order": 20
+}

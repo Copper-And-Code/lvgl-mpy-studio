@@ -2,7 +2,7 @@
 
 LVGL MPY Studio is a visual environment for building graphical interfaces with [LVGL](https://lvgl.io) and MicroPython, in the style of Visual Basic: you draw pages by dragging controls, write a few lines of Python for their events and try everything in a simulator that uses the same LVGL as the board. When you are ready you upload the app to a board, build an executable to send to others, or export the code.
 
-This manual describes version 0.4. For details on boards see the [board guide](boards.md), for AI agents the [MCP server guide](mcp.md). The manual is also available [in Italian](manual.it.md).
+This manual describes version 0.4. For details on boards see the [board guide](boards.md), for AI agents the [MCP server guide](mcp.md). The manual is also available [in Italian](https://github.com/Copper-And-Code/lvgl-mpy-studio/blob/main/docs/manual.it.md).
 
 ## Contents
 

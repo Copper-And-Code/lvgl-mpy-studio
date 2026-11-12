@@ -1,0 +1,78 @@
+site_name: LVGL MPY Studio
+site_description: Visual IDE for LVGL 9.5 on MicroPython, with simulator, board upload and WebAssembly export
+site_url: https://copper-and-code.github.io/lvgl-mpy-studio/
+# Keep the repository link in content: Material's repository widget calls the GitHub API.
+repo_url: ""
+docs_dir: docs
+site_dir: build/site
+exclude_docs: |
+  *.it.md
+  development.md
+  packaging.md
+  plugins-plan.md
+  target.md
+  windows-c.md
+  windows-notes.md
+
+theme:
+  name: material
+  font: false
+  logo: images/logo.svg
+  favicon: images/logo.svg
+  features:
+    - navigation.top
+    - navigation.tracking
+    - search.highlight
+    - search.share
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+plugins:
+  - search
+  - include-markdown
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.details
+  - pymdownx.superfences
+  - toc:
+      permalink: true
+
+extra_css:
+  - stylesheets/site.css
+
+nav:
+  - Home: index.md
+  - Getting started: getting-started.md
+  - User guide:
+      - User manual: manual.md
+      - Boards: boards.md
+      - Publishing on the web: publish-web.md
+  - Extending:
+      - Writing a block: blocks.md
+      - MCP server: mcp.md
+      - From a prompt to an app: mcp-demo.md
+      - Adding a demo: adding-a-demo.md
+  - Demos: demos.md
+  - About the project:
+      - The stack: stack.md
+      - How it was built: how-it-was-built.md
+      - What is verified: status.md
+      - Case study EIM-01: case-study-eim-01.md
+      - Decisions: decisions.md
+      - Changelog: changelog.md

@@ -1,6 +1,6 @@
 # MicroPython boards
 
-[Italiano](boards.it.md)
+[Italiano](https://github.com/Copper-And-Code/lvgl-mpy-studio/blob/main/docs/boards.it.md)
 
 ### Requirements and first run
 

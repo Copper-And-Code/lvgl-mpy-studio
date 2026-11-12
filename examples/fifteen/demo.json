@@ -1,0 +1,10 @@
+{
+  "id": "fifteen",
+  "name": "Fifteen",
+  "description": "A sliding puzzle with fifteen tiles and one gap. Choose a shuffle level, then put the tiles back in order.",
+  "kind": "game",
+  "page": null,
+  "prompt": "Implement the fifteen puzzle using the LVGL MCP server.",
+  "prompt_note": null,
+  "order": 30
+}

@@ -1,0 +1,788 @@
+{
+  "schemaVersion": 2,
+  "projectName": "Fifteen",
+  "display": {
+    "width": 480,
+    "height": 480,
+    "colorFormat": "RGB565"
+  },
+  "pages": [
+    {
+      "id": "8855e8510bfd466490441747ba50b757",
+      "name": "Menu",
+      "canvasSize": [
+        480,
+        480
+      ],
+      "widgets": [
+        {
+          "id": "c9b443086fba408198c05d13e376f529",
+          "name": "beeper",
+          "type": "buzzer",
+          "props": {},
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "5c36fa2346ff413a8186a64d830c924a",
+          "name": "tick",
+          "type": "timer",
+          "props": {
+            "period": 33,
+            "enabled": false
+          },
+          "events": {
+            "TICK": "tick_tick"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "f500f831af354cd9ad630fb9cda143b1",
+          "name": "menu_bg",
+          "type": "panel",
+          "props": {
+            "x": 0,
+            "y": 0,
+            "width": 480,
+            "height": 480,
+            "bgColor": "#10151F",
+            "borderColor": "#BDBDBD",
+            "borderWidth": 0,
+            "radius": 0,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_OFF"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "bfe7e732a3cf4d7f959c547b2478310b",
+          "name": "menu_tile_a",
+          "type": "panel",
+          "props": {
+            "x": 174,
+            "y": 40,
+            "width": 62,
+            "height": 62,
+            "bgColor": "#3B6FD8",
+            "borderColor": "#BDBDBD",
+            "borderWidth": 0,
+            "radius": 10,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_OFF"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "bd681940413a4d0ea7227aa84ae4161d",
+          "name": "menu_tile_b",
+          "type": "panel",
+          "props": {
+            "x": 244,
+            "y": 40,
+            "width": 62,
+            "height": 62,
+            "bgColor": "#2FA88A",
+            "borderColor": "#BDBDBD",
+            "borderWidth": 0,
+            "radius": 10,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_OFF"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "c8eff08fc3e54efa998c3b5cd2bbd001",
+          "name": "menu_tile_c",
+          "type": "panel",
+          "props": {
+            "x": 174,
+            "y": 110,
+            "width": 62,
+            "height": 62,
+            "bgColor": "#E0A030",
+            "borderColor": "#BDBDBD",
+            "borderWidth": 0,
+            "radius": 10,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_OFF"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "fbde47d8f1104b9f8033c7e164814a61",
+          "name": "menu_tile_gap",
+          "type": "panel",
+          "props": {
+            "x": 244,
+            "y": 110,
+            "width": 62,
+            "height": 62,
+            "bgColor": "#10151F",
+            "borderColor": "#2C3550",
+            "borderWidth": 2,
+            "radius": 10,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_OFF"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "6b0aecd7daac425aa346f803ed3f2f76",
+          "name": "menu_title",
+          "type": "label",
+          "props": {
+            "x": 60,
+            "y": 186,
+            "width": 360,
+            "height": 48,
+            "text": "FIFTEEN",
+            "textColor": "#F2F5FF",
+            "fontSize": 40,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "8b55bf8b25fb4be59525013090e00452",
+          "name": "menu_subtitle",
+          "type": "label",
+          "props": {
+            "x": 60,
+            "y": 238,
+            "width": 360,
+            "height": 22,
+            "text": "Slide the tiles back into order",
+            "textColor": "#8FA2C8",
+            "fontSize": 16,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "08a148dcb0df41349f218a3f9794771a",
+          "name": "btn_play",
+          "type": "button",
+          "props": {
+            "x": 120,
+            "y": 286,
+            "width": 240,
+            "height": 64,
+            "text": "Play",
+            "bgColor": "#3B6FD8",
+            "textColor": "#FFFFFF",
+            "fontSize": 24,
+            "radius": 12
+          },
+          "events": {
+            "CLICKED": "btn_play_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "cf8731517550478aa251962900892767",
+          "name": "btn_options",
+          "type": "button",
+          "props": {
+            "x": 120,
+            "y": 368,
+            "width": 240,
+            "height": 64,
+            "text": "Options",
+            "bgColor": "#232B40",
+            "textColor": "#DDE4FF",
+            "fontSize": 24,
+            "radius": 12
+          },
+          "events": {
+            "CLICKED": "btn_options_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        }
+      ]
+    },
+    {
+      "id": "967ff702336443f596b1d78976eb7076",
+      "name": "Game",
+      "canvasSize": [
+        480,
+        480
+      ],
+      "widgets": [
+        {
+          "id": "87075d3c1ad844c98acdb7961ddff5f4",
+          "name": "field",
+          "type": "panel",
+          "props": {
+            "x": 0,
+            "y": 0,
+            "width": 480,
+            "height": 480,
+            "bgColor": "#10151F",
+            "borderColor": "#BDBDBD",
+            "borderWidth": 0,
+            "radius": 0,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_OFF"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "d75e7ce2cf6049059a9b83867c1a76bc",
+          "name": "board",
+          "type": "panel",
+          "props": {
+            "x": 25,
+            "y": 46,
+            "width": 430,
+            "height": 430,
+            "bgColor": "#1B2233",
+            "borderColor": "#2C3550",
+            "borderWidth": 2,
+            "radius": 14,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_OFF"
+          },
+          "events": {},
+          "parentId": "87075d3c1ad844c98acdb7961ddff5f4",
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "22b52cc1d9664a46b2194615631bab9d",
+          "name": "hud_moves",
+          "type": "label",
+          "props": {
+            "x": 12,
+            "y": 13,
+            "width": 56,
+            "height": 20,
+            "text": "MOVES",
+            "textColor": "#8FA2C8",
+            "fontSize": 14,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_LEFT",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "a822da379b074d14bd628987297dc1d9",
+          "name": "hud_time",
+          "type": "label",
+          "props": {
+            "x": 160,
+            "y": 13,
+            "width": 44,
+            "height": 20,
+            "text": "TIME",
+            "textColor": "#8FA2C8",
+            "fontSize": 14,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_LEFT",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "08e405159c4d4f268eaa77565c08b4b8",
+          "name": "hud_colon",
+          "type": "label",
+          "props": {
+            "x": 240,
+            "y": 6,
+            "width": 10,
+            "height": 30,
+            "text": ":",
+            "textColor": "#F2F5FF",
+            "fontSize": 24,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "8acda216d0d840acb4cbb3810dd44a7d",
+          "name": "btn_quit",
+          "type": "button",
+          "props": {
+            "x": 376,
+            "y": 6,
+            "width": 96,
+            "height": 34,
+            "text": "Menu",
+            "bgColor": "#232B40",
+            "textColor": "#DDE4FF",
+            "fontSize": 16,
+            "radius": 8
+          },
+          "events": {
+            "CLICKED": "btn_quit_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        }
+      ]
+    },
+    {
+      "id": "5500dca5b1c94e1e9ade4ba3494686b2",
+      "name": "Options",
+      "canvasSize": [
+        480,
+        480
+      ],
+      "widgets": [
+        {
+          "id": "1bafef31ec224b69b1c8c52bcfa12fbf",
+          "name": "opt_bg",
+          "type": "panel",
+          "props": {
+            "x": 0,
+            "y": 0,
+            "width": 480,
+            "height": 480,
+            "bgColor": "#10151F",
+            "borderColor": "#BDBDBD",
+            "borderWidth": 0,
+            "radius": 0,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_OFF"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "8b7d2fa57f5944e7bfdc1dee857e1542",
+          "name": "opt_title",
+          "type": "label",
+          "props": {
+            "x": 60,
+            "y": 48,
+            "width": 360,
+            "height": 44,
+            "text": "Options",
+            "textColor": "#F2F5FF",
+            "fontSize": 24,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "3ed04c402cec432198a8c365b0ca881d",
+          "name": "opt_shuffle_text",
+          "type": "label",
+          "props": {
+            "x": 60,
+            "y": 130,
+            "width": 360,
+            "height": 32,
+            "text": "Shuffle: Medium",
+            "textColor": "#DDE4FF",
+            "fontSize": 24,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_LEFT",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "2190dac1faed4926b8be4a64fe76c0e4",
+          "name": "opt_shuffle",
+          "type": "slider",
+          "props": {
+            "x": 70,
+            "y": 178,
+            "width": 340,
+            "height": 14,
+            "min": 1,
+            "max": 5,
+            "value": 3,
+            "bgColor": "#232B40",
+            "indicatorColor": "#3B6FD8",
+            "knobColor": "#F2F5FF",
+            "mode": "normal",
+            "isRange": false,
+            "leftValue": 0
+          },
+          "events": {
+            "VALUE_CHANGED": "opt_shuffle_value_changed"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "71a6d2795b4347d0988d1f749b161a32",
+          "name": "opt_sound_text",
+          "type": "label",
+          "props": {
+            "x": 60,
+            "y": 248,
+            "width": 200,
+            "height": 32,
+            "text": "Sound",
+            "textColor": "#DDE4FF",
+            "fontSize": 24,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_LEFT",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "57080a4904cc40ca8c9d41f2b660a278",
+          "name": "opt_sound",
+          "type": "switch",
+          "props": {
+            "x": 340,
+            "y": 246,
+            "width": 76,
+            "height": 38,
+            "checked": true,
+            "onColor": "#3B6FD8",
+            "offColor": "#232B40",
+            "knobColor": "#F2F5FF",
+            "disabled": false
+          },
+          "events": {
+            "VALUE_CHANGED": "opt_sound_value_changed"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "c18ecc68827d4fd4a5b62bc0f3cc27ce",
+          "name": "btn_back",
+          "type": "button",
+          "props": {
+            "x": 120,
+            "y": 360,
+            "width": 240,
+            "height": 64,
+            "text": "Back",
+            "bgColor": "#3B6FD8",
+            "textColor": "#FFFFFF",
+            "fontSize": 24,
+            "radius": 12
+          },
+          "events": {
+            "CLICKED": "btn_back_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        }
+      ]
+    },
+    {
+      "id": "d37f821424bd490382afec71eecdb1c4",
+      "name": "Solved",
+      "canvasSize": [
+        480,
+        480
+      ],
+      "widgets": [
+        {
+          "id": "5da6b39af5144fa990db6f3234cc8b49",
+          "name": "end_bg",
+          "type": "panel",
+          "props": {
+            "x": 0,
+            "y": 0,
+            "width": 480,
+            "height": 480,
+            "bgColor": "#10151F",
+            "borderColor": "#BDBDBD",
+            "borderWidth": 0,
+            "radius": 0,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_OFF"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "4f04592373ca486d8f9a07f3b458d7da",
+          "name": "end_title",
+          "type": "label",
+          "props": {
+            "x": 40,
+            "y": 60,
+            "width": 400,
+            "height": 44,
+            "text": "Solved!",
+            "textColor": "#7BE0A0",
+            "fontSize": 40,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "1c0e8d2b1083475e91bae6c5435bafcf",
+          "name": "end_moves",
+          "type": "label",
+          "props": {
+            "x": 40,
+            "y": 146,
+            "width": 400,
+            "height": 32,
+            "text": "Moves: 0",
+            "textColor": "#F2F5FF",
+            "fontSize": 24,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "1d7328517755459099e640be28f24dd9",
+          "name": "end_time",
+          "type": "label",
+          "props": {
+            "x": 40,
+            "y": 186,
+            "width": 400,
+            "height": 32,
+            "text": "Time: 00:00",
+            "textColor": "#F2F5FF",
+            "fontSize": 24,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "cc0e28006e3348df84a0b7d39290a124",
+          "name": "btn_again",
+          "type": "button",
+          "props": {
+            "x": 120,
+            "y": 286,
+            "width": 240,
+            "height": 64,
+            "text": "Play again",
+            "bgColor": "#3B6FD8",
+            "textColor": "#FFFFFF",
+            "fontSize": 24,
+            "radius": 12
+          },
+          "events": {
+            "CLICKED": "btn_again_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "d4e1d6af8f5346fca6593aa871f9c860",
+          "name": "btn_end_menu",
+          "type": "button",
+          "props": {
+            "x": 120,
+            "y": 368,
+            "width": 240,
+            "height": 64,
+            "text": "Menu",
+            "bgColor": "#232B40",
+            "textColor": "#DDE4FF",
+            "fontSize": 24,
+            "radius": 12
+          },
+          "events": {
+            "CLICKED": "btn_end_menu_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "module": "# FIFTEEN: the classic sliding puzzle on a 4x4 board.\n#\n# Tap a tile in the same row or column as the empty cell: that tile and the\n# ones between it and the gap slide over by one cell. Put the tiles back in\n# order, 1 to 15, with the gap in the bottom-right corner. Each tile has the\n# colour of the row it belongs to, as a hint. The clock starts on the first\n# move. The board is shuffled with random legal moves from the solved\n# position, so every puzzle can be solved.\n#\n# Rules for the ESP32: every object is created once in build(). The on_tick()\n# loop only uses small integers and ready-made lists. Numbers on screen are\n# fixed \"0..9\" columns clipped by a box: the column moves, the label never\n# changes, because moving a label or changing its text allocates memory.\n\nSIZE = 4\nCELLS = 16\nBX = 25                     # board origin on screen\nBY = 46\nGAP = 6\nCELL = 100\nSTEP = CELL + GAP\nANIM_T = 4                  # ticks for a tile to slide one cell\nWIN_T = 20                  # pause on the solved board before the end page\nMAX_MOVES = 9999\nMAX_SECONDS = 99 * 60 + 59\nDIGIT_W = 16\nROW_COLORS = (0x3B6FD8, 0x2FA88A, 0xE0A030, 0xD8544A)\nSHUFFLES = (0, 15, 40, 80, 150, 300)          # random moves per slider position\nSHUFFLE_NAMES = (\"\", \"Very easy\", \"Easy\", \"Medium\", \"Hard\", \"Expert\")\nSHUFFLE_TEXT = tuple([\"Shuffle: \" + name for name in SHUFFLE_NAMES])\nDIGIT_STRIP = \"0\\n1\\n2\\n3\\n4\\n5\\n6\\n7\\n8\\n9\"\nTILE_TEXT = tuple([str(n) for n in range(CELLS)])\nDR = (-1, 1, 0, 0)          # neighbour offsets used by the shuffle\nDC = (0, 0, -1, 1)\n\nS_PLAY = 0\nS_WIN = 1\n\nsound = True\nshuffle_moves = 80\n\nbuilt = None                # the field the objects were created on\nstyles = []                 # styles must stay referenced\ntiles = []                  # tiles[n - 1] is the object of tile n\nmove_digits = []\ntime_digits = []            # minutes tens, minutes units, seconds tens, units\nindev = None                # the pointer, remembered when a button is tapped\npoint = None\nPRESSED = 0\nline_h = 27\n\ngrid = bytearray(CELLS)     # grid[cell] = tile number, 0 = empty\nmoves_shown = bytearray(4)\ntime_shown = bytearray(4)\na_tile = [0] * SIZE         # tiles sliding in the current animation\na_from_x = [0] * SIZE\na_from_y = [0] * SIZE\na_to_x = [0] * SIZE\na_to_y = [0] * SIZE\n\nstate = S_PLAY\nempty = CELLS - 1\nmoves = 0\na_n = 0\na_t = 0\nheld = True                 # the finger must lift between two taps\nrunning = False\nstart_ms = 0\nseconds = 0\nphase_t = 0\nrnd = 12345\n\n\ndef play_tone(hz, ms):\n    if sound:\n        ui.beeper.beep(hz, ms)\n\n\ndef remember_pointer():\n    global indev\n    device = lv.indev_active()\n    if device is not None:\n        indev = device\n\n\ndef big_titles():\n    if hasattr(lv, \"font_montserrat_40\"):\n        ui.menu_title.set_style_text_font(lv.font_montserrat_40, lv.PART.MAIN)\n        ui.end_title.set_style_text_font(lv.font_montserrat_40, lv.PART.MAIN)\n\n\ndef set_shuffle(value):\n    global shuffle_moves\n    shuffle_moves = SHUFFLES[value]\n    ui.opt_shuffle_text.set_text_static(SHUFFLE_TEXT[value])\n\n\ndef set_sound(on):\n    global sound\n    sound = on\n    if not on:\n        ui.beeper.off()\n\n\ndef new_style(color, radius):\n    style = lv.style_t()\n    style.init()\n    style.set_bg_color(lv.color_hex(color))\n    style.set_bg_opa(lv.OPA.COVER)\n    style.set_radius(radius)\n    styles.append(style)\n    return style\n\n\ndef new_object(parent, style, w, h):\n    obj = lv.obj(parent)\n    obj.remove_style_all()\n    if style is not None:\n        obj.add_style(style, lv.PART.MAIN)\n    obj.set_size(w, h)\n    obj.set_pos(0, 0)              # the first set_pos allocates: do it here\n    obj.remove_flag(lv.obj.FLAG.CLICKABLE)\n    obj.remove_flag(lv.obj.FLAG.SCROLLABLE)\n    return obj\n\n\ndef digit_column(parent, x):\n    column = new_object(parent, None, DIGIT_W, 10 * line_h)\n    column.set_pos(x, 0)\n    label = lv.label(column)\n    label.set_width(DIGIT_W)\n    label.set_style_text_font(lv.font_montserrat_24, lv.PART.MAIN)\n    label.set_style_text_color(lv.color_hex(0xF2F5FF), lv.PART.MAIN)\n    label.set_style_text_align(lv.TEXT_ALIGN.CENTER, lv.PART.MAIN)\n    label.set_text_static(DIGIT_STRIP)\n    return column\n\n\ndef digit_box(x, count, columns):\n    box = new_object(built, None, count * DIGIT_W, line_h)\n    box.set_pos(x, 7)\n    for n in range(count):\n        columns.append(digit_column(box, n * DIGIT_W))\n\n\ndef build():\n    global built, point, PRESSED, line_h\n    built = ui.field\n    PRESSED = lv.INDEV_STATE.PRESSED\n    for items in (styles, tiles, move_digits, time_digits):\n        items.clear()\n    point = lv.point_t()\n    line_h = lv.font_montserrat_24.get_line_height()\n    lv.screen_active().remove_flag(lv.obj.FLAG.SCROLLABLE)\n    built.remove_flag(lv.obj.FLAG.SCROLLABLE)\n    built.remove_flag(lv.obj.FLAG.CLICKABLE)\n    ui.board.remove_flag(lv.obj.FLAG.CLICKABLE)\n    font = lv.font_montserrat_40 if hasattr(lv, \"font_montserrat_40\") else lv.font_montserrat_24\n    row_styles = [new_style(color, 12) for color in ROW_COLORS]\n    for n in range(1, CELLS):\n        tile = new_object(built, row_styles[(n - 1) // SIZE], CELL, CELL)\n        label = lv.label(tile)\n        label.set_style_text_font(font, lv.PART.MAIN)\n        label.set_style_text_color(lv.color_hex(0xFFFFFF), lv.PART.MAIN)\n        label.set_text_static(TILE_TEXT[n])\n        label.center()\n        tiles.append(tile)\n    digit_box(70, 4, move_digits)\n    digit_box(208, 2, time_digits)\n    digit_box(250, 2, time_digits)\n\n\ndef cell_x(cell):\n    return BX + GAP + (cell % SIZE) * STEP\n\n\ndef cell_y(cell):\n    return BY + GAP + (cell // SIZE) * STEP\n\n\ndef show_number(columns, shown, value):\n    # write value on the digit columns, right-aligned, touching only changes\n    i = len(shown) - 1\n    while i >= 0:\n        d = value % 10\n        value //= 10\n        if shown[i] != d:\n            shown[i] = d\n            columns[i].set_y(-d * line_h)\n        i -= 1\n\n\ndef set_time_digit(i, d):\n    if time_shown[i] != d:\n        time_shown[i] = d\n        time_digits[i].set_y(-d * line_h)\n\n\ndef show_time():\n    m = seconds // 60\n    s = seconds % 60\n    set_time_digit(0, m // 10)\n    set_time_digit(1, m % 10)\n    set_time_digit(2, s // 10)\n    set_time_digit(3, s % 10)\n\n\ndef is_solved():\n    i = 0\n    while i < CELLS - 1:\n        if grid[i] != i + 1:\n            return False\n        i += 1\n    return True\n\n\ndef shuffle():\n    # random legal moves of the gap, never undoing the previous one\n    global empty, rnd\n    i = 0\n    while i < CELLS - 1:\n        grid[i] = i + 1\n        i += 1\n    grid[CELLS - 1] = 0\n    empty = CELLS - 1\n    last = -1\n    done = 0\n    while done < shuffle_moves or is_solved():\n        rnd = (rnd * 75 + 74) % 65537\n        k = rnd & 3\n        r = empty // SIZE + DR[k]\n        c = empty % SIZE + DC[k]\n        target = r * SIZE + c\n        if 0 <= r < SIZE and 0 <= c < SIZE and target != last:\n            last = empty\n            grid[empty] = grid[target]\n            grid[target] = 0\n            empty = target\n            done += 1\n    i = 0\n    while i < CELLS:\n        if grid[i]:\n            tiles[grid[i] - 1].set_pos(cell_x(i), cell_y(i))\n        i += 1\n\n\ndef new_game():\n    global state, moves, a_n, held, running, seconds, rnd\n    if built is not ui.field:      # live update recreates the page\n        build()\n    rnd = (rnd + lv.tick_get()) % 65537\n    shuffle()\n    state = S_PLAY\n    moves = 0\n    seconds = 0\n    a_n = 0\n    held = True\n    running = False\n    i = 0\n    while i < 4:\n        moves_shown[i] = 0\n        move_digits[i].set_y(0)\n        time_shown[i] = 0\n        time_digits[i].set_y(0)\n        i += 1\n    ui.tick.resume()\n\n\ndef leave_game():\n    ui.tick.pause()\n    ui.beeper.off()\n\n\ndef queue_slide(src):\n    # tile at cell src slides into the empty cell\n    global empty, a_n\n    n = grid[src]\n    a_tile[a_n] = n\n    a_from_x[a_n] = cell_x(src)\n    a_from_y[a_n] = cell_y(src)\n    a_to_x[a_n] = cell_x(empty)\n    a_to_y[a_n] = cell_y(empty)\n    a_n += 1\n    grid[empty] = n\n    grid[src] = 0\n    empty = src\n\n\ndef tap_cell(cell):\n    global moves, a_t, running, start_ms\n    r = cell // SIZE\n    c = cell % SIZE\n    er = empty // SIZE\n    ec = empty % SIZE\n    if cell == empty or (r != er and c != ec):\n        play_tone(196, 40)\n        return\n    if r == er:\n        step = 1 if c < ec else -1\n    else:\n        step = SIZE if r < er else -SIZE\n    # slide tiles one by one, starting from the one next to the gap\n    while empty != cell:\n        queue_slide(empty - step)\n    a_t = 0\n    moves += a_n\n    if moves > MAX_MOVES:\n        moves = MAX_MOVES\n    show_number(move_digits, moves_shown, moves)\n    if not running:\n        running = True\n        start_ms = lv.tick_get()\n    play_tone(520 + 60 * a_n, 25)\n\n\ndef animate():\n    global a_n, a_t, state, phase_t\n    a_t += 1\n    i = 0\n    while i < a_n:\n        tile = tiles[a_tile[i] - 1]\n        tile.set_pos(a_from_x[i] + (a_to_x[i] - a_from_x[i]) * a_t // ANIM_T,\n                     a_from_y[i] + (a_to_y[i] - a_from_y[i]) * a_t // ANIM_T)\n        i += 1\n    if a_t == ANIM_T:\n        a_n = 0\n        if is_solved():\n            state = S_WIN\n            phase_t = WIN_T\n            play_tone(1047, 300)\n\n\ndef read_tap():\n    global held\n    if indev is None:\n        return -1\n    if indev.get_state() != PRESSED:\n        held = False\n        return -1\n    if held:\n        return -1\n    held = True\n    indev.get_point(point)\n    x = point.x - BX - GAP\n    y = point.y - BY - GAP\n    if x < 0 or y < 0 or x % STEP >= CELL or y % STEP >= CELL:\n        return -1\n    c = x // STEP\n    r = y // STEP\n    if c >= SIZE or r >= SIZE:\n        return -1\n    return r * SIZE + c\n\n\ndef update_clock():\n    global seconds\n    s = (lv.tick_get() - start_ms) // 1000\n    if s > MAX_SECONDS:\n        s = MAX_SECONDS\n    if s != seconds:\n        seconds = s\n        show_time()\n\n\ndef show_result():\n    ui.end_moves.set_text(\"Moves: %d\" % moves)\n    ui.end_time.set_text(\"Time: %02d:%02d\" % (seconds // 60, seconds % 60))\n\n\ndef on_tick():\n    global phase_t\n    if state == S_WIN:\n        phase_t -= 1\n        if phase_t == 0:\n            leave_game()\n            ui.load_page(ui.PAGE_SOLVED)\n        return\n    if running:\n        update_clock()\n    if a_n:\n        animate()\n        return\n    cell = read_tap()\n    if cell >= 0:\n        tap_cell(cell)\n",
+    "handlers": {
+      "tick_tick": {
+        "widget": "tick",
+        "event": "TICK",
+        "body": "on_tick()\n"
+      },
+      "Menu_screen_loaded": {
+        "widget": "Menu",
+        "event": "SCREEN_LOADED",
+        "body": "big_titles()\n"
+      },
+      "Game_screen_loaded": {
+        "widget": "Game",
+        "event": "SCREEN_LOADED",
+        "body": "new_game()\n"
+      },
+      "Solved_screen_loaded": {
+        "widget": "Solved",
+        "event": "SCREEN_LOADED",
+        "body": "show_result()\n"
+      },
+      "btn_play_clicked": {
+        "widget": "btn_play",
+        "event": "CLICKED",
+        "body": "remember_pointer()\nplay_tone(660, 40)\nui.load_page(ui.PAGE_GAME)\n"
+      },
+      "btn_again_clicked": {
+        "widget": "btn_again",
+        "event": "CLICKED",
+        "body": "remember_pointer()\nplay_tone(660, 40)\nui.load_page(ui.PAGE_GAME)\n"
+      },
+      "btn_options_clicked": {
+        "widget": "btn_options",
+        "event": "CLICKED",
+        "body": "play_tone(520, 40)\nui.load_page(ui.PAGE_OPTIONS)\n"
+      },
+      "btn_back_clicked": {
+        "widget": "btn_back",
+        "event": "CLICKED",
+        "body": "play_tone(520, 40)\nui.load_page(ui.PAGE_MENU)\n"
+      },
+      "btn_end_menu_clicked": {
+        "widget": "btn_end_menu",
+        "event": "CLICKED",
+        "body": "play_tone(520, 40)\nui.load_page(ui.PAGE_MENU)\n"
+      },
+      "btn_quit_clicked": {
+        "widget": "btn_quit",
+        "event": "CLICKED",
+        "body": "leave_game()\nplay_tone(520, 40)\nui.load_page(ui.PAGE_MENU)\n"
+      },
+      "opt_shuffle_value_changed": {
+        "widget": "opt_shuffle",
+        "event": "VALUE_CHANGED",
+        "body": "set_shuffle(ui.opt_shuffle.get_value())\n"
+      },
+      "opt_sound_value_changed": {
+        "widget": "opt_sound",
+        "event": "VALUE_CHANGED",
+        "body": "set_sound(ui.opt_sound.has_state(lv.STATE.CHECKED))\n"
+      }
+    }
+  },
+  "currentPageId": "8855e8510bfd466490441747ba50b757",
+  "assets": {},
+  "variables": [],
+  "projectId": "95a15abd1c1844dbba50151671323747"
+}

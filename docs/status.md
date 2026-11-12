@@ -81,7 +81,7 @@ below as an open question, not as a formality.
 - C on boards: only MicroPython is uploaded. The C export is source code for another project.
 - An online catalogue of blocks, and blocks that depend on other blocks.
 - Extensions that run inside the IDE: blocks are data and MicroPython code, nothing more.
-- Blocks for PWM, ADC, I2C, SPI and UART: planned in [the plan](plugins-plan.md), not written.
+- Blocks for PWM, ADC, I2C, SPI and UART: planned in [the plan](https://github.com/Copper-And-Code/lvgl-mpy-studio/blob/main/docs/plugins-plan.md), not written.
 - A debugger. Errors are reported with file and line; there are no breakpoints.
 - macOS.
 

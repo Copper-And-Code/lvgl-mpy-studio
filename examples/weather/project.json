@@ -89,13 +89,13 @@
           "name": "temperature",
           "type": "label",
           "props": {
-            "x": 20,
-            "y": 90,
-            "width": 440,
-            "height": 60,
+            "x": 180,
+            "y": 88,
+            "width": 280,
+            "height": 52,
             "text": "-- °C",
             "textColor": "#FFD166",
-            "fontSize": 24,
+            "fontSize": 32,
             "longMode": "LV_LABEL_LONG_MODE_WRAP",
             "textAlign": "LV_TEXT_ALIGN_CENTER",
             "recolor": false
@@ -109,9 +109,9 @@
           "name": "condition",
           "type": "label",
           "props": {
-            "x": 20,
-            "y": 170,
-            "width": 440,
+            "x": 180,
+            "y": 153,
+            "width": 280,
             "height": 30,
             "text": "-",
             "textColor": "#9FB3C8",
@@ -199,12 +199,12 @@
           "type": "label",
           "props": {
             "x": 0,
-            "y": 40,
+            "y": 58,
             "width": 88,
-            "height": 28,
+            "height": 26,
             "text": "--",
             "textColor": "#FFFFFF",
-            "fontSize": 24,
+            "fontSize": 16,
             "longMode": "LV_LABEL_LONG_MODE_WRAP",
             "textAlign": "LV_TEXT_ALIGN_CENTER",
             "recolor": false
@@ -269,12 +269,12 @@
           "type": "label",
           "props": {
             "x": 0,
-            "y": 40,
+            "y": 58,
             "width": 88,
-            "height": 28,
+            "height": 26,
             "text": "--",
             "textColor": "#FFFFFF",
-            "fontSize": 24,
+            "fontSize": 16,
             "longMode": "LV_LABEL_LONG_MODE_WRAP",
             "textAlign": "LV_TEXT_ALIGN_CENTER",
             "recolor": false
@@ -339,12 +339,12 @@
           "type": "label",
           "props": {
             "x": 0,
-            "y": 40,
+            "y": 58,
             "width": 88,
-            "height": 28,
+            "height": 26,
             "text": "--",
             "textColor": "#FFFFFF",
-            "fontSize": 24,
+            "fontSize": 16,
             "longMode": "LV_LABEL_LONG_MODE_WRAP",
             "textAlign": "LV_TEXT_ALIGN_CENTER",
             "recolor": false
@@ -409,12 +409,12 @@
           "type": "label",
           "props": {
             "x": 0,
-            "y": 40,
+            "y": 58,
             "width": 88,
-            "height": 28,
+            "height": 26,
             "text": "--",
             "textColor": "#FFFFFF",
-            "fontSize": 24,
+            "fontSize": 16,
             "longMode": "LV_LABEL_LONG_MODE_WRAP",
             "textAlign": "LV_TEXT_ALIGN_CENTER",
             "recolor": false
@@ -479,12 +479,12 @@
           "type": "label",
           "props": {
             "x": 0,
-            "y": 40,
+            "y": 58,
             "width": 88,
-            "height": 28,
+            "height": 26,
             "text": "--",
             "textColor": "#FFFFFF",
-            "fontSize": 24,
+            "fontSize": 16,
             "longMode": "LV_LABEL_LONG_MODE_WRAP",
             "textAlign": "LV_TEXT_ALIGN_CENTER",
             "recolor": false
@@ -526,6 +526,143 @@
           "events": {
             "TICK": "clock_tick"
           },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "befa856f8f414bbc8e4a6886586ed09b",
+          "name": "current_icon",
+          "type": "image",
+          "props": {
+            "x": 48,
+            "y": 86,
+            "width": 120,
+            "height": 120,
+            "src": "sunny.png",
+            "fit": "contain",
+            "bgColor": "#0F1722",
+            "rotation": 0,
+            "zoom": 256,
+            "antialias": true,
+            "pivotX": 0,
+            "pivotY": 0
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "8bf13988e3174c13933ceea6d48d0f81",
+          "name": "day0_icon",
+          "type": "image",
+          "props": {
+            "x": 30,
+            "y": 29,
+            "width": 28,
+            "height": 28,
+            "src": "sunny.png",
+            "fit": "contain",
+            "bgColor": "#1E2A3A",
+            "rotation": 0,
+            "zoom": 56,
+            "antialias": true,
+            "pivotX": 0,
+            "pivotY": 0
+          },
+          "events": {},
+          "parentId": "76e884992ad44234b1dcf80bd577e031",
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "cb1f358a7d434401b3e397aa801e8cd6",
+          "name": "day1_icon",
+          "type": "image",
+          "props": {
+            "x": 30,
+            "y": 29,
+            "width": 28,
+            "height": 28,
+            "src": "cloudy.png",
+            "fit": "contain",
+            "bgColor": "#1E2A3A",
+            "rotation": 0,
+            "zoom": 56,
+            "antialias": true,
+            "pivotX": 0,
+            "pivotY": 0
+          },
+          "events": {},
+          "parentId": "5edb765480c9434f8f6016df2c91b222",
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "24bf9a10b1bd4811af5cc9203d40aa21",
+          "name": "day2_icon",
+          "type": "image",
+          "props": {
+            "x": 30,
+            "y": 29,
+            "width": 28,
+            "height": 28,
+            "src": "rain.png",
+            "fit": "contain",
+            "bgColor": "#1E2A3A",
+            "rotation": 0,
+            "zoom": 56,
+            "antialias": true,
+            "pivotX": 0,
+            "pivotY": 0
+          },
+          "events": {},
+          "parentId": "c4d0d69419c64dc9b7726225520ed4ac",
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "3b6cd3688b274818bb7f0fc0bdc49517",
+          "name": "day3_icon",
+          "type": "image",
+          "props": {
+            "x": 30,
+            "y": 29,
+            "width": 28,
+            "height": 28,
+            "src": "sunny.png",
+            "fit": "contain",
+            "bgColor": "#1E2A3A",
+            "rotation": 0,
+            "zoom": 56,
+            "antialias": true,
+            "pivotX": 0,
+            "pivotY": 0
+          },
+          "events": {},
+          "parentId": "49e4d9226c674080a1a9eead7e9fc5c1",
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "b40ad5981a924677bf2e7d6c34dfee1e",
+          "name": "day4_icon",
+          "type": "image",
+          "props": {
+            "x": 30,
+            "y": 29,
+            "width": 28,
+            "height": 28,
+            "src": "sunny.png",
+            "fit": "contain",
+            "bgColor": "#1E2A3A",
+            "rotation": 0,
+            "zoom": 56,
+            "antialias": true,
+            "pivotX": 0,
+            "pivotY": 0
+          },
+          "events": {},
+          "parentId": "3641a9a337a9413691fe8128cc8456ce",
           "customStyles": {},
           "animations": []
         }
@@ -653,7 +790,7 @@
     }
   ],
   "code": {
-    "module": "import forecast\n\ncity_index = 0\nfahrenheit = False\nseconds = 0\n\n\ndef refresh():\n    city = forecast.CITIES[city_index]\n    condition, temps = forecast.fetch(city)\n    ui.city.set_text(city)\n    ui.temperature.set_text(forecast.show(temps[0], fahrenheit))\n    ui.condition.set_text(condition)\n    names = (ui.day0_name, ui.day1_name, ui.day2_name, ui.day3_name, ui.day4_name)\n    values = (ui.day0_temp, ui.day1_temp, ui.day2_temp, ui.day3_temp, ui.day4_temp)\n    for index in range(5):\n        names[index].set_text(forecast.DAYS[index])\n        values[index].set_text(forecast.show(temps[index], fahrenheit))\n",
+    "module": "import forecast\n\ncity_index = 0\nfahrenheit = False\nseconds = 0\n\n\ndef refresh():\n    city = forecast.CITIES[city_index]\n    condition, temps = forecast.fetch(city)\n    ui.city.set_text(city)\n    ui.temperature.set_text(forecast.show(temps[0], fahrenheit))\n    ui.condition.set_text(condition)\n    names = (ui.day0_name, ui.day1_name, ui.day2_name, ui.day3_name, ui.day4_name)\n    values = (ui.day0_temp, ui.day1_temp, ui.day2_temp, ui.day3_temp, ui.day4_temp)\n    icons = (ui.day0_icon, ui.day1_icon, ui.day2_icon, ui.day3_icon, ui.day4_icon)\n    icon = {\"Sunny\": ui.img_sunny, \"Cloudy\": ui.img_cloudy, \"Rain\": ui.img_rain}[condition]\n    ui.current_icon.set_src(icon)\n    for index in range(5):\n        names[index].set_text(forecast.DAYS[index])\n        values[index].set_text(forecast.show(temps[index], fahrenheit))\n        icons[index].set_src(icon)\n",
     "handlers": {
       "main_screen_loaded": {
         "widget": "main",
@@ -688,7 +825,22 @@
     }
   },
   "currentPageId": "5649aec7db5041db8bc81b3cc7d1cd14",
-  "assets": {},
+  "assets": {
+    "images": [
+      {
+        "name": "sunny.png",
+        "data": "data:image/png;base64,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"
+      },
+      {
+        "name": "cloudy.png",
+        "data": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAMAAAD04JH5AAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAJbUExURQAAANjl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl79jl7wAAAJlUJNwAAADHdFJOUwAAAwcOFRweHRcQCQQBIUJmhqS6xNLc4d7Vyb2vkXZSMRQaS4Xg9v777NGmbjcPEkyY1vjvxoM7CwIic8j38LlkGySC2/zTeXTa13UZBk3F/cpYj/GhKT3YWmHj84p9sCYRk/nHM5tAmQiHOHHLK08sCq5q4jW0qlkWkGvoNs2X5jC/StSdJd8FYyNXVfp6or5lrTLdt+flNJrMKqx/60P0z2J+6UFvq7U5e4ygaFP1hJIfVO2jRqk8gbhIL04tEyhtP5zyqEnHscACAAAAAWJLR0QAiAUdSAAAAAd0SU1FB+oLDBMnOd2tO6kAAARPSURBVHja7ZoLW1RFHIf5LeAm7KIGYXhB0WCXFLykySIXQU00NimQVCxZoohK0CK0wnDLhKzFyguWmnkhSi26kmUX7Pb/Wp09IO7Cssw5Z87M0/PM+wXe95k5l5k5JyFBoVAoFArF/x3AkZiUPMN5z8yUVJcbYt3u1LRZs+fcm55xX+bc+7PmzV+wMHvR4hwXhGTAsWTpA+m5eR6Kwpv/4LLlBYV2DwXcK1auWv0QxcazZu3D64psHAf4iteXlFJcyso3VNg0DHBXbtzkoWnZ/MiWNBsSgJlVWxn0+lRse7Sa90TA/9j2GjZ9mJrHn0jlWQBU1Nax68Pk7ajnNwhwP5nBOPoR7Nzl51QA/+4Gw3qNPU/lcBkEFD29x4xfuxL2NnIoQKDpGXN+jeZnLRcg8JyBq38SWS0WC5D0vBU/UeYsSwVofWGzJb92M7xooQC+l/Is+on2tZkuANrzLfuJyqtNBgD7V3PwE606YK4AhS9z8VPpK6YmAe71Xj4B1FFgogB4tYOTn6gzYCKg6CA3P3mXGx4C4FCpdfE4W+sNB7y2naOf6HWHsQLgDauPwGi6DhsMqH6Tq5+o22WkANjAdwCIjgQNBaS8xdlPNMfIjYC3rb+EJnK0gj0Ajne4+8m7i30IcKyHfwAt62UNAN61tgyKTc9x5oDegzb4yfsec8BxO2aAqIn1IsD7vN7D0awtZAsAam3xU1cbQwDgSHXyfQ+NE2rHdHJ/8cq+Ex8cNb8Vik923IsAjuIPP8q1y63THScArpO1p+y4+yM5PeWGHe7G2jM22zWap7oNcGD3Tvv1RP1nY84BUPExz/VfHEoWxygA2uaL0Wt8EpxUAATnCfNrT8NjEwqAcyL9ROdXTAioThfqp5oLUQt0JDaJ9RN9ejFiErT9z2eiA6g8YqMI5yXhfgpdHh8C4Ip4v3YnJI8HVG6SERC6sz4GqmT4ifa2jgUEbFp5TMfVsW0aBkweAlvmc30OgAuS/DSo71HQ+oWsgG1L9IAZUu6BMHVf6gEFZbICag7pAe327D9YuKYHXPZIC7iuB2RL89MNXzhA2l2oPQt7wwFb5AV0+sMBX8kLGHSFA77mfRTHTrd+EbYMSQv4Rg+oNPVBlAuz9YCkDFn+oYHRt+G3sgJOfacvCPB9SFLAgsTRAKeQPXEMRhckCXAvlOPv3z+2LMa6H6QE/Hjn0Bb+HTL8dcN3dyaH+yUE/HT3Bxf4rniE+6/ejNyd5pwW7ff87IvYnwNBPh+o2fklOeqEArjF7wstC1m/Tjqj+U1kwdzhGKdUw1nC/LlLY57T/d4paGlyaWCKk8o/+voF6EODI1OdVsN39sQau/2Zt5PinZYn/vlXg8dGfcf1kWl+c4Rr5HZngz27tb+b+84xfL8HWhsXbTxf0tNVVhryhjjgDQ3ld+z7p+pmCvNPnnC7Cp31BRf/5cOtlmBaQNAPxwqFQqFQKBQKhcIg/wGkywXnSVhmPQAAAABJRU5ErkJggg=="
+      },
+      {
+        "name": "rain.png",
+        "data": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAAGYktHRAAAAAAAAPlDu38AAAAHdElNRQfqCwwTJzndrTupAAAKf0lEQVR42u3deawdZRnH8U+5LW0pUKEUyibIUkFaERFFClIWWQTZXAibiVoMCmqMMe77FkWMigsqcYnGGIiyCFFRwqIsShBMBYqIWHalQFlautBb/3jmxmntzD33njlnZu59v8lJb3POmZnnvL/3ebfnfV4SiUQikUgkEolEIpFIjBcm1P0AdbDooSdhI2yMzbAppmV/T8MkrMFzeAbPZn8/hRXZe2v32H6Luk3pmjEvgKywYTK2xWzMwYvxImyDLYUYpmT/DmAtVmFl9lqOR7PX33EXFuE+LMWaNgpiTAogV+jTsCcOxmswV4hgSgW3GRQe4V/4C67Hzdn/V0EbBDGmBJBz7TvjaByPfUUN7zVr8DBuwuW4Bo9oeFMxJgSQFfxE7IUzcKIQwUY1PdLzonm4BBeJ5qKRTUSrBZCr8XvgTJwsXHyTeBAX4we4E4NNEkIrBZBr42firXinqPFN5gEhgguFKBrRR2idALLCHxCduo+LDl5drn6krMVt+JLoJ6yoWwStEkBW+JuLGv9+4QHayDL8FF/EYurzBq0QQM7l74zPibZ+Yt3PVQG34MNixFBL36DxAsgV/j44H/PqfqaKeQSfxg+xqt8iaLQAcoU/H98Uw7yxyDKci/PwbD9F0FgB5Ar/CFwgpm3HMqvxXdGxXdovETRSALnCPwg/wi51P1OfGMT38UE81Q8RNG74lCv8l4o2f7wUPlEeC4QXmJr7LXp6wyayA76Ovet+kBoYwDl4Dyb2WgSNEkBm7DR8SnT8xiuTxfDwjazjFSunMQLIjJyAt4sFnfHOdHwer6B3ImiEAHLG7Y8PiKCMRPR/PoMZvbpBIwSQ8QJ8TLT/if9xJM7ChF54gdoFkDPqDDHmT6zLRjgbr6L6pqB2AWTMzowcC/P7vWBbvA+bVH3hWgWQC+hYIII0E8Uci6Oo1gs0wQPMxSl1P0QL2EQsg0+v8qK1CSA37HuL1PHrlANxGNV5gbo9wGycVPMztIkpOE01Ye2oSQA59R6n+bF8TeNgvKyqi9XpAbYU4duJkTFDdAgraQbqFMArjc/Fnip4rYpmB/sugJxqj9aDce044SVi9NQ1dXmArY3v1b5u2VQWG9ltM1CXAOZi15ruPVbYXywbd0Xfpl7XU+o8se6fGD17CE/6QDcX6YkAcoU9Rcxj74rd8ULMktx/FcwSQ+hmCGC9Qt9TzFjNF6Hcs1Q4eZFAeNBd8IduLtK1AHIFv7ko9NPEZMVW9f4+Y54JsoDZRQ89OeqtZV0JICv8jUXBv1cUfKrp/WOWEMLa0V5gVPsCcrV+JxHCdYbwAIn+cgdOx+2MboPpiAWQW8WbL7Y571f3rzDOWYh34zpGLoIRCSAXwPEmfEVaxm0K/xDR1NczMhF0LIBczT8dX5U6eU3jr6IpXkjnIuhoJnC95dtzpcJvInvjy0aYNGNYAay3P/9ckVgx0UyOFFvKBjpdI+h0LWALsUFh97otTJQyQewhOIjOFopKBbBezP7RdVuX6IithBfoaK2lEw+wi1DVQN2WJTrmSBzK8F6gUAC5L54s5vYT7WET4bWHXS4ezgPMwpvrtiYxKuaLrOilDCeAV4vwo0T7mInDKW8GNiiA3BcOl7Zqt5n5mFr2gTIPsIU0z9929sL2ZR8oE8B2YrUv0V62xm5lHygTwI4iaUOivUyWTd4V9QPKBDBTHJ6UaDejbgK20dBEkokRMVNJOZYJIIVtjw1mKJnFLRPAyrqfPFEJk4zSAyyp+8kTlbBM5CDeIGUCeEycfpVoN/8WR9ptkDIBPCyOTE20m/+UvVkmgAfFaRaJ9rJGHHNbGCM4XBOwsG4LEl3xpDjAspAyATyPa+u2INEVQ4dbF7JBAeTcxbW63H2aqJVr8HTZB4aLB7gHV9VtRWJUPI4rKd8jUCiA7EvP4yeiLUm0i9/J9gyW0UlQ6I3iBOxEe1gqzigedja3VACZF1gtzu9ZNNzFEo3hIlniiOG2iHW6MeQufFaaGGoDd4q9mx2dQjqsAHIXuVicbJmmh5vLUnwCd3f6hY48QK4pOE8cbDjYyfcSfWUFvoDLqHh3cO6Cz+Aj+EZ2w0QzWCF2Bp+P53uSH2CILLZsKt6FD0lbxevmWVHzv4bnepohZIhMBAMiOdQnRdbKus8eGI/cJ37/n2N1X3IEDZGLMp2Ft+FMKfd/v1iJK8TBkrdj7WjTxHUd9JnLGzQbp+IN2d/pBLDqWYk/4wJcLhuWd3PKeGVRvzkhbIdD8DpxJsAO0vaybhjEo2JG9mL8Hk/QXcEPUXnYd65pmCTEMAcvF9uUhnIFT81ek0Vfoqtkh2OACaKgV2G5iON7QEzA3Yw/4Z+yqd0qCj5/456SE8REsW99ugg5ny7y3ifvEAyKwn8ST2X/LsdglQWeSCQSiUQikUgkEolxTSP3/y+4cvnQs03JXsvEJIkLj2nvWZNNtKtxAsh+pMkiP+GpYrn5XjH/fR3WtlEETbWrUQLIfiQ4R5xGkv9FHhTZL6+lXZ6gyXY1ccXuhSLYZP1fYge8AzeI8LTKyLnmIXpRG/tuVyc0RgC5WnKoWE7eELuJ9YNKNqrkCn4fnCAWqhbhFwuuXL6Y7mtkHXaNhMYIIGMqTlSc02aJimIRcwVzFL5j3ZyIJ4kzeDqOrm2KXSOlaWFcc3BAyftX4bkK7zcDH/X/CTHn4WxMyAmlTXZ1TCMEkPuRX684yPQB/IZKO0oHYN+C9/bT5VmINdrVMY0QQMbWOKbk/WvE8WhdkxXMgGj3i046Xakkt04T7RoNtQsgV0vmiaihDbESl6h2V9KuIqq5iD/qYitcjXaNiNoFkDFJdLyKTrhYKIZJVfbKj1ScDPsJEXXb7f36ZtdoaYoAdhe57Yu4QuQsqorNcHzJ+zeJgxjbZteIqVUA6w3Fio6hfUyW6aLCWrKv4rMQBoVbHnWvvEa7RkwTPMB05bXxBvytihvlJn6OU9zDvxdX03XB9M2ubmiCAPZTPBRbI2pjlZMkOyg/A/EqLG6hXaOiNgHkauMJijOT3yOGSVV2/g5RfALqMlyqi7WAftvVLXV7gJ1wRMn7vxarZVUxRfmU7K24pYV2jZpaBJCrjYeJ8fiGeFrsf6tyZW6OGJcXcZnYlNE2u0ZNnR5gaIGk6BluETWya3IFc4zi49UfVM2UbN/sqoI6BbC3OJiyiMtERpKqmIljS96/VrTNbbOrK/ougFxtPBZbFnxsMX5LpZ2/eZhb8LGV+KUuAjL6bVdV1OUBNsWBJe9fLcbjVTFRuOWiKdk7VDMl22+7uqYuAQwoLowVYii2psJaspsY/hVxpWEOVmioXV1TlwCeVjzculUkQ+ia9aZkdyz42BL8ikrccl/sqpK+CyD7kdfiWzK3m2OxyHvzeIW3nKp8TH6jCqZka7CrEuqMCbwbp4mcQnuINCiX4jYq7SRNURyNMzQlW2U4Vr/sqoRa9wX0Ohw7u/4k/BinbOAjd4nm4f4e3LfXYeaVUGtUcM5t9pLV+B4Osu7S7HJ8G/e31K5KaNTOoF6Qq40H4ywxRbsEPxNp1Vc2tXb2gzEvANYZDWwsVuhWZK/GuuZEIpFIJBKJXvJfeZ3PuKZjvtsAAAAASUVORK5CYII="
+      }
+    ]
+  },
   "variables": [],
   "projectId": "39537252a3f742e1bbf6ab241cfe486b",
   "board": {
@@ -740,7 +892,7 @@
     {
       "id": "16961e21ed154c1abc217ebfdccd96ea",
       "name": "forecast",
-      "source": "\"\"\"Forecast data. On a board with Wi-Fi, fetch() is the place to call a weather service.\"\"\"\n\nCITIES = (\"Catania\", \"Milan\", \"London\")\nDAYS = (\"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\", \"Sat\", \"Sun\")\n_DATA = {\n    \"Catania\": (\"Sunny\", (24, 25, 23, 22, 24)),\n    \"Milan\": (\"Cloudy\", (12, 11, 9, 13, 14)),\n    \"London\": (\"Rain\", (8, 7, 9, 6, 8)),\n}\n\n\ndef fetch(city):\n    \"\"\"Return (condition, temperatures in Celsius for five days).\"\"\"\n    return _DATA[city]\n\n\ndef show(celsius, fahrenheit):\n    if fahrenheit:\n        return \"%d F\" % (celsius * 9 // 5 + 32)\n    return \"%d C\" % celsius\n"
+      "source": "\"\"\"Forecast data. On a board with Wi-Fi, fetch() is the place to call a weather service.\"\"\"\n\nCITIES = (\"Catania\", \"Milan\", \"London\")\nDAYS = (\"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\", \"Sat\", \"Sun\")\n_DATA = {\n    \"Catania\": (\"Sunny\", (24, 25, 23, 22, 24)),\n    \"Milan\": (\"Cloudy\", (12, 11, 9, 13, 14)),\n    \"London\": (\"Rain\", (8, 7, 9, 6, 8)),\n}\n\n\ndef fetch(city):\n    \"\"\"Return (condition, temperatures in Celsius for five days).\"\"\"\n    return _DATA[city]\n\n\ndef show(celsius, fahrenheit):\n    if fahrenheit:\n        return \"%d °F\" % (celsius * 9 // 5 + 32)\n    return \"%d °C\" % celsius\n"
     }
   ]
 }

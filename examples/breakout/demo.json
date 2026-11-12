@@ -1,0 +1,10 @@
+{
+  "id": "breakout",
+  "name": "Breakout",
+  "description": "Move the paddle, launch the ball, and clear the coloured bricks without running out of lives.",
+  "kind": "game",
+  "page": null,
+  "prompt": "Implement the Breakout game using the LVGL MCP server.",
+  "prompt_note": null,
+  "order": 40
+}

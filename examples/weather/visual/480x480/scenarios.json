@@ -51,7 +51,7 @@
         },
         {
           "action": "assert",
-          "expr": "ui.temperature.get_text() == '53 F'"
+          "expr": "ui.temperature.get_text() == '53 °F'"
         }
       ]
     }

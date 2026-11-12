@@ -29,6 +29,7 @@ def test_web_folder_has_the_page_runtime_and_game(tmp_path):
     names = {path.name for path in folder.iterdir()}
     assert {"index.html", "lms_web.js", "micropython.mjs", "micropython.wasm", "game", "licenses"} <= names
     page = (folder / "index.html").read_text(encoding="utf-8")
+    assert '<html lang="en">' in page
     assert "<title>Gioco &lt;bello&gt;</title>" in page and 'width="320" height="240"' in page and "{" + "width}" not in page
     game = sorted(path.name for path in (folder / "game").iterdir())
     assert "main.mpy" in game and "display_driver.mpy" in game and "files.json" in game

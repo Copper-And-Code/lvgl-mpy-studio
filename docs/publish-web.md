@@ -1,6 +1,6 @@
 # Publishing games on the web
 
-[Italiano](publish-web.it.md)
+[Italiano](https://github.com/Copper-And-Code/lvgl-mpy-studio/blob/main/docs/publish-web.it.md)
 
 This guide explains how to put online one or more games made with LVGL MPY Studio, so that anyone can play them in the browser from a link, also on a phone. The example uses **Hostinger**, but the steps apply to any web host: it is only a matter of copying files.
 

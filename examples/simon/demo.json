@@ -1,0 +1,10 @@
+{
+  "id": "simon",
+  "name": "Simon",
+  "description": "Watch the four coloured pads and repeat an increasingly long sequence, with visual and audible cues.",
+  "kind": "game",
+  "page": null,
+  "prompt": "Implement the Simon game using the LVGL MCP server.",
+  "prompt_note": null,
+  "order": 50
+}

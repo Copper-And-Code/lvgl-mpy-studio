@@ -1,6 +1,6 @@
 # From a prompt to an app
 
-This is a complete session of an AI agent building an app with LVGL MPY Studio through the [MCP server](mcp.md), starting from one sentence. It is recorded so that it can be replayed: the calls are in [`examples/weather/mcp-session.json`](../examples/weather/mcp-session.json) and the result is [`examples/weather/project.json`](../examples/weather/project.json). A test replays the session at every run of the suite and checks that it still builds the same app.
+This is a complete session of an AI agent building an app with LVGL MPY Studio through the [MCP server](mcp.md), starting from one sentence. It is recorded so that it can be replayed: the calls are in [`examples/weather/mcp-session.json`](https://github.com/Copper-And-Code/lvgl-mpy-studio/blob/main/examples/weather/mcp-session.json) and the result is [`examples/weather/project.json`](https://github.com/Copper-And-Code/lvgl-mpy-studio/blob/main/examples/weather/project.json). A test replays the session at every run of the suite and checks that it still builds the same app.
 
 ## The prompt
 

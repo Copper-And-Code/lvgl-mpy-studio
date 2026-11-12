@@ -79,7 +79,7 @@ anyone joining the project.
 What this means for a reader:
 
 - the history visible here begins at 0.5.0; what came before cannot be inspected commit by commit;
-- [the changelog](../CHANGELOG.md) lists what each version changed, from the first one;
+- [the changelog](changelog.md) lists what each version changed, from the first one;
 - [decisions.md](decisions.md) keeps the dated decisions of the earlier period;
 - the author keeps the earlier history.
 

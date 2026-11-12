@@ -13,8 +13,9 @@ requires-python = ">=3.11"
 dependencies = ["PySide6==6.12.0", "mpremote==1.29.0", "pyserial==3.5", "qtawesome==1.4.2"]
 
 [project.optional-dependencies]
-dev = ["pytest>=8,<10", "pytest-qt>=4.4,<5", "hypothesis>=6,<7", "ruff>=0.17,<1"]
+dev = ["pytest>=8,<10", "pytest-qt>=4.4,<5", "hypothesis>=6,<7", "ruff>=0.17,<1", "playwright==1.65.1"]
 packaging = ["pyinstaller==6.22.3"]
+site = ["mkdocs-material==9.8.1", "mkdocs-include-markdown-plugin==7.3.1"]
 
 [project.scripts]
 lvgl-mpy-studio = "lvgl_mpy_studio.cli:main"
