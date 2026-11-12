@@ -1016,7 +1016,8 @@
 
 
 <h1 id="from-a-prompt-to-an-app">From a prompt to an app<a class="headerlink" href="#from-a-prompt-to-an-app" title="Permanent link">&para;</a></h1>
-<p>This is a complete session of an AI agent building an app with LVGL MPY Studio through the <a href="../mcp/">MCP server</a>, starting from one sentence. It is recorded so that it can be replayed: the calls are in <a href="https://github.com/Copper-And-Code/lvgl-mpy-studio/blob/main/examples/weather/mcp-session.json"><code>examples/weather/mcp-session.json</code></a> and the result is <a href="https://github.com/Copper-And-Code/lvgl-mpy-studio/blob/main/examples/weather/project.json"><code>examples/weather/project.json</code></a>. A test replays the session at every run of the suite and checks that it still builds the same app.</p>
+<p>This is a complete session of an AI agent building an app with LVGL MPY Studio through the <a href="../mcp/">MCP server</a>, starting from one sentence. It is recorded so that it can be replayed: the calls are in <a href="https://github.com/Copper-And-Code/lvgl-mpy-studio/blob/main/examples/weather/mcp-session.json"><code>examples/weather/mcp-session.json</code></a> and the result is <a href="https://github.com/Copper-And-Code/lvgl-mpy-studio/blob/main/examples/weather/mcp-result.json"><code>examples/weather/mcp-result.json</code></a>. A test replays the session at every run of the suite and checks that it still builds the same app.</p>
+<p>The Weather demo on the website and <code>examples/weather/project.json</code> are that result reworked later by another agent, while preparing the site: weather icons and a new layout. They are not what this session produced.</p>
 <h2 id="the-prompt">The prompt<a class="headerlink" href="#the-prompt" title="Permanent link">&para;</a></h2>
 <blockquote>
 <p>Build a weather station for the ESP32-4848S040: the current temperature of a city, a five-day forecast, a button to change city, and a settings page to switch between Celsius and Fahrenheit. Check that it works before you finish.</p>
@@ -1067,10 +1068,10 @@
 <h2 id="replaying-it">Replaying it<a class="headerlink" href="#replaying-it" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="nv">QT_QPA_PLATFORM</span><span class="o">=</span>offscreen<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>pytest<span class="w"> </span>tests/test_mcp_demo.py
 </code></pre></div>
-<p>To open the result, load <code>examples/weather/project.json</code> in the IDE and press F5, or run:</p>
-<div class="highlight"><pre><span></span><code>lvgl-mpy-studio<span class="w"> </span>run<span class="w"> </span>examples/weather/project.json
-lvgl-mpy-studio<span class="w"> </span><span class="nb">test</span><span class="w"> </span>examples/weather/project.json
+<p>To open the result of the session, load <code>examples/weather/mcp-result.json</code> in the IDE and press F5, or run:</p>
+<div class="highlight"><pre><span></span><code>lvgl-mpy-studio<span class="w"> </span>run<span class="w"> </span>examples/weather/mcp-result.json
 </code></pre></div>
+<p><code>lvgl-mpy-studio test examples/weather/project.json</code> runs the visual tests of the reworked version.</p>
 
 
 

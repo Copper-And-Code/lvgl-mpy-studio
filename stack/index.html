@@ -729,6 +729,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#one-engine-four-places-it-runs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        One engine, four places it runs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#layers-1-and-2-registers-and-firmware" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -983,6 +994,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#one-engine-four-places-it-runs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        One engine, four places it runs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#layers-1-and-2-registers-and-firmware" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1121,6 +1143,29 @@ says in which repository each layer lives.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="one-engine-four-places-it-runs">One engine, four places it runs<a class="headerlink" href="#one-engine-four-places-it-runs" title="Permanent link">&para;</a></h2>
+<p>Nothing here is an emulation or a mock-up. The board, the simulator, the single-file
+executables for Linux and Windows and the browser version all run <strong>the real code, compiled</strong>:
+the MicroPython interpreter and the LVGL library in C, built from the same sources at the same
+pinned versions (<code>docs/target.md</code>), for each processor. The application itself is the same
+MicroPython code everywhere; for the board and the executables it is compiled to bytecode by the
+same <code>mpy-cross</code>. The simulator is
+MicroPython's own Unix and Windows ports with LVGL compiled in; an executable is that
+simulator with the application packed inside; the browser version is the same code compiled to
+WebAssembly. What differs is only the thin layer that reaches the screen and the input: a
+display driver on the board, a window on the PC, a canvas in the browser.</p>
+<p>The consequence matters more than the design: <strong>every fix and every improvement that the
+MicroPython and LVGL projects release reaches all four at once.</strong> A faster renderer, a new
+widget, a corrected font or a fixed garbage collector improves the application on the board,
+what the developer sees in the simulator, the programs given to users and the demos on the web,
+with no porting work in this repository. An application also draws and behaves the same everywhere,
+because nothing in between reinterprets it. What does not carry over is the machine: a board
+has less memory and a slower processor than a PC, so the IDE measures memory on the board itself
+and the status page says which checks were made on hardware.</p>
+<p>What it takes is to move the pin: rebuild the runtimes with the new versions, rebuild the board
+firmware in <a href="https://github.com/Copper-And-Code/mpy-lvgl-boards">mpy-lvgl-boards</a>, and run the
+tests, which compare the renderings pixel by pixel. That step is deliberate, so that an upstream
+change is adopted when it has been checked, not when it happens to land.</p>
 <h2 id="layers-1-and-2-registers-and-firmware">Layers 1 and 2: registers and firmware<a class="headerlink" href="#layers-1-and-2-registers-and-firmware" title="Permanent link">&para;</a></h2>
 <p>The firmware is a separate repository, <a href="https://github.com/Copper-And-Code/mpy-lvgl-boards">mpy-lvgl-boards</a>,
 by the same author. Its documents hold the measurements and the bench logs; what follows is a

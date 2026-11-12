@@ -1038,6 +1038,7 @@
 <li><code>page</code> is the page used for the thumbnail, or <code>null</code> for the initial page.</li>
 <li><code>order</code> is a unique integer that controls the gallery order.</li>
 <li>If no prompt exists, set <code>prompt</code> to <code>null</code> and explain that in <code>prompt_note</code>. Never reconstruct or invent one.</li>
+<li>If the demo was changed after the prompt produced it, keep the prompt and say what changed, and who changed it, in <code>prompt_note</code>.</li>
 </ul>
 <p><strong>When an agent creates a demo from a prompt, save that prompt in <code>demo.json</code> at the same time.</strong> Preserving the connection between prompt and result is the purpose of the gallery.</p>
 <h2 id="3-build-and-try-the-site">3. Build and try the site<a class="headerlink" href="#3-build-and-try-the-site" title="Permanent link">&para;</a></h2>
