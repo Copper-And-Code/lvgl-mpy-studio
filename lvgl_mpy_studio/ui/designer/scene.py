@@ -621,14 +621,21 @@ class DesignerView(QGraphicsView):
         return self.designer_scene.document
 
     def arm_widget(self, widget_type):
+        """The next click on the page places this widget; None takes that back."""
         self.pending_type = widget_type
-        self.viewport().setCursor(Qt.CrossCursor)
+        if widget_type:
+            self.viewport().setCursor(Qt.CrossCursor)
+        else:
+            self.viewport().unsetCursor()
 
     def mousePressEvent(self, event):
         if self.pending_type and event.button() == Qt.LeftButton:
             self.designer_scene.add_widget(self.pending_type, self.mapToScene(event.position().toPoint()))
-            self.pending_type = None
-            self.viewport().unsetCursor()
+            # The toolbox armed every page, not knowing which one is shown: the others must not
+            # place a second widget at the first click they get.
+            for view in self.window().findChildren(DesignerView) or [self]:
+                view.arm_widget(None)
+            self.arm_widget(None)
             event.accept()
             return
         super().mousePressEvent(event)

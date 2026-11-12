@@ -32,7 +32,8 @@ def run(tmp_path, *arguments):
 
 def test_selftest_lists_and_refuses_unknown_scenarios(tmp_path):
     listed = run(tmp_path, "--list")
-    assert listed.returncode == 0 and "tour" in listed.stdout and "save" in listed.stdout
+    assert listed.returncode == 0
+    assert [line.split()[0] for line in listed.stdout.splitlines()] == ["tour", "save", "pages", "resolution", "assets", "modules", "components", "errors"]
     unknown = run(tmp_path, "nothing")
     assert unknown.returncode == 2 and "Unknown scenario: nothing" in unknown.stdout
     assert not list(tmp_path.iterdir())  # neither wrote a report
@@ -44,5 +45,6 @@ def test_selftest_runs_every_scenario_in_the_real_ide(tmp_path):
     assert result.returncode == 0, result.stdout + result.stderr
     assert "RESULT: PASSED" in text and "0 failed, 0 skipped" in text
     assert "Touch the button in the simulator: the handler runs and the screen changes" in text
+    assert text.count("\n== ") == 8  # every scenario ran
     assert (tmp_path / "report/work/save/saved.json").exists()
     assert not list((tmp_path / "report").glob("*.png"))  # pictures are taken only of what failed

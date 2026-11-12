@@ -8,7 +8,7 @@ from contextlib import contextmanager
 
 from PySide6.QtCore import QEventLoop, QPoint, QPointF, Qt, QTimer
 from PySide6.QtTest import QTest
-from PySide6.QtWidgets import QAbstractSpinBox, QApplication, QComboBox, QDialogButtonBox, QFileDialog, QLineEdit, QMessageBox
+from PySide6.QtWidgets import QAbstractSpinBox, QApplication, QComboBox, QDialogButtonBox, QFileDialog, QInputDialog, QLineEdit, QMessageBox, QPushButton
 
 from lvgl_mpy_studio.core.events import handler_name
 from lvgl_mpy_studio.ui.designer.scene import Toolbox
@@ -175,7 +175,7 @@ class Ide:
         self.check(view is not None, "no page is open in the designer")
         return view
 
-    def add_widget(self, widget_type, x, y):
+    def add_widget(self, widget_type, x=20, y=20):
         """Double-click the widget in the toolbox, then click the page where it goes; return its name."""
         toolbox = self.window.findChild(Toolbox)
         item = next((entry for entry in toolbox.widget_items() if entry.data(Qt.UserRole) == widget_type), None)
@@ -187,7 +187,7 @@ class Ide:
         view = self.designer()
         self.equal(view.pending_type, widget_type, "widget armed by the double click")
         self.pause()
-        before = {widget.name for widget in view.designer_scene.page.widgets}
+        before = set(self.project.used_names)
         QTest.mouseClick(view.viewport(), Qt.LeftButton, pos=view.mapFromScene(QPointF(x, y)))
         added = [widget.name for widget in view.designer_scene.page.widgets if widget.name not in before]
         self.equal(len(added), 1, f"widgets added by the click for “{widget_type}”")
@@ -222,12 +222,11 @@ class Ide:
 
         return visit(self.window.properties.model.invisibleRootItem())
 
-    def set_property(self, name, value):
-        """Click the value in the Properties panel, type the new one and press Enter."""
+    def _open_editor(self, name):
+        """Click the value of the property; return the field to type in."""
         panel = self.window.properties
         sleep(30)  # the panel is rebuilt after a selection or a change
         self.check(self._property_item(name) is not None, f"the Properties panel has no “{name}” for {panel.names}")
-        widget_name = panel.names[0]
 
         def open_editor():
             item = self._property_item(name)  # looked up again: a rebuild replaces the items
@@ -241,12 +240,109 @@ class Ide:
 
         editor = open_editor() or open_editor()  # the first click may only give the panel the focus
         self.check(editor is not None, f"clicking “{name}” opened no editor")
+        return editor
+
+    def _wait_property(self, widget_name, name, expected):
+        found = lambda: self.project.find_widget(widget_name).props.get(name)  # noqa: E731
+        matches = expected if callable(expected) else lambda value: value == expected
+        self.wait(lambda: matches(found()), f"{widget_name}.{name} to become {expected!r}" if not callable(expected) else f"{widget_name}.{name} to be set", 3000)
+        self.pause()
+        return found()
+
+    def set_property(self, name, value):
+        """Click the value in the Properties panel, type the new one and press Enter."""
+        widget_name = self.window.properties.names[0]
+        editor = self._open_editor(name)
         editor.selectAll()
         QTest.keyClicks(editor, str(value))
         self.pause()
         QTest.keyClick(editor, Qt.Key_Return)
-        self.wait(lambda: self.project.find_widget(widget_name).props.get(name) == value, f"{widget_name}.{name} to become {value!r} (it is {self.project.find_widget(widget_name).props.get(name)!r})", 2000)
+        return self._wait_property(widget_name, name, value)
+
+    def choose_file_property(self, name, path):
+        """Click the “…” button of an image or font property, choose the file and confirm."""
+        widget_name = self.window.properties.names[0]
+        editor = self._open_editor(name)
+        button = editor.parentWidget().findChild(QPushButton)
+        self.check(button is not None, f"“{name}” has no button to choose a file")
+        self.answer_file_dialog(path)
+        QTest.mouseClick(button, Qt.LeftButton)
+        self.equal(editor.text(), str(path), "file shown in the field after the dialog")
         self.pause()
+        QTest.keyClick(editor, Qt.Key_Return)
+        return self._wait_property(widget_name, name, lambda value: bool(value))
+
+    def tree_item(self, text):
+        """The entry of the project tree whose text starts with text."""
+        tree = self.window.project_tree
+
+        def visit(item):
+            if item.text(0).startswith(text):
+                return item
+            return next((found for found in (visit(item.child(row)) for row in range(item.childCount())) if found), None)
+
+        found = next((item for item in (visit(tree.topLevelItem(row)) for row in range(tree.topLevelItemCount())) if item), None)
+        self.check(found is not None, f"the project tree has no entry “{text}”")
+        return found
+
+    def click_tree(self, text, double=False):
+        tree = self.window.project_tree
+        item = self.tree_item(text)
+        tree.scrollToItem(item)
+        centre = tree.visualItemRect(item).center()
+        QTest.mouseClick(tree.viewport(), Qt.LeftButton, pos=centre)
+        if double:
+            QTest.mouseDClick(tree.viewport(), Qt.LeftButton, pos=centre)
+        sleep(0)
+        self.pause()
+
+    def choose_resolution(self, text):
+        """Open the resolution button of the toolbar and choose the entry that starts with text."""
+        selector = self.window.resolution_selector
+        selector.menu().aboutToShow.emit()
+        action = next((entry for entry in selector.menu().actions() if entry.text().startswith(text)), None)
+        self.check(action is not None, f"the resolution menu has no entry “{text}”")
+        self.choose(action)
+
+    def answer_resize(self, mode):
+        """The dialog that asks what to do with the widgets: pick the mode and press Apply."""
+        from lvgl_mpy_studio.ui.resolution import ResizeDialog
+
+        def handler(dialog):
+            if not isinstance(dialog, ResizeDialog) or mode not in dialog.options:
+                self._unexpected.append(describe(dialog))
+                dialog.reject()
+                return
+            QTest.mouseClick(dialog.options[mode], Qt.LeftButton, pos=QPoint(8, dialog.options[mode].height() // 2))
+            QTest.mouseClick(dialog.findChild(QDialogButtonBox).button(QDialogButtonBox.Ok), Qt.LeftButton)
+
+        self.answer_next_dialog(handler)
+
+    def answer_input(self, text):
+        """A dialog that asks for a name: type it and press OK."""
+        def handler(dialog):
+            if not isinstance(dialog, QInputDialog):
+                self._unexpected.append(describe(dialog))
+                dialog.reject()
+                return
+            field = dialog.findChild(QLineEdit)
+            field.selectAll()
+            QTest.keyClicks(field, text)
+            QTest.mouseClick(dialog.findChild(QDialogButtonBox).button(QDialogButtonBox.Ok), Qt.LeftButton)
+
+        self.answer_next_dialog(handler)
+
+    def error_data(self, text):
+        """What the Errors panel knows of the first row whose message has text: handler or module, and line."""
+        panel = self.window.errors
+        item = next((panel.topLevelItem(row) for row in range(panel.topLevelItemCount()) if text in panel.topLevelItem(row).text(2)), None)
+        self.check(item is not None, f"the Errors panel has no row with “{text}”: {self.errors()}")
+        return item, item.data(0, Qt.UserRole) or {}
+
+    def errors(self):
+        """The rows of the Errors panel, as (where, line, message)."""
+        panel = self.window.errors
+        return [tuple(panel.topLevelItem(row).text(column) for column in range(3)) for row in range(panel.topLevelItemCount())]
 
     def open_handler(self, event):
         """Open the Events tab of the Properties panel and double-click the event."""
@@ -269,13 +365,22 @@ class Ide:
         self.pause()
         return handler
 
-    def type_code(self, text):
-        """Type in the code editor, key by key."""
+    def type_code(self, text, replace=False):
+        """Type in the code editor, key by key; with replace, over what is there."""
         editor = self.window.code_panel.editor
         editor.setFocus()
+        if replace:
+            QTest.keyClick(editor, Qt.Key_A, Qt.ControlModifier)
+            QTest.keyClick(editor, Qt.Key_Delete)
         for index, line in enumerate(text.split("\n")):
             if index:
                 QTest.keyClick(editor, Qt.Key_Return)
+                # The editor indents the new line by itself: add or remove what differs, as one does by hand.
+                automatic = len(editor.textCursor().block().text())
+                wanted = len(line) - len(line.lstrip(" "))
+                for _ in range(automatic - wanted):
+                    QTest.keyClick(editor, Qt.Key_Backspace)
+                line = " " * max(0, wanted - automatic) + line.lstrip(" ")
             QTest.keyClicks(editor, line)
             QTest.keyClick(editor, Qt.Key_Escape)  # closes the suggestions, which Enter would accept
         self.pause()
@@ -291,8 +396,8 @@ class Ide:
         panel = self.window.sim_panel
         self.choose(self.window.run_action)
         errors = self.window.errors
-        self.wait(lambda: panel.first_frame_ms is not None or errors.topLevelItemCount(), "the first frame of the simulator", 20000)
-        self.check(not errors.topLevelItemCount(), "the Errors panel says: " + "; ".join(errors.topLevelItem(row).text(2) for row in range(errors.topLevelItemCount())))
+        self.wait(lambda: (panel.running and panel.first_frame_ms is not None) or errors.topLevelItemCount(), "the first frame of the simulator", 20000)
+        self.check(not errors.topLevelItemCount(), f"the Errors panel says: {self.errors()}")
         self.check(self.window.tabs.currentWidget() is panel, "the Simulator tab did not come to the front")
         sleep(300)  # the first frames draw the page
         self.pause(2)

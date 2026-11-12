@@ -4,7 +4,7 @@
 
 ### Added
 
-- **Self-test.** `lvgl-mpy-studio selftest` uses the IDE as a person would — toolbox, page, Properties panel, code editor, Save As, simulator and touch — and writes a report with `PASSED` or `FAILED` for each step, with pictures of what failed. `--show` shows the IDE at work. Two scenarios for now: the full tour, and save and open again.
+- **Self-test.** `lvgl-mpy-studio selftest` uses the IDE as a person would — toolbox, page, Properties panel, code editor, Save As, simulator and touch — and writes a report with `PASSED` or `FAILED` for each step, with pictures of what failed. `--show` shows the IDE at work. Eight scenarios: the full tour, save and open again, pages, resolution, pictures and fonts, Python modules, Timer and Buzzer, and errors.
 - **Print Sources.** **File → Print Sources…** (Ctrl+P) prints the source open in the editor or all the sources of the project, with line numbers, the colours of the editor, wrapped long lines, and a header and footer on each page. It has a preview, and a PDF comes from the system print dialog.
 
 ### Changed
@@ -14,6 +14,7 @@
 
 ### Fixed
 
+- A widget chosen with a double click in the toolbox was placed twice in a project with several pages: once where you clicked, and again at the first click on another page. Found by the self-test.
 - The warning about fonts and free RAM appeared by mistake from the second upload on: the memory was read while the previous application was still running. It is now read after the reset, with the display driver loaded.
 - When the application did not start after an upload, the warnings found before were lost; they are now shown with the error, in the IDE, on the command line and through MCP.
 - The portable Windows package did not start on Windows: it carried a copy of ICU 72 next to Qt, which hid the `icuuc.dll` of the system and lacks the functions Qt asks for. The package no longer includes ICU. Wine did not show the fault, because it starts a program even when imported functions are missing.

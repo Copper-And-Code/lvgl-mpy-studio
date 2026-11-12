@@ -387,7 +387,7 @@ The IDE also has a command line, `lvgl-mpy-studio` (with the AppImage: `./LVGL_M
 
 ### Self-test
 
-`lvgl-mpy-studio selftest` opens the IDE and uses it as a person would: it creates a project, takes widgets from the toolbox, sets their properties in the panel, types a handler, saves, starts the simulator and touches the screen. Each step is checked and written as `PASSED` or `FAILED`; the last line is `RESULT: PASSED` or `RESULT: FAILED`, and the command ends with 0 or 1.
+`lvgl-mpy-studio selftest` opens the IDE and uses it as a person would: it creates a project, takes widgets from the toolbox, sets their properties in the panel, types a handler, saves, starts the simulator and touches the screen. Other scenarios cover pages, resolution, pictures and fonts, Python modules, the Timer and the Buzzer, and errors. Each step is checked and written as `PASSED` or `FAILED`; the last line is `RESULT: PASSED` or `RESULT: FAILED`, and the command ends with 0 or 1.
 
 - Without options the IDE stays hidden and the run takes a few seconds. `--show` shows it at work, slowed down; `--slow 800` sets the pause after each action in milliseconds.
 - The report goes to `lvgl-mpy-studio-selftest/<date-time>/` in the current folder, or to the folder given with `--output`: `report.txt`, `report.json`, the projects it saved under `work/`, and for each failed step a picture of the IDE and of the simulator.

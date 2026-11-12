@@ -1,5 +1,6 @@
-from PySide6.QtCore import Qt
+from PySide6.QtCore import QPointF, Qt
 from PySide6.QtGui import QColor, QTextCharFormat
+from PySide6.QtTest import QTest
 from PySide6.QtWidgets import QDialog, QDockWidget, QToolBar
 
 from lvgl_mpy_studio.ui import theme
@@ -127,6 +128,23 @@ def test_a_new_resolution_fits_the_page_again(qtbot, monkeypatch):
     qtbot.waitUntil(lambda: whole(second) and second.fitted_size == (1920, 1080), timeout=2000)
     window.document.undo_stack.undo()
     qtbot.waitUntil(lambda: second.fitted_size != (1920, 1080) and whole(second), timeout=2000)
+
+
+def test_a_widget_armed_from_the_toolbox_is_placed_once(qtbot):
+    window = window_for(qtbot)
+    window.show()
+    qtbot.waitExposed(window)
+    window.document.execute("page", lambda project: project.pages.append(project.new_page("Second")))
+    first, second = (window.designers[page.id][1] for page in window.document.project.pages)
+    toolbox = window.findChild(Toolbox)
+    toolbox.itemDoubleClicked.emit(next(item for item in toolbox.widget_items() if item.data(Qt.UserRole) == "button"))
+    assert first.pending_type == second.pending_type == "button"  # the toolbox does not know which page is shown
+    window.tabs.setCurrentWidget(second)
+    QTest.mouseClick(second.viewport(), Qt.LeftButton, pos=second.mapFromScene(QPointF(60, 60)))
+    window.tabs.setCurrentWidget(first)
+    QTest.mouseClick(first.viewport(), Qt.LeftButton, pos=first.mapFromScene(QPointF(60, 60)))
+    assert [len(page.widgets) for page in window.document.project.pages] == [0, 1]
+    assert first.pending_type is None and second.pending_type is None
 
 
 def test_fit_shows_the_whole_page(qtbot):

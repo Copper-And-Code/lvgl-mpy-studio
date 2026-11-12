@@ -387,7 +387,7 @@ L'IDE ha anche una riga di comando, `lvgl-mpy-studio` (con l'AppImage: `./LVGL_M
 
 ### Collaudo automatico
 
-`lvgl-mpy-studio selftest` apre l'IDE e lo usa come farebbe una persona: crea un progetto, prende i widget dalla casella, ne imposta le proprietà nel pannello, scrive un gestore, salva, avvia il simulatore e tocca lo schermo. Ogni passo è verificato e scritto come `PASSED` o `FAILED`; l'ultima riga è `RESULT: PASSED` o `RESULT: FAILED`, e il comando termina con 0 o 1. Il rapporto è in inglese.
+`lvgl-mpy-studio selftest` apre l'IDE e lo usa come farebbe una persona: crea un progetto, prende i widget dalla casella, ne imposta le proprietà nel pannello, scrive un gestore, salva, avvia il simulatore e tocca lo schermo. Altri scenari coprono pagine, risoluzione, immagini e font, moduli Python, Timer e Buzzer, ed errori. Ogni passo è verificato e scritto come `PASSED` o `FAILED`; l'ultima riga è `RESULT: PASSED` o `RESULT: FAILED`, e il comando termina con 0 o 1. Il rapporto è in inglese.
 
 - Senza opzioni l'IDE resta nascosto e servono pochi secondi. `--show` lo mostra al lavoro, rallentato; `--slow 800` imposta la pausa dopo ogni azione, in millisecondi.
 - Il rapporto va in `lvgl-mpy-studio-selftest/<data-ora>/` nella cartella corrente, o nella cartella indicata con `--output`: `report.txt`, `report.json`, i progetti salvati in `work/`, e per ogni passo fallito un'immagine dell'IDE e del simulatore.
