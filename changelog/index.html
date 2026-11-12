@@ -1,0 +1,1534 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Visual IDE for LVGL 9.5 on MicroPython, with simulator, board upload and WebAssembly export">
+      
+      
+      
+        <link rel="canonical" href="https://copper-and-code.github.io/lvgl-mpy-studio/changelog/">
+      
+      
+        <link rel="prev" href="../decisions/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../images/logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>Changelog - LVGL MPY Studio</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/site.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#changelog" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="LVGL MPY Studio" class="md-header__button md-logo" aria-label="LVGL MPY Studio" data-md-component="logo">
+      
+  <img src="../images/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            LVGL MPY Studio
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Changelog
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="LVGL MPY Studio" class="md-nav__button md-logo" aria-label="LVGL MPY Studio" data-md-component="logo">
+      
+  <img src="../images/logo.svg" alt="logo">
+
+    </a>
+    LVGL MPY Studio
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User guide
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    User guide
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../manual/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User manual
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../boards/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Boards
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../publish-web/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Publishing on the web
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extending
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Extending
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blocks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Writing a block
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mcp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MCP server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mcp-demo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    From a prompt to an app
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adding-a-demo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Adding a demo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../demos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Demos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About the project
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    About the project
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The stack
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-it-was-built/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How it was built
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    What is verified
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case-study-eim-01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case study EIM-01
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../decisions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Decisions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#060-2026-11-12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.6.0 — 2026-11-12
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.6.0 — 2026-11-12">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Added
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changed
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#051-2026-11-12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.5.1 — 2026-11-12
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.5.1 — 2026-11-12">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Added
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixed
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#050-not-released" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.5.0 — not released
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.5.0 — not released">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Added
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixed
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#040-2026-11-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.4.0 — 2026-11-10
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.4.0 — 2026-11-10">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Added
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#known-limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known limitations
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#060-2026-11-12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.6.0 — 2026-11-12
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.6.0 — 2026-11-12">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Added
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changed
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#051-2026-11-12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.5.1 — 2026-11-12
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.5.1 — 2026-11-12">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Added
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixed
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#050-not-released" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.5.0 — not released
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.5.0 — not released">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Added
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixed
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#040-2026-11-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.4.0 — 2026-11-10
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.4.0 — 2026-11-10">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Added
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#known-limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known limitations
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="changelog">Changelog<a class="headerlink" href="#changelog" title="Permanent link">&para;</a></h1>
+<h2 id="060-2026-11-12">0.6.0 — 2026-11-12<a class="headerlink" href="#060-2026-11-12" title="Permanent link">&para;</a></h2>
+<h3 id="added">Added<a class="headerlink" href="#added" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Hardware blocks.</strong> Two new components under <strong>Hardware</strong> in the toolbox: <strong>Digital Output</strong> (a pin on or off: LED, relay) and <strong>Digital Input</strong> (a pin that is read, with debounce and the events PRESSED, RELEASED and CHANGED). The pin is typed as a number or as a name such as <code>PA5</code>. They work in the simulator, where the output writes its changes in the Output panel and the input is set from code with <code>simulate()</code>. Both were tried on the STM32H7_CORE board, with its two LEDs and its two keys.</li>
+<li><strong>Blocks from other people.</strong> <strong>Settings → Manage Blocks…</strong> lists the blocks with their origin, author and licence, adds one from a folder, removes it, reloads them and opens the blocks folder; the toolbox follows at once. A project keeps a copy of such blocks, so it opens on a computer that lacks them; a project that uses blocks is saved as version 4, which earlier IDEs refuse instead of misreading. The module a block provides for the simulator runs on the PC, like the code of a project: use blocks from people you trust.</li>
+<li><strong>Pages for whoever evaluates the project</strong>: the stack from the display controller to the agent, how the project was built and by whom, what is verified and how, and a case study. The README is now a front page; its reference material moved to <code>docs/development.md</code>.</li>
+<li><strong><code>examples/eim-01</code></strong>: an industrial monitor of 5 pages and 256 widgets with simulated data, built by an AI agent through the MCP server, with a 480×480 version and visual tests.</li>
+<li><strong>Help → Online Documentation</strong> (F1) opens the pages of the project, <code>https://copper-and-code.github.io/lvgl-mpy-studio/</code>; the address is also in the About window. The pages will be published when the repository becomes public.</li>
+<li><strong>Writing a block.</strong> <code>docs/blocks.md</code> builds one step by step, and <code>examples/blocks/blinker</code> is the finished example, ready to install.</li>
+<li>MCP: <code>list_blocks</code> describes the blocks with their properties, methods and events; <code>project_info</code> says which blocks the project uses.</li>
+<li>The self-test has a ninth scenario for the blocks, and now fails a step when the IDE raises an error that it would otherwise only print.</li>
+</ul>
+<h3 id="changed">Changed<a class="headerlink" href="#changed" title="Permanent link">&para;</a></h3>
+<ul>
+<li>The launcher of single-file executables no longer carries the old name: its modules are <code>lms_boot</code> and <code>lms_licenses</code>, its marker is <code>LMSAPP01</code>, and the Windows runtimes describe themselves as LVGL MPY Studio. Games already built keep working, because each carries its own launcher.</li>
+<li><strong>Blocks, first step</strong> (see <code>docs/plugins-plan.md</code>). The Buzzer is no longer written inside the IDE: it is a block, a folder with a description and its MicroPython modules, read by the new <code>core/blocks.py</code>. Nothing changes for projects and for the generated files, which are the same byte for byte. Blocks copied into the <code>blocks</code> folder of the settings are read and checked, but not offered yet.</li>
+</ul>
+<h2 id="051-2026-11-12">0.5.1 — 2026-11-12<a class="headerlink" href="#051-2026-11-12" title="Permanent link">&para;</a></h2>
+<h3 id="added_1">Added<a class="headerlink" href="#added_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Self-test.</strong> <code>lvgl-mpy-studio selftest</code> uses the IDE as a person would — toolbox, page, Properties panel, code editor, Save As, simulator and touch — and writes a report with <code>PASSED</code> or <code>FAILED</code> for each step, with pictures of what failed. <code>--show</code> shows the IDE at work. Eight scenarios: the full tour, save and open again, pages, resolution, pictures and fonts, Python modules, Timer and Buzzer, and errors.</li>
+<li><strong>Print Sources.</strong> <strong>File → Print Sources…</strong> (Ctrl+P) prints the source open in the editor or all the sources of the project, with line numbers, the colours of the editor, wrapped long lines, and a header and footer on each page. It has a preview, and a PDF comes from the system print dialog.</li>
+</ul>
+<h3 id="changed_1">Changed<a class="headerlink" href="#changed_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Upload progress.</strong> Sending an application to a board opens a small window with a bar that follows the bytes sent, the file being written, the time elapsed and an estimate of the time left, and a Cancel button. On boards reached through mpremote the bar moves inside a file by estimate, from the speed of the last upload to that board. It appears when the upload lasts more than a moment. Until now the only sign was a file count in the status bar, which stood still for most of a long upload.</li>
+<li>Changing the resolution, or the board of the project, fits the page to the window again, as <strong>View → Fit to Window</strong> does. Each page is fitted when it is shown; other changes keep the zoom.</li>
+</ul>
+<h3 id="fixed">Fixed<a class="headerlink" href="#fixed" title="Permanent link">&para;</a></h3>
+<ul>
+<li>A widget chosen with a double click in the toolbox was placed twice in a project with several pages: once where you clicked, and again at the first click on another page. Found by the self-test.</li>
+<li>On Windows, started from <code>LVGL_MPY_STUDIO.exe</code>, a console window flashed four times at almost every operation: the IDE compiles four files with <code>mpy-cross</code> and each run opened its own window. The compiler, the C toolchain and <code>mpremote</code> are now started without a window. It had been so since the first Windows package.</li>
+<li>On Windows, closing the IDE or ending a command while the RAM measurement or a page preview was running left a simulator process alive for some seconds and printed an error, because its temporary folder could not be removed. Such processes are now stopped first. Found by running the self-test on Windows 11.</li>
+<li>The warning about fonts and free RAM appeared by mistake from the second upload on: the memory was read while the previous application was still running. It is now read after the reset, with the display driver loaded.</li>
+<li>When the application did not start after an upload, the warnings found before were lost; they are now shown with the error, in the IDE, on the command line and through MCP.</li>
+<li>The portable Windows package did not start on Windows: it carried a copy of ICU 72 next to Qt, which hid the <code>icuuc.dll</code> of the system and lacks the functions Qt asks for. The package no longer includes ICU; the package of 0.6.0 starts on a real Windows. Wine did not show the fault, because it starts a program even when imported functions are missing.</li>
+<li>The Windows packages had no icon: the program file, the taskbar and the windows showed a generic one. The windows have the icon on Linux too.</li>
+</ul>
+<h2 id="050-not-released">0.5.0 — not released<a class="headerlink" href="#050-not-released" title="Permanent link">&para;</a></h2>
+<h3 id="added_2">Added<a class="headerlink" href="#added_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Images.</strong> A picture chosen for an Image widget is converted to PNG, made no larger than the screen and stored inside the project file. It is drawn in the simulator, on boards, in executables, in the browser version and in the C export. MCP tools <code>add_image</code> and <code>remove_image</code>; <code>project_info</code> lists the images. Pictures that cost much memory, and image widgets whose picture is missing, are reported as warnings. Until now a chosen file path was written into the generated code and never drawn, and a project with assets could not be uploaded to a board.</li>
+<li><strong>Fonts.</strong> A TrueType or OpenType file chosen for the <code>font</code> property is stored in the project and converted to LVGL's format for each size in use, by a converter written for the IDE on top of Qt: no Node.js or other tool is needed. Compared with LVGL's built-in Montserrat, made by the official converter from the same file, the metrics are the same and fewer than two pixels in a thousand differ, by one level of sixteen. Kerning is converted too, with the same values wherever the built-in font has it. On upload a warning says when the fonts would take more than half the free RAM of the board. MCP tools <code>add_font</code> and <code>remove_font</code>. The C export includes them too, loaded from memory, which needs <code>LV_USE_FS_MEMFS</code>.</li>
+<li><strong>From a prompt to an app.</strong> <code>examples/weather</code> is a weather station built by an AI agent through the MCP server, with the recorded session of its 24 tool calls; <code>docs/mcp-demo.md</code> describes it and a test replays it.</li>
+<li>MCP: <code>list_widget_types</code> takes <code>names_only</code> and <code>types</code> and returns the default values; <code>list_boards</code> returns the font sizes of each board.</li>
+<li>A font size the target lacks and characters outside the built-in font are reported as warnings, by the MCP tools and when generating.</li>
+</ul>
+<h3 id="changed_2">Changed<a class="headerlink" href="#changed_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Shorter names on the board and in generated files.</strong> Applications are installed under <code>/lms_apps</code> instead of <code>/lvgl_ide_apps</code>; the generated modules are <code>lms_buzzer</code> and <code>lms_probe</code>; the web page loads <code>lms_web.js</code>; the markers in exported C are <code>lms:new-handlers</code>. An autostart installed by 0.4 is still recognised, and C files exported by 0.4 keep working with their markers. Applications already on a board under the old folder are left there: remove the folder by hand. Module names starting with <code>lms_</code> are reserved.</li>
+<li>The ESP32-4848S040 and Waveshare RP2350 profiles list the Montserrat sizes read from the real boards: 14, 16, 24, 32 and 40.</li>
+<li>A new project is named “Untitled”.</li>
+<li>MCP answers are compact JSON instead of indented: an agent reads about half the characters.</li>
+<li><strong>The product is now LVGL MPY Studio.</strong> The command is <code>lvgl-mpy-studio</code> (<code>lvgl-ide</code> still works), the Python package is <code>lvgl_mpy_studio</code>, and the packages are named <code>LVGL_MPY_STUDIO-…</code>. Settings and the <code>~/.config/lvgl-ide</code> folder of earlier versions are copied on first start.</li>
+<li>English is the language of the code: interface texts, comments, messages, examples and documents. The Italian interface is unchanged and the Italian documents remain next to the new English manual and web publishing guide.</li>
+<li>Three English interface texts changed: the F5 action is <strong>Start</strong>, the toolbar is <strong>Run toolbar</strong> and a custom board profile is <strong>Custom profile</strong>.</li>
+<li>The examples are <code>examples/&lt;game&gt;/project.json</code>, with English names and comments; <code>tris</code> is now <code>tictactoe</code>.</li>
+<li>The IDE, the command line and the MCP server start in English. Italian is still available under <strong>Settings → Language</strong> and with <code>--language it</code>.</li>
+<li>Deleting a container deletes the widgets inside it. Copy, cut and duplicate take them too, and they keep their place inside the copy.</li>
+<li><code>lvgl-mpy-studio build</code> writes to <code>dist/</code> next to the project, as the IDE does, when <code>--output</code> is not given.</li>
+<li>App packages no longer contain <code>project.json</code>.</li>
+<li>A handler set on a page without an event is <code>SCREEN_LOADED</code>. An event the object does not have is refused.</li>
+<li>The MCP tool <code>remove_widget</code> returns the names of everything it removed.</li>
+<li>The IDE package is 4.7 MB smaller: it ships only the names the code editor completes instead of the whole binding API.</li>
+<li>The Simulator panel no longer has an unused path for running the C build.</li>
+</ul>
+<h3 id="fixed_1">Fixed<a class="headerlink" href="#fixed_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Choosing a picture that is still above 512 kB once converted to PNG raised an error inside the undo step instead of showing a message.</li>
+<li>The free space of an STM32H7 board was reported as zero: it was read from the root instead of the filesystem apps are written to.</li>
+<li>Text in sizes 32 and 40 was drawn at 24 in the simulator and on boards, although the runtime has those fonts. The sizes now come from the target: a board profile can list them in <code>fonts</code>, the upload reads them from the board, and a project without a board uses the five sizes of the simulator. The STM32H7_CORE profile lists the five its firmware has.</li>
+<li>The order of the widget declarations in the exported <code>ui.c</code> changed from one export to the next.</li>
+<li>Deleting a container left its children on the page at the wrong position.</li>
+<li>Widgets inside a container were checked against the screen with coordinates relative to the container, so <code>outOfBounds</code> and the "outside the screen" notice were wrong for them.</li>
+<li>The simulator always started from the first page, while boards started from the initial page of the project.</li>
+<li><code>simulate</code> and visual scenarios could not read a widget the project code never names (<code>ui.&lt;name&gt;</code> raised <code>AttributeError</code>).</li>
+<li>About eighty error messages reached agents and the command line in Italian whatever the language.</li>
+<li>An unexpected error could end the MCP server.</li>
+<li>After an unexpected error during an upload, every later upload answered <code>device.session.busy</code>.</li>
+<li>A traceback of the app on the board containing words such as "resource" or "not found" was reported as a busy or missing serial port.</li>
+<li>A board profile without minimum firmware versions raised an error when the board answered.</li>
+<li>A broken custom board profile file stopped the IDE from starting.</li>
+<li>A simulated wait could block for a very long time when the app stopped answering.</li>
+<li>Uploads over UART are about 4.5 times faster: measured on the STM32H7 board, 100 kB take 22 s.</li>
+</ul>
+<h2 id="040-2026-11-10">0.4.0 — 2026-11-10<a class="headerlink" href="#040-2026-11-10" title="Permanent link">&para;</a></h2>
+<h3 id="added_3">Added<a class="headerlink" href="#added_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Python modules.</strong> A project can hold its own <code>.py</code> modules, which handlers, the general code and other modules import by name (<code>import utils</code>).</li>
+<li>The project tree has a <strong>Python Modules</strong> node. Its context menu offers New, Open, Rename and Delete, and a double click opens a module.</li>
+<li>Modules are edited in the existing code editor, with undo and redo, highlighting, completion and syntax checks.</li>
+<li>Module names cannot be paths, MicroPython modules, files the IDE generates or handler names.</li>
+<li>A module created in the editor starts with <code>import lvgl as lv</code> and <code>import ui</code>, and a hint explains why they are needed.</li>
+<li><strong>What do you want to do?</strong> lists each module like a component: import it, call its public functions, classes and upper-case constants. The open module shows its own functions.</li>
+<li><strong>Modules in every pipeline.</strong> Modules are included in the simulator, the upload to boards (as bytecode, with precompilation) and the MicroPython export for a board. They are also included in Debug and Release folder builds, in the single-file executables for Linux and Windows, and in the browser version.</li>
+<li>The generated folder has a <code>manifest.json</code> with the ordered list of modules. Every build takes its modules from it, and stops with a clear error if it is missing or inconsistent.</li>
+<li>A module that was removed or renamed is deleted from the generated folder, together with its bytecode.</li>
+<li>The C export warns that Python modules are not part of it.</li>
+<li><strong>MCP tools for modules.</strong> The new tools are <code>list_modules</code>, <code>create_module</code>, <code>rename_module</code> and <code>delete_module</code>; <code>get_code</code> and <code>patch_code</code> take <code>module</code> as an alternative to <code>handler</code>. <code>project_info</code> lists the modules. Existing tools keep their arguments and answers.</li>
+<li><strong>Project revisions.</strong></li>
+<li><code>project_info</code>, <code>get_code</code> and <code>list_modules</code> return a SHA-256 revision of the project file.</li>
+<li>Every MCP tool that writes the project accepts <code>expected_revision</code> and returns the revision it wrote. A file changed in the meantime is reported as a structured <code>revision_conflict</code> error, and nothing is written.</li>
+<li><strong>Changes made outside the IDE.</strong></li>
+<li>Before saving, the IDE checks that the file on disk is still the one it opened or last saved, for example when an MCP agent or the command line wrote it meanwhile. If the file changed, the IDE asks whether to reload it, save a copy, overwrite it or cancel; Cancel is the default. A deleted file can be recreated or saved elsewhere.</li>
+<li><strong>Save As</strong> asks before replacing another file.</li>
+<li><strong>Single-file executable for Windows.</strong> <strong>Run → Build Single-File Executable…</strong> now works on Windows too. The <code>--for windows</code> and <code>--for linux</code> options build for the other system. A Linux game built on Windows comes as a <code>.tar.gz</code>, to keep its execute permission.</li>
+<li><strong>Games in the browser.</strong> <strong>Run → Open in Browser</strong>, <code>lvgl-mpy-studio build --web</code> and <code>lvgl-mpy-studio web</code> build a folder with the page, a WebAssembly runtime of MicroPython and LVGL, and the compiled game, ready for a static host. The folder includes an <code>.htaccess</code> for Apache and LiteSpeed hosts. The runtime is built by <code>runtime/build_web.sh</code>. A publishing guide is available in Italian.</li>
+<li><strong>Italian user manual,</strong> <code>docs/manual.it.md</code>.</li>
+<li><strong>Project schema 3</strong> for projects with modules. Projects without modules are still written as schema 2, byte for byte.</li>
+</ul>
+<h3 id="changed_3">Changed<a class="headerlink" href="#changed_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Errors in modules.</strong></li>
+<li>A syntax error names the module and its line, and is never reported on the handler that imports the module.</li>
+<li>In a runtime traceback, the line where the error happened comes first in the Errors panel. The handler that led there is marked "called from here".</li>
+<li>Double-clicking a row opens the module or handler at that line and highlights it.</li>
+<li><strong>Confirmations before risky module changes.</strong> Renaming or deleting a module that code still imports asks first, with a warning that the old imports will stop with <code>ImportError</code>. Imports are never rewritten.</li>
+<li><strong>Read-only code while running.</strong> While the simulator runs, a bar above the code editor explains why the code is read-only and offers <strong>Stop and Edit</strong>.</li>
+<li><strong>Resolution sizes.</strong></li>
+<li>The resolution menu lists the common sizes 240×240, 480×480, 1024×600 and 1024×1024, even when a board has the same size.</li>
+<li>Project settings list the common sizes and those of the known boards.</li>
+</ul>
+<h3 id="fixed_2">Fixed<a class="headerlink" href="#fixed_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Runtime errors in the simulator did not appear in the Errors panel. The simulator prints tracebacks on standard output, while the IDE read only standard error. This also affected handler errors in 0.3.</li>
+<li><strong>Custom…</strong> in the resolution menu raised an error and did nothing.</li>
+<li>The <strong>Change Port</strong>, <strong>Manage Board Profiles</strong>, <strong>Use as Default</strong> and <strong>Remove Default</strong> entries of the destination menu did nothing.</li>
+<li>Boards whose firmware starts a MicroPython shell that needs a second Ctrl+C, such as some ESP32-4848S040 builds, failed every operation with <code>could not enter raw repl</code>. The IDE now sends repeated Ctrl+C when it connects, and retries once after that error.</li>
+</ul>
+<h3 id="known-limitations">Known limitations<a class="headerlink" href="#known-limitations" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Modules.</strong></li>
+<li>Renaming or deleting a module does not update the code that imports it; the IDE warns and lists those places.</li>
+<li>Modules created through MCP start empty, without the imports the editor adds.</li>
+<li>The C export does not include Python modules.</li>
+<li>Projects with modules (schema 3) cannot be opened by 0.3, which refuses them clearly.</li>
+<li><strong>External changes.</strong></li>
+<li>There is no file watcher: the IDE notices a change only when it saves.</li>
+<li>The revision check is not a lock: a program writing at the very moment of the save can still be overwritten. The same applies to <code>expected_revision</code> over MCP.</li>
+<li><strong>Simulator.</strong> The code is read-only while the simulator runs.</li>
+<li><strong>Browser version.</strong> It has been checked in Chromium only.</li>
+<li><strong>Documentation.</strong> The user manual and the web publishing guide are available in Italian only.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.top", "navigation.tracking", "search.highlight", "search.share"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+    
+  </body>
+</html>

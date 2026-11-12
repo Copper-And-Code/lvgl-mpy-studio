@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EIM-01 — LVGL MPY Studio</title>
+<style>
+  :root { color-scheme: dark; }
+  html, body { margin: 0; min-height: 100%; background: #101318; color: #d8dde6; font: 14px system-ui, sans-serif; }
+  main { min-height: 100vh; display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 16px; box-sizing: border-box; }
+  header { width: min(100%, 1024px); display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+  h1 { margin: 0; font-size: 20px; }
+  a { color: #79bbff; }
+  canvas { display: block; width: min(100%, 1024px); height: auto; max-height: calc(100vh - 130px); aspect-ratio: 1024 / 600; background: #000; touch-action: none; image-rendering: pixelated; }
+  #status { min-height: 1.2em; white-space: pre-wrap; text-align: center; }
+  #status.failed { color: #ff8a80; }
+  .description { max-width: 70ch; margin: 0; text-align: center; color: #aeb8c5; }
+</style>
+</head>
+<body>
+<main>
+<header><a href="../">← All demos</a><h1>EIM-01</h1></header>
+<canvas id="canvas" width="1024" height="600" oncontextmenu="event.preventDefault()"></canvas>
+<div id="status">Loading…</div>
+<p class="description">A five-page industrial monitor with live trends, alarms, diagnostics, and independent fan commands and telemetry.</p>
+</main>
+<script type="module" src="../runtime/lms_web.js"></script>
+</body>
+</html>

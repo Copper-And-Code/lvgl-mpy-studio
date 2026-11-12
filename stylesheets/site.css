@@ -1,0 +1,76 @@
+:root {
+  --md-primary-fg-color: #17324d;
+  --md-primary-fg-color--light: #2b587d;
+  --md-primary-fg-color--dark: #102639;
+  --md-accent-fg-color: #2196f3;
+  --md-accent-fg-color--transparent: #2196f31a;
+}
+
+.home-grid,
+.demo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.home-card,
+.demo-card {
+  min-width: 0;
+  padding: 1rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.5rem;
+  background: var(--md-default-bg-color);
+}
+
+.demo-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.demo-card h2,
+.demo-card p {
+  margin: 0;
+}
+
+.demo-thumbnail {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0.3rem;
+  background: #101318;
+}
+
+.demo-facts {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.2rem 0.8rem;
+  font-size: 0.78rem;
+}
+
+.demo-facts dt {
+  font-weight: 700;
+}
+
+.demo-facts dd {
+  margin: 0;
+}
+
+.demo-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+.demo-prompt {
+  white-space: pre-wrap;
+}
+
+@media screen and (max-width: 30em) {
+  .home-grid,
+  .demo-grid {
+    grid-template-columns: 1fr;
+  }
+}
