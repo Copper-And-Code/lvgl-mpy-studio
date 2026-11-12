@@ -1,6 +1,6 @@
 # Status: what is verified, and how
 
-Version 0.6.0 is in development and has not been released. This page separates what has been
+Version 0.6.0 is tagged in the repository. No release with packages has been published. This page separates what has been
 checked from what has only been written.
 
 ## Read this first

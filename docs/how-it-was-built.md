@@ -58,7 +58,13 @@ the 162 commits of the first two weeks, 139 carry that line.
 
 ## The history of the repository
 
-Work started on 2026-10-28 under the name *LVGL IDE*. In two weeks it went through versions
+The project has a predecessor by the same author:
+[lvgl-mpy-builder](https://github.com/Copper-And-Code/lvgl-mpy-builder), a web tool in
+TypeScript, public under the MIT licence since November 2025. The first MicroPython generator
+of this IDE is a port of the one in that project, verified at the time against its output file
+by file; the projects in `reference/corpus` and the list of widgets come from there.
+
+Work on the IDE started on 2026-10-28 under the name *LVGL IDE*. In two weeks it went through versions
 0.1 to 0.4, a change of name, a change of the package and command names, the move from
 Italian to English for code, comments and documents, and several experiments that were
 dropped. That history has 162 commits, 18 branches and 21 pull requests.
