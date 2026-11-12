@@ -30,3 +30,4 @@ runtime/modules/lvsim
 # Local working notes
 prompts/
 export_py/
+/lvgl-mpy-studio-selftest/

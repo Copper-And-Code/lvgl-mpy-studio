@@ -595,5 +595,11 @@
   "Line numbers": "Numeri di riga",
   "Preview…": "Anteprima…",
   "Print…": "Stampa…",
-  "Page {page} of {pages}": "Pagina {page} di {pages}"
+  "Page {page} of {pages}": "Pagina {page} di {pages}",
+  "Use the IDE by itself and report what works": "Usa l'IDE da solo e riferisce cosa funziona",
+  "Scenarios to run; all of them without this": "Scenari da eseguire; tutti, se non indicati",
+  "Show the IDE while it is used": "Mostra l'IDE mentre viene usato",
+  "Pause after each action, in milliseconds; 400 with --show": "Pausa dopo ogni azione, in millisecondi; 400 con --show",
+  "Folder of the report": "Cartella del rapporto",
+  "List the scenarios": "Elenca gli scenari"
 }

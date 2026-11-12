@@ -382,7 +382,19 @@ L'IDE ha anche una riga di comando, `lvgl-mpy-studio` (con l'AppImage: `./LVGL_M
 | `lvgl-mpy-studio test project.json` | test visivi; `--update`, `--page`, `--scenario`, `--threshold` |
 | `lvgl-mpy-studio device list` | elenca le board collegate; `info`, `upload`, `run`, `stop`, `reset`, `repl`, `autostart-install`, `autostart-remove` operano su una board con `--port` |
 | `lvgl-mpy-studio mcp` | avvia il server per gli agenti AI |
+| `lvgl-mpy-studio selftest` | l'IDE si usa da solo e riferisce cosa funziona; vedi sotto |
 | `lvgl-mpy-studio --version` | mostra la versione |
+
+### Collaudo automatico
+
+`lvgl-mpy-studio selftest` apre l'IDE e lo usa come farebbe una persona: crea un progetto, prende i widget dalla casella, ne imposta le proprietà nel pannello, scrive un gestore, salva, avvia il simulatore e tocca lo schermo. Ogni passo è verificato e scritto come `PASSED` o `FAILED`; l'ultima riga è `RESULT: PASSED` o `RESULT: FAILED`, e il comando termina con 0 o 1. Il rapporto è in inglese.
+
+- Senza opzioni l'IDE resta nascosto e servono pochi secondi. `--show` lo mostra al lavoro, rallentato; `--slow 800` imposta la pausa dopo ogni azione, in millisecondi.
+- Il rapporto va in `lvgl-mpy-studio-selftest/<data-ora>/` nella cartella corrente, o nella cartella indicata con `--output`: `report.txt`, `report.json`, i progetti salvati in `work/`, e per ogni passo fallito un'immagine dell'IDE e del simulatore.
+- `--list` elenca gli scenari; indicandone uno o più si eseguono solo quelli.
+- Impostazioni, file recenti e profili delle board non vengono toccati. Non usare mouse e tastiera sulla finestra dell'IDE mentre gira con `--show`.
+
+Verifica che le cose funzionino, non il loro aspetto, e non usa le board.
 
 ## 15. Agenti AI
 

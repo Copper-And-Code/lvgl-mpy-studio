@@ -169,6 +169,12 @@ def main(argv: list[str] | None = None) -> int:
     visual.add_argument("--page", action="append", help=tr("Test only this page; repeatable"))
     visual.add_argument("--scenario", action="append", help=tr("Test only this scenario; repeatable"))
     visual.add_argument("--design-only", action="store_true", help=tr("Do not run the project code"))
+    selftest = commands.add_parser("selftest", help=tr("Use the IDE by itself and report what works"), description=tr("Use the IDE by itself and report what works"))
+    selftest.add_argument("scenario", nargs="*", help=tr("Scenarios to run; all of them without this"))
+    selftest.add_argument("--show", action="store_true", help=tr("Show the IDE while it is used"))
+    selftest.add_argument("--slow", type=int, default=None, metavar="MS", help=tr("Pause after each action, in milliseconds; 400 with --show"))
+    selftest.add_argument("--output", type=Path, help=tr("Folder of the report"))
+    selftest.add_argument("--list", action="store_true", help=tr("List the scenarios"))
     device = commands.add_parser("device", help=tr("MicroPython board operations"), description=tr("MicroPython board operations"))
     device_commands = device.add_subparsers(dest="device_command", required=True)
     device_commands.add_parser("list")
@@ -188,6 +194,11 @@ def main(argv: list[str] | None = None) -> int:
         from . import __version__
         print(__version__)
         return 0
+    if args.command == "selftest":
+        from .selftest import main as selftest_main
+
+        slow = args.slow if args.slow is not None else 400 if args.show else 0
+        return selftest_main(args.scenario, args.show, slow, args.output, args.list)
     if args.command == "mcp":
         from .mcp_server import is_enabled, serve
         if not is_enabled():

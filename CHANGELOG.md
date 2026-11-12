@@ -4,6 +4,7 @@
 
 ### Added
 
+- **Self-test.** `lvgl-mpy-studio selftest` uses the IDE as a person would — toolbox, page, Properties panel, code editor, Save As, simulator and touch — and writes a report with `PASSED` or `FAILED` for each step, with pictures of what failed. `--show` shows the IDE at work. Two scenarios for now: the full tour, and save and open again.
 - **Print Sources.** **File → Print Sources…** (Ctrl+P) prints the source open in the editor or all the sources of the project, with line numbers, the colours of the editor, wrapped long lines, and a header and footer on each page. It has a preview, and a PDF comes from the system print dialog.
 
 ### Changed
