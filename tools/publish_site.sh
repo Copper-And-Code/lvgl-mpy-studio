@@ -27,7 +27,7 @@ PARENTS=()
 if git show-ref --verify --quiet refs/heads/gh-pages; then
     PARENTS=(-p gh-pages)
 fi
-COMMIT=$(git commit-tree "$TREE" "${PARENTS[@]}" -m "Publish the project site" -m "Co-Authored-By: Kimi <noreply@moonshot.ai>")
+COMMIT=$(git commit-tree "$TREE" "${PARENTS[@]}" -m "Publish the project site" -m "Co-Authored-By: Claude <noreply@anthropic.com>")
 git update-ref refs/heads/gh-pages "$COMMIT"
 
 printf 'Prepared local gh-pages commit %s\n' "$COMMIT"
