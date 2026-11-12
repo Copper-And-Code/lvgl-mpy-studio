@@ -1,0 +1,229 @@
+{
+  "scenarios": [
+    {
+      "name": "smoke_navigation",
+      "page": "Overview",
+      "seed": 1,
+      "steps": [
+        {
+          "action": "wait",
+          "ms": 2200
+        },
+        {
+          "action": "assert",
+          "expr": "app.sequence >= 2"
+        },
+        {
+          "action": "screenshot",
+          "label": "overview"
+        },
+        {
+          "action": "tap",
+          "widget": "ov_nav_trends"
+        },
+        {
+          "action": "wait",
+          "ms": 300
+        },
+        {
+          "action": "assert",
+          "page": "Trends"
+        },
+        {
+          "action": "screenshot",
+          "label": "trends"
+        },
+        {
+          "action": "tap",
+          "widget": "tr_nav_alarms"
+        },
+        {
+          "action": "wait",
+          "ms": 300
+        },
+        {
+          "action": "assert",
+          "page": "Alarms"
+        },
+        {
+          "action": "screenshot",
+          "label": "alarms"
+        },
+        {
+          "action": "tap",
+          "widget": "al_nav_diagnostics"
+        },
+        {
+          "action": "wait",
+          "ms": 300
+        },
+        {
+          "action": "assert",
+          "page": "Diagnostics"
+        },
+        {
+          "action": "screenshot",
+          "label": "diagnostics"
+        },
+        {
+          "action": "tap",
+          "widget": "di_settings"
+        },
+        {
+          "action": "wait",
+          "ms": 300
+        },
+        {
+          "action": "assert",
+          "page": "Settings"
+        },
+        {
+          "action": "screenshot",
+          "label": "settings"
+        },
+        {
+          "action": "tap",
+          "widget": "se_back"
+        },
+        {
+          "action": "wait",
+          "ms": 300
+        },
+        {
+          "action": "assert",
+          "page": "Overview"
+        }
+      ]
+    },
+    {
+      "name": "temperature_alarm_ack",
+      "page": "Overview",
+      "seed": 1,
+      "steps": [
+        {
+          "action": "wait",
+          "ms": 1200
+        },
+        {
+          "action": "tap",
+          "widget": "ov_settings"
+        },
+        {
+          "action": "wait",
+          "ms": 200
+        },
+        {
+          "action": "exec",
+          "code": "ui.se_scenario.set_selected(1)\nupdate_scenario_description()"
+        },
+        {
+          "action": "tap",
+          "widget": "se_run_scenario"
+        },
+        {
+          "action": "tap",
+          "widget": "se_back"
+        },
+        {
+          "action": "wait",
+          "ms": 22000
+        },
+        {
+          "action": "assert",
+          "expr": "app.temp > app.temp_threshold and app.alarms[0]['state'] == 'ACTIVE'"
+        },
+        {
+          "action": "tap",
+          "widget": "ov_nav_alarms"
+        },
+        {
+          "action": "wait",
+          "ms": 300
+        },
+        {
+          "action": "screenshot",
+          "label": "active"
+        },
+        {
+          "action": "tap",
+          "widget": "al_ack_0"
+        },
+        {
+          "action": "wait",
+          "ms": 300
+        },
+        {
+          "action": "assert",
+          "expr": "app.alarms[0]['state'] == 'ACKNOWLEDGED' and app.temp > app.temp_threshold"
+        },
+        {
+          "action": "screenshot",
+          "label": "acknowledged"
+        }
+      ]
+    },
+    {
+      "name": "link_loss_recovery",
+      "page": "Overview",
+      "seed": 1,
+      "steps": [
+        {
+          "action": "wait",
+          "ms": 1200
+        },
+        {
+          "action": "tap",
+          "widget": "ov_settings"
+        },
+        {
+          "action": "wait",
+          "ms": 200
+        },
+        {
+          "action": "exec",
+          "code": "ui.se_scenario.set_selected(3)\nupdate_scenario_description()"
+        },
+        {
+          "action": "tap",
+          "widget": "se_run_scenario"
+        },
+        {
+          "action": "wait",
+          "ms": 200
+        },
+        {
+          "action": "exec",
+          "code": "test_seq = app.sequence"
+        },
+        {
+          "action": "tap",
+          "widget": "se_back"
+        },
+        {
+          "action": "wait",
+          "ms": 5000
+        },
+        {
+          "action": "assert",
+          "expr": "app.stale() and app.sequence == test_seq and app.alarms[3]['state'] == 'ACTIVE'"
+        },
+        {
+          "action": "screenshot",
+          "label": "stale"
+        },
+        {
+          "action": "wait",
+          "ms": 9000
+        },
+        {
+          "action": "assert",
+          "expr": "app.link_up() and not app.stale() and app.sequence > test_seq and app.alarms[3]['state'] == 'CLEARED'"
+        },
+        {
+          "action": "screenshot",
+          "label": "recovered"
+        }
+      ]
+    }
+  ]
+}

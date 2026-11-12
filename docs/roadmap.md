@@ -17,6 +17,8 @@ Review before public use: prices and features change, and MicroPython support in
 
 ## Status
 
+This table lists features. How far each has been verified, and on which boards, is in [status.md](status.md).
+
 | Feature | Status |
 |---|---|
 | Upload `.mpy` to boards | Done; verified on the ESP32-4848S040 |

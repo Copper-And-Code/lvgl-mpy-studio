@@ -1,0 +1,5791 @@
+{
+  "schemaVersion": 2,
+  "projectName": "EIM-01 — Ecosistema Industrial Monitor",
+  "display": {
+    "width": 480,
+    "height": 480,
+    "colorFormat": "RGB565"
+  },
+  "pages": [
+    {
+      "id": "14769f472aef4a6387beff641d6fbb85",
+      "name": "Overview",
+      "canvasSize": [
+        480,
+        480
+      ],
+      "widgets": [
+        {
+          "id": "f27ce04091c44050a1199e33866ed36c",
+          "name": "ov_bg",
+          "type": "panel",
+          "props": {
+            "x": 0,
+            "y": 0,
+            "width": 480,
+            "height": 480,
+            "bgColor": "#0B1118",
+            "borderColor": "#BDBDBD",
+            "borderWidth": 0,
+            "radius": 0,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_OFF"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "75e407d8d3e44675ab5be4f8fd38a9d2",
+          "name": "ov_header",
+          "type": "panel",
+          "props": {
+            "x": 0,
+            "y": 0,
+            "width": 480,
+            "height": 44,
+            "bgColor": "#111C27",
+            "borderColor": "#BDBDBD",
+            "borderWidth": 0,
+            "radius": 0,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_AUTO"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "71b54619dc7a43ce85ca3026f3a29555",
+          "name": "ov_brand",
+          "type": "label",
+          "props": {
+            "x": 8,
+            "y": 3,
+            "width": 132,
+            "height": 18,
+            "text": "ECOSISTEMA",
+            "textColor": "#F2F6FA",
+            "fontSize": 14,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "8bbd06b9b6254fcda36e36d51e40a630",
+          "name": "ov_brand_sub",
+          "type": "label",
+          "props": {
+            "x": 8,
+            "y": 24,
+            "width": 150,
+            "height": 15,
+            "text": "INDUSTRIAL MONITOR",
+            "textColor": "#7F93A8",
+            "fontSize": 9,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "8dddba63cdd84468b970fc3c5fc0cd5d",
+          "name": "ov_device",
+          "type": "label",
+          "props": {
+            "x": 150,
+            "y": 13,
+            "width": 56,
+            "height": 20,
+            "text": "EIM-01",
+            "textColor": "#B9C8D6",
+            "fontSize": 12,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "e360f4746e984d74bcd66969f7b982f2",
+          "name": "ov_link_led",
+          "type": "led",
+          "props": {
+            "x": 210,
+            "y": 16,
+            "width": 10,
+            "height": 10,
+            "color": "#36D399",
+            "brightness": 255
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "126fdce03e914ecc959f1673a2bfa7e5",
+          "name": "ov_link",
+          "type": "label",
+          "props": {
+            "x": 224,
+            "y": 12,
+            "width": 82,
+            "height": 20,
+            "text": "SIMULATION",
+            "textColor": "#36D399",
+            "fontSize": 10,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "12583ec7c5ca49f1aa3969cee9c1c754",
+          "name": "ov_alarm_led",
+          "type": "led",
+          "props": {
+            "x": 308,
+            "y": 16,
+            "width": 10,
+            "height": 10,
+            "color": "#36D399",
+            "brightness": 180
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "e0c2c2273a3949cea06dec7e68cf8e20",
+          "name": "ov_alarm_summary",
+          "type": "label",
+          "props": {
+            "x": 322,
+            "y": 12,
+            "width": 78,
+            "height": 20,
+            "text": "NO ALARMS",
+            "textColor": "#9FB2C5",
+            "fontSize": 9,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "2dd74c10c23d4d5381d20e7cac6b1cc6",
+          "name": "ov_settings",
+          "type": "button",
+          "props": {
+            "x": 408,
+            "y": 5,
+            "width": 64,
+            "height": 34,
+            "text": "SETUP",
+            "bgColor": "#203347",
+            "textColor": "#E7F0F8",
+            "fontSize": 10,
+            "radius": 5
+          },
+          "events": {
+            "CLICKED": "ov_settings_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "9833b8819a6143c891e2782c76d509b7",
+          "name": "ov_temp_card",
+          "type": "panel",
+          "props": {
+            "x": 8,
+            "y": 52,
+            "width": 110,
+            "height": 76,
+            "bgColor": "#131F2B",
+            "borderColor": "#26394A",
+            "borderWidth": 1,
+            "radius": 6,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_AUTO"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "e91de9c3976d4908b442e1174f70f60c",
+          "name": "ov_temp_title",
+          "type": "label",
+          "props": {
+            "x": 14,
+            "y": 58,
+            "width": 98,
+            "height": 16,
+            "text": "TEMP",
+            "textColor": "#8EA4B8",
+            "fontSize": 9,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "e9623e8a2d7e4ee6868cf85e26ad9b93",
+          "name": "ov_temp_value",
+          "type": "label",
+          "props": {
+            "x": 14,
+            "y": 75,
+            "width": 66,
+            "height": 30,
+            "text": "24.6",
+            "textColor": "#F3F7FA",
+            "fontSize": 22,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "155ae2bd4f7c42cfbcb373d8d879a951",
+          "name": "ov_temp_unit",
+          "type": "label",
+          "props": {
+            "x": 79,
+            "y": 84,
+            "width": 32,
+            "height": 20,
+            "text": "°C",
+            "textColor": "#9DB1C3",
+            "fontSize": 12,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "1cfffde4b78d4324b24fb1f1859b8e34",
+          "name": "ov_temp_led",
+          "type": "led",
+          "props": {
+            "x": 14,
+            "y": 110,
+            "width": 8,
+            "height": 8,
+            "color": "#36D399",
+            "brightness": 255
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "5481c88f146f46ef9819a0fb2869bdf6",
+          "name": "ov_temp_state",
+          "type": "label",
+          "props": {
+            "x": 26,
+            "y": 104,
+            "width": 86,
+            "height": 18,
+            "text": "NORMAL",
+            "textColor": "#36D399",
+            "fontSize": 9,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "bc7008d10ad84e8bae2dd993e5323391",
+          "name": "ov_hum_card",
+          "type": "panel",
+          "props": {
+            "x": 126,
+            "y": 52,
+            "width": 110,
+            "height": 76,
+            "bgColor": "#131F2B",
+            "borderColor": "#26394A",
+            "borderWidth": 1,
+            "radius": 6,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_AUTO"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "a5d3e969a4424a3db9a2ea5b615ee6c6",
+          "name": "ov_hum_title",
+          "type": "label",
+          "props": {
+            "x": 132,
+            "y": 58,
+            "width": 98,
+            "height": 16,
+            "text": "HUMIDITY",
+            "textColor": "#8EA4B8",
+            "fontSize": 9,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "03a2651b17f64aecba6b824f7a6e9914",
+          "name": "ov_hum_value",
+          "type": "label",
+          "props": {
+            "x": 132,
+            "y": 75,
+            "width": 54,
+            "height": 30,
+            "text": "48",
+            "textColor": "#F3F7FA",
+            "fontSize": 22,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "081c84dd75ec4272a085ab768233a196",
+          "name": "ov_hum_unit",
+          "type": "label",
+          "props": {
+            "x": 181,
+            "y": 84,
+            "width": 24,
+            "height": 20,
+            "text": "%",
+            "textColor": "#9DB1C3",
+            "fontSize": 12,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "08fb20aed7cf4bdb8a6298a6e22d942c",
+          "name": "ov_hum_led",
+          "type": "led",
+          "props": {
+            "x": 132,
+            "y": 110,
+            "width": 8,
+            "height": 8,
+            "color": "#36D399",
+            "brightness": 255
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "f515a92a46404ab5963263f2ac4ad4b2",
+          "name": "ov_hum_state",
+          "type": "label",
+          "props": {
+            "x": 144,
+            "y": 104,
+            "width": 86,
+            "height": 18,
+            "text": "NORMAL",
+            "textColor": "#36D399",
+            "fontSize": 9,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "92b59ab6763d4807a1b1f24530b4afb0",
+          "name": "ov_fan_card",
+          "type": "panel",
+          "props": {
+            "x": 244,
+            "y": 52,
+            "width": 110,
+            "height": 76,
+            "bgColor": "#131F2B",
+            "borderColor": "#26394A",
+            "borderWidth": 1,
+            "radius": 6,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_AUTO"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "a68da32339d244b5bae9d7dcdf8761ca",
+          "name": "ov_fan_title",
+          "type": "label",
+          "props": {
+            "x": 250,
+            "y": 58,
+            "width": 98,
+            "height": 16,
+            "text": "FAN SPEED",
+            "textColor": "#8EA4B8",
+            "fontSize": 9,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "f554a2fd5a3948129a1ba7f9349c0b2e",
+          "name": "ov_fan_value",
+          "type": "label",
+          "props": {
+            "x": 250,
+            "y": 75,
+            "width": 70,
+            "height": 30,
+            "text": "1450",
+            "textColor": "#F3F7FA",
+            "fontSize": 22,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "93b695cec18f4116ae5ab555111e27aa",
+          "name": "ov_fan_unit",
+          "type": "label",
+          "props": {
+            "x": 316,
+            "y": 84,
+            "width": 34,
+            "height": 20,
+            "text": "RPM",
+            "textColor": "#9DB1C3",
+            "fontSize": 10,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "e05ddb070d654fc6b7c2e9ab194a23a4",
+          "name": "ov_fan_led",
+          "type": "led",
+          "props": {
+            "x": 250,
+            "y": 110,
+            "width": 8,
+            "height": 8,
+            "color": "#36D399",
+            "brightness": 255
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "14b50d58508245439f6531479469fced",
+          "name": "ov_fan_target",
+          "type": "label",
+          "props": {
+            "x": 260,
+            "y": 104,
+            "width": 92,
+            "height": 18,
+            "text": "T 1500",
+            "textColor": "#36D399",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "eac93ce8f6a843ea8623d9341989934c",
+          "name": "ov_power_card",
+          "type": "panel",
+          "props": {
+            "x": 362,
+            "y": 52,
+            "width": 110,
+            "height": 76,
+            "bgColor": "#131F2B",
+            "borderColor": "#26394A",
+            "borderWidth": 1,
+            "radius": 6,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_AUTO"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "13e8f92d5a3047f4b339347cb01fcb6a",
+          "name": "ov_power_title",
+          "type": "label",
+          "props": {
+            "x": 368,
+            "y": 58,
+            "width": 98,
+            "height": 16,
+            "text": "POWER",
+            "textColor": "#8EA4B8",
+            "fontSize": 9,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "83a6ae200a4140aa895b28dc22437cd4",
+          "name": "ov_power_value",
+          "type": "label",
+          "props": {
+            "x": 368,
+            "y": 75,
+            "width": 60,
+            "height": 30,
+            "text": "7.4",
+            "textColor": "#F3F7FA",
+            "fontSize": 22,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "a8b559f88ad94729bad4bbbd2ea1edee",
+          "name": "ov_power_unit",
+          "type": "label",
+          "props": {
+            "x": 425,
+            "y": 84,
+            "width": 24,
+            "height": 20,
+            "text": "W",
+            "textColor": "#9DB1C3",
+            "fontSize": 12,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "926a20380d7542c49fa30874354b817d",
+          "name": "ov_power_led",
+          "type": "led",
+          "props": {
+            "x": 368,
+            "y": 110,
+            "width": 8,
+            "height": 8,
+            "color": "#36D399",
+            "brightness": 255
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "c899555faf6d4aa8bb556915b7b2c756",
+          "name": "ov_power_supply",
+          "type": "label",
+          "props": {
+            "x": 380,
+            "y": 104,
+            "width": 88,
+            "height": 18,
+            "text": "12.1 V",
+            "textColor": "#36D399",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "1f1caacb48ba4299bcb7fe62130d0873",
+          "name": "ov_chart_panel",
+          "type": "panel",
+          "props": {
+            "x": 8,
+            "y": 136,
+            "width": 464,
+            "height": 174,
+            "bgColor": "#111C27",
+            "borderColor": "#26394A",
+            "borderWidth": 1,
+            "radius": 6,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_AUTO"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "6df71c165cb34093bbcb685b9766631b",
+          "name": "ov_chart_title",
+          "type": "label",
+          "props": {
+            "x": 16,
+            "y": 142,
+            "width": 240,
+            "height": 18,
+            "text": "TEMPERATURE / 60 s",
+            "textColor": "#DCE7F0",
+            "fontSize": 11,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "56423e2951e14491ae04b94df754af31",
+          "name": "ov_threshold_label",
+          "type": "label",
+          "props": {
+            "x": 324,
+            "y": 142,
+            "width": 140,
+            "height": 18,
+            "text": "ALARM 40.0 °C",
+            "textColor": "#FF7A72",
+            "fontSize": 10,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_RIGHT",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "ba8a7c0cb9e64f34ad6d3780deeaf86c",
+          "name": "ov_temp_chart",
+          "type": "chart",
+          "props": {
+            "x": 16,
+            "y": 164,
+            "width": 448,
+            "height": 116,
+            "chartType": "line",
+            "data": "24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,25",
+            "data2": "",
+            "bgColor": "#0D1620",
+            "lineColor": "#45C8FF",
+            "lineColor2": "#FF5722",
+            "pointCount": 60,
+            "showPoints": false,
+            "rangeYMin": 0,
+            "rangeYMax": 50,
+            "divLineCount": 4,
+            "divLineCountSec": 6,
+            "updateMode": "shift"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "90cb0aec8c0c41f3b303f347ff88ca7f",
+          "name": "ov_threshold_line",
+          "type": "line",
+          "props": {
+            "x": 16,
+            "y": 187,
+            "width": 448,
+            "height": 2,
+            "points": "0,0 448,0",
+            "lineColor": "#FF625D",
+            "lineWidth": 1,
+            "rounded": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "86c4b57ea93f402aa01f13d358666d7e",
+          "name": "ov_last_event",
+          "type": "label",
+          "props": {
+            "x": 16,
+            "y": 288,
+            "width": 310,
+            "height": 16,
+            "text": "Last event: simulator started",
+            "textColor": "#8EA4B8",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "bfc0f346501245abb01d2061d7521737",
+          "name": "ov_chart_footer",
+          "type": "label",
+          "props": {
+            "x": 336,
+            "y": 288,
+            "width": 128,
+            "height": 16,
+            "text": "1 Hz • 900 max",
+            "textColor": "#738BA1",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_RIGHT",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "3ebe328abef949849026edf6a2cff3fe",
+          "name": "ov_fan_panel",
+          "type": "panel",
+          "props": {
+            "x": 8,
+            "y": 318,
+            "width": 464,
+            "height": 110,
+            "bgColor": "#111C27",
+            "borderColor": "#26394A",
+            "borderWidth": 1,
+            "radius": 6,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_AUTO"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "7b58602cb42641ec9ab68615f8b7061a",
+          "name": "ov_control_title",
+          "type": "label",
+          "props": {
+            "x": 16,
+            "y": 322,
+            "width": 150,
+            "height": 18,
+            "text": "FAN CONTROL",
+            "textColor": "#DCE7F0",
+            "fontSize": 11,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "d70fec9c192b45b291e7a4151ec9a173",
+          "name": "ov_request_title",
+          "type": "label",
+          "props": {
+            "x": 16,
+            "y": 344,
+            "width": 100,
+            "height": 18,
+            "text": "REQUESTED",
+            "textColor": "#8EA4B8",
+            "fontSize": 9,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "2b51bb936c8b417cbe3359aa9ad490a0",
+          "name": "ov_requested",
+          "type": "label",
+          "props": {
+            "x": 116,
+            "y": 340,
+            "width": 76,
+            "height": 26,
+            "text": "50 %",
+            "textColor": "#45C8FF",
+            "fontSize": 18,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_RIGHT",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "0ce95f44908349ba99a234947f5679f7",
+          "name": "ov_speed_slider",
+          "type": "slider",
+          "props": {
+            "x": 16,
+            "y": 372,
+            "width": 180,
+            "height": 24,
+            "min": 0,
+            "max": 100,
+            "value": 50,
+            "bgColor": "#26394A",
+            "indicatorColor": "#2699C9",
+            "knobColor": "#D7F4FF",
+            "mode": "normal",
+            "isRange": false,
+            "leftValue": 0
+          },
+          "events": {
+            "VALUE_CHANGED": "ov_speed_slider_value_changed"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "c005c19b7a734826b12f7e2a2008ce29",
+          "name": "ov_actual_title",
+          "type": "label",
+          "props": {
+            "x": 210,
+            "y": 342,
+            "width": 120,
+            "height": 18,
+            "text": "CONFIRMED",
+            "textColor": "#8EA4B8",
+            "fontSize": 9,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "457f69e670224739b33785b67ef4a933",
+          "name": "ov_actual",
+          "type": "label",
+          "props": {
+            "x": 210,
+            "y": 360,
+            "width": 126,
+            "height": 28,
+            "text": "1450 RPM",
+            "textColor": "#F3F7FA",
+            "fontSize": 18,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "29e76a9374d04f1a957e9eb24ed07ace",
+          "name": "ov_confirmation",
+          "type": "label",
+          "props": {
+            "x": 210,
+            "y": 392,
+            "width": 130,
+            "height": 18,
+            "text": "TRACKING",
+            "textColor": "#36D399",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "d0f5b091046043779613d30c84c51f02",
+          "name": "ov_mode",
+          "type": "button",
+          "props": {
+            "x": 344,
+            "y": 340,
+            "width": 60,
+            "height": 34,
+            "text": "AUTO",
+            "bgColor": "#203347",
+            "textColor": "#DCE7F0",
+            "fontSize": 9,
+            "radius": 5
+          },
+          "events": {
+            "CLICKED": "ov_mode_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "7cf6509f33f8467396ba27fc31d242ba",
+          "name": "ov_start_stop",
+          "type": "button",
+          "props": {
+            "x": 410,
+            "y": 340,
+            "width": 54,
+            "height": 34,
+            "text": "STOP",
+            "bgColor": "#70343B",
+            "textColor": "#FFE8E8",
+            "fontSize": 9,
+            "radius": 5
+          },
+          "events": {
+            "CLICKED": "ov_start_stop_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "fddfffeaddc54c0884c673d34b8b2c3e",
+          "name": "ov_control_note",
+          "type": "label",
+          "props": {
+            "x": 344,
+            "y": 382,
+            "width": 120,
+            "height": 34,
+            "text": "Request vs confirmed",
+            "textColor": "#738BA1",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "12c1360428614371a10e9798ae4fa886",
+          "name": "ov_footer",
+          "type": "panel",
+          "props": {
+            "x": 0,
+            "y": 436,
+            "width": 480,
+            "height": 44,
+            "bgColor": "#111C27",
+            "borderColor": "#BDBDBD",
+            "borderWidth": 0,
+            "radius": 0,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_AUTO"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "ef8a9e2dacf941218e2304b8f3c237c5",
+          "name": "ov_system_state",
+          "type": "label",
+          "props": {
+            "x": 8,
+            "y": 440,
+            "width": 124,
+            "height": 16,
+            "text": "SYSTEM NORMAL",
+            "textColor": "#36D399",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "8cfcf33e4ed44509b1b532ace097e04c",
+          "name": "ov_data_age",
+          "type": "label",
+          "props": {
+            "x": 8,
+            "y": 458,
+            "width": 124,
+            "height": 16,
+            "text": "DATA 0 s",
+            "textColor": "#9FB2C5",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "bb432f11d02247178312fe3c09eadff3",
+          "name": "ov_nav_overview",
+          "type": "button",
+          "props": {
+            "x": 140,
+            "y": 441,
+            "width": 76,
+            "height": 34,
+            "text": "Overview",
+            "bgColor": "#24516A",
+            "textColor": "#FFFFFF",
+            "fontSize": 9,
+            "radius": 4
+          },
+          "events": {
+            "CLICKED": "ov_nav_overview_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "b04282edbed64d4791e3ace237efb316",
+          "name": "ov_nav_trends",
+          "type": "button",
+          "props": {
+            "x": 224,
+            "y": 441,
+            "width": 76,
+            "height": 34,
+            "text": "Trends",
+            "bgColor": "#203347",
+            "textColor": "#C4D2DF",
+            "fontSize": 9,
+            "radius": 4
+          },
+          "events": {
+            "CLICKED": "ov_nav_trends_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "9f7a685a1c1a4eec8bc4a0ee72587874",
+          "name": "ov_nav_alarms",
+          "type": "button",
+          "props": {
+            "x": 308,
+            "y": 441,
+            "width": 76,
+            "height": 34,
+            "text": "Alarms",
+            "bgColor": "#203347",
+            "textColor": "#C4D2DF",
+            "fontSize": 9,
+            "radius": 4
+          },
+          "events": {
+            "CLICKED": "ov_nav_alarms_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "abb0bcc03fdb424db15d7d8bd90e9722",
+          "name": "ov_nav_diagnostics",
+          "type": "button",
+          "props": {
+            "x": 392,
+            "y": 441,
+            "width": 80,
+            "height": 34,
+            "text": "Diagn.",
+            "bgColor": "#203347",
+            "textColor": "#C4D2DF",
+            "fontSize": 9,
+            "radius": 4
+          },
+          "events": {
+            "CLICKED": "ov_nav_diagnostics_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "b14377b37a9a4fd98ee2683a34fa6fec",
+          "name": "app_timer",
+          "type": "timer",
+          "props": {
+            "period": 200,
+            "enabled": true
+          },
+          "events": {
+            "TICK": "app_timer_tick"
+          },
+          "customStyles": {},
+          "animations": []
+        }
+      ]
+    },
+    {
+      "id": "e47f69fac1ff46dbb32d38045935aa57",
+      "name": "Trends",
+      "canvasSize": [
+        480,
+        480
+      ],
+      "widgets": [
+        {
+          "id": "cc298fff669c4b9ab7d781badf5b2525",
+          "name": "tr_bg",
+          "type": "panel",
+          "props": {
+            "x": 0,
+            "y": 0,
+            "width": 480,
+            "height": 480,
+            "bgColor": "#0B1118",
+            "borderColor": "#BDBDBD",
+            "borderWidth": 0,
+            "radius": 0,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_OFF"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "2813485ba52b4c8e88542b365b9623e3",
+          "name": "tr_header",
+          "type": "panel",
+          "props": {
+            "x": 0,
+            "y": 0,
+            "width": 480,
+            "height": 44,
+            "bgColor": "#111C27",
+            "borderColor": "#BDBDBD",
+            "borderWidth": 0,
+            "radius": 0,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_AUTO"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "de034d016f5447c48b06e192b941e778",
+          "name": "tr_brand",
+          "type": "label",
+          "props": {
+            "x": 8,
+            "y": 4,
+            "width": 120,
+            "height": 18,
+            "text": "ECOSISTEMA",
+            "textColor": "#F2F6FA",
+            "fontSize": 12,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "9a74913a66584064a0b4053ffada855e",
+          "name": "tr_sub",
+          "type": "label",
+          "props": {
+            "x": 8,
+            "y": 24,
+            "width": 150,
+            "height": 15,
+            "text": "INDUSTRIAL MONITOR",
+            "textColor": "#7F93A8",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "0e0ff1e38bd24dd9be3ee96a19a471b6",
+          "name": "tr_title",
+          "type": "label",
+          "props": {
+            "x": 166,
+            "y": 12,
+            "width": 100,
+            "height": 22,
+            "text": "TRENDS",
+            "textColor": "#DCE7F0",
+            "fontSize": 16,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "a7da63e545a14d1fbf0add5aef84b68a",
+          "name": "tr_link_led",
+          "type": "led",
+          "props": {
+            "x": 282,
+            "y": 16,
+            "width": 10,
+            "height": 10,
+            "color": "#36D399",
+            "brightness": 255
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "ad6ac877451d4daea76307e39f05eced",
+          "name": "tr_link",
+          "type": "label",
+          "props": {
+            "x": 296,
+            "y": 12,
+            "width": 100,
+            "height": 20,
+            "text": "SIMULATION",
+            "textColor": "#36D399",
+            "fontSize": 9,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "adb5d5531b16421bb5f47ec2f6ac727c",
+          "name": "tr_settings",
+          "type": "button",
+          "props": {
+            "x": 408,
+            "y": 5,
+            "width": 64,
+            "height": 34,
+            "text": "SETUP",
+            "bgColor": "#203347",
+            "textColor": "#E7F0F8",
+            "fontSize": 10,
+            "radius": 5
+          },
+          "events": {
+            "CLICKED": "tr_settings_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "cc185a13b7624901831e81a19859bce2",
+          "name": "tr_controls",
+          "type": "panel",
+          "props": {
+            "x": 8,
+            "y": 52,
+            "width": 464,
+            "height": 44,
+            "bgColor": "#111C27",
+            "borderColor": "#26394A",
+            "borderWidth": 1,
+            "radius": 6,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_AUTO"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "63f1c2e40caf403fbe201cb1bf18b905",
+          "name": "tr_range_title",
+          "type": "label",
+          "props": {
+            "x": 16,
+            "y": 65,
+            "width": 60,
+            "height": 18,
+            "text": "WINDOW",
+            "textColor": "#8EA4B8",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "7f178a28315140ecae27727efd288faa",
+          "name": "tr_range_1",
+          "type": "button",
+          "props": {
+            "x": 80,
+            "y": 58,
+            "width": 52,
+            "height": 32,
+            "text": "1 m",
+            "bgColor": "#24516A",
+            "textColor": "#FFFFFF",
+            "fontSize": 10,
+            "radius": 4
+          },
+          "events": {
+            "CLICKED": "tr_range_1_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "9b3650dacd09486fb875d74f97fd7ce1",
+          "name": "tr_range_5",
+          "type": "button",
+          "props": {
+            "x": 140,
+            "y": 58,
+            "width": 52,
+            "height": 32,
+            "text": "5 m",
+            "bgColor": "#203347",
+            "textColor": "#C4D2DF",
+            "fontSize": 10,
+            "radius": 4
+          },
+          "events": {
+            "CLICKED": "tr_range_5_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "e37181ea10914f5488e344fe02779de3",
+          "name": "tr_range_15",
+          "type": "button",
+          "props": {
+            "x": 200,
+            "y": 58,
+            "width": 52,
+            "height": 32,
+            "text": "15 m",
+            "bgColor": "#203347",
+            "textColor": "#C4D2DF",
+            "fontSize": 10,
+            "radius": 4
+          },
+          "events": {
+            "CLICKED": "tr_range_15_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "01a788465ecc45f180bd8d53b4b753ef",
+          "name": "tr_live_state",
+          "type": "label",
+          "props": {
+            "x": 258,
+            "y": 61,
+            "width": 108,
+            "height": 28,
+            "text": "LIVE 60",
+            "textColor": "#36D399",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "0dbd099bba5a4d4cae76842de81fa90d",
+          "name": "tr_pause",
+          "type": "button",
+          "props": {
+            "x": 372,
+            "y": 58,
+            "width": 92,
+            "height": 32,
+            "text": "PAUSE",
+            "bgColor": "#203347",
+            "textColor": "#E7F0F8",
+            "fontSize": 9,
+            "radius": 4
+          },
+          "events": {
+            "CLICKED": "tr_pause_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "b1c89fddc7984189a4160986beadadc8",
+          "name": "tr_temp_panel",
+          "type": "panel",
+          "props": {
+            "x": 8,
+            "y": 104,
+            "width": 464,
+            "height": 152,
+            "bgColor": "#111C27",
+            "borderColor": "#26394A",
+            "borderWidth": 1,
+            "radius": 6,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_AUTO"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "1223ceecafef46a2a866e4ceb17967af",
+          "name": "tr_temp_title",
+          "type": "label",
+          "props": {
+            "x": 16,
+            "y": 110,
+            "width": 250,
+            "height": 20,
+            "text": "TEMPERATURE °C",
+            "textColor": "#DCE7F0",
+            "fontSize": 11,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "0e0fecc8d3384d4c834d99bb710045f2",
+          "name": "tr_temp_current",
+          "type": "label",
+          "props": {
+            "x": 340,
+            "y": 108,
+            "width": 124,
+            "height": 22,
+            "text": "24.6 °C",
+            "textColor": "#45C8FF",
+            "fontSize": 14,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_RIGHT",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "1edf8702e61b4561b793693126a05704",
+          "name": "tr_temp_chart",
+          "type": "chart",
+          "props": {
+            "x": 16,
+            "y": 132,
+            "width": 448,
+            "height": 82,
+            "chartType": "line",
+            "data": "24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,25",
+            "data2": "",
+            "bgColor": "#0D1620",
+            "lineColor": "#45C8FF",
+            "lineColor2": "#FF5722",
+            "pointCount": 60,
+            "showPoints": false,
+            "rangeYMin": 0,
+            "rangeYMax": 50,
+            "divLineCount": 4,
+            "divLineCountSec": 6,
+            "updateMode": "shift"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "2ea7cf81f8ec4b04995f08ef15c890a5",
+          "name": "tr_temp_stats",
+          "type": "label",
+          "props": {
+            "x": 16,
+            "y": 220,
+            "width": 448,
+            "height": 18,
+            "text": "MIN 24.6   MAX 24.6   AVG 24.6",
+            "textColor": "#B9C8D6",
+            "fontSize": 10,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "9a45df92105d4dcbba3ef6a9dcb4a3cf",
+          "name": "tr_temp_scale",
+          "type": "label",
+          "props": {
+            "x": 16,
+            "y": 239,
+            "width": 448,
+            "height": 13,
+            "text": "0-50 °C • 1 sample/s",
+            "textColor": "#738BA1",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "a0d55cf2b471432eb4fce3cb0bf750f4",
+          "name": "tr_fan_panel",
+          "type": "panel",
+          "props": {
+            "x": 8,
+            "y": 264,
+            "width": 464,
+            "height": 164,
+            "bgColor": "#111C27",
+            "borderColor": "#26394A",
+            "borderWidth": 1,
+            "radius": 6,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_AUTO"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "0a9a24699c0c46388a4596a8997997cb",
+          "name": "tr_fan_title",
+          "type": "label",
+          "props": {
+            "x": 16,
+            "y": 270,
+            "width": 250,
+            "height": 20,
+            "text": "FAN SPEED RPM",
+            "textColor": "#DCE7F0",
+            "fontSize": 11,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "230ebfb638e649e283ed55bb1da67570",
+          "name": "tr_fan_current",
+          "type": "label",
+          "props": {
+            "x": 340,
+            "y": 268,
+            "width": 124,
+            "height": 22,
+            "text": "1450 RPM",
+            "textColor": "#78E0B0",
+            "fontSize": 14,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_RIGHT",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "cb593107c8a44f83a28ce63f5e745c9a",
+          "name": "tr_fan_chart",
+          "type": "chart",
+          "props": {
+            "x": 16,
+            "y": 292,
+            "width": 448,
+            "height": 82,
+            "chartType": "line",
+            "data": "1450,1450,1450,1450,1450,1450,1450,1450,1450,1450,1450,1450,1450,1450,1450,1450,1450,1450,1450,1450,1450,1450,1450,1450,1450,1450,1450,1450,1450,1450,1450,1450,1450,1450,1450,1450,1450,1450,1450,1450,1450,1450,1450,1450,1450,1450,1450,1450,1450,1450,1450,1450,1450,1450,1450,1450,1450,1450,1450,1450",
+            "data2": "",
+            "bgColor": "#0D1620",
+            "lineColor": "#78E0B0",
+            "lineColor2": "#FF5722",
+            "pointCount": 60,
+            "showPoints": false,
+            "rangeYMin": 0,
+            "rangeYMax": 3000,
+            "divLineCount": 4,
+            "divLineCountSec": 6,
+            "updateMode": "shift"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "d45d3b30e47d4836a088038a99759aaa",
+          "name": "tr_fan_stats",
+          "type": "label",
+          "props": {
+            "x": 16,
+            "y": 380,
+            "width": 448,
+            "height": 18,
+            "text": "MIN 1450   MAX 1450   AVG 1450",
+            "textColor": "#B9C8D6",
+            "fontSize": 10,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "c8d0b1844de4405db632c3209b0fc712",
+          "name": "tr_fan_scale",
+          "type": "label",
+          "props": {
+            "x": 16,
+            "y": 402,
+            "width": 448,
+            "height": 14,
+            "text": "0-3000 RPM • acquisition remains active",
+            "textColor": "#738BA1",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "33842ad458bd4127b83d4eb36ab84950",
+          "name": "tr_footer",
+          "type": "panel",
+          "props": {
+            "x": 0,
+            "y": 436,
+            "width": 480,
+            "height": 44,
+            "bgColor": "#111C27",
+            "borderColor": "#BDBDBD",
+            "borderWidth": 0,
+            "radius": 0,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_AUTO"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "52015340baa247e79a666a7e8b339f13",
+          "name": "tr_system_state",
+          "type": "label",
+          "props": {
+            "x": 8,
+            "y": 440,
+            "width": 124,
+            "height": 16,
+            "text": "SYSTEM NORMAL",
+            "textColor": "#36D399",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "1015c3bbb3df4f73ae876ff3afc88123",
+          "name": "tr_data_age",
+          "type": "label",
+          "props": {
+            "x": 8,
+            "y": 458,
+            "width": 124,
+            "height": 16,
+            "text": "DATA 0 s",
+            "textColor": "#9FB2C5",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "e56f39c8e946427a955e24a1db3d1993",
+          "name": "tr_nav_overview",
+          "type": "button",
+          "props": {
+            "x": 140,
+            "y": 441,
+            "width": 76,
+            "height": 34,
+            "text": "Overview",
+            "bgColor": "#203347",
+            "textColor": "#C4D2DF",
+            "fontSize": 9,
+            "radius": 4
+          },
+          "events": {
+            "CLICKED": "tr_nav_overview_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "d501d4dc5e31442cbd5bce7f27ff17aa",
+          "name": "tr_nav_trends",
+          "type": "button",
+          "props": {
+            "x": 224,
+            "y": 441,
+            "width": 76,
+            "height": 34,
+            "text": "Trends",
+            "bgColor": "#24516A",
+            "textColor": "#FFFFFF",
+            "fontSize": 9,
+            "radius": 4
+          },
+          "events": {
+            "CLICKED": "tr_nav_trends_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "99027ba4b1824a5ead18f1e073a50bd7",
+          "name": "tr_nav_alarms",
+          "type": "button",
+          "props": {
+            "x": 308,
+            "y": 441,
+            "width": 76,
+            "height": 34,
+            "text": "Alarms",
+            "bgColor": "#203347",
+            "textColor": "#C4D2DF",
+            "fontSize": 9,
+            "radius": 4
+          },
+          "events": {
+            "CLICKED": "tr_nav_alarms_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "4c3901e6bea745e48d644bac7803079b",
+          "name": "tr_nav_diagnostics",
+          "type": "button",
+          "props": {
+            "x": 392,
+            "y": 441,
+            "width": 80,
+            "height": 34,
+            "text": "Diagn.",
+            "bgColor": "#203347",
+            "textColor": "#C4D2DF",
+            "fontSize": 9,
+            "radius": 4
+          },
+          "events": {
+            "CLICKED": "tr_nav_diagnostics_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        }
+      ]
+    },
+    {
+      "id": "a880f827cfc54e82bb1983e8e927406f",
+      "name": "Alarms",
+      "canvasSize": [
+        480,
+        480
+      ],
+      "widgets": [
+        {
+          "id": "fd2982716bc947a8bf0ed23491b15e34",
+          "name": "al_bg",
+          "type": "panel",
+          "props": {
+            "x": 0,
+            "y": 0,
+            "width": 480,
+            "height": 480,
+            "bgColor": "#0B1118",
+            "borderColor": "#BDBDBD",
+            "borderWidth": 0,
+            "radius": 0,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_OFF"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "f65d52eadd634ffba49b3a7998f8012e",
+          "name": "al_header",
+          "type": "panel",
+          "props": {
+            "x": 0,
+            "y": 0,
+            "width": 480,
+            "height": 44,
+            "bgColor": "#111C27",
+            "borderColor": "#BDBDBD",
+            "borderWidth": 0,
+            "radius": 0,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_AUTO"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "2aeb28fea38849819ee3017cdea27d3f",
+          "name": "al_brand",
+          "type": "label",
+          "props": {
+            "x": 8,
+            "y": 4,
+            "width": 120,
+            "height": 18,
+            "text": "ECOSISTEMA",
+            "textColor": "#F2F6FA",
+            "fontSize": 12,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "9a5d8387078149d6af915a3bc813db6c",
+          "name": "al_sub",
+          "type": "label",
+          "props": {
+            "x": 8,
+            "y": 24,
+            "width": 150,
+            "height": 15,
+            "text": "INDUSTRIAL MONITOR",
+            "textColor": "#7F93A8",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "d1149f031ab346c7aa745757f64bccd1",
+          "name": "al_title",
+          "type": "label",
+          "props": {
+            "x": 166,
+            "y": 12,
+            "width": 100,
+            "height": 22,
+            "text": "ALARMS",
+            "textColor": "#DCE7F0",
+            "fontSize": 16,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "4b3dbb79d7bd4dcb926524a7ce1235d5",
+          "name": "al_link_led",
+          "type": "led",
+          "props": {
+            "x": 282,
+            "y": 16,
+            "width": 10,
+            "height": 10,
+            "color": "#36D399",
+            "brightness": 255
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "4cca0b99b3d44d30862d3ecb8dd63a90",
+          "name": "al_link",
+          "type": "label",
+          "props": {
+            "x": 296,
+            "y": 12,
+            "width": 100,
+            "height": 20,
+            "text": "SIMULATION",
+            "textColor": "#36D399",
+            "fontSize": 9,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "e15955deb1454d9183cee355b71c0b5b",
+          "name": "al_settings",
+          "type": "button",
+          "props": {
+            "x": 408,
+            "y": 5,
+            "width": 64,
+            "height": 34,
+            "text": "SETUP",
+            "bgColor": "#203347",
+            "textColor": "#E7F0F8",
+            "fontSize": 10,
+            "radius": 5
+          },
+          "events": {
+            "CLICKED": "al_settings_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "8156d820c40144199f42ff6e074b0b59",
+          "name": "al_summary_panel",
+          "type": "panel",
+          "props": {
+            "x": 8,
+            "y": 52,
+            "width": 464,
+            "height": 44,
+            "bgColor": "#111C27",
+            "borderColor": "#26394A",
+            "borderWidth": 1,
+            "radius": 6,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_AUTO"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "f34e2fb1ad52424db2a981335e21bd45",
+          "name": "al_summary",
+          "type": "label",
+          "props": {
+            "x": 16,
+            "y": 65,
+            "width": 270,
+            "height": 20,
+            "text": "0 ACTIVE • 0 ACK • 5 CLEARED",
+            "textColor": "#B9C8D6",
+            "fontSize": 9,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "a1cd94c387e14bb280806ecda5ef4741",
+          "name": "al_ack_all",
+          "type": "button",
+          "props": {
+            "x": 300,
+            "y": 58,
+            "width": 164,
+            "height": 32,
+            "text": "ACKNOWLEDGE ACTIVE",
+            "bgColor": "#5B4625",
+            "textColor": "#FFE9BC",
+            "fontSize": 8,
+            "radius": 4
+          },
+          "events": {
+            "CLICKED": "al_ack_all_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "94a498c656604f689a9fd292e2cff5f1",
+          "name": "al_col_code",
+          "type": "label",
+          "props": {
+            "x": 16,
+            "y": 100,
+            "width": 90,
+            "height": 14,
+            "text": "CODE",
+            "textColor": "#738BA1",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "f65b263b4a69408f86a670e45f890db6",
+          "name": "al_col_level",
+          "type": "label",
+          "props": {
+            "x": 108,
+            "y": 100,
+            "width": 58,
+            "height": 14,
+            "text": "LEVEL",
+            "textColor": "#738BA1",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "1d480b65bb0f4dd286979254c4a306b3",
+          "name": "al_col_state",
+          "type": "label",
+          "props": {
+            "x": 170,
+            "y": 100,
+            "width": 100,
+            "height": 14,
+            "text": "STATE",
+            "textColor": "#738BA1",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "ec32d2ea364c4c558f47170850d3602a",
+          "name": "al_col_time",
+          "type": "label",
+          "props": {
+            "x": 274,
+            "y": 100,
+            "width": 70,
+            "height": 14,
+            "text": "TIME",
+            "textColor": "#738BA1",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "d7d3d5fefe6f4bb3a1d3e61a3ff98afd",
+          "name": "al_col_desc",
+          "type": "label",
+          "props": {
+            "x": 350,
+            "y": 100,
+            "width": 114,
+            "height": 14,
+            "text": "DESCRIPTION",
+            "textColor": "#738BA1",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_RIGHT",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "f8e3dd5c77f74f9e873eba6ef0bd24db",
+          "name": "al_row_0",
+          "type": "panel",
+          "props": {
+            "x": 8,
+            "y": 118,
+            "width": 464,
+            "height": 56,
+            "bgColor": "#111C27",
+            "borderColor": "#26394A",
+            "borderWidth": 1,
+            "radius": 5,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_AUTO"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "8f57064c816247139f50ddc308404255",
+          "name": "al_code_0",
+          "type": "label",
+          "props": {
+            "x": 16,
+            "y": 124,
+            "width": 90,
+            "height": 18,
+            "text": "TEMP_HIGH",
+            "textColor": "#E7F0F8",
+            "fontSize": 9,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "9ba6254646ed43fe8adf3fbe7eeb886c",
+          "name": "al_level_0",
+          "type": "label",
+          "props": {
+            "x": 108,
+            "y": 124,
+            "width": 58,
+            "height": 18,
+            "text": "ALARM",
+            "textColor": "#FF7A72",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "775e1bcbd7a2406cb0d7a4183e979711",
+          "name": "al_state_0",
+          "type": "label",
+          "props": {
+            "x": 170,
+            "y": 124,
+            "width": 100,
+            "height": 18,
+            "text": "CLEARED",
+            "textColor": "#7F93A8",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "385d27c4309444a79f5ff4a7909e010d",
+          "name": "al_time_0",
+          "type": "label",
+          "props": {
+            "x": 274,
+            "y": 124,
+            "width": 70,
+            "height": 18,
+            "text": "--:--:--",
+            "textColor": "#9FB2C5",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "15f2e4f71b6f482f9fedaef6665f8f5e",
+          "name": "al_desc_0",
+          "type": "label",
+          "props": {
+            "x": 16,
+            "y": 148,
+            "width": 360,
+            "height": 18,
+            "text": "Temperature above threshold",
+            "textColor": "#B9C8D6",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "14add5070a494a528623e6352c48cbfb",
+          "name": "al_ack_0",
+          "type": "button",
+          "props": {
+            "x": 396,
+            "y": 128,
+            "width": 68,
+            "height": 34,
+            "text": "ACK",
+            "bgColor": "#203347",
+            "textColor": "#DCE7F0",
+            "fontSize": 9,
+            "radius": 4
+          },
+          "events": {
+            "CLICKED": "al_ack_0_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "16bb89457fa64d4db986c5faaefc1d99",
+          "name": "al_row_1",
+          "type": "panel",
+          "props": {
+            "x": 8,
+            "y": 180,
+            "width": 464,
+            "height": 56,
+            "bgColor": "#111C27",
+            "borderColor": "#26394A",
+            "borderWidth": 1,
+            "radius": 5,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_AUTO"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "935f871e80204039b63447ab140edc55",
+          "name": "al_code_1",
+          "type": "label",
+          "props": {
+            "x": 16,
+            "y": 186,
+            "width": 90,
+            "height": 18,
+            "text": "FAN_STALL",
+            "textColor": "#E7F0F8",
+            "fontSize": 9,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "8f650c8fec6c4b09be0d4ca0e2d8e628",
+          "name": "al_level_1",
+          "type": "label",
+          "props": {
+            "x": 108,
+            "y": 186,
+            "width": 58,
+            "height": 18,
+            "text": "ALARM",
+            "textColor": "#FF7A72",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "e5216b62c99647dabd26a114efb3564c",
+          "name": "al_state_1",
+          "type": "label",
+          "props": {
+            "x": 170,
+            "y": 186,
+            "width": 100,
+            "height": 18,
+            "text": "CLEARED",
+            "textColor": "#7F93A8",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "68cfc7fc10e741149fe6ec48c6a604b5",
+          "name": "al_time_1",
+          "type": "label",
+          "props": {
+            "x": 274,
+            "y": 186,
+            "width": 70,
+            "height": 18,
+            "text": "--:--:--",
+            "textColor": "#9FB2C5",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "cef6b8978e99461da9818029a0fdb8a4",
+          "name": "al_desc_1",
+          "type": "label",
+          "props": {
+            "x": 16,
+            "y": 210,
+            "width": 360,
+            "height": 18,
+            "text": "RPM below expected for delay",
+            "textColor": "#B9C8D6",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "109cdb3416284dc3859ed4147dc463d0",
+          "name": "al_ack_1",
+          "type": "button",
+          "props": {
+            "x": 396,
+            "y": 190,
+            "width": 68,
+            "height": 34,
+            "text": "ACK",
+            "bgColor": "#203347",
+            "textColor": "#DCE7F0",
+            "fontSize": 9,
+            "radius": 4
+          },
+          "events": {
+            "CLICKED": "al_ack_1_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "ec15fbefb5984758a7d9515eced6367a",
+          "name": "al_row_2",
+          "type": "panel",
+          "props": {
+            "x": 8,
+            "y": 242,
+            "width": 464,
+            "height": 56,
+            "bgColor": "#111C27",
+            "borderColor": "#26394A",
+            "borderWidth": 1,
+            "radius": 5,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_AUTO"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "7a6e71a036ea4461a0e0858bdfd42e95",
+          "name": "al_code_2",
+          "type": "label",
+          "props": {
+            "x": 16,
+            "y": 248,
+            "width": 90,
+            "height": 18,
+            "text": "SENSOR_LOST",
+            "textColor": "#E7F0F8",
+            "fontSize": 9,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "eaef9042c3d441e2b5e6ae1894271c7e",
+          "name": "al_level_2",
+          "type": "label",
+          "props": {
+            "x": 108,
+            "y": 248,
+            "width": 58,
+            "height": 18,
+            "text": "ALARM",
+            "textColor": "#FF7A72",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "05aacf2483b54352b5c4c22e42d1bd79",
+          "name": "al_state_2",
+          "type": "label",
+          "props": {
+            "x": 170,
+            "y": 248,
+            "width": 100,
+            "height": 18,
+            "text": "CLEARED",
+            "textColor": "#7F93A8",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "fa082393787549c99c79e19062313314",
+          "name": "al_time_2",
+          "type": "label",
+          "props": {
+            "x": 274,
+            "y": 248,
+            "width": 70,
+            "height": 18,
+            "text": "--:--:--",
+            "textColor": "#9FB2C5",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "03ed1b20b4784e1c821e21b6ecb03c8d",
+          "name": "al_desc_2",
+          "type": "label",
+          "props": {
+            "x": 16,
+            "y": 272,
+            "width": 360,
+            "height": 18,
+            "text": "Invalid or unavailable sensor data",
+            "textColor": "#B9C8D6",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "4a02278acd554b6983a5055077621f6f",
+          "name": "al_ack_2",
+          "type": "button",
+          "props": {
+            "x": 396,
+            "y": 252,
+            "width": 68,
+            "height": 34,
+            "text": "ACK",
+            "bgColor": "#203347",
+            "textColor": "#DCE7F0",
+            "fontSize": 9,
+            "radius": 4
+          },
+          "events": {
+            "CLICKED": "al_ack_2_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "7dce1ded8aef4a5ea19987a779b7f398",
+          "name": "al_row_3",
+          "type": "panel",
+          "props": {
+            "x": 8,
+            "y": 304,
+            "width": 464,
+            "height": 56,
+            "bgColor": "#111C27",
+            "borderColor": "#26394A",
+            "borderWidth": 1,
+            "radius": 5,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_AUTO"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "3a3dfa7c2ba54097aaf50fa32917391a",
+          "name": "al_code_3",
+          "type": "label",
+          "props": {
+            "x": 16,
+            "y": 310,
+            "width": 90,
+            "height": 18,
+            "text": "LINK_LOST",
+            "textColor": "#E7F0F8",
+            "fontSize": 9,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "4e1baa0957404cf9a3a35a12760cc2da",
+          "name": "al_level_3",
+          "type": "label",
+          "props": {
+            "x": 108,
+            "y": 310,
+            "width": 58,
+            "height": 18,
+            "text": "WARNING",
+            "textColor": "#FFC857",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "08129017ae26419ba24516afc021a5b9",
+          "name": "al_state_3",
+          "type": "label",
+          "props": {
+            "x": 170,
+            "y": 310,
+            "width": 100,
+            "height": 18,
+            "text": "CLEARED",
+            "textColor": "#7F93A8",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "bf43a455b0374224b4ccc2f1cf0107a0",
+          "name": "al_time_3",
+          "type": "label",
+          "props": {
+            "x": 274,
+            "y": 310,
+            "width": 70,
+            "height": 18,
+            "text": "--:--:--",
+            "textColor": "#9FB2C5",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "c315fdb23e2d4bf0befcd8827508db72",
+          "name": "al_desc_3",
+          "type": "label",
+          "props": {
+            "x": 16,
+            "y": 334,
+            "width": 360,
+            "height": 18,
+            "text": "Communication interrupted",
+            "textColor": "#B9C8D6",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "724e76b78a2a44ca8a5791e237d3cf4e",
+          "name": "al_ack_3",
+          "type": "button",
+          "props": {
+            "x": 396,
+            "y": 314,
+            "width": 68,
+            "height": 34,
+            "text": "ACK",
+            "bgColor": "#203347",
+            "textColor": "#DCE7F0",
+            "fontSize": 9,
+            "radius": 4
+          },
+          "events": {
+            "CLICKED": "al_ack_3_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "448b55bf6000466eb02e99304838fbd8",
+          "name": "al_row_4",
+          "type": "panel",
+          "props": {
+            "x": 8,
+            "y": 366,
+            "width": 464,
+            "height": 56,
+            "bgColor": "#111C27",
+            "borderColor": "#26394A",
+            "borderWidth": 1,
+            "radius": 5,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_AUTO"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "0b7c5e82785c484a87af4d6e302f6047",
+          "name": "al_code_4",
+          "type": "label",
+          "props": {
+            "x": 16,
+            "y": 372,
+            "width": 90,
+            "height": 18,
+            "text": "POWER_LOW",
+            "textColor": "#E7F0F8",
+            "fontSize": 9,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "60f82037a14245c3915b16d7a4b99e36",
+          "name": "al_level_4",
+          "type": "label",
+          "props": {
+            "x": 108,
+            "y": 372,
+            "width": 58,
+            "height": 18,
+            "text": "ALARM",
+            "textColor": "#FF7A72",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "94d9ed1514e64a15aec2b3b6da5b149d",
+          "name": "al_state_4",
+          "type": "label",
+          "props": {
+            "x": 170,
+            "y": 372,
+            "width": 100,
+            "height": 18,
+            "text": "CLEARED",
+            "textColor": "#7F93A8",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "b6432d9423ff4005aa5a6b2c6d1881ad",
+          "name": "al_time_4",
+          "type": "label",
+          "props": {
+            "x": 274,
+            "y": 372,
+            "width": 70,
+            "height": 18,
+            "text": "--:--:--",
+            "textColor": "#9FB2C5",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "0b0cf478d8a1450f9f81fa9db5e979a9",
+          "name": "al_desc_4",
+          "type": "label",
+          "props": {
+            "x": 16,
+            "y": 396,
+            "width": 360,
+            "height": 18,
+            "text": "Supply below configured threshold",
+            "textColor": "#B9C8D6",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "c18a245a2b6049f0b7a96069c1e069fd",
+          "name": "al_ack_4",
+          "type": "button",
+          "props": {
+            "x": 396,
+            "y": 376,
+            "width": 68,
+            "height": 34,
+            "text": "ACK",
+            "bgColor": "#203347",
+            "textColor": "#DCE7F0",
+            "fontSize": 9,
+            "radius": 4
+          },
+          "events": {
+            "CLICKED": "al_ack_4_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "0da6a0db5a61412b8a141fadd85d180f",
+          "name": "al_note",
+          "type": "label",
+          "props": {
+            "x": 16,
+            "y": 423,
+            "width": 448,
+            "height": 12,
+            "text": "ACK does not clear an active condition.",
+            "textColor": "#8EA4B8",
+            "fontSize": 7,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "fa0da7072ae540edb905c636d2ce594f",
+          "name": "al_footer",
+          "type": "panel",
+          "props": {
+            "x": 0,
+            "y": 436,
+            "width": 480,
+            "height": 44,
+            "bgColor": "#111C27",
+            "borderColor": "#BDBDBD",
+            "borderWidth": 0,
+            "radius": 0,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_AUTO"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "2a0884ef730b476484080bcf3710df5a",
+          "name": "al_system_state",
+          "type": "label",
+          "props": {
+            "x": 8,
+            "y": 440,
+            "width": 124,
+            "height": 16,
+            "text": "SYSTEM NORMAL",
+            "textColor": "#36D399",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "f1e73d9ff3cd4a308474e96361b36214",
+          "name": "al_data_age",
+          "type": "label",
+          "props": {
+            "x": 8,
+            "y": 458,
+            "width": 124,
+            "height": 16,
+            "text": "DATA 0 s",
+            "textColor": "#9FB2C5",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "66fcb69df58a499dabadb569f5d74b69",
+          "name": "al_nav_overview",
+          "type": "button",
+          "props": {
+            "x": 140,
+            "y": 441,
+            "width": 76,
+            "height": 34,
+            "text": "Overview",
+            "bgColor": "#203347",
+            "textColor": "#C4D2DF",
+            "fontSize": 9,
+            "radius": 4
+          },
+          "events": {
+            "CLICKED": "al_nav_overview_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "2e06532d5ca747b783348878613f7a9e",
+          "name": "al_nav_trends",
+          "type": "button",
+          "props": {
+            "x": 224,
+            "y": 441,
+            "width": 76,
+            "height": 34,
+            "text": "Trends",
+            "bgColor": "#203347",
+            "textColor": "#C4D2DF",
+            "fontSize": 9,
+            "radius": 4
+          },
+          "events": {
+            "CLICKED": "al_nav_trends_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "530cf359a8764adb992cf96df9158481",
+          "name": "al_nav_alarms",
+          "type": "button",
+          "props": {
+            "x": 308,
+            "y": 441,
+            "width": 76,
+            "height": 34,
+            "text": "Alarms",
+            "bgColor": "#24516A",
+            "textColor": "#FFFFFF",
+            "fontSize": 9,
+            "radius": 4
+          },
+          "events": {
+            "CLICKED": "al_nav_alarms_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "b13db81607fa4629950350f385c44b9c",
+          "name": "al_nav_diagnostics",
+          "type": "button",
+          "props": {
+            "x": 392,
+            "y": 441,
+            "width": 80,
+            "height": 34,
+            "text": "Diagn.",
+            "bgColor": "#203347",
+            "textColor": "#C4D2DF",
+            "fontSize": 9,
+            "radius": 4
+          },
+          "events": {
+            "CLICKED": "al_nav_diagnostics_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        }
+      ]
+    },
+    {
+      "id": "a98c5b7b47c84442955789d8b93bffff",
+      "name": "Diagnostics",
+      "canvasSize": [
+        480,
+        480
+      ],
+      "widgets": [
+        {
+          "id": "4b379e1a1b3c445eafc3807c080373cd",
+          "name": "di_bg",
+          "type": "panel",
+          "props": {
+            "x": 0,
+            "y": 0,
+            "width": 480,
+            "height": 480,
+            "bgColor": "#0B1118",
+            "borderColor": "#BDBDBD",
+            "borderWidth": 0,
+            "radius": 0,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_OFF"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "aa4e241045e1422f95c7a14086e21357",
+          "name": "di_header",
+          "type": "panel",
+          "props": {
+            "x": 0,
+            "y": 0,
+            "width": 480,
+            "height": 44,
+            "bgColor": "#111C27",
+            "borderColor": "#BDBDBD",
+            "borderWidth": 0,
+            "radius": 0,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_AUTO"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "08bd42b7de294a428953635b0dea77a5",
+          "name": "di_brand",
+          "type": "label",
+          "props": {
+            "x": 8,
+            "y": 4,
+            "width": 120,
+            "height": 18,
+            "text": "ECOSISTEMA",
+            "textColor": "#F2F6FA",
+            "fontSize": 12,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "c19eb8a761264d3988e67f0c0386cf1c",
+          "name": "di_sub",
+          "type": "label",
+          "props": {
+            "x": 8,
+            "y": 24,
+            "width": 150,
+            "height": 15,
+            "text": "INDUSTRIAL MONITOR",
+            "textColor": "#7F93A8",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "6ded22add22e4b9fbbbb40a81bc1f89d",
+          "name": "di_title",
+          "type": "label",
+          "props": {
+            "x": 152,
+            "y": 12,
+            "width": 130,
+            "height": 22,
+            "text": "DIAGNOSTICS",
+            "textColor": "#DCE7F0",
+            "fontSize": 14,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "30633f46c72e43bf9c3b56391f69b399",
+          "name": "di_link_led",
+          "type": "led",
+          "props": {
+            "x": 282,
+            "y": 16,
+            "width": 10,
+            "height": 10,
+            "color": "#36D399",
+            "brightness": 255
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "1d8c7079501741c9833f572148a88101",
+          "name": "di_link",
+          "type": "label",
+          "props": {
+            "x": 296,
+            "y": 12,
+            "width": 100,
+            "height": 20,
+            "text": "SIMULATION",
+            "textColor": "#36D399",
+            "fontSize": 9,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "5f58240deaed4e88a5e2083b8d5bb4fb",
+          "name": "di_settings",
+          "type": "button",
+          "props": {
+            "x": 408,
+            "y": 5,
+            "width": 64,
+            "height": 34,
+            "text": "SETUP",
+            "bgColor": "#203347",
+            "textColor": "#E7F0F8",
+            "fontSize": 10,
+            "radius": 5
+          },
+          "events": {
+            "CLICKED": "di_settings_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "4848fffe47924e8689141618c60d2438",
+          "name": "di_system_panel",
+          "type": "panel",
+          "props": {
+            "x": 8,
+            "y": 52,
+            "width": 224,
+            "height": 376,
+            "bgColor": "#111C27",
+            "borderColor": "#26394A",
+            "borderWidth": 1,
+            "radius": 6,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_AUTO"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "a681be878ee242dda0999ba23d16d234",
+          "name": "di_system_title",
+          "type": "label",
+          "props": {
+            "x": 16,
+            "y": 62,
+            "width": 208,
+            "height": 22,
+            "text": "SYSTEM",
+            "textColor": "#DCE7F0",
+            "fontSize": 12,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "262adeef85a842e3b031cbf551ed4868",
+          "name": "di_board_key",
+          "type": "label",
+          "props": {
+            "x": 16,
+            "y": 96,
+            "width": 208,
+            "height": 16,
+            "text": "Board",
+            "textColor": "#8EA4B8",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "8c94cd69415b405d8179783378ab3d88",
+          "name": "di_board_value",
+          "type": "label",
+          "props": {
+            "x": 16,
+            "y": 114,
+            "width": 208,
+            "height": 20,
+            "text": "ESP32-4848S040",
+            "textColor": "#E7F0F8",
+            "fontSize": 10,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "3a6a02700eff4171869c3b0bf8a65f3e",
+          "name": "di_firmware_key",
+          "type": "label",
+          "props": {
+            "x": 16,
+            "y": 148,
+            "width": 208,
+            "height": 16,
+            "text": "Firmware",
+            "textColor": "#8EA4B8",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "216ecd40b95545cd8a4a266118811adc",
+          "name": "di_firmware_value",
+          "type": "label",
+          "props": {
+            "x": 16,
+            "y": 166,
+            "width": 208,
+            "height": 20,
+            "text": "EIM-01 / v0.1",
+            "textColor": "#E7F0F8",
+            "fontSize": 10,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "168fbe5fdc234395a6a0521b93f03601",
+          "name": "di_protocol_key",
+          "type": "label",
+          "props": {
+            "x": 16,
+            "y": 200,
+            "width": 208,
+            "height": 16,
+            "text": "Data protocol",
+            "textColor": "#8EA4B8",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "b50a80dda4dd4227a843a0304cdc1463",
+          "name": "di_protocol_value",
+          "type": "label",
+          "props": {
+            "x": 16,
+            "y": 218,
+            "width": 208,
+            "height": 20,
+            "text": "EIM-DATA / v1.0",
+            "textColor": "#E7F0F8",
+            "fontSize": 10,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "89a1857f3dea401c8f18491512b7a7e2",
+          "name": "di_memory_key",
+          "type": "label",
+          "props": {
+            "x": 16,
+            "y": 252,
+            "width": 208,
+            "height": 16,
+            "text": "Free memory",
+            "textColor": "#8EA4B8",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "2930190fe78a403fbd4d53c29df35942",
+          "name": "di_memory_value",
+          "type": "label",
+          "props": {
+            "x": 16,
+            "y": 270,
+            "width": 208,
+            "height": 20,
+            "text": "N/A",
+            "textColor": "#E7F0F8",
+            "fontSize": 10,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "3904e29fc90e473ca805a4df2c64bd25",
+          "name": "di_uptime_key",
+          "type": "label",
+          "props": {
+            "x": 16,
+            "y": 304,
+            "width": 208,
+            "height": 16,
+            "text": "Uptime",
+            "textColor": "#8EA4B8",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "7534bd6bc23744d3a91ac3c80a580b1c",
+          "name": "di_uptime_value",
+          "type": "label",
+          "props": {
+            "x": 16,
+            "y": 322,
+            "width": 208,
+            "height": 20,
+            "text": "00:00:00",
+            "textColor": "#E7F0F8",
+            "fontSize": 10,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "26c57a0d020243e394d8322a1b3e079d",
+          "name": "di_refresh_key",
+          "type": "label",
+          "props": {
+            "x": 16,
+            "y": 356,
+            "width": 208,
+            "height": 16,
+            "text": "UI refresh",
+            "textColor": "#8EA4B8",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "3c73fdf38caf4e4fbc1a6f4a8d5813b6",
+          "name": "di_refresh_value",
+          "type": "label",
+          "props": {
+            "x": 16,
+            "y": 374,
+            "width": 208,
+            "height": 20,
+            "text": "1000 ms",
+            "textColor": "#E7F0F8",
+            "fontSize": 10,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "9170d9530b484b3b925a6fe141899c7f",
+          "name": "di_perf_key",
+          "type": "label",
+          "props": {
+            "x": 16,
+            "y": 398,
+            "width": 100,
+            "height": 16,
+            "text": "UI update",
+            "textColor": "#8EA4B8",
+            "fontSize": 7,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "cf3d7c00c3e54454aeec695cec11c712",
+          "name": "di_perf_value",
+          "type": "label",
+          "props": {
+            "x": 100,
+            "y": 398,
+            "width": 60,
+            "height": 16,
+            "text": "N/A",
+            "textColor": "#E7F0F8",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "8362433f60b74af8a539798985473e9e",
+          "name": "di_lvgl_key",
+          "type": "label",
+          "props": {
+            "x": 16,
+            "y": 414,
+            "width": 100,
+            "height": 12,
+            "text": "LVGL render",
+            "textColor": "#8EA4B8",
+            "fontSize": 7,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "d8f5febf90c14b42b24c7c2dba1ad3b4",
+          "name": "di_lvgl_value",
+          "type": "label",
+          "props": {
+            "x": 100,
+            "y": 414,
+            "width": 60,
+            "height": 12,
+            "text": "N/A",
+            "textColor": "#E7F0F8",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "a426eaf3a069477b8d616c531f19bbf2",
+          "name": "di_system_note",
+          "type": "label",
+          "props": {
+            "x": 164,
+            "y": 402,
+            "width": 60,
+            "height": 24,
+            "text": "N/A if unavailable",
+            "textColor": "#738BA1",
+            "fontSize": 7,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "a5f6c16a485e4607a4a1a23aa0a2896e",
+          "name": "di_comm_panel",
+          "type": "panel",
+          "props": {
+            "x": 248,
+            "y": 52,
+            "width": 224,
+            "height": 376,
+            "bgColor": "#111C27",
+            "borderColor": "#26394A",
+            "borderWidth": 1,
+            "radius": 6,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_AUTO"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "f1f6716a3b0d4637a407d439fb612370",
+          "name": "di_comm_title",
+          "type": "label",
+          "props": {
+            "x": 256,
+            "y": 62,
+            "width": 208,
+            "height": 22,
+            "text": "DATA LINK",
+            "textColor": "#DCE7F0",
+            "fontSize": 12,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "9738cb1dd779440eb5e2c0c687ea62de",
+          "name": "di_source_key",
+          "type": "label",
+          "props": {
+            "x": 256,
+            "y": 96,
+            "width": 208,
+            "height": 16,
+            "text": "Selected source",
+            "textColor": "#8EA4B8",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "b9d2766bc1b240f7a138a0cff5921ba0",
+          "name": "di_source_value",
+          "type": "label",
+          "props": {
+            "x": 256,
+            "y": 114,
+            "width": 208,
+            "height": 20,
+            "text": "SIMULATION",
+            "textColor": "#36D399",
+            "fontSize": 10,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "7dc57bc6a88041bb827d2372ee1c66ec",
+          "name": "di_connection_key",
+          "type": "label",
+          "props": {
+            "x": 256,
+            "y": 148,
+            "width": 208,
+            "height": 16,
+            "text": "Connection",
+            "textColor": "#8EA4B8",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "a05d98fb92ca4b3092239e6a30a68f48",
+          "name": "di_connection_value",
+          "type": "label",
+          "props": {
+            "x": 256,
+            "y": 166,
+            "width": 208,
+            "height": 20,
+            "text": "SIMULATION",
+            "textColor": "#36D399",
+            "fontSize": 10,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "32321c1336f24251bc08b8ecf7d3b721",
+          "name": "di_rx_key",
+          "type": "label",
+          "props": {
+            "x": 256,
+            "y": 200,
+            "width": 208,
+            "height": 16,
+            "text": "Messages received",
+            "textColor": "#8EA4B8",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "7e701481b3534efba3f63d9765055f87",
+          "name": "di_rx_value",
+          "type": "label",
+          "props": {
+            "x": 256,
+            "y": 218,
+            "width": 208,
+            "height": 20,
+            "text": "0",
+            "textColor": "#E7F0F8",
+            "fontSize": 10,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "1f0df6144e6c456880684ea2c6be88b3",
+          "name": "di_discarded_key",
+          "type": "label",
+          "props": {
+            "x": 256,
+            "y": 252,
+            "width": 208,
+            "height": 16,
+            "text": "Messages discarded",
+            "textColor": "#8EA4B8",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "9e0188a5598c4d61997c8aeeeb4a579c",
+          "name": "di_discarded_value",
+          "type": "label",
+          "props": {
+            "x": 256,
+            "y": 270,
+            "width": 208,
+            "height": 20,
+            "text": "0",
+            "textColor": "#E7F0F8",
+            "fontSize": 10,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "30debd6405ad42a998dd16eece1b6eee",
+          "name": "di_sequence_key",
+          "type": "label",
+          "props": {
+            "x": 256,
+            "y": 304,
+            "width": 208,
+            "height": 16,
+            "text": "Last sequence",
+            "textColor": "#8EA4B8",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "90d2768f17af499eab64bfd896e0781a",
+          "name": "di_sequence_value",
+          "type": "label",
+          "props": {
+            "x": 256,
+            "y": 322,
+            "width": 208,
+            "height": 20,
+            "text": "N/A",
+            "textColor": "#E7F0F8",
+            "fontSize": 10,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "05b36dfd188947e3a8b7670c2e65b979",
+          "name": "di_scenario_key",
+          "type": "label",
+          "props": {
+            "x": 256,
+            "y": 356,
+            "width": 208,
+            "height": 16,
+            "text": "Demo scenario",
+            "textColor": "#8EA4B8",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "3d8db9e4b5b14a9fa9bbc57c4228bd31",
+          "name": "di_scenario_value",
+          "type": "label",
+          "props": {
+            "x": 256,
+            "y": 374,
+            "width": 208,
+            "height": 20,
+            "text": "NORMAL",
+            "textColor": "#E7F0F8",
+            "fontSize": 10,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "baf33e0ff3fd42e3b96bb3bf7e70a821",
+          "name": "di_timeout_key",
+          "type": "label",
+          "props": {
+            "x": 256,
+            "y": 400,
+            "width": 90,
+            "height": 16,
+            "text": "I/O timeout",
+            "textColor": "#8EA4B8",
+            "fontSize": 7,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "d1964a1dab7740d39ec8e8d042b228b9",
+          "name": "di_timeout_value",
+          "type": "label",
+          "props": {
+            "x": 340,
+            "y": 400,
+            "width": 124,
+            "height": 16,
+            "text": "2000 ms",
+            "textColor": "#E7F0F8",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "75bfd352b834489591bd020c31c1897b",
+          "name": "di_history_key",
+          "type": "label",
+          "props": {
+            "x": 256,
+            "y": 416,
+            "width": 90,
+            "height": 12,
+            "text": "History",
+            "textColor": "#8EA4B8",
+            "fontSize": 7,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "2fe532753ff04d89a8489482c13ec51f",
+          "name": "di_history_value",
+          "type": "label",
+          "props": {
+            "x": 340,
+            "y": 416,
+            "width": 124,
+            "height": 12,
+            "text": "900 / channel",
+            "textColor": "#E7F0F8",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "018f622ad6524cb9bb3ad1f1022ba63c",
+          "name": "di_comm_note",
+          "type": "label",
+          "props": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "text": "",
+            "textColor": "#738BA1",
+            "fontSize": 7,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "26b5639599844c39b34859d8c7bf9135",
+          "name": "di_footer",
+          "type": "panel",
+          "props": {
+            "x": 0,
+            "y": 436,
+            "width": 480,
+            "height": 44,
+            "bgColor": "#111C27",
+            "borderColor": "#BDBDBD",
+            "borderWidth": 0,
+            "radius": 0,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_AUTO"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "d95734f33e4648e99b7e497f28464e9b",
+          "name": "di_system_state",
+          "type": "label",
+          "props": {
+            "x": 8,
+            "y": 440,
+            "width": 124,
+            "height": 16,
+            "text": "SYSTEM NORMAL",
+            "textColor": "#36D399",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "3049ff0496e041ab8aa411b6d8a2de69",
+          "name": "di_data_age",
+          "type": "label",
+          "props": {
+            "x": 8,
+            "y": 458,
+            "width": 124,
+            "height": 16,
+            "text": "DATA 0 s",
+            "textColor": "#9FB2C5",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "3cef0077124d4f9db94519fec716aade",
+          "name": "di_nav_overview",
+          "type": "button",
+          "props": {
+            "x": 140,
+            "y": 441,
+            "width": 76,
+            "height": 34,
+            "text": "Overview",
+            "bgColor": "#203347",
+            "textColor": "#C4D2DF",
+            "fontSize": 9,
+            "radius": 4
+          },
+          "events": {
+            "CLICKED": "di_nav_overview_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "66bf6966029447498b23a7807d0660ae",
+          "name": "di_nav_trends",
+          "type": "button",
+          "props": {
+            "x": 224,
+            "y": 441,
+            "width": 76,
+            "height": 34,
+            "text": "Trends",
+            "bgColor": "#203347",
+            "textColor": "#C4D2DF",
+            "fontSize": 9,
+            "radius": 4
+          },
+          "events": {
+            "CLICKED": "di_nav_trends_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "eafcae51af354d33a198fcfff958a382",
+          "name": "di_nav_alarms",
+          "type": "button",
+          "props": {
+            "x": 308,
+            "y": 441,
+            "width": 76,
+            "height": 34,
+            "text": "Alarms",
+            "bgColor": "#203347",
+            "textColor": "#C4D2DF",
+            "fontSize": 9,
+            "radius": 4
+          },
+          "events": {
+            "CLICKED": "di_nav_alarms_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "c174cf0793614ce38cca1ad05639eed0",
+          "name": "di_nav_diagnostics",
+          "type": "button",
+          "props": {
+            "x": 392,
+            "y": 441,
+            "width": 80,
+            "height": 34,
+            "text": "Diagn.",
+            "bgColor": "#24516A",
+            "textColor": "#FFFFFF",
+            "fontSize": 9,
+            "radius": 4
+          },
+          "events": {
+            "CLICKED": "di_nav_diagnostics_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        }
+      ]
+    },
+    {
+      "id": "401ba19fd8df4c7fb4d073dd38f107c5",
+      "name": "Settings",
+      "canvasSize": [
+        480,
+        480
+      ],
+      "widgets": [
+        {
+          "id": "30fc2e9e891644a9bb8be4f50fa001de",
+          "name": "se_bg",
+          "type": "panel",
+          "props": {
+            "x": 0,
+            "y": 0,
+            "width": 480,
+            "height": 480,
+            "bgColor": "#0B1118",
+            "borderColor": "#BDBDBD",
+            "borderWidth": 0,
+            "radius": 0,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_OFF"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "3ffd594dce134b36baafec7074dcf108",
+          "name": "se_header",
+          "type": "panel",
+          "props": {
+            "x": 0,
+            "y": 0,
+            "width": 480,
+            "height": 44,
+            "bgColor": "#111C27",
+            "borderColor": "#BDBDBD",
+            "borderWidth": 0,
+            "radius": 0,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_AUTO"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "014e27c9d29a459eb604dc9ba007ad99",
+          "name": "se_brand",
+          "type": "label",
+          "props": {
+            "x": 8,
+            "y": 4,
+            "width": 120,
+            "height": 18,
+            "text": "ECOSISTEMA",
+            "textColor": "#F2F6FA",
+            "fontSize": 12,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "4da5a7c46f4a4b9a884401c97273abe1",
+          "name": "se_sub",
+          "type": "label",
+          "props": {
+            "x": 8,
+            "y": 24,
+            "width": 150,
+            "height": 15,
+            "text": "INDUSTRIAL MONITOR",
+            "textColor": "#7F93A8",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "b314ede6502f49d2966b2f0084951262",
+          "name": "se_title",
+          "type": "label",
+          "props": {
+            "x": 166,
+            "y": 12,
+            "width": 100,
+            "height": 22,
+            "text": "SETTINGS",
+            "textColor": "#DCE7F0",
+            "fontSize": 16,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "f277206626c240a4badacda7d2f9dd59",
+          "name": "se_link_led",
+          "type": "led",
+          "props": {
+            "x": 282,
+            "y": 16,
+            "width": 10,
+            "height": 10,
+            "color": "#36D399",
+            "brightness": 255
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "872abc1ab7ca463fa6f05d7c8ec11914",
+          "name": "se_link",
+          "type": "label",
+          "props": {
+            "x": 296,
+            "y": 12,
+            "width": 100,
+            "height": 20,
+            "text": "SIMULATION",
+            "textColor": "#36D399",
+            "fontSize": 9,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "5c109ee3b1a84070980df1bf8812006c",
+          "name": "se_back",
+          "type": "button",
+          "props": {
+            "x": 408,
+            "y": 5,
+            "width": 64,
+            "height": 34,
+            "text": "HOME",
+            "bgColor": "#203347",
+            "textColor": "#E7F0F8",
+            "fontSize": 10,
+            "radius": 5
+          },
+          "events": {
+            "CLICKED": "se_back_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "c9fa9eeebd814e268474a4207a14563a",
+          "name": "se_data_panel",
+          "type": "panel",
+          "props": {
+            "x": 8,
+            "y": 52,
+            "width": 148,
+            "height": 376,
+            "bgColor": "#111C27",
+            "borderColor": "#26394A",
+            "borderWidth": 1,
+            "radius": 6,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_AUTO"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "dbc4490cc9164a03a8583c82d062d848",
+          "name": "se_data_title",
+          "type": "label",
+          "props": {
+            "x": 16,
+            "y": 60,
+            "width": 132,
+            "height": 20,
+            "text": "DATA & UI",
+            "textColor": "#DCE7F0",
+            "fontSize": 11,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "fcd9d5547d1f45f49fa3239dd73a2a07",
+          "name": "se_source_label",
+          "type": "label",
+          "props": {
+            "x": 16,
+            "y": 84,
+            "width": 132,
+            "height": 14,
+            "text": "Data source",
+            "textColor": "#8EA4B8",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "156c9f682b5341eea8e7c6e4c295276f",
+          "name": "se_source",
+          "type": "dropdown",
+          "props": {
+            "x": 16,
+            "y": 100,
+            "width": 132,
+            "height": 32,
+            "options": "SIMULATION\nTCP\nSERIAL\nBLE",
+            "selected": 0,
+            "bgColor": "#203347",
+            "textColor": "#E7F0F8",
+            "fontSize": 8,
+            "dir": "LV_DIR_BOTTOM",
+            "symbol": "LV_SYMBOL_DOWN",
+            "highlightSelected": true
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "13c324aeb70a434082597c17e0096273",
+          "name": "se_sim_label",
+          "type": "label",
+          "props": {
+            "x": 16,
+            "y": 144,
+            "width": 76,
+            "height": 28,
+            "text": "Simulator",
+            "textColor": "#B9C8D6",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "0e82a0c12bfa494a9d154ee6241269bc",
+          "name": "se_simulator",
+          "type": "switch",
+          "props": {
+            "x": 92,
+            "y": 140,
+            "width": 48,
+            "height": 28,
+            "checked": true,
+            "onColor": "#26996F",
+            "offColor": "#455568",
+            "knobColor": "#FFFFFF",
+            "disabled": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "af6b05cb32f443a4baccc80d995992d1",
+          "name": "se_refresh_label",
+          "type": "label",
+          "props": {
+            "x": 16,
+            "y": 176,
+            "width": 132,
+            "height": 14,
+            "text": "UI refresh",
+            "textColor": "#8EA4B8",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "e2a00abd4b444c7f9c519d876424ff3d",
+          "name": "se_refresh",
+          "type": "dropdown",
+          "props": {
+            "x": 16,
+            "y": 192,
+            "width": 132,
+            "height": 32,
+            "options": "250 ms\n500 ms\n1000 ms\n2000 ms",
+            "selected": 2,
+            "bgColor": "#203347",
+            "textColor": "#E7F0F8",
+            "fontSize": 8,
+            "dir": "LV_DIR_BOTTOM",
+            "symbol": "LV_SYMBOL_DOWN",
+            "highlightSelected": true
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "5eb4fb5c4b454308bf3e354ecc01e5c2",
+          "name": "se_host_label",
+          "type": "label",
+          "props": {
+            "x": 16,
+            "y": 230,
+            "width": 132,
+            "height": 14,
+            "text": "TCP host",
+            "textColor": "#8EA4B8",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "8d1a6a0fbead41a0a438d93cbfb81c61",
+          "name": "se_host",
+          "type": "textarea",
+          "props": {
+            "x": 16,
+            "y": 246,
+            "width": 132,
+            "height": 32,
+            "text": "192.168.1.50",
+            "placeholder": "Type here",
+            "bgColor": "#0D1620",
+            "textColor": "#E7F0F8",
+            "fontSize": 9,
+            "oneLine": true,
+            "password": false,
+            "maxLength": 40,
+            "acceptedChars": ""
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "31448481f00c4d599b4d485f21d284d1",
+          "name": "se_port_label",
+          "type": "label",
+          "props": {
+            "x": 16,
+            "y": 284,
+            "width": 132,
+            "height": 14,
+            "text": "TCP port",
+            "textColor": "#8EA4B8",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "87128eb036bb4f6181a2f5aec54559ce",
+          "name": "se_port",
+          "type": "textarea",
+          "props": {
+            "x": 16,
+            "y": 300,
+            "width": 132,
+            "height": 32,
+            "text": "5020",
+            "placeholder": "Type here",
+            "bgColor": "#0D1620",
+            "textColor": "#E7F0F8",
+            "fontSize": 9,
+            "oneLine": true,
+            "password": false,
+            "maxLength": 5,
+            "acceptedChars": "0123456789"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "86022241cb6a45de8b5d703a9f4a0493",
+          "name": "se_serial_label",
+          "type": "label",
+          "props": {
+            "x": 16,
+            "y": 338,
+            "width": 132,
+            "height": 14,
+            "text": "Serial port",
+            "textColor": "#8EA4B8",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "d85ef181be104fb0a78aba7a333785d9",
+          "name": "se_serial",
+          "type": "textarea",
+          "props": {
+            "x": 16,
+            "y": 354,
+            "width": 132,
+            "height": 32,
+            "text": "/dev/ttyUSB0",
+            "placeholder": "Type here",
+            "bgColor": "#0D1620",
+            "textColor": "#E7F0F8",
+            "fontSize": 8,
+            "oneLine": true,
+            "password": false,
+            "maxLength": 32,
+            "acceptedChars": ""
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "0b02eb64e05c4c38a64b031519372f21",
+          "name": "se_timeout_label",
+          "type": "label",
+          "props": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "text": "",
+            "textColor": "#B9C8D6",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "a26c605fde3442b982652ddab99c6093",
+          "name": "se_ble_status",
+          "type": "label",
+          "props": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "text": "",
+            "textColor": "#738BA1",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "c7784f6de1874e2589ef54bb8734eca9",
+          "name": "se_apply",
+          "type": "button",
+          "props": {
+            "x": 16,
+            "y": 392,
+            "width": 132,
+            "height": 30,
+            "text": "APPLY",
+            "bgColor": "#24516A",
+            "textColor": "#FFFFFF",
+            "fontSize": 10,
+            "radius": 4
+          },
+          "events": {
+            "CLICKED": "se_apply_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "c884697150054e0f843d1ab6f7a57e9d",
+          "name": "se_alarm_panel",
+          "type": "panel",
+          "props": {
+            "x": 166,
+            "y": 52,
+            "width": 148,
+            "height": 376,
+            "bgColor": "#111C27",
+            "borderColor": "#26394A",
+            "borderWidth": 1,
+            "radius": 6,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_AUTO"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "d057ed0d19ed4de685adb29276d5cc94",
+          "name": "se_alarm_title",
+          "type": "label",
+          "props": {
+            "x": 174,
+            "y": 60,
+            "width": 132,
+            "height": 20,
+            "text": "ALARMS",
+            "textColor": "#DCE7F0",
+            "fontSize": 11,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "382f1459af354a55b22aafc989fea016",
+          "name": "se_temp_threshold_label",
+          "type": "label",
+          "props": {
+            "x": 174,
+            "y": 88,
+            "width": 132,
+            "height": 28,
+            "text": "Temp high (0.1 °C)",
+            "textColor": "#B9C8D6",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "b852276230a84bec94eed03ae9de178b",
+          "name": "se_temp_threshold",
+          "type": "spinbox",
+          "props": {
+            "x": 174,
+            "y": 120,
+            "width": 132,
+            "height": 36,
+            "min": 100,
+            "max": 800,
+            "value": 400,
+            "digitCount": 4,
+            "separatorPos": 3,
+            "step": 1,
+            "rollover": false,
+            "bgColor": "#0D1620",
+            "textColor": "#F3F7FA",
+            "fontSize": 14
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "d064c4021af54dc1b5501bc77c2e544b",
+          "name": "se_power_threshold_label",
+          "type": "label",
+          "props": {
+            "x": 174,
+            "y": 172,
+            "width": 132,
+            "height": 28,
+            "text": "Power low (0.1 V)",
+            "textColor": "#B9C8D6",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "7f151579200749cb84ac4ed7f7c07a9d",
+          "name": "se_power_threshold",
+          "type": "spinbox",
+          "props": {
+            "x": 174,
+            "y": 204,
+            "width": 132,
+            "height": 36,
+            "min": 50,
+            "max": 200,
+            "value": 105,
+            "digitCount": 4,
+            "separatorPos": 3,
+            "step": 1,
+            "rollover": false,
+            "bgColor": "#0D1620",
+            "textColor": "#F3F7FA",
+            "fontSize": 14
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "7b5ff33a18b74ca5a3214fe0a6db1f4b",
+          "name": "se_stall_delay_label",
+          "type": "label",
+          "props": {
+            "x": 174,
+            "y": 256,
+            "width": 132,
+            "height": 28,
+            "text": "Fan stall delay (s)",
+            "textColor": "#B9C8D6",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "af29e07097a94fc491ec518c264e2084",
+          "name": "se_stall_delay",
+          "type": "spinbox",
+          "props": {
+            "x": 174,
+            "y": 288,
+            "width": 132,
+            "height": 36,
+            "min": 2,
+            "max": 60,
+            "value": 5,
+            "digitCount": 2,
+            "separatorPos": 0,
+            "step": 1,
+            "rollover": false,
+            "bgColor": "#0D1620",
+            "textColor": "#F3F7FA",
+            "fontSize": 14
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "b4e6aff3dd0849219c4454048f386b72",
+          "name": "se_alarm_note",
+          "type": "label",
+          "props": {
+            "x": 174,
+            "y": 336,
+            "width": 132,
+            "height": 38,
+            "text": "APPLY updates RAM only; no flash writes.",
+            "textColor": "#738BA1",
+            "fontSize": 7,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "738b0d08e82142a49f5aeadcc16537aa",
+          "name": "se_defaults",
+          "type": "button",
+          "props": {
+            "x": 174,
+            "y": 386,
+            "width": 132,
+            "height": 36,
+            "text": "DEFAULTS",
+            "bgColor": "#5B4625",
+            "textColor": "#FFE9BC",
+            "fontSize": 9,
+            "radius": 4
+          },
+          "events": {
+            "CLICKED": "se_defaults_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "13f88d1f8fb742ed860f990fa24b419c",
+          "name": "se_demo_panel",
+          "type": "panel",
+          "props": {
+            "x": 324,
+            "y": 52,
+            "width": 148,
+            "height": 376,
+            "bgColor": "#111C27",
+            "borderColor": "#26394A",
+            "borderWidth": 1,
+            "radius": 6,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_AUTO"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "ed3c10d8c1ef43b893bb5373223d1a99",
+          "name": "se_demo_title",
+          "type": "label",
+          "props": {
+            "x": 332,
+            "y": 60,
+            "width": 132,
+            "height": 20,
+            "text": "DEMO",
+            "textColor": "#DCE7F0",
+            "fontSize": 11,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "be04245eaa4348cb8359d5acc3ad620e",
+          "name": "se_scenario_label",
+          "type": "label",
+          "props": {
+            "x": 332,
+            "y": 86,
+            "width": 132,
+            "height": 14,
+            "text": "Scenario",
+            "textColor": "#8EA4B8",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "a171afc6bfb24075a39fd58e6a643e19",
+          "name": "se_scenario",
+          "type": "dropdown",
+          "props": {
+            "x": 332,
+            "y": 106,
+            "width": 132,
+            "height": 34,
+            "options": "NORMAL\nTEMP_HIGH\nFAN_STALL\nLINK_LOST\nRECOVERY",
+            "selected": 0,
+            "bgColor": "#203347",
+            "textColor": "#E7F0F8",
+            "fontSize": 8,
+            "dir": "LV_DIR_BOTTOM",
+            "symbol": "LV_SYMBOL_DOWN",
+            "highlightSelected": true
+          },
+          "events": {
+            "VALUE_CHANGED": "se_scenario_value_changed"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "c4d3e54bb3a74b36807f1bd6f20ddff7",
+          "name": "se_run_scenario",
+          "type": "button",
+          "props": {
+            "x": 332,
+            "y": 152,
+            "width": 132,
+            "height": 36,
+            "text": "RUN",
+            "bgColor": "#24516A",
+            "textColor": "#FFFFFF",
+            "fontSize": 10,
+            "radius": 4
+          },
+          "events": {
+            "CLICKED": "se_run_scenario_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "132251588f0a44da90990232ac8ecb90",
+          "name": "se_scenario_desc",
+          "type": "label",
+          "props": {
+            "x": 332,
+            "y": 202,
+            "width": 132,
+            "height": 80,
+            "text": "NORMAL: stable values and fan tracking.",
+            "textColor": "#B9C8D6",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "4450270a414f42ee9d17d00b1e1829c1",
+          "name": "se_demo_note",
+          "type": "label",
+          "props": {
+            "x": 332,
+            "y": 290,
+            "width": 132,
+            "height": 54,
+            "text": "Internal simulator only. No physical outputs.",
+            "textColor": "#738BA1",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "8d6ba4f53dee49eab23041f55a62f802",
+          "name": "se_status",
+          "type": "label",
+          "props": {
+            "x": 332,
+            "y": 354,
+            "width": 132,
+            "height": 60,
+            "text": "Ready. Runtime only.",
+            "textColor": "#36D399",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "58ab0c394d854a4e8e541c21bce9eac9",
+          "name": "se_footer",
+          "type": "panel",
+          "props": {
+            "x": 0,
+            "y": 436,
+            "width": 480,
+            "height": 44,
+            "bgColor": "#111C27",
+            "borderColor": "#BDBDBD",
+            "borderWidth": 0,
+            "radius": 0,
+            "flexFlow": "none",
+            "flexMainPlace": "none",
+            "flexCrossPlace": "none",
+            "padTop": 0,
+            "padBottom": 0,
+            "padLeft": 0,
+            "padRight": 0,
+            "padRow": 0,
+            "padColumn": 0,
+            "scrollbarMode": "LV_SCROLLBAR_MODE_AUTO"
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "bb273ff5c6b54827a244bff8031bdc1f",
+          "name": "se_system_state",
+          "type": "label",
+          "props": {
+            "x": 8,
+            "y": 440,
+            "width": 124,
+            "height": 16,
+            "text": "SYSTEM NORMAL",
+            "textColor": "#36D399",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "cbb4b787c02b4e8395dd14fc46201f9a",
+          "name": "se_data_age",
+          "type": "label",
+          "props": {
+            "x": 8,
+            "y": 458,
+            "width": 124,
+            "height": 16,
+            "text": "DATA 0 s",
+            "textColor": "#9FB2C5",
+            "fontSize": 8,
+            "longMode": "LV_LABEL_LONG_MODE_WRAP",
+            "textAlign": "LV_TEXT_ALIGN_CENTER",
+            "recolor": false
+          },
+          "events": {},
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "0a328ca1a49f4e85a2cf5e77a998eae4",
+          "name": "se_nav_overview",
+          "type": "button",
+          "props": {
+            "x": 140,
+            "y": 441,
+            "width": 76,
+            "height": 34,
+            "text": "Overview",
+            "bgColor": "#203347",
+            "textColor": "#C4D2DF",
+            "fontSize": 9,
+            "radius": 4
+          },
+          "events": {
+            "CLICKED": "se_nav_overview_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "190c59df593e4e4e805b0a9485039502",
+          "name": "se_nav_trends",
+          "type": "button",
+          "props": {
+            "x": 224,
+            "y": 441,
+            "width": 76,
+            "height": 34,
+            "text": "Trends",
+            "bgColor": "#203347",
+            "textColor": "#C4D2DF",
+            "fontSize": 9,
+            "radius": 4
+          },
+          "events": {
+            "CLICKED": "se_nav_trends_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "c621cc225af5424982310431a6109a2e",
+          "name": "se_nav_alarms",
+          "type": "button",
+          "props": {
+            "x": 308,
+            "y": 441,
+            "width": 76,
+            "height": 34,
+            "text": "Alarms",
+            "bgColor": "#203347",
+            "textColor": "#C4D2DF",
+            "fontSize": 9,
+            "radius": 4
+          },
+          "events": {
+            "CLICKED": "se_nav_alarms_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        },
+        {
+          "id": "1d254559170c47cb8f3e41112271bf04",
+          "name": "se_nav_diagnostics",
+          "type": "button",
+          "props": {
+            "x": 392,
+            "y": 441,
+            "width": 80,
+            "height": 34,
+            "text": "Diagn.",
+            "bgColor": "#203347",
+            "textColor": "#C4D2DF",
+            "fontSize": 9,
+            "radius": 4
+          },
+          "events": {
+            "CLICKED": "se_nav_diagnostics_clicked"
+          },
+          "customStyles": {},
+          "animations": []
+        }
+      ]
+    }
+  ],
+  "code": {
+    "module": "import time\n\ntry:\n    import gc\nexcept ImportError:\n    gc = None\n\nGREEN = 0x36D399\nAMBER = 0xFFC857\nRED = 0xFF7A72\nMUTED = 0x7F93A8\nCYAN = 0x45C8FF\nSOURCE_NAMES = (\"SIMULATION\", \"TCP\", \"SERIAL\", \"BLE\")\nSCENARIO_NAMES = (\"NORMAL\", \"TEMP_HIGH\", \"FAN_STALL\", \"LINK_LOST\", \"RECOVERY\")\nSCENARIO_DESCRIPTIONS = (\n    \"NORMAL: stable ambient values and gradual fan tracking.\",\n    \"TEMP_HIGH: temperature rises by about 0.8 C/s until it crosses the configured threshold.\",\n    \"FAN_STALL: confirmed RPM is capped at 300 while the requested setpoint remains unchanged.\",\n    \"LINK_LOST: reception stops for 12 seconds; values become STALE, then reception resumes.\",\n    \"RECOVERY: temperature and fan return progressively to normal operating values.\",\n)\nREFRESH_MS = (250, 500, 1000, 2000)\n\n\ndef valid_number(value, low, high):\n    if value is None or isinstance(value, bool):\n        return None\n    try:\n        value = float(value)\n    except (TypeError, ValueError):\n        return None\n    if value != value or value == float(\"inf\") or value == float(\"-inf\"):\n        return None\n    if value < low or value > high:\n        return None\n    return value\n\n\ndef clock_text(seconds):\n    seconds = max(0, int(seconds))\n    return \"%02d:%02d:%02d\" % (seconds // 3600, (seconds // 60) % 60, seconds % 60)\n\n\nclass RingBuffer:\n    def __init__(self, capacity):\n        self.capacity = capacity\n        self.values = [0] * capacity\n        self.start = 0\n        self.count = 0\n\n    def append(self, value):\n        if self.count < self.capacity:\n            self.values[(self.start + self.count) % self.capacity] = value\n            self.count += 1\n        else:\n            self.values[self.start] = value\n            self.start = (self.start + 1) % self.capacity\n\n    def latest(self, wanted):\n        size = min(wanted, self.count)\n        result = [0] * size\n        first = (self.start + self.count - size) % self.capacity\n        for i in range(size):\n            result[i] = self.values[(first + i) % self.capacity]\n        return result\n\n    def stats(self, wanted, scale=1):\n        size = min(wanted, self.count)\n        if size == 0:\n            return None\n        first = (self.start + self.count - size) % self.capacity\n        total = 0\n        low = None\n        high = None\n        for i in range(size):\n            value = self.values[(first + i) % self.capacity]\n            total += value\n            if low is None or value < low:\n                low = value\n            if high is None or value > high:\n                high = value\n        return low / scale, high / scale, total / size / scale\n\n\nclass EIMApplication:\n    def __init__(self):\n        self.started = False\n        self.page = 0\n        self.temp_threshold = 40.0\n        self.power_threshold = 10.5\n        self.stall_delay = 5\n        self.refresh_ms = 1000\n        self.source = 0\n        self.simulator_enabled = True\n        self.scenario = 0\n        self.scenario_seconds = 0\n        self.seed = 1\n        self.requested = 50\n        self.running = True\n        self.auto = True\n        self.temp = 24.6\n        self.humidity = 48.0\n        self.rpm = 1450.0\n        self.voltage = 12.1\n        self.power = 7.4\n        self.sequence = 0\n        self.received = 0\n        self.discarded = 0\n        self.last_rx = 0\n        self.last_event = \"Simulator started\"\n        self.temp_history = RingBuffer(900)\n        self.fan_history = RingBuffer(900)\n        self.stall_seconds = 0\n        self.trend_window = 60\n        self.trend_paused = False\n        self.trend_needs_reload = True\n        self.overview_chart_sequence = -1\n        self.trend_chart_sequence = -1\n        self.alarms = [\n            {\"code\": \"TEMP_HIGH\", \"level\": \"ALARM\", \"state\": \"CLEARED\", \"time\": \"--:--:--\"},\n            {\"code\": \"FAN_STALL\", \"level\": \"ALARM\", \"state\": \"CLEARED\", \"time\": \"--:--:--\"},\n            {\"code\": \"SENSOR_LOST\", \"level\": \"ALARM\", \"state\": \"CLEARED\", \"time\": \"--:--:--\"},\n            {\"code\": \"LINK_LOST\", \"level\": \"WARNING\", \"state\": \"CLEARED\", \"time\": \"--:--:--\"},\n            {\"code\": \"POWER_LOW\", \"level\": \"ALARM\", \"state\": \"CLEARED\", \"time\": \"--:--:--\"},\n        ]\n\n    def start(self):\n        if self.started:\n            return\n        self.started = True\n        self.compact = lv.screen_active().get_width() <= 480\n        now = time.ticks_ms()\n        self.start_ms = now\n        self.last_tick = now\n        self.sample_elapsed = 0\n        self.ui_elapsed = 0\n        self.last_rx = now\n        self.ov_temp_series = ui.ov_temp_chart.get_series_next(None)\n        self.tr_temp_series = ui.tr_temp_chart.get_series_next(None)\n        self.tr_fan_series = ui.tr_fan_chart.get_series_next(None)\n        ui.ov_temp_chart.set_axis_range(lv.chart.AXIS.PRIMARY_Y, 0, 500)\n        ui.tr_temp_chart.set_axis_range(lv.chart.AXIS.PRIMARY_Y, 0, 500)\n        self.sample()\n        self.refresh_ui()\n\n    def uptime(self):\n        if not self.started:\n            return 0\n        return time.ticks_diff(time.ticks_ms(), self.start_ms) // 1000\n\n    def random_unit(self):\n        self.seed = (self.seed * 1103515245 + 12345) & 0x7FFFFFFF\n        return (self.seed % 2001 - 1000) / 1000.0\n\n    def link_up(self):\n        if self.source != 0 or not self.simulator_enabled:\n            return False\n        return not (self.scenario == 3 and self.scenario_seconds < 12)\n\n    def set_requested(self, value):\n        self.requested = max(0, min(100, int(value)))\n        self.auto = False\n        self.last_event = \"Manual fan setpoint: %d %%\" % self.requested\n\n    def toggle_mode(self):\n        self.auto = not self.auto\n        if self.auto:\n            self.requested = 50\n            ui.ov_speed_slider.set_value(50, False)\n        self.last_event = \"Fan mode: \" + (\"AUTO\" if self.auto else \"MANUAL\")\n\n    def toggle_running(self):\n        self.running = not self.running\n        self.last_event = \"Fan \" + (\"START requested\" if self.running else \"STOP requested\")\n\n    def set_scenario(self, index):\n        self.scenario = max(0, min(4, int(index)))\n        self.scenario_seconds = 0\n        self.stall_seconds = 0\n        self.seed = 100 + self.scenario\n        if self.scenario != 4:\n            self.temp = 24.6\n            self.humidity = 48.0\n            self.rpm = 1450.0\n            self.voltage = 12.1\n        self.running = True\n        if self.scenario in (0, 1, 3):\n            self.requested = 50\n        self.source = 0\n        self.simulator_enabled = True\n        self.last_event = \"Demo scenario: \" + SCENARIO_NAMES[self.scenario]\n        self.update_alarms()\n        self.refresh_ui()\n\n    def simulate_one_second(self):\n        self.scenario_seconds += 1\n        noise = self.random_unit()\n        if self.scenario == 1:\n            self.temp += 0.8 + noise * 0.04\n        elif self.scenario == 4:\n            self.temp += max(-0.7, min(0.2, (24.6 - self.temp) * 0.12)) + noise * 0.03\n        else:\n            self.temp += max(-0.12, min(0.12, (24.6 - self.temp) * 0.08)) + noise * 0.025\n        self.humidity = max(20.0, min(90.0, self.humidity + noise * 0.08 + (48.0 - self.humidity) * 0.02))\n        target = self.requested * 30 if self.running else 0\n        if self.auto and self.running:\n            target = max(target, 1500)\n        if self.scenario == 2:\n            target = min(target, 300)\n        delta = target - self.rpm\n        delta = max(-180.0, min(180.0, delta))\n        self.rpm = max(0.0, self.rpm + delta)\n        self.voltage = 12.1 + noise * 0.025\n        self.power = self.voltage * (0.25 + self.rpm / 3000.0 * 0.75)\n\n    def sample(self):\n        self.simulate_one_second()\n        fresh = self.link_up()\n        if fresh:\n            self.sequence += 1\n            self.received += 1\n            self.last_rx = time.ticks_ms()\n            new_temp = valid_number(self.temp, -40, 125)\n            new_humidity = valid_number(self.humidity, 0, 100)\n            new_rpm = valid_number(self.rpm, 0, 10000)\n            new_voltage = valid_number(self.voltage, 0, 60)\n            if new_temp is None or new_humidity is None or new_rpm is None or new_voltage is None:\n                self.discarded += 1\n            else:\n                self.temp_history.append(int(new_temp * 10))\n                self.fan_history.append(int(new_rpm))\n                self.trend_needs_reload = self.trend_needs_reload or self.trend_paused\n        if fresh and self.running and self.requested >= 10 and self.rpm < self.requested * 15:\n            self.stall_seconds += 1\n        elif fresh:\n            self.stall_seconds = 0\n        self.update_alarms()\n\n    def update_alarms(self):\n        fresh = self.link_up()\n        temp = valid_number(self.temp, -40, 125)\n        voltage = valid_number(self.voltage, 0, 60)\n        rpm = valid_number(self.rpm, 0, 10000)\n        sensor_lost = fresh and (temp is None or valid_number(self.humidity, 0, 100) is None or rpm is None or voltage is None)\n        conditions = (\n            fresh and temp is not None and temp > self.temp_threshold,\n            fresh and self.stall_seconds >= self.stall_delay,\n            sensor_lost,\n            not fresh,\n            fresh and voltage is not None and voltage < self.power_threshold,\n        )\n        stamp = clock_text(self.uptime())\n        for i in range(5):\n            alarm = self.alarms[i]\n            if conditions[i]:\n                if alarm[\"state\"] == \"CLEARED\":\n                    alarm[\"state\"] = \"ACTIVE\"\n                    alarm[\"time\"] = stamp\n                    self.last_event = alarm[\"code\"] + \" became ACTIVE\"\n            elif alarm[\"state\"] != \"CLEARED\":\n                alarm[\"state\"] = \"CLEARED\"\n                self.last_event = alarm[\"code\"] + \" cleared\"\n\n    def acknowledge(self, index):\n        if 0 <= index < 5 and self.alarms[index][\"state\"] == \"ACTIVE\":\n            self.alarms[index][\"state\"] = \"ACKNOWLEDGED\"\n            self.last_event = self.alarms[index][\"code\"] + \" acknowledged; condition still monitored\"\n\n    def acknowledge_all(self):\n        for i in range(5):\n            self.acknowledge(i)\n\n    def data_age(self):\n        if not self.started:\n            return 0\n        return max(0, time.ticks_diff(time.ticks_ms(), self.last_rx) // 1000)\n\n    def stale(self):\n        return self.data_age() > 3 or not self.link_up()\n\n    def set_trend_window(self, seconds):\n        self.trend_window = seconds\n        self.trend_needs_reload = True\n        self.refresh_ui()\n\n    def toggle_pause(self):\n        self.trend_paused = not self.trend_paused\n        if not self.trend_paused:\n            self.trend_needs_reload = True\n        self.last_event = \"Trend scrolling \" + (\"paused; acquisition continues\" if self.trend_paused else \"resumed\")\n        self.refresh_ui()\n\n    def apply_settings(self):\n        self.source = ui.se_source.get_selected()\n        self.simulator_enabled = ui.se_simulator.has_state(lv.STATE.CHECKED)\n        self.refresh_ms = REFRESH_MS[ui.se_refresh.get_selected()]\n        self.temp_threshold = ui.se_temp_threshold.get_value() / 10.0\n        self.power_threshold = ui.se_power_threshold.get_value() / 10.0\n        self.stall_delay = ui.se_stall_delay.get_value()\n        self.last_event = \"Runtime settings applied; no persistent write\"\n        set_label(ui.se_status, \"Applied. Source: %s. Settings are runtime only.\" % SOURCE_NAMES[self.source], GREEN)\n        self.update_alarms()\n        self.refresh_ui()\n\n    def restore_defaults(self):\n        self.temp_threshold = 40.0\n        self.power_threshold = 10.5\n        self.stall_delay = 5\n        self.refresh_ms = 1000\n        self.source = 0\n        self.simulator_enabled = True\n        ui.se_source.set_selected(0)\n        ui.se_refresh.set_selected(2)\n        ui.se_simulator.add_state(lv.STATE.CHECKED)\n        ui.se_temp_threshold.set_value(400)\n        ui.se_power_threshold.set_value(105)\n        ui.se_stall_delay.set_value(5)\n        ui.se_host.set_text(\"192.168.1.50\")\n        ui.se_port.set_text(\"5020\")\n        ui.se_serial.set_text(\"/dev/ttyUSB0\")\n        self.set_scenario(0)\n        self.last_event = \"Default runtime settings restored\"\n        set_label(ui.se_status, \"Defaults restored. Simulator running; no persistent write.\", GREEN)\n\n    def tick(self):\n        if not self.started:\n            self.start()\n            return\n        now = time.ticks_ms()\n        elapsed = time.ticks_diff(now, self.last_tick)\n        self.last_tick = now\n        if elapsed < 0:\n            return\n        self.sample_elapsed += elapsed\n        self.ui_elapsed += elapsed\n        if self.sample_elapsed >= 1000:\n            self.sample_elapsed -= 1000\n            self.sample()\n        if self.ui_elapsed >= self.refresh_ms:\n            self.ui_elapsed = 0\n            started = time.ticks_ms()\n            self.refresh_ui()\n            if self.page == 3:\n                set_label(ui.di_perf_value, \"%d ms\" % time.ticks_diff(time.ticks_ms(), started), 0xE7F0F8)\n\n    def page_loaded(self, index):\n        self.page = index\n        if index == 1:\n            self.trend_needs_reload = True\n        self.refresh_ui()\n\n    def refresh_ui(self):\n        if not self.started:\n            return\n        prefix = (\"ov\", \"tr\", \"al\", \"di\", \"se\")[self.page]\n        state, state_color = self.system_state()\n        set_label(getattr(ui, prefix + \"_system_state\"), state, state_color)\n        age_text = (\"DATA %d s%s\" if self.compact else \"DATA AGE\\n%d s%s\") % (self.data_age(), \" STALE\" if self.stale() else \"\")\n        set_label(getattr(ui, prefix + \"_data_age\"), age_text, RED if self.stale() else 0x9FB2C5)\n        link = SOURCE_NAMES[self.source] if self.link_up() else \"OFFLINE\"\n        set_label(getattr(ui, prefix + \"_link\"), link, GREEN if self.link_up() else RED)\n        set_led(getattr(ui, prefix + \"_link_led\"), GREEN if self.link_up() else RED)\n        if self.page == 0:\n            self.refresh_overview()\n        elif self.page == 1:\n            self.refresh_trends()\n        elif self.page == 2:\n            self.refresh_alarms()\n        elif self.page == 3:\n            self.refresh_diagnostics()\n\n    def system_state(self):\n        active = 0\n        warning = self.stale()\n        for alarm in self.alarms:\n            if alarm[\"state\"] in (\"ACTIVE\", \"ACKNOWLEDGED\"):\n                if alarm[\"level\"] == \"ALARM\":\n                    active += 1\n                else:\n                    warning = True\n        if active:\n            return \"SYSTEM ALARM\", RED\n        if warning:\n            return \"SYSTEM WARNING\", AMBER\n        return \"SYSTEM NORMAL\", GREEN\n\n    def refresh_overview(self):\n        stale = self.stale()\n        temp = valid_number(self.temp, -40, 125)\n        humidity = valid_number(self.humidity, 0, 100)\n        rpm = valid_number(self.rpm, 0, 10000)\n        voltage = valid_number(self.voltage, 0, 60)\n        set_label(ui.ov_temp_value, \"N/A\" if temp is None else \"%.1f\" % temp, RED if temp is None else 0xF3F7FA)\n        set_label(ui.ov_hum_value, \"N/A\" if humidity is None else \"%d\" % int(humidity), 0xF3F7FA)\n        set_label(ui.ov_fan_value, \"N/A\" if rpm is None else \"%d\" % int(rpm), 0xF3F7FA)\n        set_label(ui.ov_power_value, \"N/A\" if self.power is None else \"%.1f\" % self.power, 0xF3F7FA)\n        set_label(ui.ov_temp_state, \"STALE\" if stale else (\"ALARM\" if temp is not None and temp > self.temp_threshold else \"NORMAL\"), RED if stale or (temp is not None and temp > self.temp_threshold) else GREEN)\n        set_label(ui.ov_hum_state, \"STALE\" if stale else \"NORMAL\", RED if stale else GREEN)\n        target_rpm = self.requested * 30 if self.running else 0\n        fan_target_text = ((\"S \" if stale else \"T \") + str(target_rpm)) if self.compact else (\"STALE  •  \" if stale else \"TARGET \") + \"%d RPM\" % target_rpm\n        set_label(ui.ov_fan_target, fan_target_text, RED if stale else GREEN)\n        voltage_text = \"STALE\" if stale else (\"N/A\" if voltage is None else \"%.1f V\" % voltage)\n        set_label(ui.ov_power_supply, voltage_text if self.compact else ((\"STALE  •  \" if stale else \"SUPPLY \") + voltage_text), RED if stale else GREEN)\n        for led in (ui.ov_temp_led, ui.ov_hum_led, ui.ov_fan_led, ui.ov_power_led):\n            set_led(led, RED if stale else GREEN)\n        set_label(ui.ov_requested, \"%d %%\" % self.requested, CYAN)\n        set_label(ui.ov_actual, \"N/A\" if rpm is None else \"%d RPM\" % int(rpm), 0xF3F7FA)\n        target = self.requested * 30 if self.running else 0\n        tracking = abs((rpm or 0) - target) < 100\n        confirmation = (\"TRACKING\" if tracking else \"NOT AT SETPOINT\") if self.compact else (\"CONFIRMED: TRACKING\" if tracking else \"CONFIRMED: NOT AT SETPOINT\")\n        set_label(ui.ov_confirmation, confirmation, GREEN if tracking else AMBER)\n        mode_text = (\"AUTO\" if self.auto else \"MANUAL\") if self.compact else \"MODE: \" + (\"AUTO\" if self.auto else \"MANUAL\")\n        set_button(ui.ov_mode, mode_text)\n        set_button(ui.ov_start_stop, \"STOP\" if self.running else \"START\")\n        set_label(ui.ov_threshold_label, \"ALARM %.1f °C\" % self.temp_threshold, RED)\n        chart_y = ui.ov_temp_chart.get_y()\n        chart_h = ui.ov_temp_chart.get_height()\n        ui.ov_threshold_line.set_y(chart_y + chart_h - int(self.temp_threshold * chart_h / 50))\n        set_label(ui.ov_last_event, \"Last event: \" + self.last_event, 0x8EA4B8)\n        active = sum(1 for alarm in self.alarms if alarm[\"state\"] == \"ACTIVE\")\n        acknowledged = sum(1 for alarm in self.alarms if alarm[\"state\"] == \"ACKNOWLEDGED\")\n        alarm_text = (\"NONE\" if active + acknowledged == 0 else \"%d/%d\" % (active, acknowledged)) if self.compact else (\"NO ACTIVE ALARMS\" if active + acknowledged == 0 else \"%d ACTIVE  /  %d ACK\" % (active, acknowledged))\n        set_label(ui.ov_alarm_summary, alarm_text, RED if active + acknowledged else 0x9FB2C5)\n        set_led(ui.ov_alarm_led, RED if active + acknowledged else GREEN)\n        if temp is not None and not stale and self.overview_chart_sequence != self.sequence:\n            ui.ov_temp_chart.set_next_value(self.ov_temp_series, int(temp * 10))\n            self.overview_chart_sequence = self.sequence\n\n    def refresh_trends(self):\n        set_label(ui.tr_temp_current, \"%.1f °C\" % self.temp, RED if self.stale() else CYAN)\n        set_label(ui.tr_fan_current, \"%d RPM\" % int(self.rpm), RED if self.stale() else GREEN)\n        pause_text = (\"RESUME\" if self.trend_paused else \"PAUSE\") if self.compact else (\"RESUME SCROLL\" if self.trend_paused else \"PAUSE SCROLL\")\n        set_button(ui.tr_pause, pause_text)\n        live_text = (\"%s %d/%d\" if self.compact else \"%s  •  %d / %d samples\") % (\"PAUSED\" if self.trend_paused else \"LIVE\", min(self.trend_window, self.temp_history.count), self.trend_window)\n        set_label(ui.tr_live_state, live_text, AMBER if self.trend_paused else GREEN)\n        if self.trend_needs_reload and not self.trend_paused:\n            self.load_trend_charts()\n            self.trend_needs_reload = False\n            self.trend_chart_sequence = self.sequence\n        elif not self.trend_paused and self.trend_chart_sequence != self.sequence:\n            ui.tr_temp_chart.set_next_value(self.tr_temp_series, int(self.temp * 10))\n            ui.tr_fan_chart.set_next_value(self.tr_fan_series, int(self.rpm))\n            self.trend_chart_sequence = self.sequence\n        temp_stats = self.temp_history.stats(self.trend_window, 10)\n        fan_stats = self.fan_history.stats(self.trend_window)\n        set_label(ui.tr_temp_stats, \"MIN %.1f   MAX %.1f   AVG %.1f\" % temp_stats if temp_stats else \"MIN N/A   MAX N/A   AVG N/A\", 0xB9C8D6)\n        set_label(ui.tr_fan_stats, \"MIN %d   MAX %d   AVG %d\" % tuple(int(v) for v in fan_stats) if fan_stats else \"MIN N/A   MAX N/A   AVG N/A\", 0xB9C8D6)\n\n    def load_trend_charts(self):\n        size = min(self.trend_window, self.temp_history.count)\n        if size < 1:\n            return\n        ui.tr_temp_chart.set_point_count(size)\n        ui.tr_fan_chart.set_point_count(size)\n        temp_values = self.temp_history.latest(self.trend_window)\n        fan_values = self.fan_history.latest(self.trend_window)\n        for i in range(size):\n            ui.tr_temp_chart.set_series_value_by_id(self.tr_temp_series, i, temp_values[i])\n            ui.tr_fan_chart.set_series_value_by_id(self.tr_fan_series, i, fan_values[i])\n        ui.tr_temp_chart.refresh()\n        ui.tr_fan_chart.refresh()\n\n    def refresh_alarms(self):\n        active = 0\n        acknowledged = 0\n        cleared = 0\n        for i in range(5):\n            alarm = self.alarms[i]\n            state = alarm[\"state\"]\n            if state == \"ACTIVE\":\n                active += 1\n                color = RED\n            elif state == \"ACKNOWLEDGED\":\n                acknowledged += 1\n                color = AMBER\n            else:\n                cleared += 1\n                color = MUTED\n            set_label(getattr(ui, \"al_state_%d\" % i), state, color)\n            set_label(getattr(ui, \"al_time_%d\" % i), alarm[\"time\"], 0x9FB2C5)\n        summary_text = (\"%d A • %d K • %d C\" if self.compact else \"%d ACTIVE  •  %d ACKNOWLEDGED  •  %d CLEARED\") % (active, acknowledged, cleared)\n        set_label(ui.al_summary, summary_text, 0xB9C8D6)\n\n    def refresh_diagnostics(self):\n        set_label(ui.di_source_value, SOURCE_NAMES[self.source], GREEN if self.source == 0 else 0xE7F0F8)\n        set_label(ui.di_connection_value, SOURCE_NAMES[self.source] if self.link_up() else \"OFFLINE\", GREEN if self.link_up() else RED)\n        set_label(ui.di_rx_value, str(self.received), 0xE7F0F8)\n        set_label(ui.di_discarded_value, str(self.discarded), 0xE7F0F8)\n        set_label(ui.di_sequence_value, str(self.sequence) if self.sequence else \"N/A\", 0xE7F0F8)\n        set_label(ui.di_scenario_value, SCENARIO_NAMES[self.scenario], 0xE7F0F8)\n        set_label(ui.di_uptime_value, clock_text(self.uptime()), 0xE7F0F8)\n        set_label(ui.di_refresh_value, \"%d ms\" % self.refresh_ms, 0xE7F0F8)\n        memory = \"N/A\"\n        if gc is not None and hasattr(gc, \"mem_free\"):\n            try:\n                memory = \"%d bytes\" % gc.mem_free()\n            except Exception:\n                memory = \"N/A\"\n        set_label(ui.di_memory_value, memory, 0xE7F0F8)\n\n\ndef set_label(widget, value, color=None):\n    value = str(value)\n    if widget.get_text() != value:\n        widget.set_text(value)\n    if color is not None:\n        widget.set_style_text_color(lv.color_hex(color), lv.PART.MAIN)\n\n\ndef set_led(widget, color):\n    widget.set_color(lv.color_hex(color))\n\n\ndef set_button(widget, value):\n    child = widget.get_child(0)\n    if child is not None and child.get_text() != value:\n        child.set_text(value)\n\n\napp = EIMApplication()\n\n\ndef navigate(index):\n    ui.load_page((ui.PAGE_OVERVIEW, ui.PAGE_TRENDS, ui.PAGE_ALARMS, ui.PAGE_DIAGNOSTICS, ui.PAGE_SETTINGS)[index])\n\n\ndef update_scenario_description():\n    set_label(ui.se_scenario_desc, SCENARIO_DESCRIPTIONS[ui.se_scenario.get_selected()] + \" Select RUN to activate.\", 0xB9C8D6)\n",
+    "handlers": {
+      "app_timer_tick": {
+        "widget": "app_timer",
+        "event": "TICK",
+        "body": "app.tick()"
+      },
+      "Overview_screen_loaded": {
+        "widget": "Overview",
+        "event": "SCREEN_LOADED",
+        "body": "app.page_loaded(0)"
+      },
+      "Trends_screen_loaded": {
+        "widget": "Trends",
+        "event": "SCREEN_LOADED",
+        "body": "app.page_loaded(1)"
+      },
+      "Alarms_screen_loaded": {
+        "widget": "Alarms",
+        "event": "SCREEN_LOADED",
+        "body": "app.page_loaded(2)"
+      },
+      "Diagnostics_screen_loaded": {
+        "widget": "Diagnostics",
+        "event": "SCREEN_LOADED",
+        "body": "app.page_loaded(3)"
+      },
+      "Settings_screen_loaded": {
+        "widget": "Settings",
+        "event": "SCREEN_LOADED",
+        "body": "app.page_loaded(4)"
+      },
+      "ov_speed_slider_value_changed": {
+        "widget": "ov_speed_slider",
+        "event": "VALUE_CHANGED",
+        "body": "app.set_requested(ui.ov_speed_slider.get_value())"
+      },
+      "ov_mode_clicked": {
+        "widget": "ov_mode",
+        "event": "CLICKED",
+        "body": "app.toggle_mode()"
+      },
+      "ov_start_stop_clicked": {
+        "widget": "ov_start_stop",
+        "event": "CLICKED",
+        "body": "app.toggle_running()"
+      },
+      "ov_settings_clicked": {
+        "widget": "ov_settings",
+        "event": "CLICKED",
+        "body": "navigate(4)"
+      },
+      "ov_nav_overview_clicked": {
+        "widget": "ov_nav_overview",
+        "event": "CLICKED",
+        "body": "navigate(0)"
+      },
+      "ov_nav_trends_clicked": {
+        "widget": "ov_nav_trends",
+        "event": "CLICKED",
+        "body": "navigate(1)"
+      },
+      "ov_nav_alarms_clicked": {
+        "widget": "ov_nav_alarms",
+        "event": "CLICKED",
+        "body": "navigate(2)"
+      },
+      "ov_nav_diagnostics_clicked": {
+        "widget": "ov_nav_diagnostics",
+        "event": "CLICKED",
+        "body": "navigate(3)"
+      },
+      "tr_range_1_clicked": {
+        "widget": "tr_range_1",
+        "event": "CLICKED",
+        "body": "app.set_trend_window(60)"
+      },
+      "tr_range_5_clicked": {
+        "widget": "tr_range_5",
+        "event": "CLICKED",
+        "body": "app.set_trend_window(300)"
+      },
+      "tr_range_15_clicked": {
+        "widget": "tr_range_15",
+        "event": "CLICKED",
+        "body": "app.set_trend_window(900)"
+      },
+      "tr_pause_clicked": {
+        "widget": "tr_pause",
+        "event": "CLICKED",
+        "body": "app.toggle_pause()"
+      },
+      "tr_settings_clicked": {
+        "widget": "tr_settings",
+        "event": "CLICKED",
+        "body": "navigate(4)"
+      },
+      "tr_nav_overview_clicked": {
+        "widget": "tr_nav_overview",
+        "event": "CLICKED",
+        "body": "navigate(0)"
+      },
+      "tr_nav_trends_clicked": {
+        "widget": "tr_nav_trends",
+        "event": "CLICKED",
+        "body": "navigate(1)"
+      },
+      "tr_nav_alarms_clicked": {
+        "widget": "tr_nav_alarms",
+        "event": "CLICKED",
+        "body": "navigate(2)"
+      },
+      "tr_nav_diagnostics_clicked": {
+        "widget": "tr_nav_diagnostics",
+        "event": "CLICKED",
+        "body": "navigate(3)"
+      },
+      "al_ack_all_clicked": {
+        "widget": "al_ack_all",
+        "event": "CLICKED",
+        "body": "app.acknowledge_all()\napp.refresh_ui()"
+      },
+      "al_ack_0_clicked": {
+        "widget": "al_ack_0",
+        "event": "CLICKED",
+        "body": "app.acknowledge(0)\napp.refresh_ui()"
+      },
+      "al_ack_1_clicked": {
+        "widget": "al_ack_1",
+        "event": "CLICKED",
+        "body": "app.acknowledge(1)\napp.refresh_ui()"
+      },
+      "al_ack_2_clicked": {
+        "widget": "al_ack_2",
+        "event": "CLICKED",
+        "body": "app.acknowledge(2)\napp.refresh_ui()"
+      },
+      "al_ack_3_clicked": {
+        "widget": "al_ack_3",
+        "event": "CLICKED",
+        "body": "app.acknowledge(3)\napp.refresh_ui()"
+      },
+      "al_ack_4_clicked": {
+        "widget": "al_ack_4",
+        "event": "CLICKED",
+        "body": "app.acknowledge(4)\napp.refresh_ui()"
+      },
+      "al_settings_clicked": {
+        "widget": "al_settings",
+        "event": "CLICKED",
+        "body": "navigate(4)"
+      },
+      "al_nav_overview_clicked": {
+        "widget": "al_nav_overview",
+        "event": "CLICKED",
+        "body": "navigate(0)"
+      },
+      "al_nav_trends_clicked": {
+        "widget": "al_nav_trends",
+        "event": "CLICKED",
+        "body": "navigate(1)"
+      },
+      "al_nav_alarms_clicked": {
+        "widget": "al_nav_alarms",
+        "event": "CLICKED",
+        "body": "navigate(2)"
+      },
+      "al_nav_diagnostics_clicked": {
+        "widget": "al_nav_diagnostics",
+        "event": "CLICKED",
+        "body": "navigate(3)"
+      },
+      "di_settings_clicked": {
+        "widget": "di_settings",
+        "event": "CLICKED",
+        "body": "navigate(4)"
+      },
+      "di_nav_overview_clicked": {
+        "widget": "di_nav_overview",
+        "event": "CLICKED",
+        "body": "navigate(0)"
+      },
+      "di_nav_trends_clicked": {
+        "widget": "di_nav_trends",
+        "event": "CLICKED",
+        "body": "navigate(1)"
+      },
+      "di_nav_alarms_clicked": {
+        "widget": "di_nav_alarms",
+        "event": "CLICKED",
+        "body": "navigate(2)"
+      },
+      "di_nav_diagnostics_clicked": {
+        "widget": "di_nav_diagnostics",
+        "event": "CLICKED",
+        "body": "navigate(3)"
+      },
+      "se_back_clicked": {
+        "widget": "se_back",
+        "event": "CLICKED",
+        "body": "navigate(0)"
+      },
+      "se_apply_clicked": {
+        "widget": "se_apply",
+        "event": "CLICKED",
+        "body": "app.apply_settings()"
+      },
+      "se_defaults_clicked": {
+        "widget": "se_defaults",
+        "event": "CLICKED",
+        "body": "app.restore_defaults()"
+      },
+      "se_run_scenario_clicked": {
+        "widget": "se_run_scenario",
+        "event": "CLICKED",
+        "body": "app.set_scenario(ui.se_scenario.get_selected())\nset_label(ui.se_status, \"Running demo: \" + SCENARIO_NAMES[app.scenario], CYAN)"
+      },
+      "se_scenario_value_changed": {
+        "widget": "se_scenario",
+        "event": "VALUE_CHANGED",
+        "body": "update_scenario_description()"
+      },
+      "se_nav_overview_clicked": {
+        "widget": "se_nav_overview",
+        "event": "CLICKED",
+        "body": "navigate(0)"
+      },
+      "se_nav_trends_clicked": {
+        "widget": "se_nav_trends",
+        "event": "CLICKED",
+        "body": "navigate(1)"
+      },
+      "se_nav_alarms_clicked": {
+        "widget": "se_nav_alarms",
+        "event": "CLICKED",
+        "body": "navigate(2)"
+      },
+      "se_nav_diagnostics_clicked": {
+        "widget": "se_nav_diagnostics",
+        "event": "CLICKED",
+        "body": "navigate(3)"
+      }
+    }
+  },
+  "currentPageId": "14769f472aef4a6387beff641d6fbb85",
+  "assets": {},
+  "variables": [],
+  "projectId": "956a07e6f58243e69c402e6b0072a031",
+  "board": {
+    "schemaVersion": 1,
+    "id": "esp32_4848s040_480",
+    "revision": 1,
+    "name": "ESP32-4848S040 (480×480)",
+    "adapter": "esp32_4848s040",
+    "firmware": {
+      "microPython": "1.29",
+      "lvgl": "9.5",
+      "modules": [
+        "lvgl",
+        "display_driver",
+        "gt911"
+      ]
+    },
+    "physicalWidth": 480,
+    "physicalHeight": 480,
+    "logicalWidth": 480,
+    "logicalHeight": 480,
+    "scale": 1,
+    "colorFormat": "RGB565",
+    "orientations": [
+      0
+    ],
+    "config": {
+      "driver": "display_driver",
+      "touch": "gt911",
+      "buffers": "driver",
+      "eventLoop": "driver"
+    }
+  },
+  "runTarget": {
+    "kind": "board",
+    "language": "micropython"
+  }
+}
