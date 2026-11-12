@@ -8,7 +8,7 @@ import subprocess
 import tempfile
 
 from lvgl_mpy_studio.gen.project_gen import generate_project
-from lvgl_mpy_studio.platform import CREATE_NO_WINDOW, RUNTIME_ENTRY, runtime_environment, runtime_path
+from lvgl_mpy_studio.platform import CREATE_NO_WINDOW, RUNTIME_ENTRY, run_background, runtime_environment, runtime_path
 
 RENDER_TIMEOUT = 5
 
@@ -46,7 +46,7 @@ def render_with_log(project, page_index, design_only=True):
     """Pixels of the page and output of the runtime. With design_only=False the project code runs too."""
     if not runtime_path().exists():
         return None, "runtime not built"
-    with tempfile.TemporaryDirectory(prefix="lvgl-mpy-studio-preview-") as temporary:
+    with tempfile.TemporaryDirectory(prefix="lvgl-mpy-studio-preview-", ignore_cleanup_errors=True) as temporary:
         directory = Path(temporary)
         try:
             prepare_page(project, page_index, directory, design_only)
@@ -55,7 +55,7 @@ def render_with_log(project, page_index, design_only=True):
         frame = directory / "frame.raw"
         environment = runtime_environment(LVSIM_HEADLESS="1", LVSIM_FRAMES="1", LVSIM_TICK_MS="0", LVSIM_DUMP=str(frame))
         try:
-            done = subprocess.run([str(runtime_path()), *RUNTIME_ENTRY], cwd=directory, env=environment, capture_output=True, timeout=RENDER_TIMEOUT, creationflags=CREATE_NO_WINDOW)
+            done = run_background([str(runtime_path()), *RUNTIME_ENTRY], RENDER_TIMEOUT, cwd=directory, env=environment, creationflags=CREATE_NO_WINDOW)
             pixels = frame.read_bytes() if frame.exists() else None
         except subprocess.TimeoutExpired:
             return None, "the runtime did not draw a frame in time"

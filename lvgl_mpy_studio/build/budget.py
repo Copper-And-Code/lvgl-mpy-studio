@@ -11,7 +11,7 @@ from lvgl_mpy_studio.build.compiler import CompileError, compile_python
 from lvgl_mpy_studio.core.boards import compatible, portable_profile
 from lvgl_mpy_studio.gen.board_gen import BoardSyntaxError, generate_board, precompile_board
 from lvgl_mpy_studio.gen.project_gen import generate_project
-from lvgl_mpy_studio.platform import CREATE_NO_WINDOW, RUNTIME_ENTRY, runtime_environment, runtime_path
+from lvgl_mpy_studio.platform import CREATE_NO_WINDOW, RUNTIME_ENTRY, run_background, runtime_environment, runtime_path
 
 MARKER = "\x1bLVIDE_BUDGET"
 SETTLE_LOOPS = 15   # turns of the LVGL loop: enough for SCREEN_LOADED and the first timers
@@ -41,7 +41,7 @@ def _measure_ram(directory):
     main.write_text(source, encoding="utf-8", newline="\n")
     environment = runtime_environment(LVSIM_HEADLESS="1", LVSIM_TICK_MS="5")
     try:
-        result = subprocess.run([str(runtime_path()), *RUNTIME_ENTRY], cwd=directory, env=environment, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=RUN_TIMEOUT, creationflags=CREATE_NO_WINDOW)
+        result = run_background([str(runtime_path()), *RUNTIME_ENTRY], RUN_TIMEOUT, cwd=directory, env=environment, text=True, encoding="utf-8", errors="replace", creationflags=CREATE_NO_WINDOW)
     except (OSError, subprocess.TimeoutExpired):
         return None
     match = re.search(re.escape(MARKER) + r" (-?\d+)", result.stdout)
@@ -58,7 +58,7 @@ def _measure_flash(project, simulator_dir, directory, board_mpy):
 
 def measure_budget(project, board_mpy=None):
     """Return {"flash": bytes, "ram": bytes or None}; None if the project does not compile."""
-    with tempfile.TemporaryDirectory(prefix="lvgl-mpy-studio-budget-") as temporary:
+    with tempfile.TemporaryDirectory(prefix="lvgl-mpy-studio-budget-", ignore_cleanup_errors=True) as temporary:
         simulator = Path(temporary) / "simulator"
         try:
             generate_project(project, simulator)

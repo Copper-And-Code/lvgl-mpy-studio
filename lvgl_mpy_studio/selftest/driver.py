@@ -6,6 +6,7 @@ are answered by a watcher, because a modal dialog stops the code that opened it.
 import sys
 import time
 import traceback
+from pathlib import Path
 from contextlib import contextmanager
 
 from PySide6.QtCore import QEventLoop, QPoint, QPointF, Qt, QTimer
@@ -276,7 +277,7 @@ class Ide:
         self.check(button is not None, f"“{name}” has no button to choose a file")
         self.answer_file_dialog(path)
         QTest.mouseClick(button, Qt.LeftButton)
-        self.equal(editor.text(), str(path), "file shown in the field after the dialog")
+        self.equal(Path(editor.text()), Path(path), "file shown in the field after the dialog")  # Qt writes / on Windows too
         self.pause()
         QTest.keyClick(editor, Qt.Key_Return)
         return self._wait_property(widget_name, name, lambda value: bool(value))

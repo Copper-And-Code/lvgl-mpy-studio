@@ -1,4 +1,6 @@
+import atexit
 import os
+import subprocess
 from pathlib import Path
 import sys
 
@@ -84,3 +86,37 @@ def adopt_old_config(base):
 
 def micropython_path(*entries):
     return os.pathsep.join(str(entry) for entry in entries)
+
+
+_background = set()
+
+
+def run_background(command, timeout, **options):
+    """subprocess.run for a process started from a background thread, output captured.
+
+    If the program exits while the process runs, the process is stopped: left alone it would go
+    on for seconds and, on Windows, keep its files open so that their folder cannot be removed."""
+    process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, **options)
+    _background.add(process)
+    try:
+        output, errors = process.communicate(timeout=timeout)
+    except subprocess.TimeoutExpired:
+        process.kill()
+        process.communicate()
+        raise
+    finally:
+        _background.discard(process)
+    return subprocess.CompletedProcess(command, process.returncode, output, errors)
+
+
+def stop_background():
+    """Stop the processes started by run_background that are still running, and wait for them to end."""
+    for process in list(_background):
+        try:
+            process.kill()
+            process.wait(timeout=2)
+        except (OSError, subprocess.TimeoutExpired):
+            pass
+
+
+atexit.register(stop_background)

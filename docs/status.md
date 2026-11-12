@@ -36,7 +36,7 @@ below as an open question, not as a formality.
 | Block Manager, blocks from other people | yes | | | used by a person; a block written by someone else |
 | Browser version (WebAssembly) | yes | | Chromium, two resolutions | Firefox, Safari, phones |
 | Single-file executables | yes, on Linux and under Wine | | Linux | Windows, natively |
-| Windows | yes, under Wine | | the portable package of 0.6.0 started by the author on a real Windows | the self-test, boards and builds on Windows |
+| Windows | yes, under Wine | yes, on Windows 11 from the portable package: 76 steps passed of 78, see below | the portable package of 0.6.0 started by the author on Windows 11 | boards and builds on Windows |
 | MCP server | yes, and a recorded session | | | the board tools, on hardware |
 | Visual tests | yes | | used on the EIM-01 example | |
 | Print Sources | yes | | a PDF, read | a real printer |
@@ -49,9 +49,13 @@ below as an open question, not as a formality.
 ## Known defects and open points
 
 - **Windows.** The portable package of 0.4 did not start on a real Windows: it bundled a copy
-  of ICU that hid the system's. The package of 0.6.0 is built without it and starts; what was
-  done with it on Windows beyond starting it is not recorded. Tests under Wine did not show the
-  fault and cannot be trusted for this kind of defect.
+  of ICU that hid the system's. The package of 0.6.0 is built without it and starts on
+  Windows 11. The self-test run there passed 76 steps of 78. The step that failed was a
+  mistake of the self-test, which compared a path written with `\` with the same path written
+  with `/`; the step after it was skipped. The run also showed a real defect: when the program
+  ended while a measurement was running, a simulator process stayed alive and its temporary
+  folder could not be removed. Both are corrected; the corrected package has not been run on
+  Windows yet. Tests under Wine had shown neither.
 - **The IDE does not know the pins of a board.** A block takes the pin the user types, a
   number or a name such as `PA5`, and nothing warns when it is one the display or the memory
   already uses.

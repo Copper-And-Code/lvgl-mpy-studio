@@ -36,7 +36,7 @@ def main(names=(), show=False, slow_ms=0, output=None, list_only=False, echo=pri
     settings = Path(tempfile.mkdtemp(prefix="lvgl-mpy-studio-selftest-"))
     isolate_settings(settings)
 
-    from PySide6.QtCore import Qt, qVersion
+    from PySide6.QtCore import Qt, qInstallMessageHandler, qVersion
     from PySide6.QtWidgets import QApplication
 
     from lvgl_mpy_studio import __version__
@@ -45,6 +45,10 @@ def main(names=(), show=False, slow_ms=0, output=None, list_only=False, echo=pri
     from .driver import Ide, ScenarioStopped
     from .report import Report
 
+    # Two lines Qt prints for every window when nothing is shown: they hide the report and say nothing of the IDE.
+    noise = ("This plugin does not support propagateSizeHints()", "QFontDatabase: Cannot find font directory", "Note that Qt no longer ships fonts")
+    previous = qInstallMessageHandler(None)
+    qInstallMessageHandler(lambda kind, context, message: None if message.startswith(noise) else (previous(kind, context, message) if previous else print(message, file=sys.stderr)))
     QApplication.setAttribute(Qt.AA_DontUseNativeDialogs)  # the system's own dialogs cannot be answered from here
     app = QApplication.instance() or QApplication(sys.argv[:1])
     set_language("en")

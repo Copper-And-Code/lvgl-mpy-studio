@@ -8,6 +8,7 @@ from PySide6.QtWidgets import QApplication, QDockWidget, QLabel, QLineEdit, QMai
 from lvgl_mpy_studio import __version__
 from lvgl_mpy_studio.core.boards import ProfileStore, portable_profile, validate_profile
 from lvgl_mpy_studio.core.i18n import DEFAULT_LANGUAGE, set_language, tr
+from lvgl_mpy_studio.platform import stop_background
 from lvgl_mpy_studio.device.service import DeviceSession
 from lvgl_mpy_studio.ui.budget import BudgetMonitor, budget_level, budget_text
 from lvgl_mpy_studio.ui.code.editor import CodePanel
@@ -713,6 +714,7 @@ class MainWindow(DeviceMixin, ProjectTreeMixin, FilesMixin, ResolutionMixin, Run
             return
         self.budget_monitor.stop()
         self.preview_renderer.stop()
+        stop_background()  # a measurement or a preview still running would outlive the window
         self.sim_panel.shutdown()
         self.device.disconnect()
         if self._web_server is not None:

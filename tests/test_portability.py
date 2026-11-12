@@ -80,3 +80,35 @@ def test_runtime_paths_use_windows_artifact_directory(monkeypatch, tmp_path):
 
 def test_micropython_path_uses_platform_separator():
     assert platform.micropython_path("one", "two") == f"one{os.pathsep}two"
+
+
+def test_background_processes_are_stopped_before_the_program_leaves(tmp_path):
+    """A preview or a budget measurement still running at exit keeps its files open: on Windows their folder could not be removed."""
+    import subprocess
+    import sys
+    import threading
+    import time
+
+    from lvgl_mpy_studio import platform
+
+    done = platform.run_background([sys.executable, "-c", "print('out'); import sys; print('err', file=sys.stderr)"], 20, text=True)
+    assert (done.returncode, done.stdout.strip(), done.stderr.strip()) == (0, "out", "err") and not platform._background
+
+    results = []
+    thread = threading.Thread(target=lambda: results.append(platform.run_background([sys.executable, "-c", "import time; time.sleep(30)"], 60)), daemon=True)
+    started = time.monotonic()
+    thread.start()
+    while not platform._background and time.monotonic() - started < 5:
+        time.sleep(0.01)
+    assert len(platform._background) == 1
+    platform.stop_background()
+    thread.join(5)
+    assert not thread.is_alive() and results[0].returncode != 0 and time.monotonic() - started < 10
+    assert not platform._background
+
+    try:
+        platform.run_background([sys.executable, "-c", "import time; time.sleep(30)"], 0.3)
+    except subprocess.TimeoutExpired:
+        assert not platform._background  # stopped, not left running
+    else:
+        raise AssertionError("the timeout did not stop the process")
