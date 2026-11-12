@@ -57,7 +57,7 @@ To see the IDE use itself, with a report of each step:
 
 ## Limits
 
-Linux and Windows x86-64 only. User code is Python: C is exported as sources, not uploaded. Windows has not been verified natively since a packaging defect was corrected. No hardware block has run on a board yet. The full list is in [the status page](docs/status.md).
+Linux and Windows x86-64 only. User code is Python: C is exported as sources, not uploaded. Windows has not been verified natively since a packaging defect was corrected. Of the hardware blocks only Digital Output has run on a board. The full list is in [the status page](docs/status.md).
 
 ## License
 

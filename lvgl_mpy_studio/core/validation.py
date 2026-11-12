@@ -1,3 +1,4 @@
+from .blocks import is_pin
 from .components import COMPONENTS, register_project_blocks
 from .i18n import tr
 from .events import EVENTS
@@ -108,6 +109,8 @@ def validate_project(project):
                 for item in definition.get("properties") or []:
                     if item.get("pin") and props.get(item["name"]) is None:
                         warnings.append(tr("{name}: the property {property} is not set, and the board needs it", name=name, property=item.get("label", item["name"])))
+                    elif item.get("pin") and not is_pin(props.get(item["name"])):
+                        errors.append(f"{widget_path}.props.{item['name']}: a pin is a number from 0 to 255 or a name such as PA5")
             events = widget["events"] if "events" in widget else {}
             if not isinstance(events, dict):
                 errors.append(f"{widget_path}.events: must be an object")

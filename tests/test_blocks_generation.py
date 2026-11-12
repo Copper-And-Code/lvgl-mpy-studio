@@ -249,3 +249,47 @@ def test_what_do_you_want_to_do_offers_the_methods_of_a_block_not_the_lvgl_ones(
     assert actions_for("buzzer", "b")[0] == ("Beep", "ui.b.beep(§440, 30)")  # the Buzzer keeps its translated texts
     assert [tail for _text, tail in method_entries("digital_output", "led")] == ["on()", "off()", "toggle()", "set(§)", "value()"]
     assert actions_for("label", "l")[-1][1] == "ui.l.set_style_bg_color(lv.color_hex(0x§2196F3), lv.PART.MAIN)"
+
+
+def test_a_pin_is_a_number_or_the_name_the_firmware_uses(monkeypatch, tmp_path):
+    from lvgl_mpy_studio.core.blocks import is_pin, parse_pin, validate
+
+    assert [parse_pin(text) for text in ("25", " 0 ", "PA5", "GP25", "LED", "", "   ")] == [25, 0, "PA5", "GP25", "LED", None, None]
+    for text in ("256", "-1", "PA 5", "5A", "P.A5", "PA5; import os", "x" * 17, "3.3"):
+        with pytest.raises(ValueError):
+            parse_pin(text)
+    assert all(is_pin(value) for value in (None, 0, 255, "PA5", "LED"))
+    assert not any(is_pin(value) for value in (True, 256, -1, 2.5, "", "PA 5", ["PA5"]))
+    assert any("“default” is not a pin" in error for error in validate({**RELAY, "properties": [{"name": "pin", "type": "pin", "label": "Pin", "default": "P A5"}]}, {"board.py"}))
+
+    current = project()
+    current.find_widget("led").props["pin"] = "PA5"
+    generate_project(current, tmp_path)
+    assert "ui.led = lms_digital_output.Block(name='led', pin='PA5', active_low=False, initial=False)" in (tmp_path / "main.py").read_text()
+    current.find_widget("led").props["pin"] = "PA5'); import os; ("
+    with pytest.raises(ValueError, match="a pin is a number from 0 to 255 or a name such as PA5"):
+        validate_project(current)
+
+    levels = {}
+    fake_board(monkeypatch, levels)
+    led = load("digital_output", "board")(name="led", pin="PA5", initial=True)
+    assert levels == {"PA5": 1} and led.value() is True
+
+
+def test_the_properties_panel_takes_a_pin_by_number_or_by_name(qtbot):
+    from helpers import find_item
+
+    from lvgl_mpy_studio.ui.main_window import MainWindow
+
+    window = MainWindow()
+    qtbot.addWidget(window)
+    window.document.execute("add", lambda project: project.add_widget(project.pages[0], "digital_output", None, "led"))
+    window.properties.set_selection(["led"])
+    assert find_item(window.properties, "pin").text() == ""  # not set: the user must choose it
+    for typed, stored in (("PA5", "PA5"), ("25", 25), ("", None)):
+        find_item(window.properties, "pin").setText(typed)
+        assert window.document.project.find_widget("led").props["pin"] == stored
+        window.properties.rebuild()
+    find_item(window.properties, "pin").setText("PA 5")
+    assert window.properties.error.isVisibleTo(window.properties) and window.document.project.find_widget("led").props["pin"] is None
+    window.document.undo_stack.setClean()

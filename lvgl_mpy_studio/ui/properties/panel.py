@@ -23,6 +23,7 @@ from PySide6.QtWidgets import (
 )
 
 from lvgl_mpy_studio.core.assets import AssetError, add_font, add_image, font_name, fonts, free_image_name
+from lvgl_mpy_studio.core.blocks import parse_pin
 from lvgl_mpy_studio.core.components import COMPONENTS
 from lvgl_mpy_studio.core.events import EVENTS, events_for
 from lvgl_mpy_studio.core.i18n import tr
@@ -301,6 +302,8 @@ class PropertiesPanel(QWidget):
         try:
             if kind == "number":
                 value = int(text)
+            elif kind == "pin":
+                value = parse_pin(text)
             elif kind == "boolean":
                 previous = item.data(CHECKED_ROLE)
                 written = text.lower() == "true"

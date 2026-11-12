@@ -21,12 +21,38 @@ ID = re.compile(r"[a-z][a-z0-9_]{0,30}")
 NAME = re.compile(r"[A-Za-z_][A-Za-z0-9_]*")
 FILE = re.compile(r"[A-Za-z0-9_]+\.py")
 PROPERTY_TYPES = ("number", "string", "boolean", "select", "color", "pin")
-PROPERTY_VALUES = {"number": (int, float), "string": str, "boolean": bool, "select": str, "color": str, "pin": int}
+PROPERTY_VALUES = {"number": (int, float), "string": str, "boolean": bool, "select": str, "color": str, "pin": (int, str)}
 CONSTANT_TYPES = {"integer": int, "number": (int, float), "string": str, "boolean": bool}
 INSTANCES = ("one", "many")
 EXTRAS = ("LICENSE", "LICENSE.txt", "README.md")
 MODULE_PREFIX = "lms_"  # reserved: no user module can take the name of a block module
 PIN_MAX = 255
+PIN_NAME = re.compile(r"[A-Za-z][A-Za-z0-9_]{0,15}")  # as the firmware names it: PA5, GP25, LED
+
+
+def parse_pin(text):
+    """A pin as typed: a number, a name such as PA5, or nothing. ValueError for anything else.
+
+    MicroPython takes a number on some ports and a name on others; the block gets what was typed."""
+    text = str(text).strip()
+    if not text:
+        return None
+    if text.isdigit():
+        if int(text) > PIN_MAX:
+            raise ValueError(text)
+        return int(text)
+    if not PIN_NAME.fullmatch(text):
+        raise ValueError(text)
+    return text
+
+
+def is_pin(value):
+    """True for a value a pin property may hold."""
+    if isinstance(value, bool):
+        return False
+    if isinstance(value, int):
+        return 0 <= value <= PIN_MAX
+    return value is None or isinstance(value, str) and bool(PIN_NAME.fullmatch(value))
 
 
 class BlockError(ValueError):
@@ -68,8 +94,8 @@ class Block:
         properties = []
         for item in self.manifest["properties"]:
             entry = {key: value for key, value in item.items() if key != "default"}
-            if entry["type"] == "pin":  # a number for now; the list of the pins of the board comes later
-                entry.update(type="number", pin=True, min=0, max=PIN_MAX)
+            if entry["type"] == "pin":  # a number or a name, typed; the list of the pins of the board comes later
+                entry["pin"] = True
             properties.append(entry)
         defaults = {item["name"]: item["default"] for item in self.manifest["properties"] if "default" in item}
         return {"type": self.id, "name": self.manifest["name"], "icon": self.manifest.get("icon", ""), "category": self.manifest.get("category", "Components"), "defaultProps": defaults, "properties": properties}
@@ -201,7 +227,7 @@ def validate(manifest, files=()):
         names.add(item["name"])
         if item.get("type") not in PROPERTY_TYPES:
             errors.append(f"{where}: “type” must be one of {', '.join(PROPERTY_TYPES)}")
-        elif "default" in item and not isinstance(item["default"], PROPERTY_VALUES[item["type"]]) or isinstance(item.get("default"), bool) and item["type"] != "boolean":
+        elif "default" in item and not isinstance(item["default"], PROPERTY_VALUES[item["type"]]) or isinstance(item.get("default"), bool) and item["type"] != "boolean" or item["type"] == "pin" and not is_pin(item.get("default")):
             errors.append(f"{where}: “default” is not a {item['type']}")
         if item.get("type") == "select" and not (isinstance(item.get("options"), list) and item["options"] and all(isinstance(option, str) for option in item["options"])):
             errors.append(f"{where}: a “select” needs its “options”, a list of texts")

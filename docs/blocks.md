@@ -85,10 +85,12 @@ you: keep it short and readable, and say what it does.
 | `boolean` | `bool` | a check box |
 | `select` | one of `options`, a list of texts | a list |
 | `color` | `"#RRGGBB"` | a colour chooser |
-| `pin` | `int`, or `None` when not set | a number field |
+| `pin` | `int` or `str`, or `None` when not set | a field for a number, such as `25`, or a name, such as `PA5` |
 
 A property without `default` starts empty. A `pin` should have none: a wrong pin can drive
 hardware it should not, so the user must choose it. An unset pin reaches your code as `None`.
+A pin is what the user typed, a number or a name, because MicroPython wants one or the other
+depending on the port: pass it to `machine.Pin` as it is.
 
 ## Step 2: the code for the board
 
@@ -230,7 +232,6 @@ which IDEs older than 0.6 refuse to open.
 
 ## Limits today
 
-- A pin is a number. Boards that name their pins with letters, such as `PA5`, cannot be used yet.
 - The IDE does not know which pins a board has free, and does not warn about two blocks on one pin.
 - Blocks are MicroPython only: the C export leaves components out, with a warning.
 - A block cannot depend on another block, for example a sensor on an I2C bus block.

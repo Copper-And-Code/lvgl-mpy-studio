@@ -230,7 +230,9 @@ Each phase ends with the test suite passing and can be released on its own.
    `list_blocks` and the blocks in `project_info`; Italian texts for the standard blocks.
    **Update block** turned out not to be needed: a project is saved with the blocks as they
    are installed now.
-4. **Pins.** `pins` in profiles, the `pin` editor, conflict warnings.
+4. **Pins.** One part done ahead: a pin is typed as a number or as a name such as `PA5`, so
+   the blocks can be used on the STM32 boards. Still to do: `pins` in profiles, the list to
+   choose from, conflict warnings.
 5. **The remaining standard blocks**: PWM, ADC, I2C, SPI, UART, each tried on a real board.
 6. **Documentation.** Done ahead of its turn: `docs/blocks.md` builds a block step by step,
    the example is in `examples/blocks/blinker`, and the manual has a chapter. To be updated

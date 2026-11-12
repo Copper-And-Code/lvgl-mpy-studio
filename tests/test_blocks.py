@@ -57,7 +57,7 @@ def test_a_block_folder_is_read_without_running_it(tmp_path):
     block = load_block(directory)
     assert (block.id, block.origin, block.methods) == ("relay", "user", ("on", "set"))
     assert set(block.files) == {"board.py", "simulator.py"}
-    assert block.definition() == {"type": "relay", "name": "Relay", "icon": "", "category": "Components", "defaultProps": {"active_low": False}, "properties": [{"name": "pin", "type": "number", "label": "Pin", "pin": True, "min": 0, "max": 255}, {"name": "active_low", "type": "boolean", "label": "Active low"}]}
+    assert block.definition() == {"type": "relay", "name": "Relay", "icon": "", "category": "Components", "defaultProps": {"active_low": False}, "properties": [{"name": "pin", "type": "pin", "label": "Pin", "pin": True}, {"name": "active_low", "type": "boolean", "label": "Active low"}]}
     assert block.board_source({}).startswith("raise SystemExit")
     assert block.silent_source().endswith('class Block:\n    def __init__(self, name="", **options):\n        self.name = name\n        self.options = options\n\n    def on(self):\n        pass\n\n    def set(self, value, *, force=False):\n        pass\n')
 

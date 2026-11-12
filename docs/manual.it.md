@@ -162,7 +162,7 @@ I componenti non si vedono sulla pagina: compaiono nel pannello **Componenti** i
   - Eventi **PRESSED**, **RELEASED** e **CHANGED**; nel gestore `e` è l'ingresso stesso: `e.value()`.
   - Nel simulatore l'ingresso cambia solo quando il codice chiama `ui.digital_input1.simulate(True)`.
 
-Il pin è il numero che MicroPython usa su quella board.
+Il pin è come MicroPython lo chiama su quella board: un numero, come `25`, oppure un nome, come `PA5` sulle board STM32. L'IDE non sa quali pin usa il display: scegline uno libero.
 
 ### Blocchi
 
