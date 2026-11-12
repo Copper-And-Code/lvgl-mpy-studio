@@ -36,22 +36,22 @@ below as an open question, not as a formality.
 | Block Manager, blocks from other people | yes | | | used by a person; a block written by someone else |
 | Browser version (WebAssembly) | yes | | Chromium, two resolutions | Firefox, Safari, phones |
 | Single-file executables | yes, on Linux and under Wine | | Linux | Windows, natively |
-| Windows | yes, under Wine | | | **natively, see below** |
+| Windows | yes, under Wine | | the portable package of 0.6.0 started by the author on a real Windows | the self-test, boards and builds on Windows |
 | MCP server | yes, and a recorded session | | | the board tools, on hardware |
 | Visual tests | yes | | used on the EIM-01 example | |
 | Print Sources | yes | | a PDF, read | a real printer |
 | Self-test, visible mode (`--show`) | | | | never run |
 | AppImage for Linux | | yes, run from inside the package | built from the sources of 0.6.0 on the author's computer: self-test, visual tests of EIM-01, board and C generation, single-file games for Linux (needing glibc 2.34 or later) and Windows, browser version | on another Linux system |
-| Portable Windows package | | | built for 0.6.0; its contents inspected: no bundled ICU, the icon in the program file, the blocks | **started on a real Windows** |
+| Portable Windows package | | | built for 0.6.0; its contents inspected: no bundled ICU, the icon in the program file, the blocks; started by the author on a real Windows | the installer, never built |
 
 "Author's use" means the author uses it while developing; it is not a test plan.
 
 ## Known defects and open points
 
 - **Windows.** The portable package of 0.4 did not start on a real Windows: it bundled a copy
-  of ICU that hid the system's. The packaging was corrected in 0.5.1 and a package of 0.6.0
-  was built without it, but nobody has started it on Windows yet. Tests under Wine did not
-  show the fault and cannot be trusted for this.
+  of ICU that hid the system's. The package of 0.6.0 is built without it and starts; what was
+  done with it on Windows beyond starting it is not recorded. Tests under Wine did not show the
+  fault and cannot be trusted for this kind of defect.
 - **The IDE does not know the pins of a board.** A block takes the pin the user types, a
   number or a name such as `PA5`, and nothing warns when it is one the display or the memory
   already uses.

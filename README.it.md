@@ -59,7 +59,7 @@ Per vedere l'IDE usarsi da solo, con il rapporto di ogni passo:
 
 ## Limiti
 
-Solo Linux e Windows x86-64. Il codice utente è Python: il C viene esportato come sorgenti, non caricato. Windows non è stato verificato in modo nativo dopo la correzione di un difetto dei pacchetti. I due blocchi hardware hanno girato su una sola board. L'elenco completo è nella [pagina dello stato](docs/status.md).
+Solo Linux e Windows x86-64. Il codice utente è Python: il C viene esportato come sorgenti, non caricato. Su Windows il pacchetto parte; poco altro è stato provato lì. I due blocchi hardware hanno girato su una sola board. L'elenco completo è nella [pagina dello stato](docs/status.md).
 
 ## Licenza
 

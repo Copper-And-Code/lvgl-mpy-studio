@@ -34,7 +34,7 @@
 - A widget chosen with a double click in the toolbox was placed twice in a project with several pages: once where you clicked, and again at the first click on another page. Found by the self-test.
 - The warning about fonts and free RAM appeared by mistake from the second upload on: the memory was read while the previous application was still running. It is now read after the reset, with the display driver loaded.
 - When the application did not start after an upload, the warnings found before were lost; they are now shown with the error, in the IDE, on the command line and through MCP.
-- The portable Windows package did not start on Windows: it carried a copy of ICU 72 next to Qt, which hid the `icuuc.dll` of the system and lacks the functions Qt asks for. The package no longer includes ICU. Wine did not show the fault, because it starts a program even when imported functions are missing.
+- The portable Windows package did not start on Windows: it carried a copy of ICU 72 next to Qt, which hid the `icuuc.dll` of the system and lacks the functions Qt asks for. The package no longer includes ICU; the package of 0.6.0 starts on a real Windows. Wine did not show the fault, because it starts a program even when imported functions are missing.
 - The Windows packages had no icon: the program file, the taskbar and the windows showed a generic one. The windows have the icon on Linux too.
 
 ## 0.5.0 — not released
