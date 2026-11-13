@@ -688,6 +688,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="9. The simulator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#programs-without-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Programs without pages
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1660,6 +1677,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="9. The simulator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#programs-without-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Programs without pages
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2139,24 +2173,48 @@
 <li>The <code>print</code> calls of your code appear in the <strong>Output</strong> panel.</li>
 </ul>
 <p>While the simulator is running the project is read-only: a bar above the editor says so, and the <strong>Stop and Edit</strong> button stops the app. An error in a handler does not stop the app, so after an error the simulator is usually still running.</p>
+<h3 id="programs-without-pages">Programs without pages<a class="headerlink" href="#programs-without-pages" title="Permanent link">&para;</a></h3>
+<p><strong>Run → Run Program…</strong> runs a MicroPython file that has no pages drawn in the designer, such as a shell or a text editor, as a board would run it. Choose the file: its folder is the program. Linux only, for now.</p>
+<ul>
+<li>The folder is copied into a <strong>flash</strong> of its own, which keeps between runs the files the program writes, as a board does. Files of the folder replace those of the same name; the others stay. <strong>Run → Open Program Flash Folder</strong> shows it, <strong>Run → Erase Program Flash…</strong> empties it. Your folder is never changed.</li>
+<li>The program sees the flash as <code>/</code> and cannot leave it: <code>..</code>, absolute paths and <code>rm -r /</code> stay inside.</li>
+<li>A terminal opens under the screen: it is the program's serial port. What the program prints appears there, and each key typed there, or on the screen of the simulator, reaches <code>sys.stdin</code> as it would from PuTTY. Ctrl-C stops the program while <code>micropython.kbd_intr(3)</code> is on, and arrives as a key after <code>kbd_intr(-1)</code>.</li>
+<li>As on a board, <code>import display_driver</code> starts the display, and <code>display_driver.start()</code> serves LVGL in the background, also while the program waits for a key. <code>os.dupterm</code>, <code>os.uname()</code> and <code>machine.reset()</code> work; <code>machine.reset()</code> starts the program again.</li>
+<li>When the program ends, a MicroPython REPL takes the keys.</li>
+<li>The open project is not involved and stays editable. Every program runs as the STM32H7_CORE V1.3, 1024×600.</li>
+<li>The <strong>Files</strong> panel, next to <strong>Project</strong>, shows the program's folder, or any folder opened with <strong>Open Folder…</strong>. A double click opens a file in a tab of its own, next to the pages, Code and Simulator, with the editor of the Code tab: colours, line numbers, completion of <code>lv.</code>, and a syntax check of <code>.py</code> files while you type. <strong>Ctrl+S</strong> saves the file of the current tab; a tab shows <code>*</code> while it has unsaved changes, and offers to reload when another program changes the file. Run Program and Run in the Browser save the modified files of the folder first. The menu of the panel creates, renames and moves to the trash files and folders, and runs a <code>.py</code> file.</li>
+<li>Under the folder, the panel shows <strong>the board</strong> while it is connected; folders are read when you open them. A double click opens a file of the board in a tab marked <code>[board]</code>; <strong>Ctrl+S</strong> writes it back to the board with the safe write of Upload Files, and the tab keeps its <code>*</code> until the board has the file. The menu downloads a file to the computer's folder, uploads files of the computer to that folder of the board, creates, renames and deletes, and runs a <code>.py</code> file on the board. A file or folder of the computer is uploaded to the folder selected on the board from its own menu. <code>/</code>, <code>/flash</code> and <code>/sd</code> are never deleted.</li>
+<li>The heap is 32 MB, about the RAM of the STM32H7_CORE; on a smaller board the program may run out of memory where the simulator does not.</li>
+</ul>
+<p><strong>Run → Run on the Board…</strong> asks for a file in the same way, uploads its folder to the board (to the folder selected in the Files panel, else <code>/flash</code> on the STM32 boards and <code>/</code> on the others) and runs the file from the board's prompt; the program reads its keys from <strong>Device Console</strong>. <strong>Run → Run in the Browser…</strong> asks for a file in the same way and runs it as a web page, with the same flash and keyboard; the Output panel says where the folder to publish is. In the browser LVGL runs only while the program waits for a key, sleeps or polls, and functions marked <code>@micropython.viper</code> or <code>@micropython.native</code> do not compile.</p>
+<p>The shell of <code>examples/shell</code> runs this way with its two editors, in the simulator, in the browser and on the boards.</p>
 <h2 id="10-working-with-a-board">10. Working with a board<a class="headerlink" href="#10-working-with-a-board" title="Permanent link">&para;</a></h2>
 <p>The <a href="../boards/">board guide</a> explains everything in detail; here is the essential path.</p>
 <ol>
 <li>Connect the board by USB. It needs a MicroPython firmware with LVGL and the display driver; the requirements of each board are in the guide.</li>
 <li>In the selector next to <strong>Start</strong> choose the board. The project resolution becomes that of the board, and the IDE asks how to adapt the widgets, as in <a href="#7-resolution">section 7</a>.</li>
-<li>Press <strong>F5</strong>: if there is only one serial port it is used, otherwise the IDE asks once. The app is uploaded and run; the board console appears in <strong>Device Console</strong>, where you can also type commands to the REPL.</li>
+<li>Press <strong>F5</strong>: if there is only one serial port it is used, otherwise the IDE asks once. The app is uploaded and run; what the board prints appears in <strong>Device Console</strong>.</li>
 <li><strong>Shift+F5</strong> stops the app. <strong>Disconnect</strong> in the status bar frees the port for other programs.</li>
 </ol>
+<p><strong>Device Console</strong> is a terminal connected to the board whenever it is connected and the IDE is not using the port. Each key goes to the board as it is typed, as in PuTTY or picocom: at the <code>&gt;&gt;&gt;</code> prompt the arrows recall the previous lines and Tab completes, and a program that reads the keyboard, such as a shell or an editor, gets every key. Colours and cursor movements of ANSI sequences are shown.</p>
+<ul>
+<li>Ctrl+C and the other Ctrl keys go to the board. Copy and paste are on <strong>Ctrl+Shift+C</strong> and <strong>Ctrl+Shift+V</strong>, and in the menu of the right button. A pasted text is typed line by line.</li>
+<li>The <strong>Ctrl-C</strong> button stops the running program; <strong>Ctrl-D</strong> at the prompt makes a soft reset.</li>
+<li>While the IDE uploads, stops or reads the board, the terminal waits and says so above it. The program running on the board is interrupted by these operations.</li>
+<li>The grey lines are messages of the IDE, not of the board.</li>
+</ul>
 <p>Other entries of the <strong>Device</strong> menu:</p>
 <ul>
 <li><strong>Live Editing</strong>: with the app running on the board, every change to the page appears on the board in under a second, without uploading everything again. Code changes need F5.</li>
 <li><strong>Upload Project</strong> copies the app without starting it; <strong>Upload and Run</strong> copies and starts it.</li>
+<li><strong>Upload Files…</strong> copies files or whole folders of the PC to a folder of the board, such as <code>/flash</code>, <code>/sd</code> or <code>/sd/bin</code>, outside any project: a program without pages, its data, binary files. Files with the same name are replaced, nothing else changes; each file is written under a temporary name and renamed at the end, so an interrupted copy leaves the old file. Python files can be compiled to bytecode, except <code>main.py</code> and <code>boot.py</code>. The IDE asks before replacing a file that the board runs at power-on.</li>
+<li><strong>Run File on Board…</strong> types at the board's prompt the line that runs a file of the board, such as <code>/flash/shell.py</code>, from its folder, or any line of Python. The program reads its keys from <strong>Device Console</strong>, as from PuTTY.</li>
 <li><strong>Device Information</strong>: firmware, LVGL version, memory, touch and compatibility with the profile.</li>
 <li><strong>Install Autostart…</strong>: the app starts on its own when the board powers up. <strong>Remove Autostart…</strong> restores the earlier launcher, saved by the IDE.</li>
 <li><strong>Manage Board Profiles…</strong>: profiles describe display, touch, buzzer and requirements of each board.</li>
 </ul>
 <p>Each project has its own identifier, so on the board it goes to a separate folder and does not overwrite other apps, even with the same name.</p>
-<p>In the run target selector, <strong>Use as default for new projects</strong> makes new projects start with that board and its resolution.</p>
+<p>A new project starts for the STM32H7_CORE V1.3, 1024×600, and runs in the simulator. In the run target selector, <strong>Use as default for new projects</strong> makes new projects start with another board and its resolution instead.</p>
 <h2 id="11-memory-flash-and-ram">11. Memory: flash and RAM<a class="headerlink" href="#11-memory-flash-and-ram" title="Permanent link">&para;</a></h2>
 <p>In the status bar the IDE shows how much <strong>flash</strong> the compiled app takes and how much <strong>RAM</strong> it uses at start-up, updated as you work. With a board chosen, the values turn yellow or red as you get near its limits.</p>
 <p>RAM is measured in the simulator, which is 64-bit: on 32-bit boards real use is lower.</p>

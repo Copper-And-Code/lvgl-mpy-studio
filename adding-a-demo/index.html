@@ -639,6 +639,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="2. Describe the demo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-program-without-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A program without pages
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -974,6 +991,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="2. Describe the demo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-program-without-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A program without pages
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1034,12 +1068,15 @@
 </code></pre></div>
 <ul>
 <li><code>id</code> must match the folder name.</li>
-<li><code>kind</code> is <code>game</code> or <code>application</code>.</li>
+<li><code>kind</code> is <code>game</code>, <code>application</code> or <code>program</code>.</li>
 <li><code>page</code> is the page used for the thumbnail, or <code>null</code> for the initial page.</li>
 <li><code>order</code> is a unique integer that controls the gallery order.</li>
 <li>If no prompt exists, set <code>prompt</code> to <code>null</code> and explain that in <code>prompt_note</code>. Never reconstruct or invent one.</li>
 <li>If the demo was changed after the prompt produced it, keep the prompt and say what changed, and who changed it, in <code>prompt_note</code>.</li>
 </ul>
+<h3 id="a-program-without-pages">A program without pages<a class="headerlink" href="#a-program-without-pages" title="Permanent link">&para;</a></h3>
+<p>A program such as <code>examples/shell</code> has no <code>project.json</code>. Its <code>demo.json</code> has <code>"kind": "program"</code>, <code>"page": null</code>, and one more field, <code>"entry"</code>, the <code>.py</code> file to run, in the same folder. The whole folder is copied into the flash of the program, in the browser's memory. It runs as the STM32H7_CORE V1.3, 1024×600; the keyboard of the page is its serial port. The thumbnail is the screen of the Linux simulator after the program has started and <code>ls</code> was typed, and the gallery shows the size of the files as Flash and no RAM figure.</p>
+<p>In the browser there are no timer interrupts and no native code: LVGL is served only while the program waits for a key, sleeps or polls, and <code>@micropython.viper</code> or <code>@micropython.native</code> functions do not compile. <code>examples/shell/ansiterm.py</code> shows the way out: its viper functions are compiled from a string inside <code>try</code>, and <code>framebuf</code> does the same drawing where they fail.</p>
 <p><strong>When an agent creates a demo from a prompt, save that prompt in <code>demo.json</code> at the same time.</strong> Preserving the connection between prompt and result is the purpose of the gallery.</p>
 <h2 id="3-build-and-try-the-site">3. Build and try the site<a class="headerlink" href="#3-build-and-try-the-site" title="Permanent link">&para;</a></h2>
 <p>Install the site and development dependencies, then build:</p>

@@ -1,0 +1,11 @@
+{
+  "id": "shell",
+  "name": "Shell",
+  "description": "A Linux-like shell with two text editors, a program without pages: type on the keyboard. Its files live in the browser's memory and are gone when the page reloads.",
+  "kind": "program",
+  "entry": "shell.py",
+  "page": null,
+  "prompt": null,
+  "prompt_note": "Not created from a prompt in LVGL MPY Studio: it comes from the examples of mpy-lvgl-boards, where it runs on the boards.",
+  "order": 60
+}

@@ -1170,6 +1170,28 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#the-device-console-as-a-terminal-2026-11-13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Device Console as a terminal (2026-11-13)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#programs-without-pages-in-the-simulator-2026-11-13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Programs without pages in the simulator (2026-11-13)
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1570,6 +1592,28 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#the-device-console-as-a-terminal-2026-11-13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Device Console as a terminal (2026-11-13)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#programs-without-pages-in-the-simulator-2026-11-13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Programs without pages in the simulator (2026-11-13)
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1819,6 +1863,28 @@
 <li><strong>What do you want to do?</strong> lists each module like a component: Import the module, its public functions with their arguments, classes and upper-case constants. They are read with <code>ast</code>, without running the module; with a syntax error the top-level <code>def</code> lines remain. Double-clicking inserts the call, with the cursor between the brackets when there are arguments. The open module shows its own group instead, expanded, as This module, with calls without the module prefix; leaving it out made a new module look as if the panel had not updated. While a module is edited, the list follows its functions after a short pause.</li>
 <li>Generation never writes back into the project: a file edited by hand in the generated folder is replaced by the module's source at the next run.</li>
 <li>A module is a file of its own, so <code>ui</code> and <code>lv</code> are not defined in it as they are in handlers, and the first user test stopped on <code>NameError: name 'ui' isn't defined</code>. A module created from the editor therefore starts with <code>import lvgl as lv</code> and <code>import ui</code>, the imports of the generated handlers, and a hint under the editor says so while a module is open. <code>create_module</code> in <code>core/modules.py</code> and over MCP still starts empty, so existing agents see no change.</li>
+</ul>
+<h2 id="the-device-console-as-a-terminal-2026-11-13">The Device Console as a terminal (2026-11-13)<a class="headerlink" href="#the-device-console-as-a-terminal-2026-11-13" title="Permanent link">&para;</a></h2>
+<ul>
+<li>The console sends each key as it is typed, as a serial terminal does, instead of a line at a time. The first program that needed it is the Linux-like shell of <code>mpy-lvgl-boards/examples/shell</code>, with history, Tab completion and full-screen editors; the plain REPL gains its history and completion too.</li>
+<li>The screen is <code>core/vt.py</code>, written here in plain Python rather than taken from a library such as pyte. It follows <code>ansiterm.py</code>, the terminal that the same shell draws on a board's display, sequence by sequence, so a program looks the same on the board and in the IDE; it adds the history of the lines scrolled off and Unicode. No new dependency reaches the packages. Its tests compare the screen cell by cell.</li>
+<li>The console no longer runs <code>mpremote repl</code>. On Windows that command reads the keyboard of its own console window, which a GUI program does not have, so typed keys could not reach the board. The port is opened with mpremote's own <code>SerialTransport</code>, so the lines DTR and RTS behave as with every other mpremote command, quirks of the CP210x on Windows included. The STM32H7 boards keep their UART transport, which stays open; the console leaves the raw REPL with Ctrl-B only after an IDE command left it there.</li>
+<li>The console is live whenever the board is connected and the IDE is idle, not only while an app runs. Each IDE operation stops it first and it starts again afterwards, as the mpremote commands already took and gave back the port. An empty read is a read timeout, not the end: only an error of the port ends the console, and the window is told.</li>
+<li>Ctrl+C and the other Ctrl keys belong to the board, also over the menu shortcuts of the window; copy and paste are on Ctrl+Shift+C and Ctrl+Shift+V. Keys are written in pieces of 64 bytes with a short pause, so a long paste does not overflow the receive buffer of a board.</li>
+<li>Not changed: the IDE's commands over the raw REPL, the MCP tool <code>device_read_console</code>, which still reads without typing, and the traceback mapping, which reads the same text as before.</li>
+</ul>
+<h2 id="programs-without-pages-in-the-simulator-2026-11-13">Programs without pages in the simulator (2026-11-13)<a class="headerlink" href="#programs-without-pages-in-the-simulator-2026-11-13" title="Permanent link">&para;</a></h2>
+<ul>
+<li>A program is chosen as a file, <strong>Run → Run Program…</strong>, not as a new kind of project: the project model, the validator and the generators do not see it, and projects with pages start exactly as before. A document for programs may come later, if this is not enough.</li>
+<li>The simulator starts such a program from a folder of its own with board-like modules (<code>runtime/program</code>): <code>display_driver.py</code> with the contract of <code>mpy-lvgl-boards</code> (importing it starts the display; <code>start()</code> serves LVGL; <code>WIDTH</code>, <code>HEIGHT</code>, <code>BUFFERS</code>, <code>indev</code>, and <code>_task</code>, <code>_timer</code>, <code>_arm()</code>, which <code>ansiterm.py</code> uses), and <code>os.py</code> and <code>machine.py</code>, which extend the built-in modules the way MicroPython documents (<code>from os import *</code> with <code>sys.path</code> empty). MicroPython is not patched.</li>
+<li>On a board a timer schedules the LVGL task, which runs in the main thread between bytecodes, also while the program waits for a key. In the simulator a thread of <code>lvsim</code> schedules it and sends SIGUSR1 to the main thread, so that a blocking read returns EINTR; the unix port then runs what is scheduled and reads again (<code>MP_HAL_RETRY_SYSCALL</code>, and <code>select.poll</code> and <code>time.sleep</code> do the same). LVGL is therefore touched only by the main thread, as on a board. A thread in the program would have raced the program's own LVGL calls.</li>
+<li>Keys reach the program through a pipe that <code>lvsim.keys()</code> puts in place of standard input. A Ctrl-C becomes a KeyboardInterrupt only while the SIGINT handler of the unix port is installed, that is while <code>micropython.kbd_intr(3)</code> is on; otherwise it is a key, as for the editors of the shell.</li>
+<li>The program's flash is a folder of the IDE's settings, one per program folder, kept between runs. <code>os.VfsPosix(folder)</code> alone lets <code>/..</code> out; a small VFS in Python (<code>lms_sandbox.py</code>) resolves every path itself, and a test removes everything from <code>/..</code> and checks that nothing outside changed.</li>
+<li><code>os.dupterm</code> is compiled into the Linux runtime (<code>MICROPY_PY_OS_DUPTERM</code>), the only change to its configuration; it does nothing until a program calls it. The unix port prints LF where a board prints CR LF: <code>os.dupterm</code> and the IDE's terminal add the CR.</li>
+<li>The heap of a program is 32 MB (<code>-X heapsize</code>), about the RAM of the STM32H7_CORE: a terminal on a 800×480 display keeps more than one copy of its framebuffer, and the default 2 MB was not enough.</li>
+<li><code>machine.reset()</code> ends the simulator with exit code 75 and the IDE starts the program again.</li>
+<li>Every program runs as the STM32H7_CORE V1.3, 1024×600, whatever project is open: the owner's choice, since the programs of this kind are written for that board first. The screen of the simulator grows only by whole multiples and shrinks smoothly, so that an 8×16 bitmap font stays legible; this applies to projects with pages too.</li>
+<li>Not done: Windows (the service uses POSIX threads and signals) and the browser.</li>
 </ul>
 
 

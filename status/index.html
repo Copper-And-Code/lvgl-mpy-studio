@@ -1151,6 +1151,41 @@ below as an open question, not as a formality.</p>
 <td>in a real C project; fonts in C on a board</td>
 </tr>
 <tr>
+<td>Device Console as a terminal (keys as typed, ANSI colours and cursor)</td>
+<td>yes: the VT100 sequences cell by cell, the keys, the port taken and given back</td>
+<td></td>
+<td>STM32H7_CORE V1.3 and ESP32-4848S040, 13 November 2026, driven by a script through the IDE's code: the shell typed to and read back, the console stopped and started again three times</td>
+<td>typed by a person; full-screen editors on a board; Windows</td>
+</tr>
+<tr>
+<td>Programs without pages in the simulator (Run Program)</td>
+<td>yes: the service while waiting for a key, Ctrl-C, the flash that cannot be left, reset, the IDE</td>
+<td></td>
+<td>the shell of <code>mpy-lvgl-boards</code> with <code>edit</code> and <code>vi</code>, driven by the tests of this work, not yet used by a person</td>
+<td>used by a person; Windows, not available</td>
+</tr>
+<tr>
+<td>Upload Files, Run File on Board</td>
+<td>yes, with a board simulated in memory and a fake serial port</td>
+<td></td>
+<td>STM32H7_CORE V1.3 (over its USB) and ESP32-4848S040, 13 November 2026: the shell of <code>examples/shell</code> copied (6 files, 110 kB, about 32 s) and started, <code>pwd</code>, <code>ls</code>, <code>uname -a</code>, <code>cd</code>, <code>exit</code></td>
+<td>the editors on a board; the RP2350; used by a person</td>
+</tr>
+<tr>
+<td>Programs without pages in the browser (the shell demo)</td>
+<td>yes: the page in headless Chromium, <code>help</code> answered; the build of the page</td>
+<td></td>
+<td></td>
+<td>Firefox, Safari, a phone with its on-screen keyboard; used by a person</td>
+</tr>
+<tr>
+<td>Files panel and file tabs</td>
+<td>yes, with a board simulated in memory</td>
+<td></td>
+<td>the board's files: the service on the STM32H7_CORE V1.3 (USB) and the ESP32-4848S040 (list, read, write, rename, folder, delete), and the panel driven through the IDE on the ESP32-4848S040 (list, open, edit, save, restore; Run on the Board with the shell: upload, start, <code>pwd</code>, <code>exit</code> in 38 s), 13 November 2026</td>
+<td>used by a person; the panel on the STM32H7</td>
+</tr>
+<tr>
 <td>Upload progress window</td>
 <td>yes</td>
 <td></td>
@@ -1245,7 +1280,7 @@ below as an open question, not as a formality.</p>
 <td>Portable Windows package</td>
 <td></td>
 <td></td>
-<td>the package of 0.6.0: contents inspected (no bundled ICU, the icon in the program file, the blocks) and started by the author on a real Windows. The package of 0.6.1, released: contents inspected, not yet started on Windows</td>
+<td>the package of 0.6.0: contents inspected (no bundled ICU, the icon in the program file, the blocks) and started by the author on a real Windows. The package of 0.6.1, released: contents inspected, started by the author on Windows, no console windows flashing</td>
 <td>the installer, never built</td>
 </tr>
 </tbody>
@@ -1269,8 +1304,11 @@ Documentation</strong> also passed and opens the same public address.</p>
   ended while a measurement was running, a simulator process stayed alive and its temporary
   folder could not be removed. Both are corrected, and the author ran the corrected package on Windows 11 without that
   error. Tests under Wine had shown neither. A third defect, reported by the author, is
-  corrected and not yet seen on Windows: started from the program file, a console window
-  flashed four times at almost every operation.</li>
+  corrected: started from the program file, a console window flashed four times at almost
+  every operation. On 13 November 2026 the author saw no such window with the package of 0.6.1.
+  With a package built on 13 November 2026 from the branch <code>programs-without-pages</code>, the author
+  used a board on a COM port; the window's icon and pinning it to the taskbar did not work.
+  Not looked into yet.</li>
 <li><strong>The IDE does not know the pins of a board.</strong> A block takes the pin the user types, a
   number or a name such as <code>PA5</code>, and nothing warns when it is one the display or the memory
   already uses.</li>
