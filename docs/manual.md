@@ -322,7 +322,9 @@ While the simulator is running the project is read-only: a bar above the editor 
 - The open project is not involved and stays editable. Every program runs as the STM32H7_CORE V1.3, 1024×600.
 - The heap is 32 MB, about the RAM of the STM32H7_CORE; on a smaller board the program may run out of memory where the simulator does not.
 
-The shell of `mpy-lvgl-boards` (`examples/shell`) runs this way with its two editors.
+**Run → Run in the Browser…** asks for a file in the same way and runs it as a web page, with the same flash and keyboard; the Output panel says where the folder to publish is. In the browser LVGL runs only while the program waits for a key, sleeps or polls, and functions marked `@micropython.viper` or `@micropython.native` do not compile.
+
+The shell of `examples/shell` runs this way with its two editors, in the simulator, in the browser and on the boards.
 
 ## 10. Working with a board
 

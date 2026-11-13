@@ -19,6 +19,9 @@ def test_demo_metadata_is_valid_and_projects_generate(tmp_path):
     demos = load_demos(ROOT)
     assert {"fifteen", "breakout", "simon", "eim-01"} <= {metadata["id"] for metadata, _project in demos}
     for metadata, project in demos:
+        if metadata["kind"] == "program":  # no pages to generate: the program runs as it is
+            assert project.entry.is_file() and (project.display.width, project.display.height) == (1024, 600)
+            continue
         assert metadata["id"] == project.projectName.lower() or metadata["id"] in {"eim-01", "meteo", "weather"}
         target = tmp_path / metadata["id"]
         generate_project(project, target)
@@ -70,14 +73,21 @@ def test_gallery_and_demos_in_chromium_under_a_subpath(built_site, tmp_path):
             for metadata, _project in demos:
                 page.goto(base_url + f"demos/{metadata['id']}/", wait_until="networkidle")
                 page.wait_for_function("window.lms && window.lms.running", timeout=60000)
+                if metadata["kind"] == "program":  # it answers what is typed, and fills the screen
+                    page.wait_for_timeout(1500)
+                    page.locator("#canvas").click()
+                    page.keyboard.type("help")
+                    page.keyboard.press("Enter")
+                    page.wait_for_function("window.lms.output.join('\\n').includes('rmdir')", timeout=20000)
                 from PySide6.QtGui import QImage
 
                 image = QImage.fromData(page.locator("#canvas").screenshot())
                 assert not image.isNull()
+                step = 3 if metadata["kind"] == "program" else None  # thin text on black: a sparse grid misses it
                 non_black = sum(
                     1
-                    for x in range(0, image.width(), max(1, image.width() // 64))
-                    for y in range(0, image.height(), max(1, image.height() // 64))
+                    for x in range(0, image.width(), step or max(1, image.width() // 64))
+                    for y in range(0, image.height() // (3 if step else 1), step or max(1, image.height() // 64))
                     if sum(image.pixelColor(x, y).getRgb()[:3]) > 72
                 )
                 assert non_black > 20, f"{metadata['id']}: canvas is black"

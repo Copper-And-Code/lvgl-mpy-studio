@@ -93,3 +93,31 @@ def test_game_draws_in_a_real_browser(tmp_path):
     assert not image.isNull()
     red = sum(1 for x in range(0, image.width(), 4) for y in range(0, image.height(), 4) if image.pixelColor(x, y).red() > 200 and image.pixelColor(x, y).green() < 60)
     assert red > 500, "the canvas does not show the red background of the game"
+
+
+def test_a_program_without_pages_builds_for_the_browser(tmp_path):
+    import json
+
+    from lvgl_mpy_studio.build.web import RUNTIME_FILES, build_program_web, web_runtime
+
+    if not all((web_runtime() / name).exists() for name in RUNTIME_FILES):
+        pytest.skip("browser runtime not built")
+    folder = tmp_path / "prog"
+    (folder / "lib").mkdir(parents=True)
+    (folder / "main.py").write_text("print('hi')\n", encoding="utf-8")
+    (folder / "lib" / "util.py").write_text("", encoding="utf-8")
+    (folder / "__pycache__").mkdir()
+    (folder / "__pycache__" / "x.pyc").write_bytes(b"x")
+    target = build_program_web(folder / "main.py", tmp_path / "dist")
+    assert target.name == "prog-web"
+    assert json.loads((target / "flash" / "files.json").read_text()) == ["lib/util.py", "main.py"]
+    assert sorted(path.name for path in (target / "system").iterdir()) == ["display_driver.py", "lms_sandbox.py", "lms_web_boot.py"]
+    page = (target / "index.html").read_text(encoding="utf-8")
+    assert 'data-width="1024" data-height="600"' in page and 'data-entry="main.py"' in page
+    assert 'src="lms_program.js"' in page
+    assert (target / "lms_program.js").exists() and (target / "micropython.wasm").exists()
+    with pytest.raises(ValueError):  # a folder made elsewhere is not replaced
+        (tmp_path / "dist" / "other-web").mkdir()
+        (tmp_path / "other" ).mkdir()
+        (tmp_path / "other" / "main.py").write_text("", encoding="utf-8")
+        build_program_web(tmp_path / "other" / "main.py", tmp_path / "dist")

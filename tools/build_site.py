@@ -8,6 +8,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import time
 from html.parser import HTMLParser
 from urllib.parse import unquote, urlsplit
 
@@ -18,27 +19,42 @@ from lvgl_mpy_studio.build.budget import measure_budget
 from lvgl_mpy_studio.build.preview import render_with_log
 from lvgl_mpy_studio.build.release import THIRD_PARTY_LICENSES
 from lvgl_mpy_studio.build.visual import rgb565_to_rgb, write_png
-from lvgl_mpy_studio.build.web import RUNTIME_FILES, build_web, web_runtime, web_template
+from lvgl_mpy_studio.build.program import prepare_program, program_board
+from lvgl_mpy_studio.build.web import RUNTIME_FILES, build_web, copy_program_files, copy_program_runtime, web_runtime, web_template
 from lvgl_mpy_studio.core.model import Project
+from lvgl_mpy_studio.platform import runtime_path
 
 ROOT = Path(__file__).parents[1]
 REPOSITORY = "https://github.com/Copper-And-Code/lvgl-mpy-studio"
 FIELDS = {"id", "name", "description", "kind", "page", "prompt", "prompt_note", "order"}
+PROGRAM_FIELDS = FIELDS | {"entry"}  # a program without pages: the file to run, in the same folder
+
+
+class ProgramDemo:
+    """What the gallery needs of a program without pages: its name and the size of its screen."""
+
+    def __init__(self, entry):
+        self.entry = entry
+        self.projectName = entry.parent.name
+        board, width, height = program_board()
+        self.board = board
+        self.display = type("Display", (), {"width": width, "height": height})()
 
 
 def load_demos(root=ROOT):
     demos = []
     for metadata_path in sorted((root / "examples").glob("*/demo.json")):
         metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
-        if set(metadata) != FIELDS:
-            raise ValueError(f"{metadata_path}: expected fields {sorted(FIELDS)}")
+        expected = PROGRAM_FIELDS if metadata.get("kind") == "program" else FIELDS
+        if set(metadata) != expected:
+            raise ValueError(f"{metadata_path}: expected fields {sorted(expected)}")
         if metadata["id"] != metadata_path.parent.name or not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", metadata["id"]):
             raise ValueError(f"{metadata_path}: id must be a URL-safe name matching its folder")
         for field in ("name", "description"):
             if not isinstance(metadata[field], str) or not metadata[field].strip():
                 raise ValueError(f"{metadata_path}: {field} must be a non-empty string")
-        if metadata["kind"] not in ("game", "application"):
-            raise ValueError(f"{metadata_path}: kind must be game or application")
+        if metadata["kind"] not in ("game", "application", "program"):
+            raise ValueError(f"{metadata_path}: kind must be game, application or program")
         if not isinstance(metadata["order"], int) or isinstance(metadata["order"], bool):
             raise ValueError(f"{metadata_path}: order must be an integer")
         if metadata["prompt"] is not None and not isinstance(metadata["prompt"], str):
@@ -47,6 +63,14 @@ def load_demos(root=ROOT):
             raise ValueError(f"{metadata_path}: prompt_note must be a string or null")
         if metadata["prompt"] is None and not metadata["prompt_note"]:
             raise ValueError(f"{metadata_path}: a missing prompt needs prompt_note")
+        if metadata["kind"] == "program":
+            entry = metadata_path.parent / str(metadata["entry"])
+            if Path(str(metadata["entry"])).name != metadata["entry"] or entry.suffix != ".py" or not entry.is_file():
+                raise ValueError(f"{metadata_path}: entry must be a .py file of the folder")
+            if metadata["page"] is not None:
+                raise ValueError(f"{metadata_path}: a program has no pages: page must be null")
+            demos.append((metadata, ProgramDemo(entry)))
+            continue
         project = Project.load(metadata_path.with_name("project.json"))
         names = [page.name for page in project.pages]
         if metadata["page"] is not None and metadata["page"] not in names:
@@ -62,8 +86,44 @@ def write_thumbnail(project, page_index, path):
     pixels, log = render_with_log(project, page_index, design_only=False)
     if pixels is None:
         raise RuntimeError(f"Could not render {project.projectName}: {log.strip()}")
-    rgb = rgb565_to_rgb(pixels)
-    width, height = project.display.width, project.display.height
+    save_thumbnail(rgb565_to_rgb(pixels), project.display.width, project.display.height, path)
+    return log
+
+
+def program_thumbnail(program, path, keys=b"ls\r"):
+    """The screen of a program in the simulator for Linux, after it has started and typed keys."""
+    width, height = program.display.width, program.display.height
+    with tempfile.TemporaryDirectory(prefix="site-program-") as temporary:
+        temporary = Path(temporary)
+        saved = os.environ.get("XDG_CONFIG_HOME")
+        os.environ["XDG_CONFIG_HOME"] = str(temporary / "config")  # the flash of this run, not the user's
+        try:
+            prepared = prepare_program(program.entry, width, height, program.board)
+        finally:
+            if saved is None:
+                os.environ.pop("XDG_CONFIG_HOME")
+            else:
+                os.environ["XDG_CONFIG_HOME"] = saved
+        frame = temporary / "frame.raw"
+        environment = {**os.environ, "MICROPYPATH": ".", "LVSIM_HEADLESS": "1", "LVSIM_DUMP": str(frame), **prepared["environment"]}
+        for name in ("LVSIM_CONNECT", "LVSIM_TOKEN", "LVSIM_SOCKET"):
+            environment.pop(name, None)
+        process = subprocess.Popen([str(runtime_path()), *prepared["arguments"]], cwd=prepared["boot"], env=environment, stdin=subprocess.PIPE, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        try:
+            time.sleep(2)
+            process.stdin.write(keys)
+            process.stdin.flush()
+            time.sleep(1.5)
+        finally:
+            process.kill()
+            process.wait()
+        data = frame.read_bytes() if frame.exists() else b""
+        if len(data) != width * height * 2:
+            raise RuntimeError(f"Could not capture {program.projectName}: no frame from the simulator")
+    save_thumbnail(rgb565_to_rgb(data), width, height, path)
+
+
+def save_thumbnail(rgb, width, height, path):
     path.parent.mkdir(parents=True, exist_ok=True)
     if width <= 480:
         write_png(path, rgb, width, height)
@@ -72,7 +132,6 @@ def write_thumbnail(project, page_index, path):
         image = image.scaled(480, max(1, round(height * 480 / width)), Qt.AspectRatioMode.IgnoreAspectRatio, Qt.TransformationMode.SmoothTransformation)
         if not image.save(str(path)):
             raise RuntimeError(f"Could not write thumbnail {path}")
-    return log
 
 
 def size_text(value):
@@ -105,6 +164,8 @@ def gallery(demos):
 
 
 def demo_page(metadata, project):
+    if metadata["kind"] == "program":
+        return program_demo_page(metadata, project)
     title = html.escape(metadata["name"])
     description = html.escape(metadata["description"])
     width, height = project.display.width, project.display.height
@@ -135,6 +196,46 @@ def demo_page(metadata, project):
 <p class="description">{description}</p>
 </main>
 <script type="module" src="../runtime/lms_web.js"></script>
+</body>
+</html>
+'''
+
+
+def program_demo_page(metadata, program):
+    """A program without pages: the keyboard of the page is its serial port."""
+    title = html.escape(metadata["name"])
+    description = html.escape(metadata["description"])
+    width, height = program.display.width, program.display.height
+    data = f'data-flash="flash/" data-width="{width}" data-height="{height}" data-board="{html.escape(program.board, quote=True)}" data-entry="{html.escape(metadata["entry"], quote=True)}"'
+    return f'''<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{title} — LVGL MPY Studio</title>
+<style>
+  :root {{ color-scheme: dark; }}
+  html, body {{ margin: 0; min-height: 100%; background: #101318; color: #d8dde6; font: 14px system-ui, sans-serif; }}
+  main {{ min-height: 100vh; display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 16px; box-sizing: border-box; }}
+  header {{ width: min(100%, {width}px); display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }}
+  h1 {{ margin: 0; font-size: 20px; }}
+  a {{ color: #79bbff; }}
+  canvas {{ display: block; width: min(100%, {width}px); height: auto; max-height: calc(100vh - 150px); aspect-ratio: {width} / {height}; background: #000; touch-action: none; image-rendering: pixelated; }}
+  #status {{ min-height: 1.2em; white-space: pre-wrap; text-align: center; }}
+  #status.failed {{ color: #ff8a80; }}
+  #typing {{ position: fixed; left: -1000px; top: 0; width: 1px; height: 1px; opacity: 0; }}
+  .description {{ max-width: 70ch; margin: 0; text-align: center; color: #aeb8c5; }}
+</style>
+</head>
+<body>
+<main {data}>
+<header><a href="../">← All demos</a><h1>{title}</h1></header>
+<canvas id="canvas" width="{width}" height="{height}" oncontextmenu="event.preventDefault()"></canvas>
+<div id="status">Loading…</div>
+<textarea id="typing" autocapitalize="off" autocomplete="off" spellcheck="false" aria-label="Keyboard"></textarea>
+<p class="description">{description}</p>
+</main>
+<script type="module" src="../runtime/lms_program.js"></script>
 </body>
 </html>
 '''
@@ -220,6 +321,14 @@ def main():
         for metadata, project in demos:
             identifier = metadata["id"]
             print(f"Building {identifier}…", flush=True)
+            if metadata["kind"] == "program":
+                target = staging / "demos" / identifier
+                names = copy_program_files(project.entry, target / "flash")
+                (target / "index.html").write_text(demo_page(metadata, project), encoding="utf-8", newline="\n")
+                program_thumbnail(project, target / "thumbnail.png")
+                size = sum((target / "flash" / name).stat().st_size for name in names)
+                built.append((metadata, project, {"flash": size, "ram": None}))
+                continue
             exported = build_web(project, web_staging)
             target = staging / "demos" / identifier
             target.mkdir(parents=True)
@@ -238,6 +347,7 @@ def main():
     runtime_target = staging / "demos/runtime"
     runtime_target.mkdir(parents=True)
     shutil.copy2(web_template() / "lms_web.js", runtime_target)
+    copy_program_runtime(runtime_target)  # lms_program.js and system/ for the programs without pages
     for name in RUNTIME_FILES:
         shutil.copy2(runtime / name, runtime_target)
     shutil.copytree(THIRD_PARTY_LICENSES, staging / "demos/licenses")

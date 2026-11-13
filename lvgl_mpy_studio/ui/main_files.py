@@ -196,6 +196,40 @@ class FilesMixin:
     def build_single_file(self):
         return self.build_executable(single_file=True)
 
+    def program_in_browser(self, entry=None):
+        """A program without pages as a web page, kept with its simulator data, opened in the browser."""
+        if self._building:
+            return False
+        if entry is None:
+            last = self._last_program()
+            path, _filter = QFileDialog.getOpenFileName(self, tr("Run in the Browser"), str(last or ""), tr("MicroPython program (*.py)"))
+            if not path:
+                return False
+            entry = path
+        entry = Path(entry)
+        self.settings.setValue("simulator/program", str(entry))
+        from lvgl_mpy_studio.build.program import program_board, program_dir
+        from lvgl_mpy_studio.build.web import build_program_web, serve
+        board, width, height = program_board()
+        self._building = True
+        self.program_web_action.setEnabled(False)
+        self.statusBar().showMessage(tr("Building the web version…"))
+        def finished(succeeded, result):
+            self._building = False
+            self.program_web_action.setEnabled(True)
+            if not succeeded:
+                self.append_error(str(result))
+                self.statusBar().showMessage(tr("Web version failed"), 5000)
+                return
+            if self._web_server is not None:
+                self._web_server.shutdown()
+            self._web_server, url = serve(result)
+            self.output.appendPlainText(tr("Web version in {path}: to publish it, copy the folder to a static host.", path=result))
+            self.statusBar().showMessage(tr("Open at {url}", url=url), 5000)
+            QDesktopServices.openUrl(QUrl(url))
+        run_in_background(self, lambda: build_program_web(entry, program_dir(entry.parent) / "web", width, height, board), finished)
+        return True
+
     def open_in_browser(self):
         """Create the web version in dist/<project>-web/ and open it: the folder can then be published as it is."""
         if self._building or not self.save_project():

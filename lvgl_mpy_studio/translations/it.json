@@ -690,5 +690,8 @@
   "Files with the same name are replaced; nothing else on the board changes. Binary files are copied as they are.": "I file con lo stesso nome vengono sostituiti; nient'altro sulla board cambia. I file binari vengono copiati così come sono.",
   "The board runs these files at power-on, and they will be replaced:\n{files}\n\nContinue?": "La board esegue questi file all'accensione, e verranno sostituiti:\n{files}\n\nContinuare?",
   "{count} files copied to {folder} on the board.": "{count} file copiati in {folder} sulla board.",
-  "A file of the board, such as /flash/shell.py, or a line of Python:": "Un file della board, come /flash/shell.py, o una riga di Python:"
+  "A file of the board, such as /flash/shell.py, or a line of Python:": "Un file della board, come /flash/shell.py, o una riga di Python:",
+  "Run in the Browser…": "Esegui nel browser…",
+  "Run in the Browser": "Esegui nel browser",
+  "Run a MicroPython file without pages in the browser, as a web page; the Output panel says where the folder to publish is": "Esegue nel browser un file MicroPython senza pagine, come pagina web; il pannello Output dice dov'è la cartella da pubblicare"
 }

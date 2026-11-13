@@ -4,6 +4,8 @@
 
 ### Added
 
+- **Programs without pages in the browser.** The site has a sixth demo, the shell of `examples/shell` with its editors, running in WebAssembly as an STM32H7_CORE at 1024×600: the keyboard of the page is its serial port and its files live in the browser's memory. `build_program_web` builds such a page; the site builder knows the demo kind `program`. No change to the WebAssembly runtime: the program gets through `sys.modules` a `sys`, `time`, `select`, `micropython` and `machine` that wait by serving LVGL and letting the browser run, and `print` reaches `os.dupterm`. In the browser LVGL runs only while the program waits, and native code is not available: `ansiterm.py` draws with `framebuf` there, identical byte for byte to its viper functions, which it still uses on boards.
+
 - **Device → Upload Files…** copies files or folders of the PC to a folder of the board, outside any project, binaries included: each file is written under a temporary name and renamed, nothing else on the board changes, the space is checked first, and Python files can become bytecode. **Device → Run File on Board…** starts a file of the board from its prompt, so that it reads its keys from the Device Console.
 
 - **Programs without pages in the simulator** (Linux). **Run → Run Program…** runs a MicroPython file and its folder as a board would: a flash of its own that keeps the files the program writes, `/` limited to that flash, a terminal under the screen as the serial port, LVGL served in the background while the program waits for a key, `os.dupterm`, `os.uname()` and `machine.reset()`, and a REPL when the program ends. The Linux-like shell of `mpy-lvgl-boards`, with its two editors, runs this way. Projects with pages start as before.

@@ -171,7 +171,7 @@ import os, machine, display_driver
 print("uname", os.uname().sysname, os.uname().machine)
 print("display", display_driver.WIDTH, display_driver.HEIGHT, display_driver._timer is not None)
 """, keys=[(1.5, b"1+1\r"), (0.3, b"x = 3; x * 2\r")], board="stm32h7_core")
-    assert "uname stm32h7_core stm32h7_core (simulator)" in output
+    assert "uname simulator stm32h7_core (simulator)" in output
     assert "display 320 240 True" in output
     assert "The program ended" in output
     assert ">>> 1+1\r\n2" in output or "2\n" in output.split("1+1", 1)[1]
@@ -239,3 +239,31 @@ def test_the_shell_example_runs_with_its_editors(config):
     assert "Traceback" not in output, output
     assert "42" in output.split("print(6*7)", 1)[1]
     assert (prepared["flash"] / "a.txt").read_text() == "ciao mondo\n"
+
+
+def test_run_in_the_browser_asks_for_the_file_and_builds_the_page(qtbot, config, monkeypatch):
+    from PySide6.QtGui import QDesktopServices
+    from PySide6.QtWidgets import QFileDialog
+
+    from lvgl_mpy_studio.build.web import RUNTIME_FILES, web_runtime
+    from lvgl_mpy_studio.ui.main_window import MainWindow
+
+    if not all((web_runtime() / name).exists() for name in RUNTIME_FILES):
+        pytest.skip("browser runtime not built")
+    entry = write(config / "prog" / "main.py", "print('hi')\n")
+    asked, opened = [], []
+    monkeypatch.setattr(QFileDialog, "getOpenFileName", lambda *arguments: (asked.append(arguments) or (str(entry), "")))
+    monkeypatch.setattr(QDesktopServices, "openUrl", lambda url: opened.append(url.toString()) or True)
+    window = MainWindow()
+    qtbot.addWidget(window)
+    assert window.program_web_action.text() == "Run in the Browser…"
+    assert window.program_in_browser()
+    assert asked  # it asks, as Run Program does
+    qtbot.waitUntil(lambda: not window._building, timeout=20000)
+    assert opened and opened[0].startswith("http://127.0.0.1:")
+    page = program.program_dir(entry.parent) / "web" / "prog-web" / "index.html"
+    assert 'data-entry="main.py"' in page.read_text(encoding="utf-8")
+    assert Path(window.settings.value("simulator/program")) == entry
+    window._web_server.shutdown()
+    window._web_server = None
+    window.document.undo_stack.setClean()

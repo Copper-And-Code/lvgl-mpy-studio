@@ -3,8 +3,9 @@
 """The display of a program without pages in the simulator, with the contract of a board's driver.
 
 As on a board, importing it starts the display and LVGL, and start() serves LVGL in the
-background: a thread of lvsim schedules _service every PERIOD_MS, which runs in the main thread
-between two bytecodes, also while the program waits for a key. WIDTH, HEIGHT, BUFFERS and indev
+background. In the simulator a thread of lvsim schedules _service every PERIOD_MS, which runs in
+the main thread between two bytecodes, also while the program waits for a key. In the browser
+there are no threads: lms_web_boot.py calls serve() while the program waits for a key or sleeps. WIDTH, HEIGHT, BUFFERS and indev
 are those of mpy-lvgl-boards; _task, _timer and _arm() are there too, because ansiterm.py of the
 same repository replaces _task with its own.
 """
@@ -15,8 +16,11 @@ import lvgl as lv
 import lvsim
 
 PERIOD_MS = 5
-WIDTH = int(os.getenv("LVSIM_WIDTH") or 800)
-HEIGHT = int(os.getenv("LVSIM_HEIGHT") or 480)
+try:
+    from lms_board import HEIGHT, WIDTH  # the browser, where the page writes it: there is no os.getenv
+except ImportError:
+    WIDTH = int(os.getenv("LVSIM_WIDTH") or 800)
+    HEIGHT = int(os.getenv("LVSIM_HEIGHT") or 480)
 BUFFERS = 1
 
 _state = (0, 0, 0, 0, 0)
@@ -89,18 +93,30 @@ def _arm():
     """The board's timer may be one shot; this one is periodic, so there is nothing to arm."""
 
 
+BACKGROUND = hasattr(lvsim, "service")  # the simulator; the browser serves LVGL from the waits
+
+
 def start():
     global _timer
     if _timer is None:
         _timer = PERIOD_MS
-        lvsim.service(_service, PERIOD_MS)
+        if BACKGROUND:
+            lvsim.service(_service, PERIOD_MS)
 
 
 def stop():
     global _timer
     if _timer is not None:
         _timer = None
-        lvsim.service(None, 0)
+        if BACKGROUND:
+            lvsim.service(None, 0)
+
+
+def serve(milliseconds=PERIOD_MS):
+    """One period, then the browser runs for a while: the board's timer, where there is none."""
+    if _timer is not None:
+        _service(None)
+    lvsim.wait(milliseconds)
 
 
 def backlight(percent=None):

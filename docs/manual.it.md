@@ -322,7 +322,9 @@ Mentre il simulatore è avviato il progetto è in sola lettura: una barra sopra 
 - Il progetto aperto non c'entra e resta modificabile. Ogni programma gira come la STM32H7_CORE V1.3, 1024×600.
 - Il heap è di 32 MB, circa la RAM della STM32H7_CORE; su una board più piccola il programma può esaurire la memoria dove il simulatore non la esaurisce.
 
-La shell di `mpy-lvgl-boards` (`examples/shell`) gira così, con i suoi due editor.
+**Esegui → Esegui nel browser…** chiede un file allo stesso modo e lo esegue come pagina web, con la stessa flash e la stessa tastiera; il pannello Output dice dov'è la cartella da pubblicare. Nel browser LVGL gira solo mentre il programma aspetta un tasto, dorme o interroga `select`, e le funzioni marcate `@micropython.viper` o `@micropython.native` non si compilano.
+
+La shell di `examples/shell` gira così, con i suoi due editor, nel simulatore, nel browser e sulle board.
 
 ## 10. Lavorare con una board
 
