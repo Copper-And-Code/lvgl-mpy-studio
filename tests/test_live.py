@@ -157,7 +157,7 @@ class FakeDevice(DeviceSession):
         self.scripts.append(script)
         return LIVE_OK
 
-    def start_console(self, on_output):
+    def start_console(self, on_output, interactive=False, on_closed=None):
         return True
 
 

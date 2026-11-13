@@ -1,7 +1,8 @@
 import json
+import time
 
 import pytest
-from PySide6.QtCore import QSettings
+from PySide6.QtCore import QSettings, Qt
 from PySide6.QtWidgets import QDialog, QMessageBox
 
 from lvgl_mpy_studio import __version__
@@ -116,7 +117,7 @@ def test_failed_connection_does_not_run_following_step(qtbot, tmp_path, monkeypa
     wait_worker(qtbot, window)
     assert uploads == []
     assert window._device_next is None
-    assert "[device.absent] sparita" in window.device_console.output.toPlainText()
+    assert "[device.absent] sparita" in window.device_console.text()
     window.document.undo_stack.setClean()
 
 
@@ -362,26 +363,18 @@ def test_board_actions_upload_console_stop_and_failure(qtbot, tmp_path, monkeypa
     assert calls[0][0] == "gui-board"
     assert calls[0][2] is True
     assert window.device_app_active
-    assert "pronto ü" in window.device_console.output.toPlainText()
+    assert "pronto ü" in window.device_console.text()
     assert window.stop_action.isEnabled()
-
-    monkeypatch.setattr(window.device, "evaluate", lambda source, cancel=None: "risposta: " + source)
-    window.device_console.input.setText("1 + 1")
-    window.device_console.submit()
-    wait_worker(qtbot, window)
-    assert ">>> 1 + 1" in window.device_console.output.toPlainText()
-    assert "risposta: 1 + 1" in window.device_console.output.toPlainText()
 
     monkeypatch.setattr(window.device, "stop", lambda: "LVGL_MPY_STUDIO_STOPPED\n")
     window.stop_action.trigger()
     wait_worker(qtbot, window)
     assert not window.device_app_active
 
-    monkeypatch.setattr(window.device, "evaluate", lambda source, cancel=None: (_ for _ in ()).throw(DeviceError("device.timeout", "board lenta")))
-    window.device_console.input.setText("2 + 2")
-    window.device_console.submit()
+    monkeypatch.setattr(window.device, "stop", lambda: (_ for _ in ()).throw(DeviceError("device.timeout", "board lenta")))
+    window.stop_board()
     wait_worker(qtbot, window)
-    assert "[device.timeout] board lenta" in window.device_console.output.toPlainText()
+    assert "[device.timeout] board lenta" in window.device_console.text()
     window.document.undo_stack.setClean()
 
 
@@ -527,17 +520,24 @@ def test_help_opens_the_pages_of_the_project(qtbot, monkeypatch):
     assert window.statusBar().currentMessage() == "https://copper-and-code.github.io/lvgl-mpy-studio/"
 
 
-def test_device_console_preserves_utf8_and_ignores_empty(qtbot):
+def test_device_console_preserves_utf8_and_sends_keys_only_when_ready(qtbot):
     console = DeviceConsole()
     qtbot.addWidget(console)
     received = []
-    console.commandRequested.connect(received.append)
+    console.keysTyped.connect(received.append)
+    console.set_ready(False, "Board not connected")
+    qtbot.keyClicks(console.terminal, "a")
+    assert received == []  # not connected: nothing reaches the board
+    assert console.status.text() == "Board not connected"
     console.set_ready(True)
-    console.input.setText("   ")
-    console.submit()
-    assert received == []
+    qtbot.keyClicks(console.terminal, "1+1")
+    qtbot.keyClick(console.terminal, Qt.Key_Return)
+    qtbot.keyClick(console.terminal, Qt.Key_C, Qt.ControlModifier)
+    assert b"".join(received) == b"1+1\r\x03"
     console.append("tracce à\n")
-    assert console.output.toPlainText() == "tracce à\n"
+    assert console.text() == "tracce à\n"
+    console.message("Upload completed")
+    assert console.text() == "tracce à\nUpload completed\n"
 
 
 def test_cli_upload_uses_embedded_project_profile(tmp_path, monkeypatch, capsys):
@@ -958,3 +958,43 @@ def test_no_signal_is_handed_over_as_a_menu_callback():
     offenders = [f"{path.name}:{number}" for path, text in sources.items() for number, line in enumerate(text.splitlines(), 1)
                  if "addAction(" in line and any(re.search(rf"[(,]\s*self\.{name}\)", line) for name in signals)]
     assert offenders == [], "a Qt signal passed as a function is never called: use lambda: self.<signal>.emit()"
+
+
+def test_console_follows_the_connected_board_and_pauses_during_operations(qtbot, tmp_path):
+    from lvgl_mpy_studio.device.service import DeviceSession
+
+    class Port:
+        def __init__(self):
+            self.written, self.pending, self.closed = [], bytearray(b"MicroPython\r\n>>> "), 0
+        def read_some(self):
+            time.sleep(0.005)  # nothing new within the timeout gives b"", as pyserial
+            data = bytes(self.pending)
+            self.pending.clear()
+            return data
+        def write(self, data):
+            self.written.append(data)
+            self.pending.extend(data)  # the board echoes
+        def close(self):
+            self.closed += 1
+
+    window = board_window(qtbot, tmp_path)
+    port = Port()
+    window.device = DeviceSession(console_factory=lambda name: port)
+    window.device.port = "/dev/fake"
+    assert window._device_task(lambda: None)  # any operation: when it ends the console starts
+    assert window.device_console.status.text() == "IDE operation in progress…" or window._worker is None
+    wait_worker(qtbot, window)
+    qtbot.waitUntil(lambda: ">>>" in window.device_console.text(), timeout=2000)
+    qtbot.wait(200)  # silence from the board does not close the console
+    assert window.device.console_live
+    assert window.device_console.terminal.input_enabled
+    qtbot.keyClicks(window.device_console.terminal, "ls")
+    qtbot.keyClick(window.device_console.terminal, Qt.Key_Tab)
+    assert b"".join(port.written) == b"ls\t"
+    window.device_console.ctrl_c.click()
+    assert port.written[-1] == b"\x03"
+    window.connect_disconnect()
+    assert not window.device_console.terminal.input_enabled
+    assert window.device_console.status.text() == "Board not connected"
+    assert port.closed == 1
+    window.document.undo_stack.setClean()

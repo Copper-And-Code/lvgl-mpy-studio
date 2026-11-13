@@ -316,8 +316,15 @@ La [guida alle board](boards.it.md) spiega tutto nel dettaglio; qui il percorso 
 
 1. Collega la board via USB. Serve un firmware MicroPython con LVGL e il driver del display; i requisiti di ogni board sono nella guida.
 2. Nel selettore accanto ad **Avvia** scegli la board. La risoluzione del progetto diventa quella della board, e l'IDE chiede come adattare i widget, come in [sezione 7](#7-risoluzione).
-3. Premi **F5**: se c'è una sola porta seriale viene usata, altrimenti te la chiede una volta. L'app viene caricata ed eseguita; la console della board compare in **Console dispositivo**, dove puoi anche scrivere comandi al REPL.
+3. Premi **F5**: se c'è una sola porta seriale viene usata, altrimenti te la chiede una volta. L'app viene caricata ed eseguita; ciò che la board stampa compare in **Console dispositivo**.
 4. **Shift+F5** ferma l'app. **Disconnetti** nella barra di stato libera la porta per altri programmi.
+
+**Console dispositivo** è un terminale collegato alla board ogni volta che è connessa e l'IDE non sta usando la porta. Ogni tasto arriva alla board appena lo premi, come in PuTTY o picocom: al prompt `>>>` le frecce richiamano le righe precedenti e Tab completa, e un programma che legge la tastiera, come una shell o un editor, riceve ogni tasto. Colori e movimenti del cursore delle sequenze ANSI vengono mostrati.
+
+- Ctrl+C e gli altri tasti Ctrl vanno alla board. Copia e incolla sono su **Ctrl+Maiusc+C** e **Ctrl+Maiusc+V**, e nel menu del tasto destro. Un testo incollato viene scritto riga per riga.
+- Il pulsante **Ctrl-C** ferma il programma in esecuzione; **Ctrl-D** al prompt fa un soft reset.
+- Mentre l'IDE carica, ferma o interroga la board, il terminale aspetta e lo dice in alto. Queste operazioni interrompono il programma che gira sulla board.
+- Le righe grigie sono messaggi dell'IDE, non della board.
 
 Altre voci del menu **Dispositivo**:
 

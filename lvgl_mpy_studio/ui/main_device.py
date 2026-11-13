@@ -57,8 +57,6 @@ class DeviceMixin:
         def completed(_output):
             self._live_design_key = key
             self.statusBar().showMessage(tr("Board updated."), 3000)
-            if self._device_sourcemap:
-                self._start_device_console()
         self._device_task(operation, completed)
 
     def _device_output(self, text):
@@ -134,7 +132,9 @@ class DeviceMixin:
         current = self.document.project.board
         catalog = self.profile_store.get(current["id"]) if current else None
         self.update_profile_action.setEnabled(bool(current and catalog and not busy))
-        self.device_console.set_ready(connected and not busy)
+        live = connected and not busy and self.device.console_live
+        reason = "" if live else tr("IDE operation in progress…") if busy else self._console_problem or tr("Console not available.") if connected else tr("Board not connected")
+        self.device_console.set_ready(live, reason)
         self.device_console.set_busy(busy)
         self.disconnect_button.setVisible(connected or board)
         if connected:
@@ -173,7 +173,7 @@ class DeviceMixin:
     def _device_failed(self, error):
         self._device_next = None
         text = device_error_text(error.code, error.output) if isinstance(error, DeviceError) else str(error)
-        self.device_console.append(text + "\n")
+        self.device_console.message(text)
         self._show_warnings(getattr(error, "warnings", []))
         if isinstance(error, DeviceError) and error.errors:
             for mapped in error.errors:
@@ -191,6 +191,8 @@ class DeviceMixin:
         self._worker = None
         following, self._device_next = self._device_next, None
         self._sync_device_session()
+        if not following:
+            self._start_device_console()
         self._update_device_actions()
         if following:
             following()
@@ -245,7 +247,7 @@ class DeviceMixin:
             self._device_info = info
             self._remember_board_memory(info)
             self._show_budget()
-            self.device_console.append(json.dumps(info, ensure_ascii=False, indent=2) + "\n")
+            self.device_console.message(json.dumps(info, ensure_ascii=False, indent=2))
             if info.get("compatible"):
                 self._device_next = action
             else:
@@ -266,7 +268,7 @@ class DeviceMixin:
             self._device_info = info
             self._remember_board_memory(info)
             self._show_budget()
-            self.device_console.append(json.dumps(info, ensure_ascii=False, indent=2) + "\n")
+            self.device_console.message(json.dumps(info, ensure_ascii=False, indent=2))
         return self._device_task(self.device.info, completed)
 
     def upload_board(self, run=False):
@@ -294,9 +296,7 @@ class DeviceMixin:
             self._live_design_key = live.design_key(project, next((index for index, page in enumerate(project.pages) if page.id == project.currentPageId), 0)) if self.device_app_active else None
             message = tr("Board application started; the LVGL timer remains active after bootstrap.") if run else tr("Upload completed")
             self.statusBar().showMessage(message, 5000)
-            self.device_console.append(message + "\n")
-            if run and result.get("sourcemap"):
-                self._start_device_console()
+            self.device_console.message(message)
         if not self._device_task(operation, completed):
             return False
         self._upload_rate_key = f"device/uploadRate/{project.board['id']}"
@@ -305,13 +305,22 @@ class DeviceMixin:
         return True
 
     def _start_device_console(self):
-        if not self.device.port:
+        """The console follows the board whenever it is connected and the IDE is not using it."""
+        if not self.device.port or self._worker is not None:
             return False
+        self._console_problem = ""
         try:
-            return self.device.start_console(self.deviceOutput.emit)
+            return self.device.start_console(self.deviceOutput.emit, interactive=True, on_closed=self.consoleClosed.emit)
         except DeviceError as exc:
-            self.device_console.append(f"{exc.code}: {exc.output}\n")
+            self._console_problem = tr("Console not available: {error}", error=device_error_text(exc.code, exc.output))
             return False
+
+    def console_write(self, data):
+        try:
+            self.device.write(data)
+        except DeviceError as exc:
+            self.device_console.message(device_error_text(exc.code, exc.output))
+            self._update_device_actions()
 
     def stop_board(self):
         def stopped(output):
@@ -323,14 +332,6 @@ class DeviceMixin:
     def restart_device(self):
         self.device_app_active = False
         return self._device_task(self.device.restart, lambda output: self.device_console.append(output))
-
-    def evaluate_repl(self, source):
-        self.device_console.append(">>> " + source + "\n")
-        def completed(output):
-            self._device_output(output)
-            if self.device_app_active and self._device_sourcemap:
-                self._start_device_console()
-        return self._device_task(lambda: self.device.evaluate(source, cancel=self._device_cancel), completed)
 
     def install_autostart(self):
         project = copy.deepcopy(self.document.project)

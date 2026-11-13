@@ -316,8 +316,15 @@ The [board guide](boards.md) explains everything in detail; here is the essentia
 
 1. Connect the board by USB. It needs a MicroPython firmware with LVGL and the display driver; the requirements of each board are in the guide.
 2. In the selector next to **Start** choose the board. The project resolution becomes that of the board, and the IDE asks how to adapt the widgets, as in [section 7](#7-resolution).
-3. Press **F5**: if there is only one serial port it is used, otherwise the IDE asks once. The app is uploaded and run; the board console appears in **Device Console**, where you can also type commands to the REPL.
+3. Press **F5**: if there is only one serial port it is used, otherwise the IDE asks once. The app is uploaded and run; what the board prints appears in **Device Console**.
 4. **Shift+F5** stops the app. **Disconnect** in the status bar frees the port for other programs.
+
+**Device Console** is a terminal connected to the board whenever it is connected and the IDE is not using the port. Each key goes to the board as it is typed, as in PuTTY or picocom: at the `>>>` prompt the arrows recall the previous lines and Tab completes, and a program that reads the keyboard, such as a shell or an editor, gets every key. Colours and cursor movements of ANSI sequences are shown.
+
+- Ctrl+C and the other Ctrl keys go to the board. Copy and paste are on **Ctrl+Shift+C** and **Ctrl+Shift+V**, and in the menu of the right button. A pasted text is typed line by line.
+- The **Ctrl-C** button stops the running program; **Ctrl-D** at the prompt makes a soft reset.
+- While the IDE uploads, stops or reads the board, the terminal waits and says so above it. The program running on the board is interrupted by these operations.
+- The grey lines are messages of the IDE, not of the board.
 
 Other entries of the **Device** menu:
 

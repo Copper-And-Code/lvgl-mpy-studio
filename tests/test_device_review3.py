@@ -1,10 +1,10 @@
 import copy
-import io
 import json
 from pathlib import Path
 import re
 import subprocess
 import threading
+import time
 
 import pytest
 
@@ -199,41 +199,61 @@ def test_autostart_copy_failure_is_not_success(tmp_path, monkeypatch):
     assert not (tmp_path / "lvgl-mpy-studio" / "autostart-backups" / "aa01" / "current.json").exists()
 
 
-class ConsoleProcess:
+class ConsolePort:
+    """A serial port that gives back its payload a few bytes at a time and records what is written."""
+
     def __init__(self, payload):
-        self.stdout = io.BytesIO(payload)
-        self.stdin = io.BytesIO()
-        self.returncode = 0
+        self.payload = bytearray(payload)
+        self.written = []
+        self.closed = 0
 
-    def wait(self, timeout=None):
-        return 0
+    def read_some(self):
+        if not self.payload:
+            raise OSError("device disconnected")  # what pyserial does when the board goes away
+        data = bytes(self.payload[:3])  # splits the two bytes of the ü
+        del self.payload[:3]
+        return data
 
-    def terminate(self):
-        self.returncode = -15
+    def write(self, data):
+        self.written.append(data)
 
-    def kill(self):
-        self.returncode = -9
+    def close(self):
+        self.closed += 1
 
 
-def test_console_reads_fragmented_utf8_and_uses_resume_repl():
-    process = ConsoleProcess("primo ü\nsecondo\n".encode())
-    commands = []
-    def factory(command, **kwargs):
-        commands.append(command)
-        return process
-    session = DeviceSession(process_factory=factory)
+def test_console_reads_fragmented_utf8_and_opens_the_port_itself():
+    port = ConsolePort("primo ü\nsecondo\n".encode())
+    opened = []
+    def factory(name):
+        opened.append(name)
+        return port
+    session = DeviceSession(console_factory=factory)
     session.port = "/dev/fake"
     received = []
-    done = threading.Event()
-    def output(text):
-        received.append(text)
-        if "secondo\n" in "".join(received):
-            done.set()
-    session.start_console(output)
-    assert done.wait(2)
-    session.stop_console()
+    closed = threading.Event()
+    session.start_console(received.append, on_closed=closed.set)
+    assert closed.wait(2)  # the payload ended: the port is gone, and whoever listens is told
     assert "".join(received) == "primo ü\nsecondo\n"
-    assert commands[0][-4:] == ["connect", "/dev/fake", "resume", "repl"]
+    assert opened == ["/dev/fake"]
+    assert port.closed == 1
+    assert not session.console_live
+
+
+def test_console_write_sends_keys_in_small_pieces_and_stops_cleanly():
+    port = ConsolePort(b"")
+    port.read_some = lambda: time.sleep(0.01) or b"."  # a board that keeps printing
+    session = DeviceSession(console_factory=lambda name: port)
+    session.port = "/dev/fake"
+    session.start_console(lambda text: None)
+    assert session.console_live
+    session.write(b"x" * 150)
+    assert [len(piece) for piece in port.written] == [64, 64, 22]
+    session.stop_console()
+    assert not session.console_live
+    assert port.closed == 1
+    with pytest.raises(DeviceError) as error:
+        session.write(b"a")
+    assert error.value.code == "device.console"
 
 
 def test_cancel_interrupts_blocked_process():

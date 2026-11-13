@@ -125,7 +125,7 @@ def test_language_switch_persists_without_changing_project(qtbot):
     assert window.new_action.text() == "New"
     assert window.undo_action.text() == "Undo Add Page"
     assert window.errors.headerItem().text(2) == "Message"
-    assert window.device_console.input.placeholderText() == "MicroPython REPL command"
+    assert window.device_console.clear_button.text() == "Clear"
     assert window.properties.events_model.horizontalHeaderItem(1).text() == "Description"
     assert window.settings.value("language") == "en"
     assert window.document.project.to_dict() == before

@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+### Changed
+
+- **The Device Console is a terminal.** Every key goes to the board as it is typed, as in PuTTY or picocom: arrows, Tab, Home and End, the Ctrl keys, the history of the prompt. It shows the colours and the cursor movements of ANSI sequences, so a full-screen program on the board, such as an editor, works in it. It follows the board whenever it is connected and the IDE is not using it, not only while an app runs. Copy and paste are on Ctrl+Shift+C and Ctrl+Shift+V, because Ctrl+C goes to the board; Ctrl-C and Ctrl-D also have buttons. The IDE's own messages are grey.
+- The console opens the serial port itself, as mpremote opens it, instead of running `mpremote repl`. On Windows `mpremote repl` reads the keyboard of a console window that the IDE does not have, so nothing typed could have reached the board.
+
 ## 0.6.1 — 2026-11-12
 
 The first release with packages: an AppImage for Linux and a portable package for Windows.

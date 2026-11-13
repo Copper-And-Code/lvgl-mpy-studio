@@ -1,9 +1,10 @@
 import time
 
 from PySide6.QtCore import Qt, QThread, QTimer, Signal
-from PySide6.QtWidgets import QComboBox, QDialog, QDialogButtonBox, QFormLayout, QHBoxLayout, QLabel, QLineEdit, QPlainTextEdit, QProgressBar, QPushButton, QVBoxLayout, QWidget
+from PySide6.QtWidgets import QComboBox, QDialog, QDialogButtonBox, QFormLayout, QHBoxLayout, QLabel, QProgressBar, QPushButton, QVBoxLayout, QWidget
 
 from lvgl_mpy_studio.core.i18n import tr
+from lvgl_mpy_studio.ui.terminal import TerminalView
 
 
 class DeviceWorker(QThread):
@@ -128,50 +129,77 @@ class UploadProgress(QDialog):
 
 
 class DeviceConsole(QWidget):
-    commandRequested = Signal(str)
+    """The board's console: a terminal that sends each key as it is typed."""
+
+    keysTyped = Signal(bytes)
     interruptRequested = Signal()
 
     def __init__(self, parent=None):
         super().__init__(parent)
         layout = QVBoxLayout(self)
         layout.setContentsMargins(0, 0, 0, 0)
-        self.output = QPlainTextEdit()
-        self.output.setReadOnly(True)
-        self.output.setMaximumBlockCount(10000)
-        layout.addWidget(self.output, 1)
+        self.status = QLabel()
+        self.status.setVisible(False)
+        layout.addWidget(self.status)
+        self.terminal = TerminalView()
+        self.terminal.typed.connect(self.keysTyped)
+        layout.addWidget(self.terminal, 1)
         row = QHBoxLayout()
-        self.input = QLineEdit()
-        self.input.setPlaceholderText(tr("MicroPython REPL command"))
-        self.send = QPushButton(tr("Send"))
+        self.ctrl_c = QPushButton("Ctrl-C")
+        self.ctrl_c.setToolTip(tr("Stop the running program, as Ctrl-C in the terminal"))
+        self.ctrl_c.clicked.connect(lambda: self.keysTyped.emit(b"\x03"))
+        self.ctrl_d = QPushButton("Ctrl-D")
+        self.ctrl_d.setToolTip(tr("Soft reset of the board from its prompt, as Ctrl-D in the terminal"))
+        self.ctrl_d.clicked.connect(lambda: self.keysTyped.emit(b"\x04"))
+        self.clear_button = QPushButton(tr("Clear"))
+        self.clear_button.clicked.connect(self.terminal.clear)
         self.interrupt = QPushButton(tr("Cancel operation"))
         self.interrupt.setEnabled(False)
-        row.addWidget(self.input, 1)
-        row.addWidget(self.send)
+        self.interrupt.clicked.connect(self.interruptRequested)
+        for button in (self.ctrl_c, self.ctrl_d, self.clear_button):
+            row.addWidget(button)
+        row.addStretch(1)
         row.addWidget(self.interrupt)
         layout.addLayout(row)
-        self.send.clicked.connect(self.submit)
-        self.input.returnPressed.connect(self.submit)
-        self.interrupt.clicked.connect(self.interruptRequested)
+        self._carriage = False  # the last character of the board's output was a CR
         self.set_ready(False)
 
-    def set_ready(self, ready):
-        self.input.setEnabled(ready)
-        self.send.setEnabled(ready)
+    def set_ready(self, ready, reason=""):
+        """Keys go to the board only when ready; reason says why not."""
+        self.terminal.input_enabled = ready
+        self.ctrl_c.setEnabled(ready)
+        self.ctrl_d.setEnabled(ready)
+        self.status.setText(reason)
+        self.status.setVisible(bool(reason) and not ready)
+        self.terminal.viewport().update()
 
     def set_busy(self, busy):
         self.interrupt.setEnabled(busy)
 
-    def submit(self):
-        source = self.input.text()
-        if source.strip():
-            self.input.clear()
-            self.commandRequested.emit(source)
-
     def append(self, text):
-        if text:
-            self.output.insertPlainText(str(text))
-            scrollbar = self.output.verticalScrollBar()
-            scrollbar.setValue(scrollbar.maximum())
+        """What the board printed. A lone LF becomes CR LF, as on a serial terminal."""
+        if not text:
+            return
+        text = str(text)
+        converted = []
+        for char in text:
+            if char == "\n" and not self._carriage:
+                converted.append("\r")
+            converted.append(char)
+            self._carriage = char == "\r"
+        self.terminal.feed("".join(converted))
+
+    def message(self, text):
+        """A message of the IDE, on a line of its own and in grey, so it is not taken for the board's."""
+        if not text:
+            return
+        lead = "\r\n" if self.terminal.screen.x else ""
+        body = str(text).rstrip("\n").replace("\r\n", "\n").replace("\n", "\r\n")
+        self.terminal.feed(lead + "\x1b[90m" + body + "\x1b[0m\r\n")
+        self._carriage = False
+
+    def text(self):
+        return self.terminal.text()
 
 
 class SelectDeviceDialog(QDialog):

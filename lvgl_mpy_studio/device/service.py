@@ -23,10 +23,34 @@ from .autostart import AUTOSTART_MARKER_V2, OLD_AUTOSTART_MARKERS, AutostartMixi
 from .common import DeviceError, marked_json
 from .uart import UartError, UartTransport
 
-try:
-    import pty
-except ImportError:
-    pty = None
+CONSOLE_CHUNK = 64  # bytes written at a time to the console: a long paste must not overflow the board's buffer
+
+
+class SerialConsole:
+    """The serial port of a board reached through mpremote, opened as mpremote opens it.
+
+    mpremote's own SerialTransport knows the quirks of the USB adapters (the CP210x on Windows, the
+    lines that reset an ESP32), so the console takes and gives back the port exactly as mpremote does."""
+
+    def __init__(self, port):
+        from mpremote.transport import TransportError
+        from mpremote.transport_serial import SerialTransport
+
+        try:
+            self._transport = SerialTransport(port, baudrate=115200, timeout=0.1)
+        except TransportError as exc:
+            raise OSError(str(exc)) from exc
+        self.serial = self._transport.serial
+
+    def read_some(self):
+        return self.serial.read(self.serial.in_waiting or 1)
+
+    def write(self, data):
+        self.serial.write(data)
+
+    def close(self):
+        self._transport.close()
+
 
 APP_ROOT = "/lms_apps"
 
@@ -118,7 +142,7 @@ def stop_script(app_root):
 
 
 class DeviceSession(AutostartMixin):
-    def __init__(self, runner=None, process_factory=None, uart_factory=None, interrupt=None):
+    def __init__(self, runner=None, process_factory=None, uart_factory=None, interrupt=None, console_factory=None):
         self._break_in = interrupt or default_interrupt
         self.port = None
         self.state = "disconnected"
@@ -130,9 +154,9 @@ class DeviceSession(AutostartMixin):
         self._custom_process_factory = process_factory is not None
         self._uart_factory = uart_factory or UartTransport
         self._uart = None
-        self._console_process = None
+        self._console_factory = console_factory or SerialConsole
+        self._console = None
         self._console_thread = None
-        self._console_fd = None
         self._lock = threading.RLock()
         self._operation = threading.RLock()
 
@@ -229,74 +253,79 @@ class DeviceSession(AutostartMixin):
             self._check_cancel(cancel)
             return run()
 
-    def start_console(self, on_output):
+    def start_console(self, on_output, interactive=False, on_closed=None):
+        """Read what the board prints and pass it to on_output, until stop_console.
+
+        interactive also leaves the raw REPL that the IDE's commands use, so that what is typed
+        reaches the board's prompt or the running program."""
         self._require()
         self.stop_console()
-        master = None
         if self._uart is not None:
-            process = self._uart
+            console = self._uart
+            if interactive:
+                try:
+                    console.leave_raw()
+                except UartError as exc:
+                    raise DeviceError(exc.code, exc.output) from exc
         else:
             try:
-                command = mpremote_command() + ["connect", self.port, "resume", "repl"]
-                if self._custom_process_factory or pty is None:
-                    process = self._process_factory(command, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, bufsize=0, creationflags=CREATE_NO_WINDOW)
-                else:
-                    master, slave = pty.openpty()
-                    process = self._process_factory(command, stdin=slave, stdout=slave, stderr=slave, bufsize=0, close_fds=True)
-                    os.close(slave)
-                    self._console_fd = master
+                console = self._console_factory(self.port)
             except (OSError, PermissionError) as exc:
-                if master is not None:
-                    os.close(master)
                 raise DeviceError("device.console", str(exc)) from exc
-        self._console_process = process
+        self._console = console
 
         def read_output():
             decoder = codecs.getincrementaldecoder("utf-8")("replace")
-            while self._console_process is process:
+            while self._console is console:
                 try:
-                    data = process.read(1) if process is self._uart else process.stdout.read(1) if master is None else os.read(master, 1)
-                except (OSError, UartError):
+                    data = console.read_some() if hasattr(console, "read_some") else console.read(1)
+                except (OSError, UartError, ValueError):
                     break
-                if not data:
-                    if process is self._uart:
-                        continue
-                    break
+                if not data:  # nothing within the timeout: the port goes away only with an error
+                    continue
                 text = decoder.decode(data)
                 if text:
                     on_output(text)
             remaining = decoder.decode(b"", final=True)
             if remaining:
                 on_output(remaining)
+            if self._console is console:  # the port went away, nobody stopped it
+                self._console = None
+                if console is not self._uart:
+                    try:
+                        console.close()
+                    except (OSError, ValueError):
+                        pass
+                if on_closed:
+                    on_closed()
 
         self._console_thread = threading.Thread(target=read_output, name="lvgl-mpy-studio-console", daemon=True)
         self._console_thread.start()
         return True
 
+    @property
+    def console_live(self):
+        return self._console is not None
+
+    def write(self, data):
+        """Send typed bytes to the board's console, a few at a time."""
+        console = self._console
+        if console is None:
+            raise DeviceError("device.console", tr("The console is not active."))
+        try:
+            for offset in range(0, len(data), CONSOLE_CHUNK):
+                if offset:
+                    time.sleep(0.005)
+                console.write(data[offset:offset + CONSOLE_CHUNK])
+        except (OSError, UartError, ValueError) as exc:
+            raise DeviceError("device.console", str(exc)) from exc
+
     def stop_console(self):
-        process = self._console_process
-        self._console_process = None
-        master = self._console_fd
-        self._console_fd = None
-        if process is not None and process is not self._uart:
+        console, self._console = self._console, None
+        if console is not None and console is not self._uart:
             try:
-                if master is not None:
-                    os.write(master, b"\x1d")
-                elif process.stdin:
-                    process.stdin.write(b"\x1d")
-                    process.stdin.flush()
-                process.wait(timeout=0.5)
-            except (OSError, subprocess.TimeoutExpired):
-                process.terminate()
-                try:
-                    process.wait(timeout=0.5)
-                except subprocess.TimeoutExpired:
-                    process.kill()
-                    process.wait()
-        if master is not None:
-            try:
-                os.close(master)
-            except OSError:
+                console.close()
+            except (OSError, ValueError):
                 pass
         thread = self._console_thread
         self._console_thread = None

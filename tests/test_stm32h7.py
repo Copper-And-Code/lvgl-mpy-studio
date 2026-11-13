@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 import re
 import threading
+import time
 
 import pytest
 
@@ -303,3 +304,34 @@ def test_uart_console_does_not_close_or_reopen_port():
     assert uart.closed == 0
     session.disconnect()
     assert uart.closed == 1
+
+
+def test_interactive_uart_console_leaves_the_raw_repl_once():
+    from lvgl_mpy_studio.device.uart import UartTransport
+
+    class FakeSerial:
+        def __init__(self):
+            self.written = []
+            self.in_waiting = 0
+            self.is_open = True
+        def write(self, data):
+            self.written.append(bytes(data))
+        def read(self, size=1):
+            time.sleep(0.01)
+            return b""
+        def close(self):
+            self.is_open = False
+
+    uart = UartTransport.__new__(UartTransport)
+    uart.serial = FakeSerial()
+    uart.raw = True  # an IDE command ran last
+    session = DeviceSession()
+    session.port = "/dev/ttyUSB0"
+    session._uart = uart
+    session.start_console(lambda text: None, interactive=True)
+    session.stop_console()
+    session.start_console(lambda text: None, interactive=True)
+    session.write(b"ls\r")
+    session.stop_console()
+    assert uart.serial.written == [b"\x02", b"ls\r"]  # Ctrl-B once: the second start finds the normal prompt
+    assert uart.serial.is_open

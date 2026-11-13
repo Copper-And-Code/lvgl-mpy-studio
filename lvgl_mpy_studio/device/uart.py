@@ -25,6 +25,7 @@ class UartTransport:
         self.serial.timeout = 0.1
         self.serial.dtr = True
         self.serial.rts = False
+        self.raw = False  # the board is in the raw REPL, where the IDE's commands run
         try:
             self.serial.open()
         except PermissionError as exc:
@@ -45,6 +46,25 @@ class UartTransport:
             return self.serial.read(size)
         except (OSError, serial.SerialException) as exc:
             raise UartError("device.console", str(exc)) from exc
+
+    def read_some(self):
+        """What has arrived, or one byte within the timeout: the console wants each key's echo at once."""
+        try:
+            return self.serial.read(self.serial.in_waiting or 1)
+        except (OSError, serial.SerialException) as exc:
+            raise UartError("device.console", str(exc)) from exc
+
+    def write(self, data):
+        try:
+            self.serial.write(data)
+        except (OSError, serial.SerialException) as exc:
+            raise UartError("device.console", str(exc)) from exc
+
+    def leave_raw(self):
+        """Back to the normal prompt, so that what is typed reaches the board as keys."""
+        if self.raw:
+            self.write(b"\x02")
+            self.raw = False
 
     @staticmethod
     def _check_cancel(cancel):
@@ -71,6 +91,7 @@ class UartTransport:
         self._sleep(0.2)
         self.serial.reset_input_buffer()
         self.serial.write(b"\r\x01")
+        self.raw = True
         self._read_until(b"raw REPL; CTRL-B to exit\r\n>", 5, cancel)
 
     def execute(self, source, timeout=20, cancel=None):
@@ -150,6 +171,7 @@ class UartTransport:
         from serial.tools.miniterm import Miniterm
 
         self.serial.write(b"\x02")
+        self.raw = False
         terminal = Miniterm(self.serial)
         terminal.exit_character = chr(0x1D)
         terminal.set_rx_encoding("utf-8", "replace")

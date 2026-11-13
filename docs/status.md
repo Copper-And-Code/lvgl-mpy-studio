@@ -30,6 +30,7 @@ below as an open question, not as a formality.
 | Fonts of a project, kerning | yes, against LVGL's Montserrat | yes | STM32H7_CORE (seen), RP2350 (loaded) | ESP32-S3 |
 | Font memory warning | yes | | Waveshare RP2350 | |
 | C export | yes, pixel parity with MicroPython in the simulator | | | in a real C project; fonts in C on a board |
+| Device Console as a terminal (keys as typed, ANSI colours and cursor) | yes: the VT100 sequences cell by cell, the keys, the port taken and given back | | | on a board, with the Linux-like shell of `mpy-lvgl-boards`; on Windows |
 | Upload progress window | yes | | RP2350: the figures it shows | the window itself, watched by a person |
 | Buzzer | yes | yes, in the simulator | | on a board |
 | Block: Digital Output | yes, with a fake `machine` | yes, in the simulator | STM32H7_CORE: the two LEDs of the board on pins `B0` and `B1`, driven from a Timer, the pin levels read back and the LEDs seen by the author | other boards |
@@ -43,7 +44,7 @@ below as an open question, not as a formality.
 | Print Sources | yes | | a PDF, read | a real printer |
 | Self-test, visible mode (`--show`) | | | | never run |
 | AppImage for Linux | | yes, run from inside the package | the package of 0.6.1, released: self-test, 82 steps passed. The package of 0.6.0, on the author's computer: self-test, visual tests of EIM-01, board and C generation, single-file games for Linux (needing glibc 2.34 or later) and Windows, browser version | on another Linux system |
-| Portable Windows package | | | the package of 0.6.0: contents inspected (no bundled ICU, the icon in the program file, the blocks) and started by the author on a real Windows. The package of 0.6.1, released: contents inspected, not yet started on Windows | the installer, never built |
+| Portable Windows package | | | the package of 0.6.0: contents inspected (no bundled ICU, the icon in the program file, the blocks) and started by the author on a real Windows. The package of 0.6.1, released: contents inspected, started by the author on Windows, no console windows flashing | the installer, never built |
 
 "Author's use" means the author uses it while developing; it is not a test plan.
 
@@ -68,8 +69,8 @@ Firefox, Safari, and a real phone with touch and sound have not been tried.
   ended while a measurement was running, a simulator process stayed alive and its temporary
   folder could not be removed. Both are corrected, and the author ran the corrected package on Windows 11 without that
   error. Tests under Wine had shown neither. A third defect, reported by the author, is
-  corrected and not yet seen on Windows: started from the program file, a console window
-  flashed four times at almost every operation.
+  corrected: started from the program file, a console window flashed four times at almost
+  every operation. On 13 November 2026 the author saw no such window with the package of 0.6.1.
 - **The IDE does not know the pins of a board.** A block takes the pin the user types, a
   number or a name such as `PA5`, and nothing warns when it is one the display or the memory
   already uses.

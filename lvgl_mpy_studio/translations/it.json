@@ -139,8 +139,6 @@
   "Connect…": "Connetti…",
   "Upload": "Carica",
   "Close": "Chiudi",
-  "Send": "Invia",
-  "MicroPython REPL command": "Comando REPL MicroPython",
   "No device selected": "Nessun dispositivo selezionato",
   "app active": "app attiva",
   "Uploading…": "Trasferimento in corso…",
@@ -655,5 +653,12 @@
   "The input became active": "L'ingresso è diventato attivo",
   "The input stopped being active": "L'ingresso ha smesso di essere attivo",
   "Online Documentation": "Documentazione online",
-  "designed and directed by {name}, developed with AI agents": "progettato e diretto da {name}, sviluppato con agenti AI"
+  "designed and directed by {name}, developed with AI agents": "progettato e diretto da {name}, sviluppato con agenti AI",
+  "Clear": "Pulisci",
+  "Stop the running program, as Ctrl-C in the terminal": "Ferma il programma in esecuzione, come Ctrl-C nel terminale",
+  "Soft reset of the board from its prompt, as Ctrl-D in the terminal": "Soft reset della board dal suo prompt, come Ctrl-D nel terminale",
+  "IDE operation in progress…": "Operazione dell'IDE in corso…",
+  "Console not available.": "Console non disponibile.",
+  "Console not available: {error}": "Console non disponibile: {error}",
+  "The console is not active.": "La console non è attiva."
 }

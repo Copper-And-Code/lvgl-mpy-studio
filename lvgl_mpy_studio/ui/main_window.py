@@ -40,6 +40,7 @@ from lvgl_mpy_studio.ui import theme
 
 class MainWindow(DeviceMixin, ProjectTreeMixin, FilesMixin, ResolutionMixin, RunMixin, QMainWindow):
     deviceOutput = Signal(str)
+    consoleClosed = Signal()  # the port of the console went away
     LAYOUT_VERSION = 2    # bottom panels as tabs: layouts saved before are no longer valid
 
     def __init__(self) -> None:
@@ -70,9 +71,11 @@ class MainWindow(DeviceMixin, ProjectTreeMixin, FilesMixin, ResolutionMixin, Run
         self._drag_frame_pending = False
         self._device_sourcemap = None
         self._device_trace = ""
+        self._console_problem = ""
         self._device_mapped_traces = set()
         self._sim_trace = ""
         self.deviceOutput.connect(self._device_output)
+        self.consoleClosed.connect(self._update_device_actions)
         self.setWindowTitle("LVGL MPY Studio")
         self.resize(1400, 900)
         self.tabs = QTabWidget()
@@ -357,7 +360,7 @@ class MainWindow(DeviceMixin, ProjectTreeMixin, FilesMixin, ResolutionMixin, Run
         self.errors.itemActivated.connect(self._error_activated)
         self._dock(tr("Errors"), self.errors, Qt.BottomDockWidgetArea, "errorsDock")
         self.device_console = DeviceConsole()
-        self.device_console.commandRequested.connect(self.evaluate_repl)
+        self.device_console.keysTyped.connect(self.console_write)
         self.device_console.interruptRequested.connect(self.cancel_device_operation)
         console_dock = self._dock(tr("Device Console"), self.device_console, Qt.BottomDockWidgetArea, "deviceConsoleDock")
         docks = {dock.objectName(): dock for dock in self.findChildren(QDockWidget)}
