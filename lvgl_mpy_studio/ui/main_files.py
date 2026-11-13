@@ -201,12 +201,15 @@ class FilesMixin:
         if self._building:
             return False
         if entry is None:
-            last = self._last_program()
+            last = self.current_python_file() or self._last_program()
             path, _filter = QFileDialog.getOpenFileName(self, tr("Run in the Browser"), str(last or ""), tr("MicroPython program (*.py)"))
             if not path:
                 return False
             entry = path
         entry = Path(entry)
+        if not self.save_files_in(entry.parent):
+            return False
+        self.files_panel.set_folder(entry.parent)
         self.settings.setValue("simulator/program", str(entry))
         from lvgl_mpy_studio.build.program import program_board, program_dir
         from lvgl_mpy_studio.build.web import build_program_web, serve

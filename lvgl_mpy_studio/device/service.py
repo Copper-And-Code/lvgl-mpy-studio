@@ -637,6 +637,65 @@ except OSError:
                 self.state = "ready"
             return {"destination": destination, "files": [f"{destination}/{name}".replace("//", "/") for _local, name, _size in files], "bytes": total, "warnings": warnings}
 
+    # ---- Files of the board, for the Files panel ----
+
+    @staticmethod
+    def _board_path(path):
+        """An absolute path of the board without . or ..; anything else is refused."""
+        parts = [part for part in str(path).split("/") if part not in ("", ".")]
+        if not str(path).startswith("/") or ".." in parts:
+            raise DeviceError("device.command", str(path))
+        return "/" + "/".join(parts)
+
+    def list_dir(self, path):
+        """The entries of a folder of the board: [{"name", "dir", "size"}], folders first."""
+        self._require()
+        path = self._board_path(path)
+        script = "import os,json\nr=[]\nfor e in os.ilistdir(%r):\n r.append([e[0],e[1]&0x4000!=0,e[3] if len(e)>3 else -1])\nprint('LVGL_MPY_STUDIO_LIST='+json.dumps(r))" % path
+        with self._operation:
+            entries = marked_json(self._exec(script, 20), "LVGL_MPY_STUDIO_LIST")
+        return sorted(({"name": name, "dir": bool(folder), "size": size} for name, folder, size in entries), key=lambda entry: (not entry["dir"], entry["name"].lower()))
+
+    def read_file(self, path, local):
+        """Copy a file of the board to local, as it is."""
+        self._require()
+        path = self._board_path(path)
+        with self._operation:
+            self._execute(["connect", self.port, "resume", "fs", "cp", f":{path}", str(local)], timeout=60)
+        return Path(local)
+
+    def write_file(self, path, data):
+        """Write data to a file of the board with the safe write of upload_files: the old file stays until the new one is complete."""
+        path = self._board_path(path)
+        folder, name = path.rsplit("/", 1)
+        with tempfile.TemporaryDirectory(prefix="lvgl-mpy-studio-write-") as temporary:
+            local = Path(temporary) / name
+            local.write_bytes(data)
+            return self.upload_files([(local, name)], folder or "/")
+
+    def make_dir(self, path):
+        self._require()
+        path = self._board_path(path)
+        with self._operation:
+            self._exec(f"import os\nos.mkdir({path!r})", 20)
+
+    def rename_path(self, old, new):
+        self._require()
+        old, new = self._board_path(old), self._board_path(new)
+        with self._operation:
+            self._exec(f"import os\nos.rename({old!r},{new!r})", 20)
+
+    def remove_path(self, path):
+        """Remove a file, or a folder with everything in it. The roots of the filesystems are refused."""
+        self._require()
+        path = self._board_path(path)
+        if path in ("/", "/flash", "/sd"):
+            raise DeviceError("device.command", tr("{path} is the root of a filesystem: it is not removed.", path=path))
+        script = "import os\ndef rm(p):\n if os.stat(p)[0]&0x4000:\n  for n in os.listdir(p):rm(p+'/'+n)\n  os.rmdir(p)\n else:os.remove(p)\nrm(%r)\nprint('LVGL_MPY_STUDIO_DONE=1')" % path
+        with self._operation:
+            if "LVGL_MPY_STUDIO_DONE=1" not in self._exec(script, 60):
+                raise DeviceError("device.protocol", path)
+
     def run(self, project=None, output_dir=None, _uploaded=False, progress=None, cancel=None, _generated=None):
         self._require()
         if not _uploaded:

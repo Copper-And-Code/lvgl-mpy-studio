@@ -89,12 +89,15 @@ class RunMixin:
             self.statusBar().showMessage(tr("Stop the simulator first."), 5000)
             return False
         if entry is None:
-            last = self._last_program()
+            last = self.current_python_file() or self._last_program()
             path, _filter = QFileDialog.getOpenFileName(self, tr("Run Program"), str(last or ""), tr("MicroPython program (*.py)"))
             if not path:
                 return False
             entry = path
         entry = Path(entry)
+        if not self.save_files_in(entry.parent):
+            return False
+        self.files_panel.set_folder(entry.parent)
         board, width, height = program_board()
         try:
             prepared = prepare_program(entry, width, height, board)

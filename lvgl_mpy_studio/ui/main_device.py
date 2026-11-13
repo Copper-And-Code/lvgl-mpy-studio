@@ -110,7 +110,7 @@ class DeviceMixin:
     def _update_device_actions(self):
         if not hasattr(self, "run_selector"):
             return
-        busy = self._worker is not None
+        busy = self._worker is not None and not self._worker_background  # the Files panel reading does not lock the IDE
         connected = bool(self.device.port)
         board = self.run_target.is_board
         running = self.sim_panel.running
@@ -140,15 +140,24 @@ class DeviceMixin:
         reason = "" if live else tr("IDE operation in progress…") if busy else self._console_problem or tr("Console not available.") if connected else tr("Board not connected")
         self.device_console.set_ready(live, reason)
         self.device_console.set_busy(busy)
+        self.files_panel.board.set_connected(connected, self.device.port or "")
+        if not busy:
+            self.files_panel.board.ensure_listed()
         self.disconnect_button.setVisible(connected or board)
         if connected:
             self.device_status.setText(tr("Connected to {port}", port=self.device.port) + (" · " + tr("app active") if self.device_app_active else ""))
         else:
             self.device_status.setText(tr("Board not connected") if board else "")
 
-    def _device_task(self, operation, success=None):
+    def _device_task(self, operation, success=None, background=False):
+        """Run an operation on the board in a thread. One at a time: while a background one runs (the Files
+        panel reading the board), an operation of the user waits for it instead of being refused."""
         if self._worker is not None:
+            if self._worker_background and not background and self._deferred is None:
+                self._deferred = (operation, success)
+                return True
             return False
+        self._worker_background = background
         self._device_cancel = threading.Event()
         worker = DeviceWorker(operation, self)
         self._worker = worker
@@ -190,16 +199,23 @@ class DeviceMixin:
         worker = self.sender()
         if worker is not self._worker:
             return
-        self._close_upload_progress()
+        if not self._worker_background:  # an upload waiting behind a background task keeps its window
+            self._close_upload_progress()
         self._device_cancel = None
         self._worker = None
+        self._worker_background = False
         following, self._device_next = self._device_next, None
+        if following is None and self._deferred is not None:
+            (operation, success), self._deferred = self._deferred, None
+            following = lambda: self._device_task(operation, success)
         self._sync_device_session()
         if not following:
             self._start_device_console()
         self._update_device_actions()
         if following:
             following()
+        else:
+            self._run_board_pending()  # what the Files panel asked while the board was busy
 
     def cancel_device_operation(self):
         if self._device_cancel:
@@ -346,15 +362,16 @@ class DeviceMixin:
         items, destination, compile_python = dialog.choice()
         return self._confirm_and_upload_files(items, destination, compile_python)
 
-    def _confirm_and_upload_files(self, items, destination, compile_python=False):
+    def _confirm_and_upload_files(self, items, destination, compile_python=False, then=None):
+        """Upload after asking about files the board runs at power-on; then runs once the board is free again."""
         protected = protected_targets(items, destination)
         if protected:
             answer = QMessageBox.question(self, tr("Upload Files"), tr("The board runs these files at power-on, and they will be replaced:\n{files}\n\nContinue?", files="\n".join(protected)))
             if answer != QMessageBox.Yes:
                 return False
-        return self._with_connection(lambda: self._upload_files(items, destination, compile_python))
+        return self._with_connection(lambda: self._upload_files(items, destination, compile_python, then))
 
-    def _upload_files(self, items, destination, compile_python):
+    def _upload_files(self, items, destination, compile_python, then=None):
         board = self.document.project.board["id"]
         operation = lambda: self.device.upload_files(items, destination, compile_python, progress=self._worker.progress.emit, cancel=self._device_cancel)
         def completed(result):
@@ -363,7 +380,10 @@ class DeviceMixin:
                 self.settings.setValue(self._upload_rate_key, self._upload_progress.rate)
             message = tr("{count} files copied to {folder} on the board.", count=len(result["files"]), folder=result["destination"])
             self.device_console.message(message)
+            self.files_panel.board.reload_folder(result["destination"])
             self.statusBar().showMessage(message, 5000)
+            if then:
+                self._device_next = then  # after the upload has finished and the board is free
         if not self._device_task(operation, completed):
             return False
         self._upload_rate_key = f"device/uploadRate/{board}"

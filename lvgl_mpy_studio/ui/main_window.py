@@ -24,6 +24,7 @@ from lvgl_mpy_studio.ui.properties.panel import PropertiesPanel
 from lvgl_mpy_studio.ui.run_target import SIMULATOR_MICROPYTHON, RunTargetSelector, board_target
 from lvgl_mpy_studio.ui.sim_panel import SimPanel
 from lvgl_mpy_studio.ui.main_device import LIVE_DELAY_MS, DeviceMixin
+from lvgl_mpy_studio.ui.main_editors import EditorTabsMixin
 from lvgl_mpy_studio.ui.main_tree import ProjectTreeMixin
 from lvgl_mpy_studio.ui.main_files import DEFAULTS_KEY, FilesMixin
 from lvgl_mpy_studio.ui.main_resolution import ResolutionMixin
@@ -38,10 +39,10 @@ from lvgl_mpy_studio.ui import theme
 
 
 
-class MainWindow(DeviceMixin, ProjectTreeMixin, FilesMixin, ResolutionMixin, RunMixin, QMainWindow):
+class MainWindow(DeviceMixin, ProjectTreeMixin, FilesMixin, EditorTabsMixin, ResolutionMixin, RunMixin, QMainWindow):
     deviceOutput = Signal(str)
     consoleClosed = Signal()  # the port of the console went away
-    LAYOUT_VERSION = 2    # bottom panels as tabs: layouts saved before are no longer valid
+    LAYOUT_VERSION = 3    # 2: bottom panels as tabs; 3: the Files panel next to Project. Older layouts are dropped
 
     def __init__(self) -> None:
         super().__init__()
@@ -67,6 +68,8 @@ class MainWindow(DeviceMixin, ProjectTreeMixin, FilesMixin, ResolutionMixin, Run
         self._device_cancel = None
         self._upload_progress = None
         self._device_next = None
+        self._worker_background = False
+        self._deferred = None  # an operation of the user waiting for a background one
         self._building = False
         self._drag_frame_pending = False
         self._device_sourcemap = None
@@ -104,7 +107,7 @@ class MainWindow(DeviceMixin, ProjectTreeMixin, FilesMixin, ResolutionMixin, Run
     def _make_actions(self):
         self.new_action = QAction(tr("New"), self, shortcut=QKeySequence.New, triggered=self.new_project)
         self.open_action = QAction(tr("Open…"), self, shortcut=QKeySequence.Open, triggered=self.open_project_dialog)
-        self.save_action = QAction(tr("Save"), self, shortcut=QKeySequence.Save, triggered=self.save_project)
+        self.save_action = QAction(tr("Save"), self, shortcut=QKeySequence.Save, triggered=self.save_current)
         self.save_as_action = QAction(tr("Save As…"), self, shortcut=QKeySequence.SaveAs, triggered=self.save_project_as)
         self.exit_action = QAction(tr("Exit"), self, shortcut=QKeySequence.Quit, triggered=self.close)
         self.undo_action = self.document.undo_stack.createUndoAction(self, tr("Undo"))
@@ -142,6 +145,8 @@ class MainWindow(DeviceMixin, ProjectTreeMixin, FilesMixin, ResolutionMixin, Run
         self.restart_action = QAction(tr("Restart"), self, triggered=self.restart_project)
         self.run_program_action = QAction(tr("Run Program…"), self, triggered=lambda: self.run_program())
         self.run_program_action.setToolTip(tr("Run a MicroPython file without pages in the simulator, as on a board"))
+        self.board_program_action = QAction(tr("Run on the Board…"), self, triggered=lambda: self.ask_run_on_board())
+        self.board_program_action.setToolTip(tr("Upload the folder of a MicroPython file to the board and run the file there, from its prompt"))
         self.program_flash_action = QAction(tr("Open Program Flash Folder"), self, triggered=self.open_program_flash)
         self.erase_flash_action = QAction(tr("Erase Program Flash…"), self, triggered=self.erase_program_flash)
         self.program_web_action = QAction(tr("Run in the Browser…"), self, triggered=lambda: self.program_in_browser())
@@ -216,7 +221,7 @@ class MainWindow(DeviceMixin, ProjectTreeMixin, FilesMixin, ResolutionMixin, Run
         run_menu = self.menuBar().addMenu(tr("Run"))
         run_menu.addActions((self.run_action, self.stop_action, self.restart_action))
         run_menu.addSeparator()
-        run_menu.addActions((self.run_program_action, self.program_web_action, self.program_flash_action, self.erase_flash_action))
+        run_menu.addActions((self.run_program_action, self.program_web_action, self.board_program_action, self.program_flash_action, self.erase_flash_action))
         run_menu.addSeparator()
         run_menu.addActions((self.build_action, self.single_file_action, self.web_action))
         project_menu = self.menuBar().addMenu(tr("Project"))
@@ -358,7 +363,11 @@ class MainWindow(DeviceMixin, ProjectTreeMixin, FilesMixin, ResolutionMixin, Run
         self.project_tree.itemDoubleClicked.connect(self._tree_activated)
         self.project_tree.setContextMenuPolicy(Qt.CustomContextMenu)
         self.project_tree.customContextMenuRequested.connect(self._project_context_menu)
-        self._dock(tr("Project"), self.project_tree, Qt.LeftDockWidgetArea, "projectDock")
+        project_dock = self._dock(tr("Project"), self.project_tree, Qt.LeftDockWidgetArea, "projectDock")
+        files_dock = self._dock(tr("Files"), self._make_files_panel(), Qt.LeftDockWidgetArea, "filesDock")
+        self.tabifyDockWidget(project_dock, files_dock)
+        files_dock.visibilityChanged.connect(self._files_shown)
+        project_dock.raise_()
         self.properties = PropertiesPanel(self.document)
         self.properties.handlerRequested.connect(self.open_handler)
         self._dock(tr("Properties"), self.properties, Qt.RightDockWidgetArea, "propertiesDock")
@@ -737,7 +746,7 @@ class MainWindow(DeviceMixin, ProjectTreeMixin, FilesMixin, ResolutionMixin, Run
             self.statusBar().showMessage(tr("Wait for the executable build to finish."))
             event.ignore()
             return
-        if not self._confirm_discard():
+        if not self.confirm_files() or not self._confirm_discard():
             event.ignore()
             return
         self.budget_monitor.stop()
