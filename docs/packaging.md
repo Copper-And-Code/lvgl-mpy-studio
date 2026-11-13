@@ -73,6 +73,13 @@ the games then need the C library of the computer that built it. `packaging/buil
 a warning when that is the case; the launcher of a package to be given out must be the one
 from Docker.
 
+**Rebuild from clean when the state of the VM changes.** The MicroPython makefiles do not
+track configuration flags or new root pointers: a change to `MICROPY_*` flags or an
+`MP_REGISTER_ROOT_POINTER` in `native/lvsim` leaves old objects in the build folders, and the
+result fails in odd ways (on 2026-11-13: `ImportError: no module named 'sys_layer'` from the
+launcher). Remove `runtime/out/build` and `runtime/out/build-onefile` (and the folders of the
+other runtimes) before building again.
+
 To see which C library the launcher needs:
 
 ```bash

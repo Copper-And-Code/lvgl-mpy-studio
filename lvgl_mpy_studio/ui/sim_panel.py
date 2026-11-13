@@ -6,11 +6,13 @@ from pathlib import Path
 from PySide6.QtCore import QProcess, QProcessEnvironment, QRectF, Qt, QTimer, Signal
 from PySide6.QtGui import QImage, QPainter
 from PySide6.QtNetwork import QHostAddress, QTcpServer, QTcpSocket
-from PySide6.QtWidgets import QCheckBox, QHBoxLayout, QLabel, QVBoxLayout, QWidget
+from PySide6.QtWidgets import QCheckBox, QHBoxLayout, QLabel, QSplitter, QVBoxLayout, QWidget
 
+from lvgl_mpy_studio.build.program import RESET_EXIT_CODE
 from lvgl_mpy_studio.core.i18n import tr
 from lvgl_mpy_studio.platform import RUNTIME_ENTRY, runtime_environment, runtime_path
 from lvgl_mpy_studio.ui.sim_audio import TonePlayer
+from lvgl_mpy_studio.ui.terminal import TerminalView, key_bytes
 from lvgl_mpy_studio.ui.theme import canvas_color
 from lvgl_mpy_studio.sim.protocol import Decoder, MessageType, encode_key, encode_pointer, encode_quit, encode_stop, encode_wheel
 
@@ -90,8 +92,13 @@ class SimScreen(QWidget):
         if point:
             self.pointer.emit(point[0], point[1], self._pressed)
 
+    typed = Signal(bytes)  # a program without pages reads the keys as its serial port
+
     def keyPressEvent(self, event):
         self.key.emit(event.key(), True)
+        data = key_bytes(event.key(), event.modifiers(), event.text())
+        if data:
+            self.typed.emit(data)
 
     def keyReleaseEvent(self, event):
         self.key.emit(event.key(), False)
@@ -107,6 +114,7 @@ class SimPanel(QWidget):
     stopped = Signal(int)
     error = Signal(str)
     tone = Signal(int, int)
+    resetRequested = Signal()  # a program called machine.reset()
 
     def __init__(self, document=None, runtime=None, parent=None):
         super().__init__(parent)
@@ -144,8 +152,17 @@ class SimPanel(QWidget):
         status_row = QHBoxLayout()
         status_row.addWidget(self.status, 1)
         status_row.addWidget(self.physical_pixels)
+        self.terminal = TerminalView()  # the serial port of a program without pages
+        self.terminal.typed.connect(self.write_keys)
+        self.terminal.setVisible(False)
+        self.program = False
+        splitter = QSplitter(Qt.Vertical)
+        splitter.addWidget(self.screen)
+        splitter.addWidget(self.terminal)
+        splitter.setStretchFactor(0, 3)
+        splitter.setStretchFactor(1, 2)
         layout = QVBoxLayout(self)
-        layout.addWidget(self.screen, 1)
+        layout.addWidget(splitter, 1)
         layout.addLayout(status_row)
         self.server.newConnection.connect(self._accept_connection)
         self.process.readyReadStandardOutput.connect(self._stdout)
@@ -154,13 +171,15 @@ class SimPanel(QWidget):
         self.process.errorOccurred.connect(self._process_error)
         self.screen.pointer.connect(self.send_pointer)
         self.screen.key.connect(self.send_key)
+        self.screen.typed.connect(self.write_keys)
         self.screen.wheel.connect(self.send_wheel)
 
     @property
     def running(self):
         return self.process.state() != QProcess.NotRunning
 
-    def start(self, build_dir):
+    def start(self, build_dir, arguments=None, environment=None):
+        """Start the app generated in build_dir; with arguments, a program without pages (build/program.py)."""
         if self.running:
             raise RuntimeError(tr("The simulator is already running"))
         executable = self.runtime
@@ -176,15 +195,19 @@ class SimPanel(QWidget):
         self._fps_started = time.monotonic()
         self.first_frame_ms = None
         env = QProcessEnvironment()
-        for name, value in runtime_environment(LVSIM_CONNECT=f"127.0.0.1:{self.server.serverPort()}", LVSIM_TOKEN=self._token.hex()).items():
+        settings = {**(environment or {}), "LVSIM_CONNECT": f"127.0.0.1:{self.server.serverPort()}", "LVSIM_TOKEN": self._token.hex()}
+        for name, value in runtime_environment(**settings).items():
             env.insert(name, value)
         self.process.setProcessEnvironment(env)
         self.process.setWorkingDirectory(str(build_dir))
         self.process.setProgram(str(executable.resolve()))
-        self.process.setArguments(RUNTIME_ENTRY)
+        self.process.setArguments(arguments or RUNTIME_ENTRY)
+        self.program = arguments is not None
+        self.terminal.setVisible(self.program)
+        self.terminal.input_enabled = self.program
         self.started_at = time.monotonic()
         self.status.setText(tr("Starting {target} simulator…", target="MicroPython"))
-        if self.document:
+        if self.document and not self.program:  # a program is not the open project: that stays editable
             self.document.read_only = True
         self.process.start()
         if self.running:  # if the start already failed, _process_error released everything
@@ -270,13 +293,20 @@ class SimPanel(QWidget):
         self._send(encode_pointer(x, y, pressed))
 
     def send_key(self, code, pressed):
-        self._send(encode_key(code, pressed))
+        if not self.program:  # a program reads keys from its serial port, not from LVGL
+            self._send(encode_key(code, pressed))
+
+    def write_keys(self, data):
+        if self.program and self.running:
+            self.process.write(data)
 
     def send_wheel(self, delta):
         self._send(encode_wheel(delta))
 
     def _stdout(self):
-        text = self._stdout_tail + bytes(self.process.readAllStandardOutput()).decode("utf-8", errors="replace").replace("\r\n", "\n")
+        text = self._stdout_tail + bytes(self.process.readAllStandardOutput()).decode("utf-8", errors="replace")
+        if not self.program:
+            text = text.replace("\r\n", "\n")
         self._stdout_tail = ""
         for match in TONE_LINE.finditer(text):
             self.tone.emit(int(match.group(1)), int(match.group(2)))
@@ -284,12 +314,17 @@ class SimPanel(QWidget):
         partial = text.rfind(TONE_PREFIX)
         if partial >= 0:
             text, self._stdout_tail = text[:partial], text[partial:]
-        if text:
+        if text and self.program:
+            self.terminal.feed_serial(text)
+        elif text:
             self.output.emit(text, False)
 
     def _stderr(self):
-        text = bytes(self.process.readAllStandardError()).decode("utf-8", errors="replace").replace("\r\n", "\n")
-        self.output.emit(text, True)
+        text = bytes(self.process.readAllStandardError()).decode("utf-8", errors="replace")
+        if self.program:
+            self.terminal.feed_serial(text)
+        else:
+            self.output.emit(text.replace("\r\n", "\n"), True)
 
     def _process_error(self, error):
         self.error.emit(self.process.errorString())
@@ -307,8 +342,11 @@ class SimPanel(QWidget):
         if self.document:
             self.document.read_only = False
         self.status.setText(tr("Simulator finished ({code})", code=code))
+        self.terminal.input_enabled = False
         self.stop_server()
         self.stopped.emit(code)
+        if self.program and code == RESET_EXIT_CODE:
+            self.resetRequested.emit()
 
     def stop(self):
         if not self.running:

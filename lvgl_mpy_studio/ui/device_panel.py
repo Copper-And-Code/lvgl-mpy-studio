@@ -161,7 +161,6 @@ class DeviceConsole(QWidget):
         row.addStretch(1)
         row.addWidget(self.interrupt)
         layout.addLayout(row)
-        self._carriage = False  # the last character of the board's output was a CR
         self.set_ready(False)
 
     def set_ready(self, ready, reason=""):
@@ -178,16 +177,8 @@ class DeviceConsole(QWidget):
 
     def append(self, text):
         """What the board printed. A lone LF becomes CR LF, as on a serial terminal."""
-        if not text:
-            return
-        text = str(text)
-        converted = []
-        for char in text:
-            if char == "\n" and not self._carriage:
-                converted.append("\r")
-            converted.append(char)
-            self._carriage = char == "\r"
-        self.terminal.feed("".join(converted))
+        if text:
+            self.terminal.feed_serial(str(text))
 
     def message(self, text):
         """A message of the IDE, on a line of its own and in grey, so it is not taken for the board's."""
@@ -196,7 +187,7 @@ class DeviceConsole(QWidget):
         lead = "\r\n" if self.terminal.screen.x else ""
         body = str(text).rstrip("\n").replace("\r\n", "\n").replace("\n", "\r\n")
         self.terminal.feed(lead + "\x1b[90m" + body + "\x1b[0m\r\n")
-        self._carriage = False
+        self.terminal._carriage = False
 
     def text(self):
         return self.terminal.text()

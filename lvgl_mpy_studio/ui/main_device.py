@@ -119,6 +119,7 @@ class DeviceMixin:
         self.stop_action.setEnabled(not busy and (running if not board else connected and self.device_app_active))
         self.board_stop_action.setEnabled(not busy and connected and self.device_app_active)
         self.restart_action.setEnabled(not board and not busy)
+        self.run_program_action.setEnabled(not running)
         self.upload_action.setEnabled(not busy and board)
         self.upload_run_action.setEnabled(not busy and board)
         self.device_info_action.setEnabled(not busy and connected)

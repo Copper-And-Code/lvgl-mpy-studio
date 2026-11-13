@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Added
+
+- **Programs without pages in the simulator** (Linux). **Run → Run Program…** runs a MicroPython file and its folder as a board would: a flash of its own that keeps the files the program writes, `/` limited to that flash, a terminal under the screen as the serial port, LVGL served in the background while the program waits for a key, `os.dupterm`, `os.uname()` and `machine.reset()`, and a REPL when the program ends. The Linux-like shell of `mpy-lvgl-boards`, with its two editors, runs this way. Projects with pages start as before.
+
 ### Changed
 
 - **The Device Console is a terminal.** Every key goes to the board as it is typed, as in PuTTY or picocom: arrows, Tab, Home and End, the Ctrl keys, the history of the prompt. It shows the colours and the cursor movements of ANSI sequences, so a full-screen program on the board, such as an editor, works in it. It follows the board whenever it is connected and the IDE is not using it, not only while an app runs. Copy and paste are on Ctrl+Shift+C and Ctrl+Shift+V, because Ctrl+C goes to the board; Ctrl-C and Ctrl-D also have buttons. The IDE's own messages are grey.

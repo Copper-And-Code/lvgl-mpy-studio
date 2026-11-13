@@ -72,6 +72,7 @@ class MainWindow(DeviceMixin, ProjectTreeMixin, FilesMixin, ResolutionMixin, Run
         self._device_sourcemap = None
         self._device_trace = ""
         self._console_problem = ""
+        self._program_entry = None
         self._device_mapped_traces = set()
         self._sim_trace = ""
         self.deviceOutput.connect(self._device_output)
@@ -139,6 +140,10 @@ class MainWindow(DeviceMixin, ProjectTreeMixin, FilesMixin, ResolutionMixin, Run
         self.run_action = QAction(tr("Start"), self, shortcut="F5", triggered=self.run_project)
         self.stop_action = QAction(tr("Stop"), self, shortcut="Shift+F5", triggered=self.stop_simulation)
         self.restart_action = QAction(tr("Restart"), self, triggered=self.restart_project)
+        self.run_program_action = QAction(tr("Run Program…"), self, triggered=lambda: self.run_program())
+        self.run_program_action.setToolTip(tr("Run a MicroPython file without pages in the simulator, as on a board"))
+        self.program_flash_action = QAction(tr("Open Program Flash Folder"), self, triggered=self.open_program_flash)
+        self.erase_flash_action = QAction(tr("Erase Program Flash…"), self, triggered=self.erase_program_flash)
         self.build_action = QAction(tr("Build Executable…"), self, triggered=self.build_executable)
         self.single_file_action = QAction(tr("Build Single-File Executable…"), self, triggered=self.build_single_file)
         self.web_action = QAction(tr("Open in Browser"), self, triggered=self.open_in_browser)
@@ -204,6 +209,8 @@ class MainWindow(DeviceMixin, ProjectTreeMixin, FilesMixin, ResolutionMixin, Run
         self.arrange_menu.aboutToShow.connect(self._update_adapt_page_action)
         run_menu = self.menuBar().addMenu(tr("Run"))
         run_menu.addActions((self.run_action, self.stop_action, self.restart_action))
+        run_menu.addSeparator()
+        run_menu.addActions((self.run_program_action, self.program_flash_action, self.erase_flash_action))
         run_menu.addSeparator()
         run_menu.addActions((self.build_action, self.single_file_action, self.web_action))
         project_menu = self.menuBar().addMenu(tr("Project"))
@@ -377,6 +384,7 @@ class MainWindow(DeviceMixin, ProjectTreeMixin, FilesMixin, ResolutionMixin, Run
         self.sim_panel.frameReady.connect(self._first_frame)
         self.sim_panel.output.connect(self._sim_output)
         self.sim_panel.error.connect(self.append_error)
+        self.sim_panel.resetRequested.connect(self._program_restart)
         self.code_panel = CodePanel(self.document)
         self.code_panel.stopRequested.connect(self.stop_simulation)
         self._sync_designers()

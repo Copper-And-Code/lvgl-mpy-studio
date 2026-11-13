@@ -310,6 +310,20 @@ If the error starts in a module, the first line is that of the module; the handl
 
 While the simulator is running the project is read-only: a bar above the editor says so, and the **Stop and Edit** button stops the app. An error in a handler does not stop the app, so after an error the simulator is usually still running.
 
+### Programs without pages
+
+**Run → Run Program…** runs a MicroPython file that has no pages drawn in the designer, such as a shell or a text editor, as a board would run it. Choose the file: its folder is the program. Linux only, for now.
+
+- The folder is copied into a **flash** of its own, which keeps between runs the files the program writes, as a board does. Files of the folder replace those of the same name; the others stay. **Run → Open Program Flash Folder** shows it, **Run → Erase Program Flash…** empties it. Your folder is never changed.
+- The program sees the flash as `/` and cannot leave it: `..`, absolute paths and `rm -r /` stay inside.
+- A terminal opens under the screen: it is the program's serial port. What the program prints appears there, and each key typed there, or on the screen of the simulator, reaches `sys.stdin` as it would from PuTTY. Ctrl-C stops the program while `micropython.kbd_intr(3)` is on, and arrives as a key after `kbd_intr(-1)`.
+- As on a board, `import display_driver` starts the display, and `display_driver.start()` serves LVGL in the background, also while the program waits for a key. `os.dupterm`, `os.uname()` and `machine.reset()` work; `machine.reset()` starts the program again.
+- When the program ends, a MicroPython REPL takes the keys.
+- The open project is not involved: it stays editable, and gives the resolution and the board name.
+- The heap is 32 MB, about the RAM of the STM32H7_CORE; on a smaller board the program may run out of memory where the simulator does not.
+
+The shell of `mpy-lvgl-boards` (`examples/shell`) runs this way with its two editors.
+
 ## 10. Working with a board
 
 The [board guide](boards.md) explains everything in detail; here is the essential path.

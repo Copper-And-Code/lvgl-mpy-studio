@@ -19,6 +19,7 @@ datas = [
     (str(root / "runtime/out/lvsim-onefile"), "runtime/out"),
     (str(root / "runtime/out-win64/lvsim-onefile.exe"), "runtime/out-win64"),  # games for Windows built on Linux
     (str(root / "runtime/display_driver.py"), "runtime"),
+    (str(root / "runtime/program"), "runtime/program"),  # programs without pages in the simulator
     (str(root / "native/lvsim"), "native/lvsim"),
     # Only what is needed to build the C target: no tests, demos, documentation or scripts.
     (str(root / ".reference/lvgl-bindings/lvgl/src"), ".reference/lvgl-bindings/lvgl/src"),

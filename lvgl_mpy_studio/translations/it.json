@@ -660,5 +660,17 @@
   "IDE operation in progress…": "Operazione dell'IDE in corso…",
   "Console not available.": "Console non disponibile.",
   "Console not available: {error}": "Console non disponibile: {error}",
-  "The console is not active.": "La console non è attiva."
+  "The console is not active.": "La console non è attiva.",
+  "Run Program…": "Esegui programma…",
+  "Run a MicroPython file without pages in the simulator, as on a board": "Esegue nel simulatore un file MicroPython senza pagine, come su una board",
+  "Open Program Flash Folder": "Apri la cartella della flash del programma",
+  "Erase Program Flash…": "Cancella la flash del programma…",
+  "Stop the simulator first.": "Ferma prima il simulatore.",
+  "Run Program": "Esegui programma",
+  "MicroPython program (*.py)": "Programma MicroPython (*.py)",
+  "Program {name}, {width}×{height}; its flash is {flash}": "Programma {name}, {width}×{height}; la sua flash è {flash}",
+  "Run a program first: Run → Run Program…": "Esegui prima un programma: Esegui → Esegui programma…",
+  "Erase the simulated flash of {folder}? The files the program wrote are lost; your folder is not touched.": "Cancellare la flash simulata di {folder}? I file scritti dal programma vanno persi; la tua cartella non viene toccata.",
+  "Program flash erased.": "Flash del programma cancellata.",
+  "Programs without pages run only in the Linux simulator for now.": "Per ora i programmi senza pagine girano solo nel simulatore per Linux."
 }

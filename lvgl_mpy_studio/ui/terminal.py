@@ -49,6 +49,7 @@ class TerminalView(QAbstractScrollArea):
         self.colors = [QColor(value) for value in palette()]
         self.input_enabled = False
         self._selection = None  # (anchor, end) as (row, column), rows counted from the first of the history
+        self._carriage = False  # the last character of the output was a CR
         self.setFont(QFontDatabase.systemFont(QFontDatabase.FixedFont))
         self.setFocusPolicy(Qt.StrongFocus)
         self.setAttribute(Qt.WA_InputMethodEnabled, True)
@@ -70,6 +71,16 @@ class TerminalView(QAbstractScrollArea):
             self.typed.emit(replies)
         if not self._repaint.isActive():
             self._repaint.start()
+
+    def feed_serial(self, text):
+        """Output of a board or of the simulator: a lone LF becomes CR LF, as on a serial terminal."""
+        converted = []
+        for char in text:
+            if char == "\n" and not self._carriage:
+                converted.append("\r")
+            converted.append(char)
+            self._carriage = char == "\r"
+        self.feed("".join(converted))
 
     def clear(self):
         self.screen.clear()

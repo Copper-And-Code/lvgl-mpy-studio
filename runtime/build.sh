@@ -28,9 +28,12 @@ ln -srfn "$DEPS/lvgl-micropython" "$ROOT/runtime/modules/lvgl-micropython"
 ln -srfn "$DEPS/lvgl-bindings" "$ROOT/runtime/modules/lvgl-bindings"
 ln -srfn "$ROOT/native/lvsim" "$ROOT/runtime/modules/lvsim"
 make -C "$DEPS/micropython/mpy-cross" -j"$JOBS"
+# os.dupterm, which the unix port leaves out: a program without pages shows its output on the display
+# as on a board (ansiterm.py of mpy-lvgl-boards). It changes the VM state: rebuild from clean when it changes.
 make -C "$DEPS/micropython/ports/unix" -j"$JOBS" \
     USER_C_MODULES="$ROOT/runtime/modules" \
     BINDINGS_DIR="$DEPS/lvgl-bindings" \
+    CFLAGS_EXTRA="-DMICROPY_PY_OS_DUPTERM=1" \
     BUILD="$OUT/build"
 cp "$OUT/build/micropython" "$OUT/lvsim-runtime"
 cp "$DEPS/micropython/mpy-cross/build/mpy-cross" "$OUT/mpy-cross" 2>/dev/null || make -C "$DEPS/micropython/mpy-cross" -j"$JOBS" && cp "$DEPS/micropython/mpy-cross/build/mpy-cross" "$OUT/mpy-cross"

@@ -19,7 +19,8 @@ def exe_name(name):
 RUNTIME_ENTRY = ["-c", "import main; main.main()"]
 
 
-LVSIM_VARIABLES = ("LVSIM_SOCKET", "LVSIM_CONNECT", "LVSIM_TOKEN", "LVSIM_HEADLESS", "LVSIM_DUMP", "LVSIM_FRAMES", "LVSIM_TICK_MS")
+LVSIM_VARIABLES = ("LVSIM_SOCKET", "LVSIM_CONNECT", "LVSIM_TOKEN", "LVSIM_HEADLESS", "LVSIM_DUMP", "LVSIM_FRAMES", "LVSIM_TICK_MS",
+                   "LVSIM_WIDTH", "LVSIM_HEIGHT", "LMS_FLASH", "LMS_ENTRY", "LMS_CODE", "LMS_BOARD")
 
 
 def runtime_environment(**settings):

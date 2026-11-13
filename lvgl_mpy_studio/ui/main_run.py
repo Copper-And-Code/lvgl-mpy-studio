@@ -2,12 +2,15 @@ import json
 import re
 from pathlib import Path
 
-from PySide6.QtCore import Qt
-from PySide6.QtWidgets import QDockWidget, QTreeWidgetItem
+from PySide6.QtCore import Qt, QUrl
+from PySide6.QtGui import QDesktopServices
+from PySide6.QtWidgets import QDockWidget, QFileDialog, QMessageBox, QTreeWidgetItem
 
 from lvgl_mpy_studio.build.compiler import CompileError, compile_python, map_error, traceback_errors
+from lvgl_mpy_studio.build.program import flash_dir, prepare_program, reset_flash
 from lvgl_mpy_studio.core.i18n import tr
 from lvgl_mpy_studio.gen.project_gen import generate_project
+from lvgl_mpy_studio.platform import IS_WINDOWS
 
 
 # A complete traceback: the frame lines, indented, then the exception line.
@@ -59,15 +62,87 @@ class RunMixin:
         return True
 
     def restart_project(self):
+        program = self.sim_panel.program
         self.sim_panel.shutdown()
-        return self.run_project()
+        return self.run_program(self._program_entry) if program and self._program_entry else self.run_project()
 
     def _running_changed(self, running):
-        self.properties.setEnabled(not running)
-        self.code_panel.set_running(running)
+        locked = running and not self.sim_panel.program  # a program is not the open project, which stays editable
+        self.properties.setEnabled(not locked)
+        self.code_panel.set_running(locked)
         for _index, view in self.designers.values():
-            view.setEnabled(not running)
+            view.setEnabled(not locked)
         self._update_device_actions()
+
+    # ---- Programs without pages ----
+
+    def _last_program(self):
+        path = self.settings.value("simulator/program", "")
+        return Path(path) if path else None
+
+    def run_program(self, entry=None):
+        """Run a .py file and its folder in the simulator as on a board: no pages, a terminal for the keys."""
+        if IS_WINDOWS:
+            self.append_error(tr("Programs without pages run only in the Linux simulator for now."))
+            return False
+        if self.sim_panel.running:
+            self.statusBar().showMessage(tr("Stop the simulator first."), 5000)
+            return False
+        if entry is None:
+            last = self._last_program()
+            path, _filter = QFileDialog.getOpenFileName(self, tr("Run Program"), str(last or ""), tr("MicroPython program (*.py)"))
+            if not path:
+                return False
+            entry = path
+        entry = Path(entry)
+        project = self.document.project
+        board = project.board["id"] if project.board else "simulator"
+        try:
+            prepared = prepare_program(entry, project.display.width, project.display.height, board)
+        except (OSError, ValueError) as exc:
+            self.append_error(str(exc))
+            return False
+        self.settings.setValue("simulator/program", str(entry))
+        self._program_entry = entry
+        self.output.appendPlainText(tr("Program {name}, {width}×{height}; its flash is {flash}", name=entry.name, width=project.display.width, height=project.display.height, flash=prepared["flash"]))
+        self.tabs.setCurrentWidget(self.sim_panel)
+        try:
+            self.sim_panel.start(prepared["boot"], prepared["arguments"], prepared["environment"])
+        except (OSError, RuntimeError) as exc:
+            self.append_error(str(exc))
+            return False
+        self.sim_panel.terminal.setFocus()
+        return True
+
+    def _program_restart(self):
+        """machine.reset() in the program: start it again with its flash as it is."""
+        if self._program_entry:
+            self.run_program(self._program_entry)
+
+    def open_program_flash(self):
+        last = self._last_program()
+        if last is None:
+            self.statusBar().showMessage(tr("Run a program first: Run → Run Program…"), 5000)
+            return False
+        folder = flash_dir(last.parent)
+        folder.mkdir(parents=True, exist_ok=True)
+        QDesktopServices.openUrl(QUrl.fromLocalFile(str(folder)))
+        return True
+
+    def erase_program_flash(self):
+        last = self._last_program()
+        if last is None:
+            self.statusBar().showMessage(tr("Run a program first: Run → Run Program…"), 5000)
+            return False
+        if self.sim_panel.running and self.sim_panel.program:
+            self.statusBar().showMessage(tr("Stop the simulator first."), 5000)
+            return False
+        answer = QMessageBox.question(self, tr("Erase Program Flash…"), tr("Erase the simulated flash of {folder}? The files the program wrote are lost; your folder is not touched.", folder=last.parent))
+        if answer != QMessageBox.Yes:
+            return False
+        reset_flash(last.parent)
+        self.statusBar().showMessage(tr("Program flash erased."), 5000)
+        return True
 
     def _first_frame(self):
         if self.sim_panel.first_frame_ms is not None:

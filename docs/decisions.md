@@ -242,3 +242,15 @@ As of 2026-10-28, the public commit above still declares LVGL 9.3 for MicroPytho
 - Ctrl+C and the other Ctrl keys belong to the board, also over the menu shortcuts of the window; copy and paste are on Ctrl+Shift+C and Ctrl+Shift+V. Keys are written in pieces of 64 bytes with a short pause, so a long paste does not overflow the receive buffer of a board.
 - Not changed: the IDE's commands over the raw REPL, the MCP tool `device_read_console`, which still reads without typing, and the traceback mapping, which reads the same text as before.
 
+## Programs without pages in the simulator (2026-11-13)
+
+- A program is chosen as a file, **Run → Run Program…**, not as a new kind of project: the project model, the validator and the generators do not see it, and projects with pages start exactly as before. A document for programs may come later, if this is not enough.
+- The simulator starts such a program from a folder of its own with board-like modules (`runtime/program`): `display_driver.py` with the contract of `mpy-lvgl-boards` (importing it starts the display; `start()` serves LVGL; `WIDTH`, `HEIGHT`, `BUFFERS`, `indev`, and `_task`, `_timer`, `_arm()`, which `ansiterm.py` uses), and `os.py` and `machine.py`, which extend the built-in modules the way MicroPython documents (`from os import *` with `sys.path` empty). MicroPython is not patched.
+- On a board a timer schedules the LVGL task, which runs in the main thread between bytecodes, also while the program waits for a key. In the simulator a thread of `lvsim` schedules it and sends SIGUSR1 to the main thread, so that a blocking read returns EINTR; the unix port then runs what is scheduled and reads again (`MP_HAL_RETRY_SYSCALL`, and `select.poll` and `time.sleep` do the same). LVGL is therefore touched only by the main thread, as on a board. A thread in the program would have raced the program's own LVGL calls.
+- Keys reach the program through a pipe that `lvsim.keys()` puts in place of standard input. A Ctrl-C becomes a KeyboardInterrupt only while the SIGINT handler of the unix port is installed, that is while `micropython.kbd_intr(3)` is on; otherwise it is a key, as for the editors of the shell.
+- The program's flash is a folder of the IDE's settings, one per program folder, kept between runs. `os.VfsPosix(folder)` alone lets `/..` out; a small VFS in Python (`lms_sandbox.py`) resolves every path itself, and a test removes everything from `/..` and checks that nothing outside changed.
+- `os.dupterm` is compiled into the Linux runtime (`MICROPY_PY_OS_DUPTERM`), the only change to its configuration; it does nothing until a program calls it. The unix port prints LF where a board prints CR LF: `os.dupterm` and the IDE's terminal add the CR.
+- The heap of a program is 32 MB (`-X heapsize`), about the RAM of the STM32H7_CORE: a terminal on a 800×480 display keeps more than one copy of its framebuffer, and the default 2 MB was not enough.
+- `machine.reset()` ends the simulator with exit code 75 and the IDE starts the program again.
+- Not done: Windows (the service uses POSIX threads and signals) and the browser.
+

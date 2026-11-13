@@ -310,6 +310,20 @@ Se l'errore nasce in un modulo, la prima riga è quella del modulo; il gestore c
 
 Mentre il simulatore è avviato il progetto è in sola lettura: una barra sopra l'editor lo ricorda, e il pulsante **Ferma e modifica** ferma l'app. Un errore in un gestore non ferma l'app, quindi dopo un errore il simulatore di solito è ancora avviato.
 
+### Programmi senza pagine
+
+**Esegui → Esegui programma…** esegue un file MicroPython senza pagine disegnate nel designer, come una shell o un editor di testo, come lo eseguirebbe una board. Scegli il file: la sua cartella è il programma. Per ora solo su Linux.
+
+- La cartella viene copiata in una **flash** tutta sua, che tra un avvio e l'altro conserva i file scritti dal programma, come una board. I file della cartella sostituiscono quelli con lo stesso nome; gli altri restano. **Esegui → Apri la cartella della flash del programma** la mostra, **Esegui → Cancella la flash del programma…** la svuota. La tua cartella non viene mai modificata.
+- Il programma vede la flash come `/` e non ne può uscire: `..`, i percorsi assoluti e `rm -r /` restano dentro.
+- Sotto lo schermo si apre un terminale: è la porta seriale del programma. Ciò che il programma stampa compare lì, e ogni tasto premuto lì, o sullo schermo del simulatore, arriva a `sys.stdin` come da PuTTY. Ctrl-C ferma il programma finché `micropython.kbd_intr(3)` è attivo, e arriva come tasto dopo `kbd_intr(-1)`.
+- Come su una board, `import display_driver` avvia il display e `display_driver.start()` serve LVGL in sottofondo, anche mentre il programma aspetta un tasto. Funzionano `os.dupterm`, `os.uname()` e `machine.reset()`; `machine.reset()` fa ripartire il programma.
+- Quando il programma finisce, un REPL di MicroPython prende i tasti.
+- Il progetto aperto non c'entra: resta modificabile, e fornisce la risoluzione e il nome della board.
+- Il heap è di 32 MB, circa la RAM della STM32H7_CORE; su una board più piccola il programma può esaurire la memoria dove il simulatore non la esaurisce.
+
+La shell di `mpy-lvgl-boards` (`examples/shell`) gira così, con i suoi due editor.
+
 ## 10. Lavorare con una board
 
 La [guida alle board](boards.it.md) spiega tutto nel dettaglio; qui il percorso essenziale.

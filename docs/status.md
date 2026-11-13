@@ -31,6 +31,7 @@ below as an open question, not as a formality.
 | Font memory warning | yes | | Waveshare RP2350 | |
 | C export | yes, pixel parity with MicroPython in the simulator | | | in a real C project; fonts in C on a board |
 | Device Console as a terminal (keys as typed, ANSI colours and cursor) | yes: the VT100 sequences cell by cell, the keys, the port taken and given back | | | on a board, with the Linux-like shell of `mpy-lvgl-boards`; on Windows |
+| Programs without pages in the simulator (Run Program) | yes: the service while waiting for a key, Ctrl-C, the flash that cannot be left, reset, the IDE | | the shell of `mpy-lvgl-boards` with `edit` and `vi`, driven by the tests of this work, not yet used by a person | used by a person; Windows, not available |
 | Upload progress window | yes | | RP2350: the figures it shows | the window itself, watched by a person |
 | Buzzer | yes | yes, in the simulator | | on a board |
 | Block: Digital Output | yes, with a fake `machine` | yes, in the simulator | STM32H7_CORE: the two LEDs of the board on pins `B0` and `B1`, driven from a Timer, the pin levels read back and the LEDs seen by the author | other boards |
