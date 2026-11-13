@@ -92,8 +92,15 @@ memory pools on ports without `multi_heap`.
 
 The IDE does not know a board's pins. It relies on two things the firmware provides:
 
-- a frozen module, `display_driver`, with `start()`, `stop()`, `WIDTH`, `HEIGHT`, `BUFFERS`
-  and `indev`; `import display_driver` is all a generated application needs;
+- a frozen module, `display_driver`, with `start()`, `stop()`, `running()`, `backlight()`,
+  `WIDTH`, `HEIGHT`, `BUFFERS`, `PERIOD_MS` and `indev`; `import display_driver` is all a
+  generated application needs. From firmware v0.1.7 this is contract 1, `CONTRACT = 1`,
+  written down in `docs/display-driver.md` of mpy-lvgl-boards. It also promises that a Ctrl-C
+  reaches the program and the screen goes on, on every board. The one case left out is a
+  Ctrl-C that lands in a Python callback of the application, such as an `lv.timer`. That
+  happened 2 times in 60 on the ESP32-S3 and never on the other boards. Each Ctrl-C costs
+  about 30 ms of still screen. The simulator's driver for programs has the same names and
+  behaves the same way;
 - facts read from the running board on connection: MicroPython and LVGL versions, the
   bytecode version, the built-in font sizes, whether fonts can be loaded at run time, free
   RAM and free space.

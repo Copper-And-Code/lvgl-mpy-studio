@@ -1,21 +1,30 @@
 # SPDX-License-Identifier: MIT
 # Copyright (c) 2026 Nunzio Raciti
-"""The display of a program without pages in the simulator, with the contract of a board's driver.
+"""The display of a program without pages in the simulator, with contract 1 of a board's driver.
 
-As on a board, importing it starts the display and LVGL, and start() serves LVGL in the
-background. In the simulator a thread of lvsim schedules _service every PERIOD_MS, which runs in
-the main thread between two bytecodes, also while the program waits for a key. In the browser
-there are no threads: lms_web_boot.py calls serve() while the program waits for a key or sleeps. WIDTH, HEIGHT, BUFFERS and indev
-are those of mpy-lvgl-boards; _task, _timer and _arm() are there too, because ansiterm.py of the
-same repository replaces _task with its own.
+The names an application may rely on are those of docs/display-driver.md in mpy-lvgl-boards:
+CONTRACT, WIDTH, HEIGHT, BUFFERS, PERIOD_MS, indev, start(), stop(), running() and backlight().
+As on a board, importing it starts the display and LVGL, and LVGL is served in the background. In
+the simulator a thread of lvsim schedules _service every PERIOD_MS, which runs in the main thread
+between two bytecodes, also while the program waits for a key. In the browser there are no
+threads: lms_web_boot.py calls serve() while the program waits for a key or sleeps.
+
+A Ctrl-C reaches the program and the screen goes on. Here, as on the STM32H743, a pending Ctrl-C
+is not raised inside the service: it waits for the program. Should one land in the service all
+the same, it is handed on as the boards do, and LVGL waits HOLD_MS before being served again.
+_task, _timer and _arm() are the names ansiterm.py used before contract 1: deprecated, they stay
+for this version.
 """
 import os
 import time
 
+import micropython
 import lvgl as lv
 import lvsim
 
+CONTRACT = 1
 PERIOD_MS = 5
+HOLD_MS = 30
 try:
     from lms_board import HEIGHT, WIDTH  # the browser, where the page writes it: there is no os.getenv
 except ImportError:
@@ -28,6 +37,7 @@ _buffer = bytearray(WIDTH * HEIGHT * 2)
 _timer = None
 _busy = False
 _last = lvsim.ticks_ms()
+_hold = None  # until when LVGL waits after a Ctrl-C
 
 
 def _flush(display, area, _color_p):
@@ -58,12 +68,17 @@ indev.set_read_cb(_read)
 
 
 def _interrupted():
-    stop()
-    print("display_driver: stopped by Ctrl-C (display_driver.start() resumes)")
+    """A Ctrl-C landed in the service: it goes back to the program, and LVGL waits a little."""
+    global _hold
+    _hold = time.ticks_add(lvsim.ticks_ms(), HOLD_MS)
+    try:
+        micropython.schedule(micropython.kbd_intr, None)
+    except (ValueError, RuntimeError):
+        pass  # a runtime without MICROPY_SCHEDULER_STATIC_NODES, or a full queue
 
 
 def _task(_):
-    """What a period does after the tick; a program may replace it, as ansiterm.py does."""
+    """What a period does after the tick; deprecated: ansiterm.py replaced it before contract 1."""
     try:
         lv.timer_handler()
     except KeyboardInterrupt:
@@ -71,11 +86,15 @@ def _task(_):
 
 
 def _service(_):
-    global _busy, _last, _state
+    global _busy, _last, _state, _hold
     if _busy:
         return
     _busy = True
     try:
+        if _hold is not None:
+            if time.ticks_diff(_hold, lvsim.ticks_ms()) > 0:
+                return
+            _hold = None
         state = lvsim.poll()
         if state is None:  # the IDE closed the simulator
             stop()
@@ -97,6 +116,7 @@ BACKGROUND = hasattr(lvsim, "service")  # the simulator; the browser serves LVGL
 
 
 def start():
+    """Resumes the background service; while LVGL is served it does nothing."""
     global _timer
     if _timer is None:
         _timer = PERIOD_MS
@@ -105,11 +125,17 @@ def start():
 
 
 def stop():
+    """Suspends the background service; the screen keeps the last image."""
     global _timer
     if _timer is not None:
         _timer = None
         if BACKGROUND:
             lvsim.service(None, 0)
+
+
+def running():
+    """True while LVGL is served in the background, also during the pause after a Ctrl-C."""
+    return _timer is not None
 
 
 def serve(milliseconds=PERIOD_MS):

@@ -165,11 +165,44 @@ print("left", os.listdir("/"))
 
 
 @needs_runtime
+def test_the_driver_keeps_contract_1_and_every_ctrl_c_reaches_the_program(config):
+    """docs/display-driver.md of mpy-lvgl-boards: the names, and a Ctrl-C that leaves the screen on."""
+    code, output, _flash = boot(config, """
+import sys, time, lvgl as lv, display_driver as d
+print("names", d.CONTRACT, d.WIDTH, d.HEIGHT, d.BUFFERS, d.PERIOD_MS, d.indev is not None, d.backlight())
+d.stop(); d.stop()
+print("stopped", d.running())
+d.start(); d.start()
+print("started", d.running())
+def busy(_):
+    for i in range(2000):
+        pass
+lv.timer_create(busy, 20, None)
+got = 0
+for i in range(6):
+    try:
+        print("READY", i)
+        if i % 2:
+            sys.stdin.read(1)
+        else:
+            while True:
+                time.sleep_ms(10)
+    except KeyboardInterrupt:
+        got += 1
+print("total", got, d.running())
+""", keys=[(1.5, b"")] + [(0.3, b"\x03")] * 6 + [(0.5, b"")])
+    assert "names 1 320 240 1 5 True 100" in output, output
+    assert "stopped False" in output and "started True" in output
+    assert "total 6 True" in output, output
+    assert "Traceback" not in output
+
+
+@needs_runtime
 def test_a_program_finds_a_board_then_the_repl(config):
     code, output, _flash = boot(config, """
 import os, machine, display_driver
 print("uname", os.uname().sysname, os.uname().machine)
-print("display", display_driver.WIDTH, display_driver.HEIGHT, display_driver._timer is not None)
+print("display", display_driver.WIDTH, display_driver.HEIGHT, display_driver.running())
 """, keys=[(1.5, b"1+1\r"), (0.3, b"x = 3; x * 2\r")], board="stm32h7_core")
     assert "uname simulator stm32h7_core (simulator)" in output
     assert "display 320 240 True" in output

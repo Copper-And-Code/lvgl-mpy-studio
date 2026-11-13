@@ -44,6 +44,26 @@ def protected_targets(items, destination):
     return found
 
 
+def shadowed_modules(items, entries):
+    """Names that would be both a folder and a module (.py or .mpy) in the destination, because of this upload.
+
+    entries: the destination as list_dir gives it. MicroPython's import finds the folder first, as a
+    package, so `import name` would no longer find the module.
+    """
+    folders = {entry["name"] for entry in entries if entry["dir"]}
+    modules = {entry["name"].rsplit(".", 1)[0] for entry in entries if not entry["dir"] and entry["name"].endswith((".py", ".mpy"))}
+    new = set()
+    for _local, name in items:
+        parts = name.strip("/").split("/")
+        if len(parts) > 1:
+            folders.add(parts[0])
+            new.add(parts[0])
+        elif parts[0].endswith((".py", ".mpy")):
+            modules.add(parts[0].rsplit(".", 1)[0])
+            new.add(parts[0].rsplit(".", 1)[0])
+    return sorted(name for name in folders & modules if name in new)
+
+
 class UploadFilesDialog(QDialog):
     def __init__(self, settings, parent=None):
         super().__init__(parent)

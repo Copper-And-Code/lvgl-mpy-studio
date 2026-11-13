@@ -255,3 +255,11 @@ As of 2026-10-28, the public commit above still declares LVGL 9.3 for MicroPytho
 - Every program runs as the STM32H7_CORE V1.3, 1024×600, whatever project is open: the owner's choice, since the programs of this kind are written for that board first. The screen of the simulator grows only by whole multiples and shrinks smoothly, so that an 8×16 bitmap font stays legible; this applies to projects with pages too.
 - Not done: Windows (the service uses POSIX threads and signals) and the browser.
 
+## The display driver contract in the simulator (2026-11-14)
+
+- `runtime/program/display_driver.py` follows contract 1 of mpy-lvgl-boards (`docs/display-driver.md` there, firmware v0.1.7). It has the same names and the same promise: a Ctrl-C reaches the program and the screen goes on.
+- In the simulator a pending Ctrl-C is not raised inside the service: it waited for the program 30 times in 30, in a Python loop, in `sys.stdin.read()` and with an `lv.timer` busy, before and after the change, as on the STM32H743. The driver still hands on one that lands in the service, with `micropython.schedule(micropython.kbd_intr, None)` and a pause of `HOLD_MS`, as the boards do. The Linux runtime lacks `MICROPY_SCHEDULER_STATIC_NODES`, so that call raises ValueError there and the driver ignores it. The runtime was not rebuilt for a path that the measurements never reached.
+- In the browser `lms_web_boot.py` raises the KeyboardInterrupt in the program's own wait, never in the service.
+- Before an upload the IDE reads the destination folder and asks about a folder that would hide a module of the same name. MicroPython imports the folder as a package. It does not refuse, since a package of that name may be what the user wants.
+- Run on the Board keeps uploading sources. On the RP2350 without PSRAM the shell does not fit as `.py` and needs `.mpy`. That stays a choice in Upload Files, not an exception for one board: the owner will add SPI RAM.
+

@@ -9,7 +9,7 @@ from lvgl_mpy_studio.core.boards import portable_profile
 from lvgl_mpy_studio.core.i18n import device_error_text, tr
 from lvgl_mpy_studio.device.service import DeviceError
 from lvgl_mpy_studio.gen import live
-from lvgl_mpy_studio.ui.device_files import UploadFilesDialog, protected_targets, run_line
+from lvgl_mpy_studio.ui.device_files import UploadFilesDialog, protected_targets, run_line, shadowed_modules
 from lvgl_mpy_studio.ui.device_panel import DeviceWorker, SelectDeviceDialog, UploadProgress
 
 
@@ -369,7 +369,24 @@ class DeviceMixin:
             answer = QMessageBox.question(self, tr("Upload Files"), tr("The board runs these files at power-on, and they will be replaced:\n{files}\n\nContinue?", files="\n".join(protected)))
             if answer != QMessageBox.Yes:
                 return False
-        return self._with_connection(lambda: self._upload_files(items, destination, compile_python, then))
+        return self._with_connection(lambda: self._check_names_then_upload(items, destination, compile_python, then))
+
+    def _check_names_then_upload(self, items, destination, compile_python, then):
+        """A folder that would hide a module of the same name is asked about first."""
+        def listing():
+            try:
+                return self.device.list_dir(destination)
+            except DeviceError:
+                return []  # a folder that the upload creates
+        def listed(entries):
+            names = shadowed_modules(items, entries)
+            if names:
+                lines = "\n".join(f"{name}/ — {name}.py" for name in names)
+                question = tr("In {folder} on the board a folder and a module would have the same name:\n{names}\n\n`import` finds the folder, not the module. Upload anyway?", folder=destination, names=lines)
+                if QMessageBox.question(self, tr("Upload Files"), question) != QMessageBox.Yes:
+                    return
+            self._device_next = lambda: self._upload_files(items, destination, compile_python, then)
+        return self._device_task(listing, listed)
 
     def _upload_files(self, items, destination, compile_python, then=None):
         board = self.document.project.board["id"]

@@ -28,15 +28,21 @@ To use the editors by name, once: `mkdir /bin`, `cp edit.py /bin/edit.py`,
 2. **Device → Run File on Board…**, `/flash/shell/shell.py` or `/shell/shell.py`.
 3. Use it from **Device Console**: every key reaches the shell as it is typed.
 
+Keep the folder apart from a `shell.py` in the same place: MicroPython's `import shell` finds the
+folder `shell/` first, and a `main.py` that imports the shell then fails. The IDE asks before
+such an upload. On the RP2350 without PSRAM the shell does not fit as source. Upload it with
+**Compile Python files to bytecode (.mpy)**, and leave out `main.py` and `boot.py`, which stay `.py`.
+
 Tried on 13 November 2026 on the STM32H7_CORE V1.3 and the ESP32-4848S040: upload, start,
 `pwd`, `ls`, `uname -a`, `cd`, `exit`. The editors were tried in the simulator only.
 
 ## Origin and licences
 
-Copied on 13 November 2026 from `examples/shell` of
-[mpy-lvgl-boards](https://github.com/Copper-And-Code/mpy-lvgl-boards) (commit `9a4c15a`), with
-one change made the same day in both places: `ansiterm.py` calls `display_driver._arm()` only
-when the driver has it, since the STM32 driver's timer is periodic and has none.
+Copied from `examples/shell` of
+[mpy-lvgl-boards](https://github.com/Copper-And-Code/mpy-lvgl-boards), commit `375cdd6` of
+13 November 2026. With firmware v0.1.7, which has `display_driver.CONTRACT`, `ansiterm.py` only
+calls `display_driver.start()`. With older firmware it falls back to the driver's internal
+names, as before.
 
 The code is MIT, Copyright (c) 2026 Nunzio Raciti. The font in `ansifont.py` is the ASCII part
 of Terminus Font, Copyright (C) 2020 Dimitar Toshkov Zhekov, under the SIL Open Font License 1.1

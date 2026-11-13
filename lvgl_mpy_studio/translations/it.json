@@ -689,6 +689,7 @@
   "Faster to start and smaller. main.py and boot.py stay as source, and so must the programs that a shell runs from /bin or that an editor opens.": "Partono prima e occupano meno. main.py e boot.py restano sorgenti, e così devono restare i programmi che una shell esegue da /bin o che un editor apre.",
   "Files with the same name are replaced; nothing else on the board changes. Binary files are copied as they are.": "I file con lo stesso nome vengono sostituiti; nient'altro sulla board cambia. I file binari vengono copiati così come sono.",
   "The board runs these files at power-on, and they will be replaced:\n{files}\n\nContinue?": "La board esegue questi file all'accensione, e verranno sostituiti:\n{files}\n\nContinuare?",
+  "In {folder} on the board a folder and a module would have the same name:\n{names}\n\n`import` finds the folder, not the module. Upload anyway?": "In {folder} sulla board una cartella e un modulo avrebbero lo stesso nome:\n{names}\n\n`import` trova la cartella, non il modulo. Caricare comunque?",
   "{count} files copied to {folder} on the board.": "{count} file copiati in {folder} sulla board.",
   "A file of the board, such as /flash/shell.py, or a line of Python:": "Un file della board, come /flash/shell.py, o una riga di Python:",
   "Run in the Browser…": "Esegui nel browser…",

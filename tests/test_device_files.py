@@ -9,7 +9,7 @@ import pytest
 from lvgl_mpy_studio.device.common import DeviceError
 from lvgl_mpy_studio.device.service import DeviceSession
 from lvgl_mpy_studio.gen.board_gen import _bytecode_file
-from lvgl_mpy_studio.ui.device_files import folder_items, protected_targets, run_line
+from lvgl_mpy_studio.ui.device_files import folder_items, protected_targets, run_line, shadowed_modules
 
 
 class FakeBoard(DeviceSession):
@@ -113,6 +113,16 @@ def test_files_a_board_runs_at_power_on_are_named():
     assert protected_targets([(None, "main.py")], "/sd/bin") == []
 
 
+def test_a_folder_that_would_hide_a_module_is_named():
+    board = [{"name": "shell.py", "dir": False, "size": 10}, {"name": "lib", "dir": True, "size": 0}, {"name": "vi.mpy", "dir": False, "size": 10}]
+    shell = [(None, "shell/shell.py"), (None, "shell/demo.json")]
+    assert shadowed_modules(shell, board) == ["shell"]  # /shell beside /shell.py: `import shell` finds the folder
+    assert shadowed_modules([(None, "vi/vi.py")], board) == ["vi"]
+    assert shadowed_modules([(None, "lib.py")], board) == ["lib"]
+    assert shadowed_modules([(None, "tools/x.py"), (None, "tools.py")], []) == ["tools"]
+    assert shadowed_modules([(None, "shell.py"), (None, "notes/a.txt"), (None, "lib/x.py")], board) == []  # what is there already is not this upload's doing
+
+
 def test_run_line_runs_a_file_from_its_folder_or_types_code():
     assert run_line("/flash/shell.py") == "import os; os.chdir('/flash'); exec(open('shell.py').read(), {'__name__': '__main__', '__file__': '/flash/shell.py'})"
     assert run_line("main.py").startswith("import os; os.chdir('/');")
@@ -144,4 +154,34 @@ def test_run_file_on_board_types_at_the_prompt(qtbot, tmp_path):
     assert sent.endswith(b"\r")
     assert window.device.console_live
     window.device.disconnect()
+    window.document.undo_stack.setClean()
+
+
+@pytest.mark.parametrize("answer", ["no", "yes"])
+def test_the_upload_asks_before_a_folder_hides_a_module(qtbot, tmp_path, monkeypatch, answer):
+    from PySide6.QtWidgets import QMessageBox
+    from lvgl_mpy_studio.ui.main_window import MainWindow
+
+    class Board(FakeBoard):
+        def list_dir(self, path):
+            return [{"name": name.rsplit("/", 1)[1], "dir": False, "size": len(data)} for name, data in self.files.items() if name.rsplit("/", 1)[0] == path]
+
+    asked = []
+    def question(_parent, _title, text, *args):
+        asked.append(text)
+        return QMessageBox.Yes if answer == "yes" else QMessageBox.No
+    monkeypatch.setattr(QMessageBox, "question", question)
+    window = MainWindow()
+    qtbot.addWidget(window)
+    window.device = Board()
+    window.device.profile = window._board_profile()  # else the window closes a session of another board
+    window.device.files["/flash/shell.py"] = b"print('old')"
+    items = list(folder_items(program(tmp_path)))
+    window._confirm_and_upload_files(items, "/flash")
+    qtbot.waitUntil(lambda: bool(asked) and window._worker is None, timeout=5000)
+    assert "shell/ — shell.py" in asked[0]
+    if answer == "yes":
+        qtbot.waitUntil(lambda: "/flash/shell/shell.py" in window.device.files and window._worker is None, timeout=5000)
+    else:
+        assert not any(name.startswith("/flash/shell/") for name in window.device.files)
     window.document.undo_stack.setClean()
