@@ -60,6 +60,7 @@ def device_error_text(code, output=""):
         "device.autostart.verify": "Launcher verification after writing failed.",
         "device.transfer.incomplete": "The transfer is incomplete; the previous version was not activated.",
         "device.console": "Unable to start the continuous device console.",
+        "device.space": "Not enough free space on the board for these files; none was copied.",
     }
     explanation = tr(messages.get(code, "The device operation failed."))
     detail = f"\n[{code}] {output.strip()}" if output and output.strip() else f"\n[{code}]"

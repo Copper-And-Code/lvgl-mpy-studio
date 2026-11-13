@@ -30,8 +30,9 @@ below as an open question, not as a formality.
 | Fonts of a project, kerning | yes, against LVGL's Montserrat | yes | STM32H7_CORE (seen), RP2350 (loaded) | ESP32-S3 |
 | Font memory warning | yes | | Waveshare RP2350 | |
 | C export | yes, pixel parity with MicroPython in the simulator | | | in a real C project; fonts in C on a board |
-| Device Console as a terminal (keys as typed, ANSI colours and cursor) | yes: the VT100 sequences cell by cell, the keys, the port taken and given back | | | on a board, with the Linux-like shell of `mpy-lvgl-boards`; on Windows |
+| Device Console as a terminal (keys as typed, ANSI colours and cursor) | yes: the VT100 sequences cell by cell, the keys, the port taken and given back | | STM32H7_CORE V1.3 and ESP32-4848S040, 13 November 2026, driven by a script through the IDE's code: the shell typed to and read back, the console stopped and started again three times | typed by a person; full-screen editors on a board; Windows |
 | Programs without pages in the simulator (Run Program) | yes: the service while waiting for a key, Ctrl-C, the flash that cannot be left, reset, the IDE | | the shell of `mpy-lvgl-boards` with `edit` and `vi`, driven by the tests of this work, not yet used by a person | used by a person; Windows, not available |
+| Upload Files, Run File on Board | yes, with a board simulated in memory and a fake serial port | | STM32H7_CORE V1.3 (over its USB) and ESP32-4848S040, 13 November 2026: the shell of `examples/shell` copied (6 files, 110 kB, about 32 s) and started, `pwd`, `ls`, `uname -a`, `cd`, `exit` | the editors on a board; the RP2350; used by a person |
 | Upload progress window | yes | | RP2350: the figures it shows | the window itself, watched by a person |
 | Buzzer | yes | yes, in the simulator | | on a board |
 | Block: Digital Output | yes, with a fake `machine` | yes, in the simulator | STM32H7_CORE: the two LEDs of the board on pins `B0` and `B1`, driven from a Timer, the pin levels read back and the LEDs seen by the author | other boards |

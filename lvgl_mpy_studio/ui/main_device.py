@@ -2,13 +2,14 @@ import copy
 import json
 import threading
 
-from PySide6.QtWidgets import QDialog, QMessageBox
+from PySide6.QtWidgets import QDialog, QDockWidget, QInputDialog, QMessageBox
 
 from lvgl_mpy_studio.build.compiler import traceback_errors
 from lvgl_mpy_studio.core.boards import portable_profile
 from lvgl_mpy_studio.core.i18n import device_error_text, tr
 from lvgl_mpy_studio.device.service import DeviceError
 from lvgl_mpy_studio.gen import live
+from lvgl_mpy_studio.ui.device_files import UploadFilesDialog, protected_targets, run_line
 from lvgl_mpy_studio.ui.device_panel import DeviceWorker, SelectDeviceDialog, UploadProgress
 
 
@@ -122,6 +123,8 @@ class DeviceMixin:
         self.run_program_action.setEnabled(not running)
         self.upload_action.setEnabled(not busy and board)
         self.upload_run_action.setEnabled(not busy and board)
+        self.upload_files_action.setEnabled(not busy and board)
+        self.run_file_action.setEnabled(not busy and board)
         self.device_info_action.setEnabled(not busy and connected)
         self.device_restart_action.setEnabled(not busy and connected)
         self.autostart_install_action.setEnabled(not busy and connected)
@@ -333,6 +336,63 @@ class DeviceMixin:
     def restart_device(self):
         self.device_app_active = False
         return self._device_task(self.device.restart, lambda output: self.device_console.append(output))
+
+    # ---- Files and programs outside the project ----
+
+    def upload_files(self):
+        dialog = UploadFilesDialog(self.settings, self)
+        if dialog.exec() != QDialog.Accepted:
+            return False
+        items, destination, compile_python = dialog.choice()
+        return self._confirm_and_upload_files(items, destination, compile_python)
+
+    def _confirm_and_upload_files(self, items, destination, compile_python=False):
+        protected = protected_targets(items, destination)
+        if protected:
+            answer = QMessageBox.question(self, tr("Upload Files"), tr("The board runs these files at power-on, and they will be replaced:\n{files}\n\nContinue?", files="\n".join(protected)))
+            if answer != QMessageBox.Yes:
+                return False
+        return self._with_connection(lambda: self._upload_files(items, destination, compile_python))
+
+    def _upload_files(self, items, destination, compile_python):
+        board = self.document.project.board["id"]
+        operation = lambda: self.device.upload_files(items, destination, compile_python, progress=self._worker.progress.emit, cancel=self._device_cancel)
+        def completed(result):
+            self._show_warnings(result["warnings"])
+            if self._upload_progress is not None:
+                self.settings.setValue(self._upload_rate_key, self._upload_progress.rate)
+            message = tr("{count} files copied to {folder} on the board.", count=len(result["files"]), folder=result["destination"])
+            self.device_console.message(message)
+            self.statusBar().showMessage(message, 5000)
+        if not self._device_task(operation, completed):
+            return False
+        self._upload_rate_key = f"device/uploadRate/{board}"
+        self._upload_progress = UploadProgress(self, rate=self.settings.value(self._upload_rate_key, 0, type=float))
+        self._upload_progress.cancelRequested.connect(self.cancel_device_operation)
+        return True
+
+    def run_file_on_board(self, text=None):
+        if text is None:
+            last = self.settings.value("device/runFile", "/flash/main.py")
+            text, accepted = QInputDialog.getText(self, tr("Run File on Board"), tr("A file of the board, such as /flash/shell.py, or a line of Python:"), text=last)
+            if not accepted or not text.strip():
+                return False
+        self.settings.setValue("device/runFile", text.strip())
+        return self._with_connection(lambda: self._run_on_board(text))
+
+    def _run_on_board(self, text):
+        """Typed at the board's prompt through the console, so that the program reads its keys from there."""
+        if not self.device.console_live and not self._start_device_console():
+            self.device_console.message(self._console_problem or tr("Console not available."))
+            self._update_device_actions()
+            return False
+        self._update_device_actions()
+        self.console_write(b"\x03" + run_line(text).encode("utf-8") + b"\r")  # Ctrl-C first: a program already running stops
+        dock = self.findChild(QDockWidget, "deviceConsoleDock")
+        if dock is not None:
+            dock.raise_()
+        self.device_console.terminal.setFocus()
+        return True
 
     def install_autostart(self):
         project = copy.deepcopy(self.document.project)

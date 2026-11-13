@@ -14,7 +14,7 @@ import time
 
 from lvgl_mpy_studio.core.boards import compatible, portable_profile, profile_fonts, validate_profile
 from lvgl_mpy_studio.core.i18n import tr
-from lvgl_mpy_studio.gen.board_gen import BoardSyntaxError, generate_board, precompile_board
+from lvgl_mpy_studio.gen.board_gen import BoardSyntaxError, _bytecode_file, generate_board, precompile_board
 from lvgl_mpy_studio.platform import CREATE_NO_WINDOW, IS_WINDOWS
 from lvgl_mpy_studio.gen.fonts import font_memory_warning
 from lvgl_mpy_studio.gen.live import LIVE_OK
@@ -279,7 +279,7 @@ class DeviceSession(AutostartMixin):
             while self._console is console:
                 try:
                     data = console.read_some() if hasattr(console, "read_some") else console.read(1)
-                except (OSError, UartError, ValueError):
+                except (OSError, UartError, ValueError, TypeError):  # TypeError: pyserial on a port closed under it
                     break
                 if not data:  # nothing within the timeout: the port goes away only with an error
                     continue
@@ -322,15 +322,15 @@ class DeviceSession(AutostartMixin):
 
     def stop_console(self):
         console, self._console = self._console, None
+        thread = self._console_thread
+        self._console_thread = None
+        if thread and thread is not threading.current_thread():
+            thread.join(timeout=1)  # the reader stops within one read timeout; closing first broke its read
         if console is not None and console is not self._uart:
             try:
                 console.close()
             except (OSError, ValueError):
                 pass
-        thread = self._console_thread
-        self._console_thread = None
-        if thread and thread is not threading.current_thread():
-            thread.join(timeout=1)
 
     def list_ports(self):
         output = self._execute(["devs"], timeout=5)
@@ -585,6 +585,57 @@ except OSError:
                 raise
             finally:
                 temporary.cleanup()
+
+    def upload_files(self, items, destination, compile_python=False, progress=None, cancel=None):
+        """Copy files of the PC to a folder of the board, as they are: sources, data or binaries.
+
+        items are (local path, relative name with /). Each file is written under a temporary
+        name and then renamed, so that an error half way leaves the old file, not a broken one;
+        nothing else in the folder is touched. With compile_python the .py files become .mpy,
+        except main.py and boot.py, which the board runs as source."""
+        self._require()
+        destination = "/" + destination.strip().strip("/") if destination.strip().strip("/") else "/"
+        if not destination.startswith("/") or ".." in destination.split("/"):
+            raise DeviceError("device.command", destination)
+        with self._operation, tempfile.TemporaryDirectory(prefix="lvgl-mpy-studio-files-") as temporary:
+            warnings, files = [], []
+            mpy = self._info(self.profile).get("mpy") if compile_python else None
+            for local, name in items:
+                local, name = Path(local), name.strip("/")
+                if not name or ".." in name.split("/"):
+                    raise DeviceError("device.command", name)
+                if compile_python and name.endswith(".py") and Path(name).name not in ("main.py", "boot.py"):
+                    target = Path(temporary) / (str(len(files)) + ".mpy")
+                    data = _bytecode_file(local, target)
+                    if data and isinstance(mpy, int) and data[:1] == b"M" and data[1] == mpy & 0xFF:
+                        local, name = target, name[:-3] + ".mpy"
+                    else:
+                        warnings.append(tr("{name}: no bytecode for this firmware, uploaded as source.", name=name))
+                files.append((local, name, local.stat().st_size))
+            total = sum(size for _local, _name, size in files)
+            folders = sorted({destination} | {f"{destination}/{name}".replace("//", "/").rsplit("/", 1)[0] for _local, name, _size in files} - {""})
+            self.state = "transferring"
+            try:
+                make = "import os\nfor d in %r:\n p=''\n for part in d.split('/')[1:]:\n  p+='/'+part\n  try:os.mkdir(p)\n  except OSError:pass\ns=os.statvfs(%r)\nprint('LVGL_MPY_STUDIO_FREE=%%d'%%(s[0]*s[3]))" % (folders, destination)
+                free = marked_json(self._exec(make, 20), "LVGL_MPY_STUDIO_FREE", missing=None)
+                if isinstance(free, int) and total > free:
+                    raise DeviceError("device.space", tr("{needed} bytes to write, {free} free in {folder}", needed=total, free=free, folder=destination))
+                sent = 0
+                for local, name, size in files:
+                    self._check_cancel(cancel)
+                    remote = f"{destination}/{name}".replace("//", "/")
+                    if progress:
+                        progress(sent, total, name, size)
+                    self._put(local, remote + ".lms-part", cancel, (lambda done, sent=sent, name=name, size=size: progress(sent + done, total, name, size)) if progress else None)
+                    swap = "import os\nn=%r\nif os.stat(n+'.lms-part')[6]!=%d:raise OSError('incomplete')\ntry:os.remove(n)\nexcept OSError:pass\nos.rename(n+'.lms-part',n)\nprint('LVGL_MPY_STUDIO_DONE=1')" % (remote, size)
+                    if "LVGL_MPY_STUDIO_DONE=1" not in self._exec(swap, 20):
+                        raise DeviceError("device.transfer.incomplete", remote)
+                    sent += size
+                if progress:
+                    progress(total, total, "", 0)
+            finally:
+                self.state = "ready"
+            return {"destination": destination, "files": [f"{destination}/{name}".replace("//", "/") for _local, name, _size in files], "bytes": total, "warnings": warnings}
 
     def run(self, project=None, output_dir=None, _uploaded=False, progress=None, cancel=None, _generated=None):
         self._require()

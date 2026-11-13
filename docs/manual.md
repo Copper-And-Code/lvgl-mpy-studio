@@ -344,6 +344,8 @@ Other entries of the **Device** menu:
 
 - **Live Editing**: with the app running on the board, every change to the page appears on the board in under a second, without uploading everything again. Code changes need F5.
 - **Upload Project** copies the app without starting it; **Upload and Run** copies and starts it.
+- **Upload Files…** copies files or whole folders of the PC to a folder of the board, such as `/flash`, `/sd` or `/sd/bin`, outside any project: a program without pages, its data, binary files. Files with the same name are replaced, nothing else changes; each file is written under a temporary name and renamed at the end, so an interrupted copy leaves the old file. Python files can be compiled to bytecode, except `main.py` and `boot.py`. The IDE asks before replacing a file that the board runs at power-on.
+- **Run File on Board…** types at the board's prompt the line that runs a file of the board, such as `/flash/shell.py`, from its folder, or any line of Python. The program reads its keys from **Device Console**, as from PuTTY.
 - **Device Information**: firmware, LVGL version, memory, touch and compatibility with the profile.
 - **Install Autostart…**: the app starts on its own when the board powers up. **Remove Autostart…** restores the earlier launcher, saved by the IDE.
 - **Manage Board Profiles…**: profiles describe display, touch, buzzer and requirements of each board.

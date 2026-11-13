@@ -344,6 +344,8 @@ Altre voci del menu **Dispositivo**:
 
 - **Modifica dal vivo**: con l'app avviata sulla board, ogni modifica alla pagina compare sulla board in meno di un secondo, senza ricaricare tutto. Le modifiche al codice richiedono F5.
 - **Carica progetto** copia l'app senza avviarla; **Carica ed esegui** la copia e la avvia.
+- **Carica file…** copia file o cartelle intere del PC in una cartella della board, come `/flash`, `/sd` o `/sd/bin`, fuori da qualsiasi progetto: un programma senza pagine, i suoi dati, file binari. I file con lo stesso nome vengono sostituiti, nient'altro cambia; ogni file viene scritto con un nome temporaneo e rinominato alla fine, così una copia interrotta lascia il file vecchio. I file Python possono essere compilati in bytecode, tranne `main.py` e `boot.py`. L'IDE chiede prima di sostituire un file che la board esegue all'accensione.
+- **Esegui file sulla board…** scrive al prompt della board la riga che esegue un file della board, come `/flash/shell.py`, dalla sua cartella, o una qualsiasi riga di Python. Il programma legge i tasti da **Console dispositivo**, come da PuTTY.
 - **Informazioni dispositivo**: firmware, versione di LVGL, memoria, touch e compatibilità con il profilo.
 - **Installa avvio automatico…**: l'app parte da sola all'accensione della board. **Rimuovi avvio automatico…** ripristina il lanciatore di prima, salvato dall'IDE.
 - **Gestisci profili board…**: i profili descrivono display, touch, buzzer e requisiti di ogni board.

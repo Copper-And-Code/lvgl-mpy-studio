@@ -224,3 +224,18 @@ while True:
     window.sim_panel.shutdown()
     assert Path(window.settings.value("simulator/program")) == entry
     window.document.undo_stack.setClean()
+
+
+@needs_runtime
+def test_the_shell_example_runs_with_its_editors(config):
+    entry = root_dir() / "examples" / "shell" / "shell.py"
+    prepared = program.prepare_program(entry, 1024, 600, "stm32h7_core_v1_3_1024x600")
+    keys = [(2.0, b"mkdir /bin\r"), (0.5, b"cp edit.py /bin/edit.py\r"), (0.5, b"echo ciao > a.txt\r"),
+            (0.5, b"edit a.txt\r"), (1.5, b"\x1b[F mondo"), (0.3, b"\x13"), (0.3, b"\x11"),
+            (0.8, b"cat a.txt\r"), (0.5, b"exit\r"), (0.8, b"print(6*7)\r"), (0.5, b"")]
+    code, output = run_runtime(prepared["boot"], prepared["arguments"], keys=keys, env=prepared["environment"], timeout=20)
+    assert "MicroPython shell" in output, output
+    assert "ciao mondo" in output, output
+    assert "Traceback" not in output, output
+    assert "42" in output.split("print(6*7)", 1)[1]
+    assert (prepared["flash"] / "a.txt").read_text() == "ciao mondo\n"

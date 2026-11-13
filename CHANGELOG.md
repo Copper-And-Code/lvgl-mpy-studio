@@ -4,6 +4,8 @@
 
 ### Added
 
+- **Device → Upload Files…** copies files or folders of the PC to a folder of the board, outside any project, binaries included: each file is written under a temporary name and renamed, nothing else on the board changes, the space is checked first, and Python files can become bytecode. **Device → Run File on Board…** starts a file of the board from its prompt, so that it reads its keys from the Device Console.
+
 - **Programs without pages in the simulator** (Linux). **Run → Run Program…** runs a MicroPython file and its folder as a board would: a flash of its own that keeps the files the program writes, `/` limited to that flash, a terminal under the screen as the serial port, LVGL served in the background while the program waits for a key, `os.dupterm`, `os.uname()` and `machine.reset()`, and a REPL when the program ends. The Linux-like shell of `mpy-lvgl-boards`, with its two editors, runs this way. Projects with pages start as before.
 
 ### Changed
