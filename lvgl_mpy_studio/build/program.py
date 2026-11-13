@@ -18,6 +18,15 @@ PROGRAM_ENTRY = ["-X", f"heapsize={HEAP}", "-c", "import lms_program_boot"]
 RESET_EXIT_CODE = 75  # machine.reset() in the simulator: see runtime/program/machine.py
 SKIPPED = {"__pycache__", ".git", ".hg", ".svn", ".venv", "node_modules"}
 MAX_BYTES = 64 * 1024 * 1024  # a folder larger than this is not a program for a board
+PROGRAM_BOARD = "stm32h7_core_v1_3_1024x600"  # every program runs as this board, whatever project is open
+
+
+def program_board():
+    """The board a program runs as: (id, width, height)."""
+    from lvgl_mpy_studio.core.boards import builtin_profiles
+
+    board = next(profile for profile in builtin_profiles() if profile["id"] == PROGRAM_BOARD)
+    return board["id"], board["logicalWidth"], board["logicalHeight"]
 
 
 def program_dir(folder):

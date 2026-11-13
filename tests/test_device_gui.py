@@ -202,8 +202,9 @@ def test_new_project_uses_saved_default_board(qtbot, tmp_path):
     assert not window.document.modified
     window.clear_new_project_defaults()
     window.new_project()
-    assert window.document.project.board is None
-    assert window.run_target == SIMULATOR_MICROPYTHON
+    assert window.document.project.board["id"] == "stm32h7_core_v1_3_1024x600"  # without saved defaults
+    assert (window.document.project.display.width, window.document.project.display.height) == (1024, 600)
+    assert window.run_target == SIMULATOR_MICROPYTHON  # the board gives the size; the simulator stays the target
 
 
 def test_default_with_deleted_profile_falls_back_to_simulator(qtbot, tmp_path):

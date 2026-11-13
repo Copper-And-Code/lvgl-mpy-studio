@@ -57,6 +57,8 @@ class SimScreen(QWidget):
         factor = min(self.width() / width, self.height() / height)
         if self.physical_pixels:
             factor = min(factor, 1.0)
+        if factor >= 1:
+            factor = int(factor)  # whole multiples only: at 1.4x some rows of pixels would be doubled and others not
         width, height = width * factor, height * factor
         return QRectF((self.width() - width) / 2, (self.height() - height) / 2, width, height)
 
@@ -64,8 +66,9 @@ class SimScreen(QWidget):
         painter = QPainter(self)
         painter.fillRect(self.rect(), canvas_color())
         if not self.image.isNull():
-            painter.setRenderHint(QPainter.SmoothPixmapTransform, False)
-            painter.drawImage(self._target(), self.image)
+            target = self._target()
+            painter.setRenderHint(QPainter.SmoothPixmapTransform, target.width() < self.image.width())  # shrinking drops pixels: average them
+            painter.drawImage(target, self.image)
 
     def _coordinates(self, position):
         target = self._target()

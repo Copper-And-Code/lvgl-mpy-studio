@@ -319,7 +319,7 @@ While the simulator is running the project is read-only: a bar above the editor 
 - A terminal opens under the screen: it is the program's serial port. What the program prints appears there, and each key typed there, or on the screen of the simulator, reaches `sys.stdin` as it would from PuTTY. Ctrl-C stops the program while `micropython.kbd_intr(3)` is on, and arrives as a key after `kbd_intr(-1)`.
 - As on a board, `import display_driver` starts the display, and `display_driver.start()` serves LVGL in the background, also while the program waits for a key. `os.dupterm`, `os.uname()` and `machine.reset()` work; `machine.reset()` starts the program again.
 - When the program ends, a MicroPython REPL takes the keys.
-- The open project is not involved: it stays editable, and gives the resolution and the board name.
+- The open project is not involved and stays editable. Every program runs as the STM32H7_CORE V1.3, 1024×600.
 - The heap is 32 MB, about the RAM of the STM32H7_CORE; on a smaller board the program may run out of memory where the simulator does not.
 
 The shell of `mpy-lvgl-boards` (`examples/shell`) runs this way with its two editors.
@@ -350,7 +350,7 @@ Other entries of the **Device** menu:
 
 Each project has its own identifier, so on the board it goes to a separate folder and does not overwrite other apps, even with the same name.
 
-In the run target selector, **Use as default for new projects** makes new projects start with that board and its resolution.
+A new project starts for the STM32H7_CORE V1.3, 1024×600, and runs in the simulator. In the run target selector, **Use as default for new projects** makes new projects start with another board and its resolution instead.
 
 ## 11. Memory: flash and RAM
 

@@ -7,7 +7,7 @@ from PySide6.QtGui import QDesktopServices
 from PySide6.QtWidgets import QDockWidget, QFileDialog, QMessageBox, QTreeWidgetItem
 
 from lvgl_mpy_studio.build.compiler import CompileError, compile_python, map_error, traceback_errors
-from lvgl_mpy_studio.build.program import flash_dir, prepare_program, reset_flash
+from lvgl_mpy_studio.build.program import flash_dir, prepare_program, program_board, reset_flash
 from lvgl_mpy_studio.core.i18n import tr
 from lvgl_mpy_studio.gen.project_gen import generate_project
 from lvgl_mpy_studio.platform import IS_WINDOWS
@@ -95,16 +95,15 @@ class RunMixin:
                 return False
             entry = path
         entry = Path(entry)
-        project = self.document.project
-        board = project.board["id"] if project.board else "simulator"
+        board, width, height = program_board()
         try:
-            prepared = prepare_program(entry, project.display.width, project.display.height, board)
+            prepared = prepare_program(entry, width, height, board)
         except (OSError, ValueError) as exc:
             self.append_error(str(exc))
             return False
         self.settings.setValue("simulator/program", str(entry))
         self._program_entry = entry
-        self.output.appendPlainText(tr("Program {name}, {width}×{height}; its flash is {flash}", name=entry.name, width=project.display.width, height=project.display.height, flash=prepared["flash"]))
+        self.output.appendPlainText(tr("Program {name}, {width}×{height}; its flash is {flash}", name=entry.name, width=width, height=height, flash=prepared["flash"]))
         self.tabs.setCurrentWidget(self.sim_panel)
         try:
             self.sim_panel.start(prepared["boot"], prepared["arguments"], prepared["environment"])

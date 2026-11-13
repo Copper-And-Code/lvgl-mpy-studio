@@ -52,6 +52,10 @@ def test_prepare_copies_the_folder_like_an_upload(config):
     assert not flash.exists()
 
 
+def test_every_program_runs_as_the_stm32h7_core():
+    assert program.program_board() == ("stm32h7_core_v1_3_1024x600", 1024, 600)
+
+
 def test_prepare_refuses_what_is_not_a_program(config, monkeypatch):
     with pytest.raises(ValueError):
         program.prepare_program(write(config / "notes.txt", ""), 480, 320)

@@ -252,5 +252,6 @@ As of 2026-10-28, the public commit above still declares LVGL 9.3 for MicroPytho
 - `os.dupterm` is compiled into the Linux runtime (`MICROPY_PY_OS_DUPTERM`), the only change to its configuration; it does nothing until a program calls it. The unix port prints LF where a board prints CR LF: `os.dupterm` and the IDE's terminal add the CR.
 - The heap of a program is 32 MB (`-X heapsize`), about the RAM of the STM32H7_CORE: a terminal on a 800×480 display keeps more than one copy of its framebuffer, and the default 2 MB was not enough.
 - `machine.reset()` ends the simulator with exit code 75 and the IDE starts the program again.
+- Every program runs as the STM32H7_CORE V1.3, 1024×600, whatever project is open: the owner's choice, since the programs of this kind are written for that board first. The screen of the simulator grows only by whole multiples and shrinks smoothly, so that an 8×16 bitmap font stays legible; this applies to projects with pages too.
 - Not done: Windows (the service uses POSIX threads and signals) and the browser.
 

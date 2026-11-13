@@ -16,6 +16,7 @@ from lvgl_mpy_studio.ui.document import ExternalChangeError
 
 
 DEFAULTS_KEY = "defaults/newProject"
+NEW_PROJECT_BOARD = "stm32h7_core_v1_3_1024x600"  # without saved defaults, a new project is for this board
 
 
 class FilesMixin:
@@ -222,9 +223,10 @@ class FilesMixin:
         return True
 
     def _default_project(self):
+        """A new project: the defaults saved by the user, or else the STM32H7_CORE V1.3 at 1024x600, run in the simulator."""
         project = Project()
         try:
-            defaults = json.loads(self.settings.value(DEFAULTS_KEY, "") or "{}")
+            defaults = json.loads(self.settings.value(DEFAULTS_KEY, "") or "{}") or {"board": NEW_PROJECT_BOARD}
             profile = self.profile_store.get(defaults.get("board"))
             if profile:
                 project.board = portable_profile(profile)

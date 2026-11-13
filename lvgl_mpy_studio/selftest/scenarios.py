@@ -192,9 +192,9 @@ def resolution(ide):
     def size():
         return ide.project.display.width, ide.project.display.height
 
-    with ide.step("A new project is 800×480 and the toolbar says so"):
-        ide.equal(size(), (800, 480), "resolution of a new project")
-        ide.equal(ide.window.resolution_selector.text(), "800×480", "text of the resolution button")
+    with ide.step("A new project is 1024×600, for the STM32H7_CORE, and the toolbar says so"):
+        ide.equal(size(), (1024, 600), "resolution of a new project")
+        ide.equal(ide.window.resolution_selector.text(), "1024×600", "text of the resolution button")
     with ide.step("Choose 480×480 and adapt the widgets"):
         ide.answer_resize("adapt")
         ide.choose_resolution("480×480")
@@ -221,10 +221,10 @@ def resolution(ide):
         ide.choose_resolution("Rotate")
         ide.equal(size(), (600, 1024), "resolution after Rotate")
         ide.check(inside(600, 1024), "a widget is outside the page after rotating")
-    with ide.step("Undo three times: back to 800×480 with the widgets where they were"):
+    with ide.step("Undo three times: back to 1024×600 with the widgets where they were"):
         for _ in range(3):
             ide.choose(ide.window.undo_action)
-        ide.equal(size(), (800, 480), "resolution after undoing")
+        ide.equal(size(), (1024, 600), "resolution after undoing")
         ide.equal({name: ide.project.find_widget(button).props[name] for name in ("x", "y", "width", "height")}, {"x": 40, "y": 30, "width": 200, "height": 80}, "button after undoing")
     with ide.step("Start the simulator at 480×480: the screen has that size"):
         ide.answer_resize("adapt")

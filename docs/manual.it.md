@@ -319,7 +319,7 @@ Mentre il simulatore è avviato il progetto è in sola lettura: una barra sopra 
 - Sotto lo schermo si apre un terminale: è la porta seriale del programma. Ciò che il programma stampa compare lì, e ogni tasto premuto lì, o sullo schermo del simulatore, arriva a `sys.stdin` come da PuTTY. Ctrl-C ferma il programma finché `micropython.kbd_intr(3)` è attivo, e arriva come tasto dopo `kbd_intr(-1)`.
 - Come su una board, `import display_driver` avvia il display e `display_driver.start()` serve LVGL in sottofondo, anche mentre il programma aspetta un tasto. Funzionano `os.dupterm`, `os.uname()` e `machine.reset()`; `machine.reset()` fa ripartire il programma.
 - Quando il programma finisce, un REPL di MicroPython prende i tasti.
-- Il progetto aperto non c'entra: resta modificabile, e fornisce la risoluzione e il nome della board.
+- Il progetto aperto non c'entra e resta modificabile. Ogni programma gira come la STM32H7_CORE V1.3, 1024×600.
 - Il heap è di 32 MB, circa la RAM della STM32H7_CORE; su una board più piccola il programma può esaurire la memoria dove il simulatore non la esaurisce.
 
 La shell di `mpy-lvgl-boards` (`examples/shell`) gira così, con i suoi due editor.
@@ -350,7 +350,7 @@ Altre voci del menu **Dispositivo**:
 
 Ogni progetto ha un identificativo suo, quindi sulla board finisce in una cartella separata e non sovrascrive altre app, anche se hanno lo stesso nome.
 
-Nel selettore della destinazione, **Usa come predefinito per i nuovi progetti** fa partire i nuovi progetti già con quella board e la sua risoluzione.
+Un progetto nuovo parte per la STM32H7_CORE V1.3, 1024×600, e gira nel simulatore. Nel selettore della destinazione, **Usa come predefinito per i nuovi progetti** fa partire i nuovi progetti con un'altra board e la sua risoluzione.
 
 ## 11. Memoria: flash e RAM
 

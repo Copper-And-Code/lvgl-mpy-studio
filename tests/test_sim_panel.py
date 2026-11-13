@@ -115,6 +115,20 @@ def test_physical_pixel_scaling_uses_device_pixel_ratio(qtbot):
     assert target.height() == 480
 
 
+
+def test_screen_grows_by_whole_multiples_and_shrinks_smoothly(qtbot):
+    from lvgl_mpy_studio.ui.sim_panel import SimScreen
+
+    screen = SimScreen()  # 800x480
+    qtbot.addWidget(screen)
+    screen.resize(1140, 690)  # 1.43 times: rows of an 8x16 font would be doubled unevenly
+    assert (screen._target().width(), screen._target().height()) == (800, 480)
+    screen.resize(1700, 1000)
+    assert screen._target().width() == 1600
+    screen.resize(600, 400)  # smaller than the screen: it shrinks to fit
+    assert screen._target().width() == 600
+    assert screen._coordinates(screen._target().center()) == (400, 240)
+
 def test_unicode_project_path_start_and_stop(qtbot, tmp_path):
     project = Project("Progetto è")
     project.add_widget(project.pages[0], "button", name="button1")
