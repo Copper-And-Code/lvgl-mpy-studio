@@ -74,6 +74,9 @@ Firefox, Safari, and a real phone with touch and sound have not been tried.
   error. Tests under Wine had shown neither. A third defect, reported by the author, is
   corrected: started from the program file, a console window flashed four times at almost
   every operation. On 13 November 2026 the author saw no such window with the package of 0.6.1.
+  With a package built on 13 November 2026 from the branch `programs-without-pages`, the author
+  used a board on a COM port; the window's icon and pinning it to the taskbar did not work.
+  Not looked into yet.
 - **The IDE does not know the pins of a board.** A block takes the pin the user types, a
   number or a name such as `PA5`, and nothing warns when it is one the display or the memory
   already uses.

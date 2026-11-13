@@ -13,6 +13,7 @@ datas = [
     (str(root / "lvgl_mpy_studio/blocks"), "lvgl_mpy_studio/blocks"),
     (str(root / "lvgl_mpy_studio/icon.ico"), "lvgl_mpy_studio"),
     (str(root / "runtime/display_driver.py"), "runtime"),
+    (str(root / "runtime/program"), "runtime/program"),  # programs without pages
     (str(root / "native/lvsim"), "native/lvsim"),
     # Only what is needed to build the C target: no tests, demos, documentation or scripts.
     (str(root / ".reference/lvgl-bindings/lvgl/src"), ".reference/lvgl-bindings/lvgl/src"),

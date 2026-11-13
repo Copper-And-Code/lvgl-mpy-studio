@@ -75,6 +75,8 @@ mkdir -p "$OUT/runtime/out-web"
 cp "$ROOT/runtime/out-web/micropython.mjs" "$ROOT/runtime/out-web/micropython.wasm" "$OUT/runtime/out-web/"
 cp -r "$ROOT/runtime/web" "$OUT/runtime/"
 cp "$ROOT/runtime/display_driver.py" "$OUT/runtime/"
+mkdir -p "$OUT/runtime/program"  # programs without pages: Run in the Browser builds pages from it
+cp "$ROOT"/runtime/program/*.py "$OUT/runtime/program/"
 cp -a "$ROOT/native" "$OUT/"
 # Only what is needed to build the C target.
 mkdir -p "$OUT/.reference/lvgl-bindings/lvgl"

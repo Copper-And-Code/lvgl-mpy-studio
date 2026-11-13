@@ -55,3 +55,12 @@ def test_windows_portable_bundles_msvc_runtime():
     assert "msvcp140.dll_amd64" in source
     assert '"$VC_RUNTIME"/*.dll_amd64' in source
     assert '"$OUT/python/$name"' in source
+
+
+def test_packages_carry_the_runtime_of_programs_without_pages():
+    """Run Program and Run in the Browser need runtime/program; the browser page needs runtime/web too."""
+    portable = (ROOT / "packaging/build_windows_portable.sh").read_text(encoding="utf-8")
+    assert 'runtime/program/*.py' in portable and 'cp -r "$ROOT/runtime/web"' in portable
+    for spec in ("lvgl-mpy-studio.spec", "lvgl-mpy-studio-windows.spec"):
+        text = (ROOT / "packaging" / spec).read_text(encoding="utf-8")
+        assert '"runtime/program"' in text, spec
