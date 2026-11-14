@@ -1192,6 +1192,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#the-display-driver-contract-in-the-simulator-2026-11-14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The display driver contract in the simulator (2026-11-14)
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1614,6 +1625,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#the-display-driver-contract-in-the-simulator-2026-11-14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The display driver contract in the simulator (2026-11-14)
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1885,6 +1907,14 @@
 <li><code>machine.reset()</code> ends the simulator with exit code 75 and the IDE starts the program again.</li>
 <li>Every program runs as the STM32H7_CORE V1.3, 1024×600, whatever project is open: the owner's choice, since the programs of this kind are written for that board first. The screen of the simulator grows only by whole multiples and shrinks smoothly, so that an 8×16 bitmap font stays legible; this applies to projects with pages too.</li>
 <li>Not done: Windows (the service uses POSIX threads and signals) and the browser.</li>
+</ul>
+<h2 id="the-display-driver-contract-in-the-simulator-2026-11-14">The display driver contract in the simulator (2026-11-14)<a class="headerlink" href="#the-display-driver-contract-in-the-simulator-2026-11-14" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>runtime/program/display_driver.py</code> follows contract 1 of mpy-lvgl-boards (<code>docs/display-driver.md</code> there, firmware v0.1.7). It has the same names and the same promise: a Ctrl-C reaches the program and the screen goes on.</li>
+<li>In the simulator a pending Ctrl-C is not raised inside the service: it waited for the program 30 times in 30, in a Python loop, in <code>sys.stdin.read()</code> and with an <code>lv.timer</code> busy, before and after the change, as on the STM32H743. The driver still hands on one that lands in the service, with <code>micropython.schedule(micropython.kbd_intr, None)</code> and a pause of <code>HOLD_MS</code>, as the boards do. The Linux runtime lacks <code>MICROPY_SCHEDULER_STATIC_NODES</code>, so that call raises ValueError there and the driver ignores it. The runtime was not rebuilt for a path that the measurements never reached.</li>
+<li>In the browser <code>lms_web_boot.py</code> raises the KeyboardInterrupt in the program's own wait, never in the service.</li>
+<li>Before an upload the IDE reads the destination folder and asks about a folder that would hide a module of the same name. MicroPython imports the folder as a package. It does not refuse, since a package of that name may be what the user wants.</li>
+<li>Run on the Board keeps uploading sources. On the RP2350 without PSRAM the shell does not fit as <code>.py</code> and needs <code>.mpy</code>. That stays a choice in Upload Files, not an exception for one board: the owner will add SPI RAM.</li>
 </ul>
 
 

@@ -1060,8 +1060,8 @@
 
 
 <h1 id="status-what-is-verified-and-how">Status: what is verified, and how<a class="headerlink" href="#status-what-is-verified-and-how" title="Permanent link">&para;</a></h1>
-<p>Version 0.6.1 is published as a GitHub release, with an AppImage for Linux and a portable package for
-Windows. This page separates what has been
+<p>Version 0.7.0 is published as a GitHub release, with an AppImage for Linux. The latest portable
+package for Windows is the one of 0.6.1. This page separates what has been
 checked from what has only been written.</p>
 <h2 id="read-this-first">Read this first<a class="headerlink" href="#read-this-first" title="Permanent link">&para;</a></h2>
 <p>The project was built broad on purpose: features expected to be useful were included from the
@@ -1165,10 +1165,17 @@ below as an open question, not as a formality.</p>
 <td>used by a person; Windows, not available</td>
 </tr>
 <tr>
-<td>Upload Files, Run File on Board</td>
-<td>yes, with a board simulated in memory and a fake serial port</td>
+<td>Display driver contract 1 for programs (Ctrl-C reaches the program, the screen goes on)</td>
+<td>yes: the names, and 30 Ctrl-C of 30 in a loop, in <code>stdin.read()</code> and with an <code>lv.timer</code> busy; the shell stopping <code>sleep 2</code> 10 times of 10</td>
 <td></td>
-<td>STM32H7_CORE V1.3 (over its USB) and ESP32-4848S040, 13 November 2026: the shell of <code>examples/shell</code> copied (6 files, 110 kB, about 32 s) and started, <code>pwd</code>, <code>ls</code>, <code>uname -a</code>, <code>cd</code>, <code>exit</code></td>
+<td>on the boards it is the firmware's own driver, measured in mpy-lvgl-boards. ESP32-4848S040 with firmware v0.1.7, through the IDE by the owner, 14 November 2026: Ctrl-C in <code>sleep 5</code> several times, during long output and on an empty line, prompt back each time, screen on, no traceback; Stop back to <code>&gt;&gt;&gt;</code>; a project with pages run and stopped</td>
+<td>the browser, by a person; STM32H7_CORE V1.3 and RP2350 with v0.1.7 through the IDE</td>
+</tr>
+<tr>
+<td>Upload Files, Run File on Board</td>
+<td>yes, with a board simulated in memory and a fake serial port, also the question when a folder would hide a module</td>
+<td></td>
+<td>STM32H7_CORE V1.3 (over its USB) and ESP32-4848S040, 13 November 2026: the shell of <code>examples/shell</code> copied (6 files, 110 kB, about 32 s) and started, <code>pwd</code>, <code>ls</code>, <code>uname -a</code>, <code>cd</code>, <code>exit</code>. ESP32-4848S040, 14 November 2026, by the owner: Run on the Board of the shell asked about <code>shell</code> hiding <code>/shell.py</code>, No uploaded nothing, Yes uploaded and ran it; the folder deleted from the Files panel</td>
 <td>the editors on a board; the RP2350; used by a person</td>
 </tr>
 <tr>
@@ -1273,7 +1280,7 @@ below as an open question, not as a formality.</p>
 <td>AppImage for Linux</td>
 <td></td>
 <td>yes, run from inside the package</td>
-<td>the package of 0.6.1, released: self-test, 82 steps passed. The package of 0.6.0, on the author's computer: self-test, visual tests of EIM-01, board and C generation, single-file games for Linux (needing glibc 2.34 or later) and Windows, browser version</td>
+<td>the package of 0.7.0, released: self-test from an empty folder, 82 steps passed. The package of 0.6.1, released: self-test, 82 steps passed. The package of 0.6.0, on the author's computer: self-test, visual tests of EIM-01, board and C generation, single-file games for Linux (needing glibc 2.34 or later) and Windows, browser version</td>
 <td>on another Linux system</td>
 </tr>
 <tr>
@@ -1281,7 +1288,7 @@ below as an open question, not as a formality.</p>
 <td></td>
 <td></td>
 <td>the package of 0.6.0: contents inspected (no bundled ICU, the icon in the program file, the blocks) and started by the author on a real Windows. The package of 0.6.1, released: contents inspected, started by the author on Windows, no console windows flashing</td>
-<td>the installer, never built</td>
+<td>the package of 0.7.0, never built; the installer, never built</td>
 </tr>
 </tbody>
 </table>

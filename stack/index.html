@@ -1211,8 +1211,15 @@ memory pools on ports without <code>multi_heap</code>.</p>
 <h2 id="layer-4-the-contract">Layer 4: the contract<a class="headerlink" href="#layer-4-the-contract" title="Permanent link">&para;</a></h2>
 <p>The IDE does not know a board's pins. It relies on two things the firmware provides:</p>
 <ul>
-<li>a frozen module, <code>display_driver</code>, with <code>start()</code>, <code>stop()</code>, <code>WIDTH</code>, <code>HEIGHT</code>, <code>BUFFERS</code>
-  and <code>indev</code>; <code>import display_driver</code> is all a generated application needs;</li>
+<li>a frozen module, <code>display_driver</code>, with <code>start()</code>, <code>stop()</code>, <code>running()</code>, <code>backlight()</code>,
+  <code>WIDTH</code>, <code>HEIGHT</code>, <code>BUFFERS</code>, <code>PERIOD_MS</code> and <code>indev</code>; <code>import display_driver</code> is all a
+  generated application needs. From firmware v0.1.7 this is contract 1, <code>CONTRACT = 1</code>,
+  written down in <code>docs/display-driver.md</code> of mpy-lvgl-boards. It also promises that a Ctrl-C
+  reaches the program and the screen goes on, on every board. The one case left out is a
+  Ctrl-C that lands in a Python callback of the application, such as an <code>lv.timer</code>. That
+  happened 2 times in 60 on the ESP32-S3 and never on the other boards. Each Ctrl-C costs
+  about 30 ms of still screen. The simulator's driver for programs has the same names and
+  behaves the same way;</li>
 <li>facts read from the running board on connection: MicroPython and LVGL versions, the
   bytecode version, the built-in font sizes, whether fonts can be loaded at run time, free
   RAM and free space.</li>
