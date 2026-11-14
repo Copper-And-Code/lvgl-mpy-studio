@@ -1,7 +1,7 @@
 # Status: what is verified, and how
 
-Version 0.6.1 is published as a GitHub release, with an AppImage for Linux and a portable package for
-Windows. This page separates what has been
+Version 0.7.0 is published as a GitHub release, with an AppImage for Linux. The latest portable
+package for Windows is the one of 0.6.1. This page separates what has been
 checked from what has only been written.
 
 ## Read this first
@@ -48,8 +48,8 @@ below as an open question, not as a formality.
 | Visual tests | yes | | used on the EIM-01 example | |
 | Print Sources | yes | | a PDF, read | a real printer |
 | Self-test, visible mode (`--show`) | | | | never run |
-| AppImage for Linux | | yes, run from inside the package | the package of 0.6.1, released: self-test, 82 steps passed. The package of 0.6.0, on the author's computer: self-test, visual tests of EIM-01, board and C generation, single-file games for Linux (needing glibc 2.34 or later) and Windows, browser version | on another Linux system |
-| Portable Windows package | | | the package of 0.6.0: contents inspected (no bundled ICU, the icon in the program file, the blocks) and started by the author on a real Windows. The package of 0.6.1, released: contents inspected, started by the author on Windows, no console windows flashing | the installer, never built |
+| AppImage for Linux | | yes, run from inside the package | the package of 0.7.0, released: self-test from an empty folder, 82 steps passed. The package of 0.6.1, released: self-test, 82 steps passed. The package of 0.6.0, on the author's computer: self-test, visual tests of EIM-01, board and C generation, single-file games for Linux (needing glibc 2.34 or later) and Windows, browser version | on another Linux system |
+| Portable Windows package | | | the package of 0.6.0: contents inspected (no bundled ICU, the icon in the program file, the blocks) and started by the author on a real Windows. The package of 0.6.1, released: contents inspected, started by the author on Windows, no console windows flashing | the package of 0.7.0, never built; the installer, never built |
 
 "Author's use" means the author uses it while developing; it is not a test plan.
 

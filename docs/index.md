@@ -6,7 +6,7 @@ The same project can be uploaded to a supported board, exported as portable C so
 
 ![The IDE with an industrial monitor running in its simulator](images/ide-simulator.png)
 
-> **Status: 0.6.1, the first release with packages ([download](https://github.com/Copper-And-Code/lvgl-mpy-studio/releases/latest)).** The automated tests are many and human testing is scarce: much has been written and checked by machine, and little has been used by people. [What is verified, and how](status.md) describes each area.
+> **Status: 0.7.0 ([download](https://github.com/Copper-And-Code/lvgl-mpy-studio/releases/latest)).** The automated tests are many and human testing is scarce: much has been written and checked by machine, and little has been used by people. [What is verified, and how](status.md) describes each area.
 
 <div class="home-grid" markdown>
 <div class="home-card" markdown>

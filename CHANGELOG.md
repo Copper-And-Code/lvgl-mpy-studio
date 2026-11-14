@@ -1,6 +1,8 @@
 # Changelog
 
-## Unreleased
+## 0.7.0 — 2026-11-14
+
+The Files panel, programs without pages in the simulator, in the browser and on the board, and contract 1 of the boards' display driver.
 
 ### Added
 

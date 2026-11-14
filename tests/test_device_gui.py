@@ -492,7 +492,7 @@ def test_about_shows_ide_firmware_versions_and_credits(qtbot, tmp_path, monkeypa
     window._device_info = {"implementationVersion": [1, 29, 0, ""], "lvglVersion": "9.5.0"}
     window.about_action.trigger()
     text = messages[-1][2]
-    assert __version__ == "0.6.1"
+    assert __version__ == "0.7.0"
     assert f"IDE version:</b> {__version__}" in text
     assert "https://copper-and-code.github.io/lvgl-mpy-studio/" in text
 
