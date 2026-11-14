@@ -1,6 +1,6 @@
 # Decision log
 
-- New IDE in Python 3.11+ and PySide6 6.12.0 (LGPL), separate from `lvgl-mpy-builder`.
+- New IDE in Python 3.11+ (3.12+ since 2026-11-14) and PySide6 6.12.0 (LGPL), separate from `lvgl-mpy-builder`.
 - The core (`core`, `gen`, `build`, `sim`) does not import Qt and is available from the CLI.
 - The TypeScript generator was ported to Python, verified with byte-for-byte golden files at commit `5c217fa1536d4c78b01d07a2dbfcc9055fb59cdc`.
 - Native Linux x86-64 target; MicroPython 1.29.0, PyDevices `58d18ce`, bindings `7740c2fae0daa10992f5f8fe54acf670a70e2d3b` (LVGL 9.5.0).
@@ -263,3 +263,11 @@ As of 2026-10-28, the public commit above still declares LVGL 9.3 for MicroPytho
 - Before an upload the IDE reads the destination folder and asks about a folder that would hide a module of the same name. MicroPython imports the folder as a package. It does not refuse, since a package of that name may be what the user wants.
 - Run on the Board keeps uploading sources. On the RP2350 without PSRAM the shell does not fit as `.py` and needs `.mpy`. That stays a choice in Upload Files, not an exception for one board: the owner will add SPI RAM.
 
+## Python 3.12 or later (2026-11-14)
+
+- From a clean clone with Python 3.11.7 the self-test stopped every time at the same step with
+  `Fatal Python error: none_dealloc`, inside PySide6 6.12.0, while selecting a widget. With
+  Python 3.12 the same clone passed the self-test, 82 steps, and the test suite.
+- Continuous integration ran only 3.12. `requires-python` is now `>=3.12`, so pip refuses 3.11
+  with a clear message instead of an IDE that crashes. The defect is not chased: it is in a
+  dependency, and 3.12 is available on every supported system.

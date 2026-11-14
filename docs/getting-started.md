@@ -2,7 +2,7 @@
 
 ## Install from the sources
 
-On Linux you need Python 3.11 or later, a C compiler, CMake, `pkg-config`, SDL2 development headers, and `xvfb` for headless simulator windows. The first runtime build also downloads the pinned SDL2 sources.
+On Linux you need Python 3.12 or later (with Python 3.11 PySide6 6.12.0 crashes), a C compiler, CMake, `pkg-config`, SDL2 development headers, and `xvfb` for headless simulator windows. The first runtime build also downloads the pinned SDL2 sources.
 
 ```bash
 git clone https://github.com/Copper-And-Code/lvgl-mpy-studio.git

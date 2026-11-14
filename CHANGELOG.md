@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### Changed
+
+- Python 3.12 or later is required to run from the sources: with Python 3.11, PySide6 6.12.0 crashed in the self-test. The documentation states that the AppImage needs glibc 2.38 or later, that is Ubuntu 24.04, Debian 13, Fedora 39, Linux Mint 22 or newer.
+
 ## 0.7.0 — 2026-11-14
 
 The Files panel, programs without pages in the simulator, in the browser and on the board, and contract 1 of the boards' display driver.

@@ -9,7 +9,7 @@ description = "Visual IDE for LVGL 9.5 on MicroPython, with C export"
 license = "GPL-3.0-or-later AND MIT"
 license-files = ["LICENSE", "LICENSE-MIT.txt", "LICENSING.md", "native/lvsim/LICENSE"]
 authors = [{name = "Nunzio Raciti"}]
-requires-python = ">=3.11"
+requires-python = ">=3.12"
 dependencies = ["PySide6==6.12.0", "mpremote==1.29.0", "pyserial==3.5", "qtawesome==1.4.2"]
 
 [project.optional-dependencies]

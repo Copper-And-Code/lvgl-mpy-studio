@@ -4,7 +4,7 @@ Reference for whoever works on LVGL MPY Studio. The [user manual](manual.md) des
 
 ## From the sources
 
-You need Python 3.11+, a C compiler, `pkg-config`, CMake, SDL2 with its development headers and, for SDL windows without a display, `xvfb`. CMake builds the static SDL2 of the single-file executable; the first `runtime/build.sh` also downloads the SDL2 sources.
+You need Python 3.12 or later (with Python 3.11 PySide6 6.12.0 crashes in the self-test), a C compiler, `pkg-config`, CMake, SDL2 with its development headers and, for SDL windows without a display, `xvfb`. CMake builds the static SDL2 of the single-file executable; the first `runtime/build.sh` also downloads the SDL2 sources.
 
 ```bash
 python3 -m venv .venv

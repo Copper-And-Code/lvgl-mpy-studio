@@ -39,7 +39,9 @@ A desktop IDE for designing [LVGL](https://lvgl.io) 9.5 interfaces for MicroPyth
 
 ## Try it
 
-Linux, from the sources:
+The AppImage of the [release](https://github.com/Copper-And-Code/lvgl-mpy-studio/releases/latest) needs glibc 2.38 or later: Ubuntu 24.04, Debian 13, Fedora 39, Linux Mint 22 or newer.
+
+Linux, from the sources, with Python 3.12 or later:
 
 ```bash
 python3 -m venv .venv

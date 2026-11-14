@@ -35,7 +35,7 @@ chmod +x LVGL_MPY_STUDIO-x86_64.AppImage
 ./LVGL_MPY_STUDIO-x86_64.AppImage
 ```
 
-Nothing else needs installing: Python, Qt, the simulator and the MicroPython compiler are inside the file.
+Nothing else needs installing: Python, Qt, the simulator and the MicroPython compiler are inside the file. It needs glibc 2.38 or later: Ubuntu 24.04, Debian 13, Fedora 39, Linux Mint 22 or newer. On older systems, such as Ubuntu 22.04 or Debian 12, run it from the sources.
 
 ### Windows
 
@@ -488,6 +488,8 @@ The same check applies to any program that writes the project file, the command 
 **The serial port is busy.** Only one program at a time can use it: close other serial terminals, or disconnect the IDE if an AI agent or `mpremote` needs it.
 
 **I changed the resolution and something overlaps.** Ctrl+Z undoes it, then try the other choice, or fix by hand the widgets the output lists as outside the screen.
+
+**The AppImage does not start and mentions `GLIBC_2.38`.** The system is older than the AppImage needs: see [Installing and starting](#1-installing-and-starting).
 
 **The single-file executable does not start on an old Linux.** It needs glibc 2.34 or later, that is Ubuntu 22.04, Debian 12 or newer. On Windows, if it does not start, look at `<project>.log` next to the file.
 

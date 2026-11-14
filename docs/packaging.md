@@ -165,7 +165,9 @@ Record in [the status page](status.md) what was checked and on which system.
 - Binaries are not signed: Windows SmartScreen asks for **More info → Run anyway**.
 - Releases are made by hand: no workflow builds or uploads the packages. The two files and their
   checksums are attached to a GitHub release with `gh release create`.
-- The AppImage has been run only on the computer that built it.
+- The AppImage is built on the author's Ubuntu 24.04 and needs glibc 2.38 or later: it does not start on
+  Ubuntu 22.04 or Debian 12. The self-test of the 0.7.0 package passed on Ubuntu 24.04, Debian 13, Fedora 43
+  and Arch Linux, in containers without a display.
 
 Licences and sources of what a package contains are in `packaging/NOTICE.txt` and
 `THIRD_PARTY.md`. Pinned versions: MicroPython 1.29.0, LVGL 9.5.0, PySide6 6.12.0; see

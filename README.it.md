@@ -41,7 +41,9 @@ Queste pagine sono in inglese.
 
 ## Provalo
 
-Linux, dai sorgenti:
+L'AppImage della [release](https://github.com/Copper-And-Code/lvgl-mpy-studio/releases/latest) richiede glibc 2.38 o successiva: Ubuntu 24.04, Debian 13, Fedora 39, Linux Mint 22 o più recenti.
+
+Linux, dai sorgenti, con Python 3.12 o successivo:
 
 ```bash
 python3 -m venv .venv
