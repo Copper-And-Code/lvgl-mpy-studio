@@ -4,11 +4,13 @@
 
 [English](README.md)
 
-**[Documentation](https://copper-and-code.github.io/lvgl-mpy-studio/) · [Browser demos](https://copper-and-code.github.io/lvgl-mpy-studio/demos/)**
+### [Sito del progetto](https://copper-and-code.github.io/lvgl-mpy-studio/) · [Prova le demo nel browser](https://copper-and-code.github.io/lvgl-mpy-studio/demos/)
+
+Il sito ha la documentazione (in inglese); le demo sono giochi e una shell fatti con LVGL MPY Studio, che girano in WebAssembly senza installare nulla.
 
 Un IDE desktop per progettare interfacce [LVGL](https://lvgl.io) 9.5 per board MicroPython: disegni le pagine, scrivi i gestori in Python, esegui l'applicazione in un simulatore che usa la vera LVGL e la carichi su una board. Un agente AI può fare lo stesso attraverso un server MCP.
 
-![L'IDE con un monitor industriale in esecuzione nel simulatore](docs/images/ide-simulator.png)
+![L'IDE con un monitor industriale in esecuzione nel simulatore, e il pannello Files](docs/images/ide-simulator.png)
 
 > **Stato: 0.7.0 ([scarica](https://github.com/Copper-And-Code/lvgl-mpy-studio/releases/latest)).** I test automatici sono molti e le prove fatte da persone sono poche: molto è stato scritto e verificato dalle macchine, e poco è stato usato davvero. [Cosa è verificato, e come](docs/status.md) lo dice area per area.
 

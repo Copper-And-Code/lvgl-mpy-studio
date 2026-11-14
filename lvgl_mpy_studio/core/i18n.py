@@ -34,7 +34,10 @@ def _sources():
 
 def tr(text, **params):
     """The text in the chosen language. Takes the English text of the code or one already translated."""
-    source = text if _language != "en" and text in catalog(_language) else _sources().get(text, text)
+    # An English text of the code stays itself, also when it equals the translation of another one:
+    # "File" is a source, and also the Italian of "Files".
+    english = any(text in catalog(name) for name in LANGUAGES if name != "en")
+    source = text if english else _sources().get(text, text)
     translated = source if _language == "en" else catalog(_language).get(source, source)
     return translated.format(**params) if params else translated
 
