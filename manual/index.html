@@ -1908,7 +1908,7 @@
 <div class="highlight"><pre><span></span><code>chmod<span class="w"> </span>+x<span class="w"> </span>LVGL_MPY_STUDIO-x86_64.AppImage
 ./LVGL_MPY_STUDIO-x86_64.AppImage
 </code></pre></div>
-<p>Nothing else needs installing: Python, Qt, the simulator and the MicroPython compiler are inside the file.</p>
+<p>Nothing else needs installing: Python, Qt, the simulator and the MicroPython compiler are inside the file. It needs glibc 2.38 or later: Ubuntu 24.04, Debian 13, Fedora 39, Linux Mint 22 or newer. On older systems, such as Ubuntu 22.04 or Debian 12, run it from the sources.</p>
 <h3 id="windows">Windows<a class="headerlink" href="#windows" title="Permanent link">&para;</a></h3>
 <p>Extract the <strong>whole</strong> folder <code>LVGL_MPY_STUDIO-&lt;version&gt;-portable-win64.zip</code> and open <code>LVGL_MPY_STUDIO.exe</code>. Python does not need installing. If the IDE does not start, <code>LVGL_MPY_STUDIO_console.bat</code> starts it with a console that shows the errors.</p>
 <p>The executables are not signed: at the first start Windows SmartScreen may show a warning. Choose <strong>More info → Run anyway</strong>.</p>
@@ -2383,6 +2383,7 @@ lvgl-mpy-studio<span class="w"> </span><span class="nb">test</span><span class="
 <p><strong>No sound from the Buzzer on the board.</strong> The board profile must name a pin or a speaker; the built-in profiles do so where the board has a buzzer. If in doubt look at <strong>Device → Manage Board Profiles…</strong>.</p>
 <p><strong>The serial port is busy.</strong> Only one program at a time can use it: close other serial terminals, or disconnect the IDE if an AI agent or <code>mpremote</code> needs it.</p>
 <p><strong>I changed the resolution and something overlaps.</strong> Ctrl+Z undoes it, then try the other choice, or fix by hand the widgets the output lists as outside the screen.</p>
+<p><strong>The AppImage does not start and mentions <code>GLIBC_2.38</code>.</strong> The system is older than the AppImage needs: see <a href="#1-installing-and-starting">Installing and starting</a>.</p>
 <p><strong>The single-file executable does not start on an old Linux.</strong> It needs glibc 2.34 or later, that is Ubuntu 22.04, Debian 12 or newer. On Windows, if it does not start, look at <code>&lt;project&gt;.log</code> next to the file.</p>
 <p><strong>Windows says the app is not safe.</strong> The executables are not signed: <strong>More info → Run anyway</strong>.</p>
 

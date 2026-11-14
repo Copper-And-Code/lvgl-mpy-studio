@@ -1060,8 +1060,8 @@
 
 
 <h1 id="status-what-is-verified-and-how">Status: what is verified, and how<a class="headerlink" href="#status-what-is-verified-and-how" title="Permanent link">&para;</a></h1>
-<p>Version 0.7.0 is published as a GitHub release, with an AppImage for Linux. The latest portable
-package for Windows is the one of 0.6.1. This page separates what has been
+<p>Version 0.7.0 is published as a GitHub release, with an AppImage for Linux and a portable package for
+Windows. This page separates what has been
 checked from what has only been written.</p>
 <h2 id="read-this-first">Read this first<a class="headerlink" href="#read-this-first" title="Permanent link">&para;</a></h2>
 <p>The project was built broad on purpose: features expected to be useful were included from the
@@ -1280,15 +1280,15 @@ below as an open question, not as a formality.</p>
 <td>AppImage for Linux</td>
 <td></td>
 <td>yes, run from inside the package</td>
-<td>the package of 0.7.0, released: self-test from an empty folder, 82 steps passed. The package of 0.6.1, released: self-test, 82 steps passed. The package of 0.6.0, on the author's computer: self-test, visual tests of EIM-01, board and C generation, single-file games for Linux (needing glibc 2.34 or later) and Windows, browser version</td>
-<td>on another Linux system</td>
+<td>the package of 0.7.0, released: self-test from an empty folder, 82 steps passed, on the author's computer and, on 14 November 2026, on Ubuntu 24.04, Debian 13, Fedora 43 and Arch Linux in containers without a display; it needs glibc 2.38, so it does not start on Debian 12 or Ubuntu 22.04. The package of 0.6.1, released: self-test, 82 steps passed. The package of 0.6.0, on the author's computer: self-test, visual tests of EIM-01, board and C generation, single-file games for Linux (needing glibc 2.34 or later) and Windows, browser version</td>
+<td>on Ubuntu 22.04 and Debian 12, where it does not start; the window seen on another Linux system</td>
 </tr>
 <tr>
 <td>Portable Windows package</td>
 <td></td>
 <td></td>
 <td>the package of 0.6.0: contents inspected (no bundled ICU, the icon in the program file, the blocks) and started by the author on a real Windows. The package of 0.6.1, released: contents inspected, started by the author on Windows, no console windows flashing</td>
-<td>the package of 0.7.0, never built; the installer, never built</td>
+<td>the package of 0.7.0, released: contents inspected (version, no bundled ICU, the launcher, the display driver of contract 1), not started on Windows yet; the installer, never built</td>
 </tr>
 </tbody>
 </table>
